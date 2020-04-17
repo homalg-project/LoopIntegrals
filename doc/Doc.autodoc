@@ -1,0 +1,19 @@
+@Chapter Loop integrals
+
+@Section Introduction
+
+This package is an ongoing work to compute master integrals using commutative and noncommutative methods from computational algebraic geometry.
+
+@Section Example
+
+@InsertChunk Kite
+@InsertChunk 1LoopBox
+@InsertChunk 2LoopNonPlanarLadder
+
+@Section Global variables
+@Section GAP categories
+@Section Properties
+@Section Attributes
+@Section Constructors
+@Section Operations
+@Section Tools
