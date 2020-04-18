@@ -1,6 +1,6 @@
 name: LoopIntegrals
-version: "2020.04.08"
-date: 2020-04-08
+version: "2020.04.18"
+date: 2020-04-18
 description: |
     Compute master integrals using commutative and noncommutative methods from computational algebraic geometry
 
@@ -30,8 +30,11 @@ needed-pkgs:
     - name: "GAPDoc"
       version: ">= 1.5"
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
+    - name: "MatricesForHomalg"
+      version: ">= 2020.04.18"
+      url: "https://homalg-project.github.io/homalg_project/MatricesForHomalg/"
     - name: "RingsForHomalg"
-      version: ">= 2020.02.04"
+      version: ">= 2020.04.18"
       url: "https://homalg-project.github.io/homalg_project/RingsForHomalg/"
 
 www: https://homalg-project.github.io/LoopIntegrals
@@ -40,7 +43,7 @@ packageinfo: https://homalg-project.github.io/LoopIntegrals/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2020.04.08/LoopIntegrals-2020.04.08.tar.gz
+      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2020.04.18/LoopIntegrals-2020.04.18.tar.gz
 
 abstract: |
 
@@ -53,7 +56,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BBHP20</span>]   <b class='BibAuthor'>Barakat, M., Brüser, R., Huber, T. and Piclum, J.</b>,
      <i class='BibTitle'>LoopIntegrals, Compute master integrals using commutative and noncommutative methods from computational algebraic geometry,
-             Version 2020.04.08</i>
+             Version 2020.04.18</i>
      (<span class='BibYear'>2020</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/LoopIntegrals">https://homalg-project.github.io/LoopIntegrals</a></span>.
@@ -61,9 +64,9 @@ citeas: |
     
 
 bibtex: |
-    @misc{ LoopIntegrals2020.04.08,
+    @misc{ LoopIntegrals2020.04.18,
       author =           {Barakat, M. and Br{\"u}ser, R. and Huber, T. and Piclum, J.},
-      title =            {{LoopIntegrals}, Compute master integrals using commutative and noncommutative methods from computational algebraic geometry, {V}ersion 2020.04.08},
+      title =            {{LoopIntegrals}, Compute master integrals using commutative and noncommutative methods from computational algebraic geometry, {V}ersion 2020.04.18},
       month =            {Apr},
       year =             {2020},
       note =             {GAP package},
