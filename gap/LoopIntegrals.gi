@@ -55,31 +55,6 @@ InstallMethod( LorentzVector,
 end );
     
 ##
-InstallMethod( LorentzVector,
-        [ IsString ],
-        
-  function( str )
-    local vector;
-    
-    vector := rec( symbols := List( [ 1 .. LOOP_INTEGRALS.Dimension ], i -> Concatenation( str, "_", String( i ) ) ) );
-    
-    ObjectifyWithAttributes(
-            vector, TheTypeLorentzVector,
-            Name, ShallowCopy( str ) );
-    
-    if ValueOption( "IsLoopMomentum" ) = true then
-        SetIsLoopMomentum( vector, true );
-    fi;
-    
-    if ValueOption( "IsExternalMomentum" ) = true then
-        SetIsExternalMomentum( vector, true );
-    fi;
-    
-    return vector;
-    
-end );
-    
-##
 InstallMethod( LoopDiagram,
         [ IsList, IsList ],
         
