@@ -4,10 +4,15 @@
 
 This package is an ongoing work to compute master integrals using commutative and noncommutative methods from computational algebraic geometry.
 
-@Section Example
+@Section Examples
 
+@Subsection Kite
 @InsertChunk Kite
+
+@Subsection 1LoopBox
 @InsertChunk 1LoopBox
+
+@Subsection 2LoopNonPlanarLadder
 @InsertChunk 2LoopNonPlanarLadder
 
 @Section Global variables
