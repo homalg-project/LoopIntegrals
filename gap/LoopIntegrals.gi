@@ -88,7 +88,7 @@ InstallMethod( LoopDiagram,
     
     K := Concatenation( List( List( K, k -> SplitString( k, "," ) ), ParseListOfIndeterminates ) );
     
-    K := List( K, l -> LorentzVector( l : IsLoopMomentum := true ) );
+    K := List( K, l -> LorentzVector( l : IsExternalMomentum := true ) );
     
     Perform( K,
       function( k )
