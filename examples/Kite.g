@@ -46,12 +46,12 @@ Display( E12[2] );
 #! 0, 0, 0, 0, D5
 S := SyzygiesOfRows( E12[1], E12[2] );
 #! <A non-zero 19 x 6 matrix over an external ring>
-Display( EntriesOfHomalgMatrix( CertainRows( S, [ 1 ] ) ) );
+Display( EntriesOfHomalgMatrix( S[ 1 ] ) );
 #! [ 2*D2, 0, 0, D3+D4-x6, D1+D2+2*D4-2*D5-x6, -D1+D3+D5 ]
-Display( EntriesOfHomalgMatrix( CertainRows( S, [ 2 ] ) ) );
+Display( EntriesOfHomalgMatrix( S[ 2 ] ) );
 #! [ 2*D2+D3+D4-2*D5-x6, D1+D2-x6, -D1+D3-D5, 0, 2*D4, 0 ]
-Display( EntriesOfHomalgMatrix( CertainRows( S, [ 3 ] ) ) );
+Display( EntriesOfHomalgMatrix( S[ 3 ] ) );
 #! [ D1-D2, 0, D1, 0, D3-D4, -D3 ]
-Display( EntriesOfHomalgMatrix( CertainRows( S, [ 4 ] ) ) );
+Display( EntriesOfHomalgMatrix( S[ 4 ] ) );
 #! [ 0, 0, 0, 0, D4*D5, 0 ]
 #! @EndExample

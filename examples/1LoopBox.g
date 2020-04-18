@@ -27,10 +27,8 @@ S := SyzygiesOfRows( E12[1], E12[2] );
 #! <A non-zero 8 x 4 matrix over an external ring>
 Sred := ReducedBasisOfRowModule( S );
 #! <A non-zero 6 x 4 matrix over an external ring>
-Display( EntriesOfHomalgMatrix( CertainRows( Sred, [ 1 ] ) ) );
-#! [ D2-D4, D4, 0, D2 ]
-Display( EntriesOfHomalgMatrix( CertainRows( Sred, [ 2 ] ) ) );
-#! [ D1-D3, -D1, -D1, 0 ]
-Display( EntriesOfHomalgMatrix( CertainRows( Sred, [ 3 ] ) ) );
-#! [ 2*D3*D4-2*D4^2-D4*x5, D2*D4-D3*D4+2*D4^2+D4*x5, D1*D4+D2*D4, 2*D2*D4 ]
+Display( EntriesOfHomalgMatrixAsListList( Sred{[ 1 .. 3 ]} ) );
+#! [ [ D2-D4, D4, 0, D2 ],
+#!   [ D1-D3, -D1, -D1, 0 ],
+#!   [ 2*D3*D4-2*D4^2-D4*x5, D2*D4-D3*D4+2*D4^2+D4*x5, D1*D4+D2*D4, 2*D2*D4 ] ]
 #! @EndExample
