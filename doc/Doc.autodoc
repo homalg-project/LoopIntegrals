@@ -6,6 +6,9 @@ This package is an ongoing work to compute master integrals using commutative an
 
 @Section Examples
 
+@Subsection LorentzVector
+@InsertChunk LorentzVector
+
 @Subsection Kite
 @InsertChunk Kite
 
