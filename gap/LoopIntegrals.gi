@@ -282,43 +282,6 @@ InstallMethod( RelationsMatrixOfMomenta,
 end );
 
 ##
-InstallMethod( ReductionMatrixOfPropagators,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators ],
-        
-  function( LD )
-    local symbol, D, N, propagators, R, red;
-    
-    symbol := ValueOption( "symbol" );
-    
-    if symbol = fail then
-        symbol := LOOP_INTEGRALS.PropagatorSymbol;
-    fi;
-    
-    D := Propagators( LD );
-    
-    N := Length( D );
-    
-    propagators := List( [ 1 .. N ], i -> Concatenation( symbol, String( i ) ) );
-    
-    R := UnderlyingRing( LD );
-    
-    R := CoefficientsRing( R ) * propagators * List( Indeterminates( R ), String );
-    
-    R := PolynomialRingWithProductOrdering( R );
-    
-    propagators := List( propagators, p -> p / R );
-    
-    propagators := ListN( D, propagators, {a,b} -> a / R - b );
-    
-    propagators := HomalgMatrix( propagators, N, 1, R );
-    
-    red := UnionOfRows( propagators, R * RelationsMatrixOfMomenta( LD ) );
-    
-    return red;
-    
-end );
-
-##
 InstallMethod( ReductionMatrixOfIndependetLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators ],
         

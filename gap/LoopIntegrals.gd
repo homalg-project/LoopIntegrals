@@ -90,10 +90,6 @@ DeclareAttribute( "Numerators",
         IsLoopDiagram );
 
 #!
-DeclareAttribute( "ReductionMatrixOfPropagators",
-        IsLoopDiagram );
-
-#!
 DeclareAttribute( "IndependetLorentzInvariants",
         IsLoopDiagram );
 
