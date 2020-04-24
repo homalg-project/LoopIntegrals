@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2020.04.18
+                                   2020.04.20
   
   
-                                 18 April 2020
+                                 20 April 2020
   
   
                                 Mohamed Barakat
@@ -74,24 +74,21 @@
       1.4-1 IsLoopMomentum
       1.4-2 IsExternalMomentum
     1.5 [33X[0;0YAttributes[133X
-      1.5-1 LoopDiagram
-      1.5-2 LoopMomenta
-      1.5-3 ExternalMomenta
-      1.5-4 RelationsOfMomenta
-      1.5-5 RelationsMatrixOfMomenta
-      1.5-6 Propagators
-      1.5-7 Numerators
-      1.5-8 IndependetLorentzInvariants
-      1.5-9 ReductionMatrixOfIndependetLorentzInvariants
+      1.5-1 Dimension
+      1.5-2 LoopDiagram
+      1.5-3 LoopMomenta
+      1.5-4 ExternalMomenta
+      1.5-5 RelationsOfMomenta
+      1.5-6 RelationsMatrixOfMomenta
+      1.5-7 Propagators
+      1.5-8 Numerators
+      1.5-9 IndependetLorentzInvariants
       1.5-10 ExtraLorentzInvariants
-      1.5-11 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
-      1.5-12 PairOfOriginalMatricesOfLoopDiagram
-      1.5-13 PairOfMatricesOfLoopDiagram
-      1.5-14 PairOfMatricesOfLoopDiagramInLorentzInvariants
-      1.5-15 PairOfMatricesOfLoopDiagramInPropagators
-      1.5-16 UnderlyingRing
-      1.5-17 UnderlyingMatrix
-      1.5-18 Components
+      1.5-11 PairOfOriginalMatricesOfLoopDiagram
+      1.5-12 PairOfMatricesOfLoopDiagram
+      1.5-13 UnderlyingRing
+      1.5-14 UnderlyingMatrix
+      1.5-15 Components
     1.6 [33X[0;0YConstructors[133X
       1.6-1 LorentzVector
       1.6-2 LorentzVector
@@ -104,6 +101,10 @@
       1.7-5 *
       1.7-6 *
       1.7-7 *
+      1.7-8 ReductionMatrixOfIndependetLorentzInvariants
+      1.7-9 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
+      1.7-10 PairOfMatricesOfLoopDiagramInLorentzInvariants
+      1.7-11 PairOfMatricesOfLoopDiagramInPropagators
   
   
   [32X
