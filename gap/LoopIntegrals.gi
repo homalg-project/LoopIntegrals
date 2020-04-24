@@ -212,6 +212,16 @@ InstallMethod( AdditiveInverse,
 end );
 
 ##
+InstallMethod( SetAbbreviation,
+        [ IsHomalgRingElement, IsString ],
+        
+  function( xy, str )
+
+    xy!.Abbreviation := str;
+    
+end );
+    
+##
 InstallMethod( \*,
         [ IsLorentzVector, IsLorentzVector ],
         
@@ -224,7 +234,7 @@ InstallMethod( \*,
     xy := cx[1] *cy[1] - Sum( [ 2 .. Dimension( x ) ], i -> cx[i] * cy[i] );
     
     if HasName( x ) and HasName( y ) then
-        xy!.Genesis := Concatenation( Name( x ), Name( y ) );
+        xy!.Abbreviation := Concatenation( Name( x ), Name( y ) );
     fi;
     
     return xy;
@@ -293,23 +303,31 @@ InstallMethod( ReductionMatrixOfIndependetLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators ],
         
   function( LD )
-    local I, M, symbol, invariants, R, red;
+    local I, M, abbreviation, symbol, invariants, R, red;
     
     I := IndependetLorentzInvariants( LD );
     
     M := Length( I );
     
+    abbreviation := ValueOption( "abbreviation" );
+    
+    if not IsIdenticalObj( abbreviation, false ) then
+        abbreviation := true;
+    fi;
+    
     symbol := ValueOption( "symbol" );
     
-    if not ( symbol = false or IsStringRep( symbol ) ) then
+    if not IsStringRep( symbol ) then
         symbol := LOOP_INTEGRALS.LorentzSymbol;
     fi;
     
-    if IsStringRep( symbol ) then
-        invariants := List( [ 1 .. M ], i -> Concatenation( symbol, String( i ) ) );
-    else
-        invariants := List( I, i -> i!.Genesis );
-    fi;
+    invariants := List( [ 1 .. M ],
+                        function( i )
+                          if IsBound( I[i]!.Abbreviation ) and abbreviation then
+                              return I[i]!.Abbreviation;
+                          fi;
+                          return Concatenation( symbol, String( i ) );
+                      end );
     
     R := UnderlyingRing( LD );
     
@@ -335,7 +353,7 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
         
   function( LD )
     local symbolD, D, N, propagators, symbolN, Z, A, numerators,
-          symbolK, K, M, symbol, invariants, indets, R, red;
+          abbreviation, symbolK, K, M, symbol, invariants, indets, R, red;
     
     symbolD := ValueOption( "symbolD" );
     
@@ -361,27 +379,29 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
     
     numerators := List( [ N + 1 .. N + A ], i -> Concatenation( symbolN, String( i ) ) );
     
-    symbolK := ValueOption( "symbolK" );
-    
-    if symbolK = fail then
-        symbolK := LOOP_INTEGRALS.LorentzSymbol;
-    fi;
-    
     K := ExtraLorentzInvariants( LD );
     
     M := Length( K );
     
-    symbol := ValueOption( "symbol" );
+    abbreviation := ValueOption( "abbreviation" );
     
-    if not ( symbol = false or IsStringRep( symbol ) ) then
-        symbol := LOOP_INTEGRALS.LorentzSymbol;
+    if not IsIdenticalObj( abbreviation, false ) then
+        abbreviation := true;
     fi;
     
-    if IsStringRep( symbol ) then
-        invariants := List( [ N + A + 1 .. N + A + M ], i -> Concatenation( symbolK, String( i ) ) );
-    else
-        invariants := List( K, i -> i!.Genesis );
+    symbolK := ValueOption( "symbolK" );
+    
+    if not IsStringRep( symbolK ) then
+        symbolK := LOOP_INTEGRALS.LorentzSymbol;
     fi;
+    
+    invariants := List( [ 1 .. M ],
+                        function( i )
+                          if IsBound( K[i]!.Abbreviation ) and abbreviation then
+                              return K[i]!.Abbreviation;
+                          fi;
+                          return Concatenation( symbolK, String( N + A + i ) );
+                      end );
     
     indets := Concatenation( propagators, numerators, invariants );
     

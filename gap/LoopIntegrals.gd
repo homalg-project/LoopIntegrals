@@ -146,6 +146,10 @@ DeclareOperation( "LoopDiagram",
 ####################################
 
 #!
+DeclareOperation( "SetAbbreviation",
+        [ IsHomalgRingElement, IsString ] );
+    
+#!
 DeclareOperation( "+",
         [ IsLorentzVector, IsLorentzVector ] );
     
