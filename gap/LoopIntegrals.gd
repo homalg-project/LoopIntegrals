@@ -98,15 +98,7 @@ DeclareAttribute( "IndependetLorentzInvariants",
         IsLoopDiagram );
 
 #!
-DeclareAttribute( "ReductionMatrixOfIndependetLorentzInvariants",
-        IsLoopDiagram );
-
-#!
 DeclareAttribute( "ExtraLorentzInvariants",
-        IsLoopDiagram );
-
-#!
-DeclareAttribute( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
         IsLoopDiagram );
 
 #!
@@ -115,14 +107,6 @@ DeclareAttribute( "PairOfOriginalMatricesOfLoopDiagram",
 
 #!
 DeclareAttribute( "PairOfMatricesOfLoopDiagram",
-        IsLoopDiagram );
-
-#!
-DeclareAttribute( "PairOfMatricesOfLoopDiagramInLorentzInvariants",
-        IsLoopDiagram );
-
-#!
-DeclareAttribute( "PairOfMatricesOfLoopDiagramInPropagators",
         IsLoopDiagram );
 
 #!
@@ -192,6 +176,22 @@ DeclareOperation( "*",
 DeclareOperation( "POW",
         [ IsLorentzVector, IsInt ] );
     
+#!
+DeclareOperation( "ReductionMatrixOfIndependetLorentzInvariants",
+        [ IsLoopDiagram ] );
+
+#!
+DeclareOperation( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
+        [ IsLoopDiagram ] );
+
+#!
+DeclareOperation( "PairOfMatricesOfLoopDiagramInLorentzInvariants",
+        [ IsLoopDiagram ] );
+
+#!
+DeclareOperation( "PairOfMatricesOfLoopDiagramInPropagators",
+        [ IsLoopDiagram ] );
+
 ####################################
 #
 #! @Section Tools

@@ -223,6 +223,10 @@ InstallMethod( \*,
     
     xy := cx[1] *cy[1] - Sum( [ 2 .. Dimension( x ) ], i -> cx[i] * cy[i] );
     
+    if HasName( x ) and HasName( y ) then
+        xy!.Genesis := Concatenation( Name( x ), Name( y ) );
+    fi;
+    
     return xy;
     
 end );
@@ -289,19 +293,23 @@ InstallMethod( ReductionMatrixOfIndependetLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators ],
         
   function( LD )
-    local symbol, I, M, invariants, R, red;
-    
-    symbol := ValueOption( "symbol" );
-    
-    if symbol = fail then
-        symbol := LOOP_INTEGRALS.LorentzSymbol;
-    fi;
+    local I, M, symbol, invariants, R, red;
     
     I := IndependetLorentzInvariants( LD );
     
     M := Length( I );
     
-    invariants := List( [ 1 .. M ], i -> Concatenation( symbol, String( i ) ) );
+    symbol := ValueOption( "symbol" );
+    
+    if not ( symbol = false or IsStringRep( symbol ) ) then
+        symbol := LOOP_INTEGRALS.LorentzSymbol;
+    fi;
+    
+    if IsStringRep( symbol ) then
+        invariants := List( [ 1 .. M ], i -> Concatenation( symbol, String( i ) ) );
+    else
+        invariants := List( I, i -> i!.Genesis );
+    fi;
     
     R := UnderlyingRing( LD );
     
@@ -327,7 +335,7 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
         
   function( LD )
     local symbolD, D, N, propagators, symbolN, Z, A, numerators,
-          symbolK, K, M, invariants, indets, R, red;
+          symbolK, K, M, symbol, invariants, indets, R, red;
     
     symbolD := ValueOption( "symbolD" );
     
@@ -363,7 +371,17 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
     
     M := Length( K );
     
-    invariants := List( [ N + A + 1 .. N + A + M ], i -> Concatenation( symbolK, String( i ) ) );
+    symbol := ValueOption( "symbol" );
+    
+    if not ( symbol = false or IsStringRep( symbol ) ) then
+        symbol := LOOP_INTEGRALS.LorentzSymbol;
+    fi;
+    
+    if IsStringRep( symbol ) then
+        invariants := List( [ N + A + 1 .. N + A + M ], i -> Concatenation( symbolK, String( i ) ) );
+    else
+        invariants := List( K, i -> i!.Genesis );
+    fi;
     
     indets := Concatenation( propagators, numerators, invariants );
     
