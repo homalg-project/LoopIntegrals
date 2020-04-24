@@ -62,6 +62,10 @@ DeclareProperty( "IsExternalMomentum",
 ####################################
 
 #!
+DeclareAttribute( "Dimension",
+        IsLorentzVector );
+
+#!
 DeclareAttribute( "LoopDiagram",
         IsLorentzVector );
 
@@ -141,7 +145,7 @@ DeclareAttribute( "Components",
 
 #!
 DeclareOperation( "LorentzVector",
-        [ IsString ] );
+        [ IsString, IsInt ] );
 
 #!
 DeclareOperation( "LorentzVector",
@@ -149,7 +153,7 @@ DeclareOperation( "LorentzVector",
 
 #!
 DeclareOperation( "LoopDiagram",
-        [ IsList, IsList ] );
+        [ IsList, IsList, IsInt ] );
 
 ####################################
 #

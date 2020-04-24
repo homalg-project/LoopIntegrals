@@ -6,7 +6,6 @@
 
 InstallValue( LOOP_INTEGRALS,
         rec(
-            Dimension := 4,
             PropagatorSymbol := "D",
             NumeratorSymbol := "N",
             LorentzSymbol := "x"
@@ -23,6 +22,7 @@ InstallMethod( LorentzVector,
     
     ObjectifyWithAttributes(
             vector, TheTypeLorentzVector,
+            Dimension, NrRows( M ),
             UnderlyingMatrix, M );
     
     return vector;
@@ -31,21 +31,22 @@ end );
     
 ##
 InstallMethod( LorentzVector,
-        [ IsString and IsStringRep ],
+        [ IsString and IsStringRep, IsInt ],
         
-  function( str )
+  function( str, dim )
     local vector;
     
-    vector := rec( symbols := List( [ 0 .. LOOP_INTEGRALS.Dimension ], i -> Concatenation( str, "_", String( i ) ) ) );
+    vector := rec( symbols := List( [ 0 .. dim - 1 ], i -> Concatenation( str, "_", String( i ) ) ) );
     
     ObjectifyWithAttributes(
             vector, TheTypeLorentzVector,
+            Dimension, dim,
             Name, ShallowCopy( str ) );
-
+    
     if ValueOption( "IsLoopMomentum" ) = true then
         SetIsLoopMomentum( vector, true );
     fi;
-
+    
     if ValueOption( "IsExternalMomentum" ) = true then
         SetIsExternalMomentum( vector, true );
     fi;
@@ -56,9 +57,9 @@ end );
     
 ##
 InstallMethod( LoopDiagram,
-        [ IsList, IsList ],
+        [ IsList, IsList, IsInt ],
         
-  function( L, K )
+  function( L, K, dim )
     local LD, LorentzVectors, C, momenta, R;
     
     LD := rec( );
@@ -69,7 +70,7 @@ InstallMethod( LoopDiagram,
     
     L := Concatenation( List( List( L, l -> SplitString( l, "," ) ), ParseListOfIndeterminates ) );
     
-    L := List( L, l -> LorentzVector( l : IsLoopMomentum := true ) );
+    L := List( L, l -> LorentzVector( l, dim : IsLoopMomentum := true ) );
     
     Perform( L,
       function( l )
@@ -88,7 +89,7 @@ InstallMethod( LoopDiagram,
     
     K := Concatenation( List( List( K, k -> SplitString( k, "," ) ), ParseListOfIndeterminates ) );
     
-    K := List( K, l -> LorentzVector( l : IsExternalMomentum := true ) );
+    K := List( K, k -> LorentzVector( k, dim : IsExternalMomentum := true ) );
     
     Perform( K,
       function( k )
@@ -141,7 +142,7 @@ InstallMethod( UnderlyingMatrix,
         
   function( x )
     
-    return HomalgMatrix( Components( x ), LOOP_INTEGRALS.Dimension, 1, HomalgRing( x[1] ) );
+    return HomalgMatrix( Components( x ), Dimension( x ), 1, HomalgRing( x[1] ) );
     
 end );
     
@@ -215,12 +216,14 @@ InstallMethod( \*,
         [ IsLorentzVector, IsLorentzVector ],
         
   function( x, y )
-    local xy;
+    local cx, cy, xy;
     
-    x := Components( x );
-    y := Components( y );
+    cx := Components( x );
+    cy := Components( y );
     
-    return x[1]*y[1] - Sum( [ 2 .. LOOP_INTEGRALS.Dimension ], i -> x[i]*y[i] );
+    xy := cx[1] *cy[1] - Sum( [ 2 .. Dimension( x ) ], i -> cx[i] * cy[i] );
+    
+    return xy;
     
 end );
 
@@ -263,7 +266,7 @@ InstallMethod( POW,
     if power = 0 then
         return One( UnderlyingRing( LoopDiagram( x ) ) );
     fi;
-
+    
     return Product( ListWithIdenticalEntries( power, x ) );
     
 end );
@@ -483,7 +486,7 @@ InstallMethod( ViewObj,
         
   function( x )
     
-    Print( "<A ", LOOP_INTEGRALS.Dimension, "-vector>" );
+    Print( "<A ", Dimension( x ), "-vector>" );
     
 end );
 

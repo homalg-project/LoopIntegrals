@@ -3,9 +3,7 @@
 LoadPackage( "LoopIntegrals" );
 
 #! @Example
-LOOP_INTEGRALS.Dimension := 4;
-#! 4
-LD := LoopDiagram( "l1..2", "p" );
+LD := LoopDiagram( "l1..2", "p", 4 );
 #! <A loop diagram with loop momenta [ l1, l2 ] & external momenta [ p ]>
 SetPropagators( LD, [ l1^2, (l1+p)^2, l2^2, (l2-p)^2, (l1+l2)^2 ] );
 SetNumerators( LD, [ ] );
