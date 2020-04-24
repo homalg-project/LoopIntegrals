@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2020.04.20
+                                   2020.04.21
   
   
-                                 20 April 2020
+                                 21 April 2020
   
   
                                 Mohamed Barakat
@@ -94,17 +94,18 @@
       1.6-2 LorentzVector
       1.6-3 LoopDiagram
     1.7 [33X[0;0YOperations[133X
-      1.7-1 +
-      1.7-2 -
-      1.7-3 AdditiveInverse
-      1.7-4 []
-      1.7-5 *
+      1.7-1 SetAbbreviation
+      1.7-2 +
+      1.7-3 -
+      1.7-4 AdditiveInverse
+      1.7-5 []
       1.7-6 *
       1.7-7 *
-      1.7-8 ReductionMatrixOfIndependetLorentzInvariants
-      1.7-9 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
-      1.7-10 PairOfMatricesOfLoopDiagramInLorentzInvariants
-      1.7-11 PairOfMatricesOfLoopDiagramInPropagators
+      1.7-8 *
+      1.7-9 ReductionMatrixOfIndependetLorentzInvariants
+      1.7-10 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
+      1.7-11 PairOfMatricesOfLoopDiagramInLorentzInvariants
+      1.7-12 PairOfMatricesOfLoopDiagramInPropagators
   
   
   [32X

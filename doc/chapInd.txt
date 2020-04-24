@@ -2,13 +2,13 @@
   
   [1XIndex[101X
   
-  [2X*[102X, for IsLorentzVector, IsLorentzVector 1.7-5 
-      for IsLorentzVector, IsRingElement 1.7-7 
-      for IsRingElement, IsLorentzVector 1.7-6 
-  [2X+[102X, for IsLorentzVector, IsLorentzVector 1.7-1 
-  [2X-[102X, for IsLorentzVector, IsLorentzVector 1.7-2 
-  [2X[][102X, for IsLorentzVector, IsInt 1.7-4 
-  [2XAdditiveInverse[102X, for IsLorentzVector 1.7-3 
+  [2X*[102X, for IsLorentzVector, IsLorentzVector 1.7-6 
+      for IsLorentzVector, IsRingElement 1.7-8 
+      for IsRingElement, IsLorentzVector 1.7-7 
+  [2X+[102X, for IsLorentzVector, IsLorentzVector 1.7-2 
+  [2X-[102X, for IsLorentzVector, IsLorentzVector 1.7-3 
+  [2X[][102X, for IsLorentzVector, IsInt 1.7-5 
+  [2XAdditiveInverse[102X, for IsLorentzVector 1.7-4 
   [2XComponents[102X, for IsLorentzVector 1.5-15 
   [2XDimension[102X, for IsLorentzVector 1.5-1 
   [2XExternalMomenta[102X, for IsLoopDiagram 1.5-4 
@@ -24,14 +24,15 @@
       for IsString, IsInt 1.6-1 
   [2XNumerators[102X, for IsLoopDiagram 1.5-8 
   [2XPairOfMatricesOfLoopDiagram[102X, for IsLoopDiagram 1.5-12 
-  [2XPairOfMatricesOfLoopDiagramInLorentzInvariants[102X, for IsLoopDiagram 1.7-10 
-  [2XPairOfMatricesOfLoopDiagramInPropagators[102X, for IsLoopDiagram 1.7-11 
+  [2XPairOfMatricesOfLoopDiagramInLorentzInvariants[102X, for IsLoopDiagram 1.7-11 
+  [2XPairOfMatricesOfLoopDiagramInPropagators[102X, for IsLoopDiagram 1.7-12 
   [2XPairOfOriginalMatricesOfLoopDiagram[102X, for IsLoopDiagram 1.5-11 
   [2XPropagators[102X, for IsLoopDiagram 1.5-7 
-  [2XReductionMatrixOfIndependetLorentzInvariants[102X, for IsLoopDiagram 1.7-8 
-  [2XReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsLoopDiagram 1.7-9 
+  [2XReductionMatrixOfIndependetLorentzInvariants[102X, for IsLoopDiagram 1.7-9 
+  [2XReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsLoopDiagram 1.7-10 
   [2XRelationsMatrixOfMomenta[102X, for IsLoopDiagram 1.5-6 
   [2XRelationsOfMomenta[102X, for IsLoopDiagram 1.5-5 
+  [2XSetAbbreviation[102X, for IsHomalgRingElement, IsString 1.7-1 
   [2XUnderlyingMatrix[102X, for IsLorentzVector 1.5-14 
   [2XUnderlyingRing[102X, for IsLoopDiagram 1.5-13 
   

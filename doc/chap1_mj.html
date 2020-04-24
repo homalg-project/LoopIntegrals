@@ -80,17 +80,18 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7DE8E16C7C2D387B">1.7 <span class="Heading">Operations</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7B6547C887BE059C">1.7-1 +</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8029602479283FCF">1.7-2 -</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8637770D8089AA77">1.7-3 AdditiveInverse</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8373ECC07EBF4433">1.7-4 []</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X836A46B980CE7695">1.7-5 *</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X828AD35F81C0E425">1.7-6 *</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78285EA97A899306">1.7-7 *</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A1D376C7AB0E52A">1.7-8 ReductionMatrixOfIndependetLorentzInvariants</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7886709B7FA8A3FA">1.7-9 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C1E565184BC45D6">1.7-10 PairOfMatricesOfLoopDiagramInLorentzInvariants</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X845B102F7E3E6BC2">1.7-11 PairOfMatricesOfLoopDiagramInPropagators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7B31CF667A4F9273">1.7-1 SetAbbreviation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7B6547C887BE059C">1.7-2 +</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8029602479283FCF">1.7-3 -</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8637770D8089AA77">1.7-4 AdditiveInverse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X8373ECC07EBF4433">1.7-5 []</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X836A46B980CE7695">1.7-6 *</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X828AD35F81C0E425">1.7-7 *</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X78285EA97A899306">1.7-8 *</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7A1D376C7AB0E52A">1.7-9 ReductionMatrixOfIndependetLorentzInvariants</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7886709B7FA8A3FA">1.7-10 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7C1E565184BC45D6">1.7-11 PairOfMatricesOfLoopDiagramInLorentzInvariants</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X845B102F7E3E6BC2">1.7-12 PairOfMatricesOfLoopDiagramInPropagators</a></span>
 </div></div>
 </div>
 
@@ -156,25 +157,27 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetPropagators( LD, [ l1^2, (l1+p)^2, l2^2, (l2-p)^2, (l1+l2)^2 ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetNumerators( LD, [ ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfMomenta( LD, [ ] );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependetLorentzInvariants( LD, [ l1^2, l2^2, l1*l2, l1*p, l2*p, p^2 ] );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ p^2 ] );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e12 := PairOfMatricesOfLoopDiagramInLorentzInvariants( LD : symbol := false );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := p^2;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetAbbreviation( s, "s" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependetLorentzInvariants( LD, [ l1^2, l2^2, l1*l2, l1*p, l2*p, s ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ s ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e12 := PairOfMatricesOfLoopDiagramInLorentzInvariants( LD );</span>
 [ &lt;A non-zero 6 x 5 matrix over an external ring&gt;,
   &lt;A non-zero 5 x 5 matrix over an external ring&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( e12[1] );</span>
 2*l1l1,2*l1l1+2*l1p,0,     0,           2*l1l1+2*l1l2,
 2*l1l2,2*l1l2+2*l2p,0,     0,           2*l2l2+2*l1l2,
-2*l1p, 2*l1p+2*pp,  0,     0,           2*l1p+2*l2p,
+2*l1p, 2*l1p+2*s,   0,     0,           2*l1p+2*l2p,
 0,     0,           2*l1l2,2*l1l2-2*l1p,2*l1l1+2*l1l2,
 0,     0,           2*l2l2,2*l2l2-2*l2p,2*l2l2+2*l1l2,
-0,     0,           2*l2p, 2*l2p-2*pp,  2*l1p+2*l2p
+0,     0,           2*l2p, 2*l2p-2*s,  2*l1p+2*l2p
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( e12[2] );</span>
-l1l1,0,            0,   0,            0,
-0,   l1l1+2*l1p+pp,0,   0,            0,
-0,   0,            l2l2,0,            0,
-0,   0,            0,   l2l2-2*l2p+pp,0,
-0,   0,            0,   0,            l1l1+l2l2+2*l1l2
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e12 := PairOfMatricesOfLoopDiagramInLorentzInvariants( LD );</span>
+l1l1,0,           0,   0,            0,
+0,   l1l1+2*l1p+s,0,   0,            0,
+0,   0,           l2l2,0,            0,
+0,   0,           0,   l2l2-2*l2p+s,0,
+0,   0,           0,   0,            l1l1+l2l2+2*l1l2
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">e12 := PairOfMatricesOfLoopDiagramInLorentzInvariants( LD : abbreviation := false );</span>
 [ &lt;A non-zero 6 x 5 matrix over an external ring&gt;,
   &lt;A non-zero 5 x 5 matrix over an external ring&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( e12[1] );</span>
@@ -194,12 +197,12 @@ x1,0,         0, 0,         0,
 [ &lt;A non-zero 6 x 5 matrix over an external ring&gt;,
   &lt;A non-zero 5 x 5 matrix over an external ring&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( E12[1] );</span>
-2*D1,     D1+D2-x6,    0,        0,           D1-D3+D5,
--D1-D3+D5,-D1-D4+D5+x6,0,        0,           -D1+D3+D5,
--D1+D2-x6,-D1+D2+x6,   0,        0,           -D1+D2+D3-D4,
-0,        0,           -D1-D3+D5,-D2-D3+D5+x6,D1-D3+D5,
-0,        0,           2*D3,     D3+D4-x6,    -D1+D3+D5,
-0,        0,           D3-D4+x6, D3-D4-x6,    -D1+D2+D3-D4
+2*D1,     D1+D2-s,    0,        0,          D1-D3+D5,
+-D1-D3+D5,-D1-D4+D5+s,0,        0,          -D1+D3+D5,
+-D1+D2-s, -D1+D2+s,   0,        0,          -D1+D2+D3-D4,
+0,        0,          -D1-D3+D5,-D2-D3+D5+s,D1-D3+D5,
+0,        0,          2*D3,     D3+D4-s,    -D1+D3+D5,
+0,        0,          D3-D4+s,  D3-D4-s,    -D1+D2+D3-D4
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( E12[2] );</span>
 D1,0, 0, 0, 0,
 0, D2,0, 0, 0,
@@ -209,9 +212,9 @@ D1,0, 0, 0, 0,
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SyzygiesOfRows( E12[1], E12[2] );</span>
 &lt;A non-zero 19 x 6 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrix( S[ 1 ] ) );</span>
-[ 2*D2, 0, 0, D3+D4-x6, D1+D2+2*D4-2*D5-x6, -D1+D3+D5 ]
+[ 2*D2, 0, 0, D3+D4-s, D1+D2+2*D4-2*D5-s, -D1+D3+D5 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrix( S[ 2 ] ) );</span>
-[ 2*D2+D3+D4-2*D5-x6, D1+D2-x6, -D1+D3-D5, 0, 2*D4, 0 ]
+[ 2*D2+D3+D4-2*D5-s, D1+D2-s, -D1+D3-D5, 0, 2*D4, 0 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrix( S[ 3 ] ) );</span>
 [ D1-D2, 0, D1, 0, D3-D4, -D3 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrix( S[ 4 ] ) );</span>
@@ -231,17 +234,21 @@ D1,0, 0, 0, 0,
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel1 := List( ExternalMomenta( LD ), k -&gt; k^2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel2 := [ (k1+k2+k4)^2 ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfMomenta( LD, Concatenation( rel1, rel2 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s12 := 2*k1*k2;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetAbbreviation( s12, "s12" );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s14 := 2*k1*k4;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetAbbreviation( s14, "s14" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependetLorentzInvariants( LD,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ l1^2, l1*k1, l1*k2, l1*k4, 2*k1*k2, 2*k1*k4 ] );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ 2*k1*k2, 2*k1*k4 ] );</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ l1^2, l1*k1, l1*k2, l1*k4, s12, s14 ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ s12, s14 ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );</span>
 [ &lt;A non-zero 4 x 4 matrix over an external ring&gt;,
   &lt;A non-zero 4 x 4 matrix over an external ring&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( E12[1] );</span>
-2*D1,    D1+D2,    D1+D3-x5, D1+D4,
-D1-D2,   D1-D2,    D1-D2-x5, D1-D2+x6,
-D2-D3+x5,D2-D3,    D2-D3,    D2-D3-x6,
--D1+D4,  -D1+D4-x6,-D1+D4+x5,-D1+D4
+2*D1,     D1+D2,     D1+D3-s12, D1+D4,
+D1-D2,    D1-D2,     D1-D2-s12, D1-D2+s14,
+D2-D3+s12,D2-D3,     D2-D3,     D2-D3-s14,
+-D1+D4,   -D1+D4-s14,-D1+D4+s12,-D1+D4
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SyzygiesOfRows( E12[1], E12[2] );</span>
 &lt;A non-zero 8 x 4 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sred := ReducedBasisOfRowModule( S );</span>
@@ -249,7 +256,7 @@ D2-D3+x5,D2-D3,    D2-D3,    D2-D3-x6,
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrixAsListList( Sred{[ 1 .. 3 ]} ) );</span>
 [ [ D2-D4, D4, 0, D2 ],
   [ D1-D3, -D1, -D1, 0 ],
-  [ 2*D3*D4-2*D4^2-D4*x5, D2*D4-D3*D4+2*D4^2+D4*x5, D1*D4+D2*D4, 2*D2*D4 ] ]
+  [ 2*D3*D4-2*D4^2-D4*s12, D2*D4-D3*D4+2*D4^2+D4*s12, D1*D4+D2*D4, 2*D2*D4 ] ]
 </pre></div>
 
 <p><a id="X85E73AB57E70E756" name="X85E73AB57E70E756"></a></p>
@@ -266,23 +273,25 @@ D2-D3+x5,D2-D3,    D2-D3,    D2-D3-x6,
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetNumerators( LD, [ l1^2 ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel := List( ExternalMomenta( LD ), p -&gt; p^2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfMomenta( LD, rel );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := 2*p1*p2;;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetAbbreviation( s, "s" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependetLorentzInvariants( LD,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ l1^2, l2^2, l1*l2,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">          l1*p1, l2*p1, l1*p2, l2*p2,</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">          p1*p2 ] );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ p1*p2 ] );</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">          s ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ s ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );</span>
 [ &lt;A non-zero 8 x 6 matrix over an external ring&gt;,
   &lt;A non-zero 6 x 6 matrix over an external ring&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( E12[1] );</span>
-D1+N7,     D2+N7,      0,          0,       -D3+D5+N7,   D2-D3+D5,
-D4-D5+N7,  D2+D3-D6,   0,          0,       -D3-D5+N7,   D2-D3-D6,
--D1+N7,    -D1+N7+2*x8,0,          0,       -D1-D3+D4+N7,_[3,6],
-D2-N7-2*x8,D2-N7,      0,          0,       -D5+D6,      -D5+D6,
-0,         0,          D3-D5+N7,   D1+D3-D5,D3-D5-N7,    -D2+D3-D5,
-0,         0,          2*D3,       D3+D4,   D3+D5-N7,    -D2+D3+D6,
-0,         0,          D3-D4,      D3-D4,   D1+D3-D4-N7, _[7,6],
-0,         0,          D2+D5-D6-N7,_[8,4],  D5-D6,       D5-D6
+D1+N7,   D2+N7,   0,          0,            -D3+D5+N7,   D2-D3+D5,
+D4-D5+N7,D2+D3-D6,0,          0,            -D3-D5+N7,   D2-D3-D6,
+-D1+N7,  -D1+N7+s,0,          0,            -D1-D3+D4+N7,-D1-D3+D4+N7+s,
+D2-N7-s, D2-N7,   0,          0,            -D5+D6,      -D5+D6,
+0,       0,       D3-D5+N7,   D1+D3-D5,     D3-D5-N7,    -D2+D3-D5,
+0,       0,       2*D3,       D3+D4,        D3+D5-N7,    -D2+D3+D6,
+0,       0,       D3-D4,      D3-D4,        D1+D3-D4-N7, D1+D3-D4-N7-s,
+0,       0,       D2+D5-D6-N7,D2+D5-D6-N7-s,D5-D6,       D5-D6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SyzygiesOfRows( E12[1], E12[2] );</span>
 &lt;A non-zero 52 x 8 matrix over an external ring&gt;
 </pre></div>
@@ -416,59 +425,64 @@ D2-N7-2*x8,D2-N7,      0,          0,       -D5+D6,      -D5+D6,
 
 <h4>1.7 <span class="Heading">Operations</span></h4>
 
+<p><a id="X7B31CF667A4F9273" name="X7B31CF667A4F9273"></a></p>
+
+<h5>1.7-1 SetAbbreviation</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SetAbbreviation</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7B6547C887BE059C" name="X7B6547C887BE059C"></a></p>
 
-<h5>1.7-1 +</h5>
+<h5>1.7-2 +</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; +</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X8029602479283FCF" name="X8029602479283FCF"></a></p>
 
-<h5>1.7-2 -</h5>
+<h5>1.7-3 -</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; -</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X8637770D8089AA77" name="X8637770D8089AA77"></a></p>
 
-<h5>1.7-3 AdditiveInverse</h5>
+<h5>1.7-4 AdditiveInverse</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AdditiveInverse</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X8373ECC07EBF4433" name="X8373ECC07EBF4433"></a></p>
 
-<h5>1.7-4 []</h5>
+<h5>1.7-5 []</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; []</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X836A46B980CE7695" name="X836A46B980CE7695"></a></p>
 
-<h5>1.7-5 *</h5>
+<h5>1.7-6 *</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; *</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X828AD35F81C0E425" name="X828AD35F81C0E425"></a></p>
 
-<h5>1.7-6 *</h5>
+<h5>1.7-7 *</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; *</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X78285EA97A899306" name="X78285EA97A899306"></a></p>
 
-<h5>1.7-7 *</h5>
+<h5>1.7-8 *</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; *</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7A1D376C7AB0E52A" name="X7A1D376C7AB0E52A"></a></p>
 
-<h5>1.7-8 ReductionMatrixOfIndependetLorentzInvariants</h5>
+<h5>1.7-9 ReductionMatrixOfIndependetLorentzInvariants</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReductionMatrixOfIndependetLorentzInvariants</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7886709B7FA8A3FA" name="X7886709B7FA8A3FA"></a></p>
 
-<h5>1.7-9 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants</h5>
+<h5>1.7-10 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X7C1E565184BC45D6" name="X7C1E565184BC45D6"></a></p>
 
-<h5>1.7-10 PairOfMatricesOfLoopDiagramInLorentzInvariants</h5>
+<h5>1.7-11 PairOfMatricesOfLoopDiagramInLorentzInvariants</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PairOfMatricesOfLoopDiagramInLorentzInvariants</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p><a id="X845B102F7E3E6BC2" name="X845B102F7E3E6BC2"></a></p>
 
-<h5>1.7-11 PairOfMatricesOfLoopDiagramInPropagators</h5>
+<h5>1.7-12 PairOfMatricesOfLoopDiagramInPropagators</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PairOfMatricesOfLoopDiagramInPropagators</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 
