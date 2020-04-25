@@ -299,13 +299,13 @@ InstallMethod( RelationsMatrixOfMomenta,
 end );
 
 ##
-InstallMethod( ReductionMatrixOfIndependetLorentzInvariants,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasIndependetLorentzInvariants ],
+InstallMethod( ReductionMatrixOfIndependentLorentzInvariants,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasIndependentLorentzInvariants ],
         
   function( LD )
     local I, M, abbreviation, symbol, invariants, R, red;
     
-    I := IndependetLorentzInvariants( LD );
+    I := IndependentLorentzInvariants( LD );
     
     M := Length( I );
     
@@ -486,7 +486,7 @@ InstallMethod( PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants,
     
     pair := PairOfMatricesOfLoopDiagram( LD );
     
-    red := ReductionMatrixOfIndependetLorentzInvariants( LD );
+    red := ReductionMatrixOfIndependentLorentzInvariants( LD );
     
     R := HomalgRing( red );
     

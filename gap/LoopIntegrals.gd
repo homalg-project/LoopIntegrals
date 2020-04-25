@@ -94,7 +94,7 @@ DeclareAttribute( "Numerators",
         IsLoopDiagram );
 
 #!
-DeclareAttribute( "IndependetLorentzInvariants",
+DeclareAttribute( "IndependentLorentzInvariants",
         IsLoopDiagram );
 
 #!
@@ -181,7 +181,7 @@ DeclareOperation( "POW",
         [ IsLorentzVector, IsInt ] );
     
 #!
-DeclareOperation( "ReductionMatrixOfIndependetLorentzInvariants",
+DeclareOperation( "ReductionMatrixOfIndependentLorentzInvariants",
         [ IsLoopDiagram ] );
 
 #!
