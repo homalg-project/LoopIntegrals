@@ -93,6 +93,22 @@
     [4X[28X0, 0,         x2,0,         0,[128X[104X
     [4X[28X0, 0,         0, x2-2*x5+x6,0,[128X[104X
     [4X[28X0, 0,         0, 0,         x1+x2+2*x3[128X[104X
+    [4X[25Xgap>[125X [27XE12 := PairOfMatricesOfLoopDiagramInPropagators( LD : abbreviation := false );[127X[104X
+    [4X[28X[ <A non-zero 6 x 5 matrix over an external ring>,[128X[104X
+    [4X[28X  <A non-zero 5 x 5 matrix over an external ring> ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( E12[1] );[127X[104X
+    [4X[28X2*D1,     D1+D2-x6,    0,        0,           D1-D3+D5,[128X[104X
+    [4X[28X-D1-D3+D5,-D1-D4+D5+x6,0,        0,           -D1+D3+D5,[128X[104X
+    [4X[28X-D1+D2-x6,-D1+D2+x6,   0,        0,           -D1+D2+D3-D4,[128X[104X
+    [4X[28X0,        0,           -D1-D3+D5,-D2-D3+D5+x6,D1-D3+D5,[128X[104X
+    [4X[28X0,        0,           2*D3,     D3+D4-x6,    -D1+D3+D5,[128X[104X
+    [4X[28X0,        0,           D3-D4+x6, D3-D4-x6,    -D1+D2+D3-D4[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( E12[2] );[127X[104X
+    [4X[28XD1,0, 0, 0, 0,[128X[104X
+    [4X[28X0, D2,0, 0, 0,[128X[104X
+    [4X[28X0, 0, D3,0, 0,[128X[104X
+    [4X[28X0, 0, 0, D4,0,[128X[104X
+    [4X[28X0, 0, 0, 0, D5[128X[104X
     [4X[25Xgap>[125X [27XE12 := PairOfMatricesOfLoopDiagramInPropagators( LD );[127X[104X
     [4X[28X[ <A non-zero 6 x 5 matrix over an external ring>,[128X[104X
     [4X[28X  <A non-zero 5 x 5 matrix over an external ring> ][128X[104X

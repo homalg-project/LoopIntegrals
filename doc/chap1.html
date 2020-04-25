@@ -190,6 +190,22 @@ x1,0,         0, 0,         0,
 0, 0,         x2,0,         0,
 0, 0,         0, x2-2*x5+x6,0,
 0, 0,         0, 0,         x1+x2+2*x3
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">E12 := PairOfMatricesOfLoopDiagramInPropagators( LD : abbreviation := false );</span>
+[ &lt;A non-zero 6 x 5 matrix over an external ring&gt;,
+  &lt;A non-zero 5 x 5 matrix over an external ring&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( E12[1] );</span>
+2*D1,     D1+D2-x6,    0,        0,           D1-D3+D5,
+-D1-D3+D5,-D1-D4+D5+x6,0,        0,           -D1+D3+D5,
+-D1+D2-x6,-D1+D2+x6,   0,        0,           -D1+D2+D3-D4,
+0,        0,           -D1-D3+D5,-D2-D3+D5+x6,D1-D3+D5,
+0,        0,           2*D3,     D3+D4-x6,    -D1+D3+D5,
+0,        0,           D3-D4+x6, D3-D4-x6,    -D1+D2+D3-D4
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( E12[2] );</span>
+D1,0, 0, 0, 0,
+0, D2,0, 0, 0,
+0, 0, D3,0, 0,
+0, 0, 0, D4,0,
+0, 0, 0, 0, D5
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );</span>
 [ &lt;A non-zero 6 x 5 matrix over an external ring&gt;,
   &lt;A non-zero 5 x 5 matrix over an external ring&gt; ]
