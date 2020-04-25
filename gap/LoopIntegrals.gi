@@ -353,7 +353,7 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
         
   function( LD )
     local symbolD, D, N, propagators, symbolN, Z, A, numerators,
-          abbreviation, symbolK, K, M, symbol, invariants, indets, R, red;
+          abbreviation, symbolK, K, M, invariants, indets, R, red;
     
     symbolD := ValueOption( "symbolD" );
     
