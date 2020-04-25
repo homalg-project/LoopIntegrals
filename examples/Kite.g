@@ -44,6 +44,22 @@ Display( e12[2] );
 #! 0, 0,         x2,0,         0,
 #! 0, 0,         0, x2-2*x5+x6,0,
 #! 0, 0,         0, 0,         x1+x2+2*x3
+E12 := PairOfMatricesOfLoopDiagramInPropagators( LD : abbreviation := false );
+#! [ <A non-zero 6 x 5 matrix over an external ring>,
+#!   <A non-zero 5 x 5 matrix over an external ring> ]
+Display( E12[1] );
+#! 2*D1,     D1+D2-x6,    0,        0,           D1-D3+D5,
+#! -D1-D3+D5,-D1-D4+D5+x6,0,        0,           -D1+D3+D5,
+#! -D1+D2-x6,-D1+D2+x6,   0,        0,           -D1+D2+D3-D4,
+#! 0,        0,           -D1-D3+D5,-D2-D3+D5+x6,D1-D3+D5,
+#! 0,        0,           2*D3,     D3+D4-x6,    -D1+D3+D5,
+#! 0,        0,           D3-D4+x6, D3-D4-x6,    -D1+D2+D3-D4
+Display( E12[2] );
+#! D1,0, 0, 0, 0,
+#! 0, D2,0, 0, 0,
+#! 0, 0, D3,0, 0,
+#! 0, 0, 0, D4,0,
+#! 0, 0, 0, 0, D5
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <A non-zero 6 x 5 matrix over an external ring>,
 #!   <A non-zero 5 x 5 matrix over an external ring> ]
