@@ -18,8 +18,8 @@ SetIndependetLorentzInvariants( LD,
         [ l1^2, l1*k1, l1*k2, l1*k4, s12, s14 ] );
 SetExtraLorentzInvariants( LD, [ s12, s14 ] );
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
-#! [ <A non-zero 4 x 4 matrix over an external ring>,
-#!   <A non-zero 4 x 4 matrix over an external ring> ]
+#! [ <An unevaluated non-zero 4 x 4 matrix over an external ring>,
+#!   <An unevaluated non-zero 4 x 4 matrix over an external ring> ]
 Display( E12[1] );
 #! 2*D1,     D1+D2,     D1+D3-s12, D1+D4,
 #! D1-D2,    D1-D2,     D1-D2-s12, D1-D2+s14,

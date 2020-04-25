@@ -23,8 +23,8 @@ SetIndependetLorentzInvariants( LD,
           l2*k1, l2*k2, l2*k4, s12, s14 ] );
 SetExtraLorentzInvariants( LD, [ s12, s14 ] );
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
-#! [ <A non-zero 10 x 7 matrix over an external ring>,
-#!   <A non-zero 7 x 7 matrix over an external ring> ]
+#! [ <An unevaluated non-zero 10 x 7 matrix over an external ring>,
+#!   <An unevaluated non-zero 7 x 7 matrix over an external ring> ]
 S := SyzygiesOfRows( E12[1], E12[2] );
 #! <A non-zero 85 x 10 matrix over an external ring>
 #! @EndExample

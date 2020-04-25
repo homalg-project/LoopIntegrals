@@ -343,6 +343,8 @@ InstallMethod( ReductionMatrixOfIndependetLorentzInvariants,
     
     red := UnionOfRows( invariants, R * RelationsMatrixOfMomenta( LD ) );
     
+    red := BasisOfRows( red );
+    
     return red;
     
 end );
@@ -419,6 +421,8 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
     
     red := UnionOfRows( indets, R * RelationsMatrixOfMomenta( LD ) );
     
+    red := BasisOfRows( red );
+    
     return red;
     
 end );
@@ -449,7 +453,7 @@ InstallMethod( PairOfMatricesOfLoopDiagram,
         [ IsLoopDiagram and HasRelationsOfMomenta ],
         
   function( LD )
-    local pair, l, k, vectors, rel;
+    local pair, l, k, vectors, pair1, rel;
     
     pair := PairOfOriginalMatricesOfLoopDiagram( LD );
     
@@ -460,15 +464,16 @@ InstallMethod( PairOfMatricesOfLoopDiagram,
     
     vectors := DiagMat( ListWithIdenticalEntries( Length( l ), vectors ) );
     
-    pair := [ vectors * pair[1], pair[2] ];
+    pair1 := vectors * pair[1];
     
     rel := RelationsMatrixOfMomenta( LD );
     
-    rel := DiagMat( ListWithIdenticalEntries( NrColumns( pair[1] ), rel ) );
+    pair1 := List( [ 1 .. NrColumns( pair1 ) ],
+                   j -> DecideZeroRows( CertainColumns( pair1, [ j ] ), rel ) );
+
+    pair1 := UnionOfColumns( pair1 );
     
-    pair[1] := DecideZeroRows( pair[1], BasisOfRows( rel ) );
-    
-    return pair;
+    return [ pair1, pair[2] ];
     
 end );
 
@@ -477,21 +482,25 @@ InstallMethod( PairOfMatricesOfLoopDiagramInLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfMomenta ],
         
   function( LD )
-    local pair, col, red, R;
+    local pair, red, R, col;
     
     pair := PairOfMatricesOfLoopDiagram( LD );
     
-    col := NrColumns( pair[1] );
-    
     red := ReductionMatrixOfIndependetLorentzInvariants( LD );
-    
-    red := BasisOfRows( red );
-    
-    red := DiagMat( ListWithIdenticalEntries( col, red ) );
     
     R := HomalgRing( red );
     
-    return List( pair, mat -> DecideZeroRows( R * mat, red ) );
+    pair := List( pair, mat -> R * mat );
+    
+    col := NrColumns( pair[1] );
+    
+    pair := List( pair,
+                  mat -> List( [ 1 .. col ],
+                          j -> DecideZeroRows( CertainColumns( mat, [ j ] ), red ) ) );
+    
+    pair := List( pair, UnionOfColumns );
+    
+    return pair;
     
 end );
 
@@ -500,21 +509,25 @@ InstallMethod( PairOfMatricesOfLoopDiagramInPropagators,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasExtraLorentzInvariants ],
         
   function( LD )
-    local pair, col, red, R;
+    local pair, red, R, col;
     
     pair := PairOfMatricesOfLoopDiagram( LD );
     
-    col := NrColumns( pair[1] );
-    
     red := ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants( LD );
-    
-    red := BasisOfRows( red );
-    
-    red := DiagMat( ListWithIdenticalEntries( col, red ) );
     
     R := HomalgRing( red );
     
-    return List( pair, mat -> DecideZeroRows( R * mat, red ) );
+    pair := List( pair, mat -> R * mat );
+    
+    col := NrColumns( pair[1] );
+    
+    pair := List( pair,
+                  mat -> List( [ 1 .. col ],
+                          j -> DecideZeroRows( CertainColumns( mat, [ j ] ), red ) ) );
+    
+    pair := List( pair, UnionOfColumns );
+    
+    return pair;
     
 end );
 

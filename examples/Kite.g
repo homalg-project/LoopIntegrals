@@ -13,8 +13,8 @@ SetAbbreviation( s, "s" );
 SetIndependetLorentzInvariants( LD, [ l1^2, l2^2, l1*l2, l1*p, l2*p, s ] );
 SetExtraLorentzInvariants( LD, [ s ] );
 e12 := PairOfMatricesOfLoopDiagramInLorentzInvariants( LD );
-#! [ <A non-zero 6 x 5 matrix over an external ring>,
-#!   <A non-zero 5 x 5 matrix over an external ring> ]
+#! [ <An unevaluated non-zero 6 x 5 matrix over an external ring>,
+#!   <An unevaluated non-zero 5 x 5 matrix over an external ring> ]
 Display( e12[1] );
 #! 2*l1l1,2*l1l1+2*l1p,0,     0,           2*l1l1+2*l1l2,
 #! 2*l1l2,2*l1l2+2*l2p,0,     0,           2*l2l2+2*l1l2,
@@ -29,8 +29,8 @@ Display( e12[2] );
 #! 0,   0,           0,   l2l2-2*l2p+s,0,
 #! 0,   0,           0,   0,            l1l1+l2l2+2*l1l2
 e12 := PairOfMatricesOfLoopDiagramInLorentzInvariants( LD : abbreviation := false );
-#! [ <A non-zero 6 x 5 matrix over an external ring>,
-#!   <A non-zero 5 x 5 matrix over an external ring> ]
+#! [ <An unevaluated non-zero 6 x 5 matrix over an external ring>,
+#!   <An unevaluated non-zero 5 x 5 matrix over an external ring> ]
 Display( e12[1] );
 #! 2*x1,2*x1+2*x4,0,   0,        2*x1+2*x3,
 #! 2*x3,2*x3+2*x5,0,   0,        2*x2+2*x3,
@@ -45,8 +45,8 @@ Display( e12[2] );
 #! 0, 0,         0, x2-2*x5+x6,0,
 #! 0, 0,         0, 0,         x1+x2+2*x3
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD : abbreviation := false );
-#! [ <A non-zero 6 x 5 matrix over an external ring>,
-#!   <A non-zero 5 x 5 matrix over an external ring> ]
+#! [ <An unevaluated non-zero 6 x 5 matrix over an external ring>,
+#!   <An unevaluated non-zero 5 x 5 matrix over an external ring> ]
 Display( E12[1] );
 #! 2*D1,     D1+D2-x6,    0,        0,           D1-D3+D5,
 #! -D1-D3+D5,-D1-D4+D5+x6,0,        0,           -D1+D3+D5,
@@ -61,8 +61,8 @@ Display( E12[2] );
 #! 0, 0, 0, D4,0,
 #! 0, 0, 0, 0, D5
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
-#! [ <A non-zero 6 x 5 matrix over an external ring>,
-#!   <A non-zero 5 x 5 matrix over an external ring> ]
+#! [ <An unevaluated non-zero 6 x 5 matrix over an external ring>,
+#!   <An unevaluated non-zero 5 x 5 matrix over an external ring> ]
 Display( E12[1] );
 #! 2*D1,     D1+D2-s,    0,        0,          D1-D3+D5,
 #! -D1-D3+D5,-D1-D4+D5+s,0,        0,          -D1+D3+D5,
