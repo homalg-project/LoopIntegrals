@@ -189,7 +189,7 @@ DeclareOperation( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvar
         [ IsLoopDiagram ] );
 
 #!
-DeclareOperation( "PairOfMatricesOfLoopDiagramInLorentzInvariants",
+DeclareOperation( "PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants",
         [ IsLoopDiagram ] );
 
 #!

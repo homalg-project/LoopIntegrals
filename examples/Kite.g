@@ -12,7 +12,7 @@ SetRelationsOfMomenta( LD, [ ] );
 SetPropagators( LD, [ l1^2, (l1+p)^2, l2^2, (l2-p)^2, (l1+l2)^2 ] );
 SetNumerators( LD, [ ] );
 SetExtraLorentzInvariants( LD, [ s ] );
-e12 := PairOfMatricesOfLoopDiagramInLorentzInvariants( LD );
+e12 := PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants( LD );
 #! [ <An unevaluated non-zero 6 x 5 matrix over an external ring>,
 #!   <An unevaluated non-zero 5 x 5 matrix over an external ring> ]
 Display( e12[1] );
@@ -28,7 +28,7 @@ Display( e12[2] );
 #! 0,   0,           l2l2,0,            0,
 #! 0,   0,           0,   l2l2-2*l2p+s,0,
 #! 0,   0,           0,   0,            l1l1+l2l2+2*l1l2
-e12 := PairOfMatricesOfLoopDiagramInLorentzInvariants( LD : abbreviation := false );
+e12 := PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants( LD : abbreviation := false );
 #! [ <An unevaluated non-zero 6 x 5 matrix over an external ring>,
 #!   <An unevaluated non-zero 5 x 5 matrix over an external ring> ]
 Display( e12[1] );

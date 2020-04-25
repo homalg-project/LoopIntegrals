@@ -478,7 +478,7 @@ InstallMethod( PairOfMatricesOfLoopDiagram,
 end );
 
 ##
-InstallMethod( PairOfMatricesOfLoopDiagramInLorentzInvariants,
+InstallMethod( PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfMomenta ],
         
   function( LD )
