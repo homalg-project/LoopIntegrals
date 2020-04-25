@@ -5,18 +5,18 @@ LoadPackage( "LoopIntegrals" );
 #! @Example
 LD := LoopDiagram( "l1..2", "p1..2", 2 );
 #! <A loop diagram with loop momenta [ l1, l2 ] & external momenta [ p1, p2 ]>
-SetPropagators( LD,
-        [ (l1-p1)^2, (l1+p2)^2, l2^2, (l2-p1)^2,
-          (l1-l2)^2, (l1-l2+p2)^2 ] );
-SetNumerators( LD, [ l1^2 ] );
-rel := List( ExternalMomenta( LD ), p -> p^2 );;
-SetRelationsOfMomenta( LD, rel );
 s := 2*p1*p2;;
 SetAbbreviation( s, "s" );
 SetIndependetLorentzInvariants( LD,
         [ l1^2, l2^2, l1*l2,
           l1*p1, l2*p1, l1*p2, l2*p2,
           s ] );
+rel := List( ExternalMomenta( LD ), p -> p^2 );;
+SetRelationsOfMomenta( LD, rel );
+SetPropagators( LD,
+        [ (l1-p1)^2, (l1+p2)^2, l2^2, (l2-p1)^2,
+          (l1-l2)^2, (l1-l2+p2)^2 ] );
+SetNumerators( LD, [ l1^2 ] );
 SetExtraLorentzInvariants( LD, [ s ] );
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <An unevaluated non-zero 8 x 6 matrix over an external ring>,
