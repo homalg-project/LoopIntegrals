@@ -300,7 +300,7 @@ end );
 
 ##
 InstallMethod( ReductionMatrixOfIndependetLorentzInvariants,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators ],
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasIndependetLorentzInvariants ],
         
   function( LD )
     local I, M, abbreviation, symbol, invariants, R, red;
@@ -506,7 +506,7 @@ end );
 
 ##
 InstallMethod( PairOfMatricesOfLoopDiagramInPropagators,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     local pair, red, R, col;
