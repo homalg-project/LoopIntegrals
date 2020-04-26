@@ -66,7 +66,15 @@ DeclareAttribute( "Dimension",
         IsLorentzVector );
 
 #!
+DeclareAttribute( "UnderlyingMatrix",
+        IsLorentzVector );
+
+#!
 DeclareAttribute( "LoopDiagram",
+        IsLorentzVector );
+
+#!
+DeclareAttribute( "Components",
         IsLorentzVector );
 
 #!
@@ -78,11 +86,19 @@ DeclareAttribute( "ExternalMomenta",
         IsLoopDiagram );
 
 #!
+DeclareAttribute( "UnderlyingRing",
+        IsLoopDiagram );
+
+#!
 DeclareAttribute( "RelationsOfMomenta",
         IsLoopDiagram );
 
 #!
 DeclareAttribute( "RelationsMatrixOfMomenta",
+        IsLoopDiagram );
+
+#!
+DeclareAttribute( "IndependentLorentzInvariants",
         IsLoopDiagram );
 
 #!
@@ -94,11 +110,27 @@ DeclareAttribute( "Numerators",
         IsLoopDiagram );
 
 #!
-DeclareAttribute( "IndependentLorentzInvariants",
+DeclareAttribute( "ExtraLorentzInvariants",
         IsLoopDiagram );
 
 #!
-DeclareAttribute( "ExtraLorentzInvariants",
+DeclareAttribute( "OriginalJacobianOfPropagators",
+        IsLoopDiagram );
+
+#!
+DeclareAttribute( "MatrixOfMomenta",
+        IsLoopDiagram );
+
+#!
+DeclareAttribute( "JacobianOfPropagators",
+        IsLoopDiagram );
+
+#!
+DeclareAttribute( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
+        IsLoopDiagram );
+
+#!
+DeclareAttribute( "JacobianOfPropagatorsInPropagators",
         IsLoopDiagram );
 
 #!
@@ -110,16 +142,8 @@ DeclareAttribute( "PairOfMatricesOfLoopDiagram",
         IsLoopDiagram );
 
 #!
-DeclareAttribute( "UnderlyingRing",
+DeclareAttribute( "PairOfMatricesOfLoopDiagramInPropagators",
         IsLoopDiagram );
-
-#!
-DeclareAttribute( "UnderlyingMatrix",
-        IsLorentzVector );
-
-#!
-DeclareAttribute( "Components",
-        IsLorentzVector );
 
 ####################################
 #
@@ -185,15 +209,19 @@ DeclareOperation( "ReductionMatrixOfIndependentLorentzInvariants",
         [ IsLoopDiagram ] );
 
 #!
-DeclareOperation( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
+DeclareOperation( "ExpressInIndependentLorentzInvariants",
+        [ IsHomalgMatrix, IsLoopDiagram ] );
+
+#!
+DeclareOperation( "ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants",
+        [ IsHomalgMatrix, IsLoopDiagram ] );
+
+#!
+DeclareOperation( "JacobianOfPropagatorsInIndependentLorentzInvariants",
         [ IsLoopDiagram ] );
 
 #!
 DeclareOperation( "PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants",
-        [ IsLoopDiagram ] );
-
-#!
-DeclareOperation( "PairOfMatricesOfLoopDiagramInPropagators",
         [ IsLoopDiagram ] );
 
 ####################################
