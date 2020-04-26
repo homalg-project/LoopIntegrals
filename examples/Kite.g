@@ -7,8 +7,8 @@ LD := LoopDiagram( "l1..2", "p", 4 );
 #! <A loop diagram with loop momenta [ l1, l2 ] & external momenta [ p ]>
 s := p^2;;
 SetAbbreviation( s, "s" );
-SetIndependentLorentzInvariants( LD, [ l1^2, l2^2, l1*l2, l1*p, l2*p, s ] );
 SetRelationsOfMomenta( LD, [ ] );
+SetIndependentLorentzInvariants( LD, [ l1^2, l2^2, l1*l2, l1*p, l2*p, s ] );
 SetPropagators( LD, [ l1^2, (l1+p)^2, l2^2, (l2-p)^2, (l1+l2)^2 ] );
 SetNumerators( LD, [ ] );
 SetExtraLorentzInvariants( LD, [ s ] );
