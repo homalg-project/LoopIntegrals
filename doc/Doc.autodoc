@@ -6,17 +6,20 @@ This package is an ongoing work to compute master integrals using commutative an
 
 @Section Examples
 
-@Subsection LorentzVector
+@Subsection Lorentz vectors
 @InsertChunk LorentzVector
 
 @Subsection Kite
 @InsertChunk Kite
 
-@Subsection 1LoopBox
+@Subsection 1 Loop box
 @InsertChunk 1LoopBox
 
-@Subsection 2LoopNonPlanarLadder
+@Subsection 2 Loop nonplanar ladder
 @InsertChunk 2LoopNonPlanarLadder
+
+@Subsection 2 Loop cusp anomalous dimensions
+@InsertChunk 2LoopCuspAnomalousDimensions
 
 @Section Global variables
 @Section GAP categories

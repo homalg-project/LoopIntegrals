@@ -65,6 +65,8 @@ InstallMethod( LoopDiagram,
     LD := rec( );
     
     if IsStringRep( L ) then
+        L := ShallowCopy( L );
+        RemoveCharacters( L, " \n\t\r" );
         L := [ L ];
     fi;
     
@@ -84,6 +86,8 @@ InstallMethod( LoopDiagram,
     end );
     
     if IsStringRep( K ) then
+        K := ShallowCopy( K );
+        RemoveCharacters( K, " \n\t\r" );
         K := [ K ];
     fi;
     
