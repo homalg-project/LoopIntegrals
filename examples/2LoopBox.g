@@ -17,10 +17,10 @@ SetIndependentLorentzInvariants( LD,
         [ l1^2, l1*l2, l2^2, l1*k1, l1*k2, l1*k4,
           l2*k1, l2*k2, l2*k4, s12, s14 ] );
 SetPropagators( LD,
-        [ l1^2, (l1-k1)^2, (l1-k1-k2)^2,
-          l2^2, (l2-k4)^2, (l2+k1+k2)^2,
-          (l1+l2)^2 ] );
-SetNumerators( LD, [ l1*k4, l2*k1 ] );
+        -[ l1^2, (l1-k1)^2, (l1-k1-k2)^2,
+           l2^2, (l2-k4)^2, (l2+k1+k2)^2,
+           (l1+l2)^2 ] );
+SetNumerators( LD, -[ l1*k4, l2*k1 ] );
 SetExtraLorentzInvariants( LD, [ s12, s14 ] );
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <An unevaluated non-zero 10 x 7 matrix over an external ring>,

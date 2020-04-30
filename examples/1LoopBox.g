@@ -14,17 +14,17 @@ rel2 := [ (k1+k2+k4)^2 ];;
 SetRelationsOfMomenta( LD, Concatenation( rel1, rel2 ) );
 SetIndependentLorentzInvariants( LD,
         [ l1^2, l1*k1, l1*k2, l1*k4, s12, s14 ] );
-SetPropagators( LD, [ l1^2, (l1-k1)^2, (l1-k1-k2)^2, (l1+k4)^2 ] );
-SetNumerators( LD, [ ] );
+SetPropagators( LD, -[ l1^2, (l1-k1)^2, (l1-k1-k2)^2, (l1+k4)^2 ] );
+SetNumerators( LD, -[ ] );
 SetExtraLorentzInvariants( LD, [ s12, s14 ] );
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <An unevaluated non-zero 4 x 4 matrix over an external ring>,
 #!   <An unevaluated non-zero 4 x 4 matrix over an external ring> ]
 Display( E12[1] );
-#! 2*D1,     D1+D2,     D1+D3-s12, D1+D4,
-#! D1-D2,    D1-D2,     D1-D2-s12, D1-D2+s14,
-#! D2-D3+s12,D2-D3,     D2-D3,     D2-D3-s14,
-#! -D1+D4,   -D1+D4-s14,-D1+D4+s12,-D1+D4
+#! 2*D1,     D1+D2,     D1+D3+s12, D1+D4,
+#! D1-D2,    D1-D2,     D1-D2+s12, D1-D2-s14,
+#! D2-D3-s12,D2-D3,     D2-D3,     D2-D3+s14,
+#! -D1+D4,   -D1+D4+s14,-D1+D4-s12,-D1+D4
 S := SyzygiesOfRows( E12[1], E12[2] );
 #! <A non-zero 8 x 4 matrix over an external ring>
 Sred := ReducedBasisOfRowModule( S );
@@ -32,5 +32,5 @@ Sred := ReducedBasisOfRowModule( S );
 Display( EntriesOfHomalgMatrixAsListList( Sred{[ 1 .. 3 ]} ) );
 #! [ [ D2-D4, D4, 0, D2 ],
 #!   [ D1-D3, -D1, -D1, 0 ],
-#!   [ 2*D3*D4-2*D4^2-D4*s12, D2*D4-D3*D4+2*D4^2+D4*s12, D1*D4+D2*D4, 2*D2*D4 ] ]
+#!   [ 2*D3*D4-2*D4^2+D4*s12, D2*D4-D3*D4+2*D4^2-D4*s12, D1*D4+D2*D4, 2*D2*D4 ] ]
 #! @EndExample
