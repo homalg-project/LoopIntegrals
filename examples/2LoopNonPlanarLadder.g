@@ -19,8 +19,8 @@ SetPropagators( LD,
 SetNumerators( LD, -[ l1^2 ] );
 SetExtraLorentzInvariants( LD, [ s ] );
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
-#! [ <An unevaluated non-zero 8 x 6 matrix over an external ring>,
-#!   <An unevaluated non-zero 6 x 6 matrix over an external ring> ]
+#! [ <A 8 x 6 matrix over an external ring>,
+#!   <A 6 x 6 matrix over an external ring> ]
 Display( E12[1] );
 #! D1+N7,   D2+N7,   0,          0,            -D3+D5+N7,   D2-D3+D5,
 #! D4-D5+N7,D2+D3-D6,0,          0,            -D3-D5+N7,   D2-D3-D6,

@@ -6,6 +6,8 @@
 
 InstallValue( LOOP_INTEGRALS,
         rec(
+            ConstructorOfDefaultField := HomalgFieldOfRationalsInSingular,
+            DimensionSymbol := "D",
             PropagatorSymbol := "D",
             NumeratorSymbol := "N",
             LorentzSymbol := "x"
@@ -107,7 +109,7 @@ InstallMethod( LoopDiagram,
     end );
     
     if ValueOption( "C" ) = fail then
-        C := HomalgFieldOfRationalsInSingular( );
+        C := LOOP_INTEGRALS.ConstructorOfDefaultField( );
     fi;
     
     momenta := Concatenation( List( [ L, K ], M -> Concatenation( List( M, m -> m!.symbols ) ) ) );
@@ -174,80 +176,6 @@ InstallMethod( RelationsMatrixOfMomenta,
 end );
 
 ##
-InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
-        
-  function( LD )
-    local symbolD, D, N, propagators, symbolN, Z, A, numerators,
-          symbolK, K, M, invariants, indets, R, red;
-    
-    symbolD := ValueOption( "symbolD" );
-    
-    if symbolD = fail then
-        symbolD := LOOP_INTEGRALS.PropagatorSymbol;
-    fi;
-    
-    D := Propagators( LD );
-    
-    N := Length( D );
-    
-    propagators := List( [ 1 .. N ], i -> Concatenation( symbolD, String( i ) ) );
-    
-    symbolN := ValueOption( "symbolN" );
-    
-    if symbolN = fail then
-        symbolN := LOOP_INTEGRALS.NumeratorSymbol;
-    fi;
-    
-    Z := Numerators( LD );
-    
-    A := Length( Z );
-    
-    numerators := List( [ N + 1 .. N + A ], i -> Concatenation( symbolN, String( i ) ) );
-    
-    K := ExtraLorentzInvariants( LD );
-    
-    M := Length( K );
-    
-    symbolK := ValueOption( "symbolK" );
-    
-    if not IsStringRep( symbolK ) then
-        symbolK := LOOP_INTEGRALS.LorentzSymbol;
-    fi;
-    
-    invariants := List( [ 1 .. M ],
-                        function( i )
-                          if IsBound( K[i]!.Abbreviation ) then
-                              return K[i]!.Abbreviation;
-                          fi;
-                          return Concatenation( symbolK, String( N + A + i ) );
-                      end );
-    
-    indets := Concatenation( propagators, numerators, invariants );
-    
-    R := UnderlyingRing( LD );
-    
-    R := CoefficientsRing( R ) * indets * List( Indeterminates( R ), String );
-    
-    R := PolynomialRingWithProductOrdering( R );
-    
-    indets := List( indets, p -> p / R );
-
-    R!.MatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants := HomalgMatrix( indets, 1, Length( indets ), R );
-    
-    indets := ListN( Concatenation( D, Z, K ), indets, {a,b} -> a / R - b );
-    
-    indets := HomalgMatrix( indets, N + A + M, 1, R );
-    
-    red := UnionOfRows( indets, R * RelationsMatrixOfMomenta( LD ) );
-    
-    red := BasisOfRows( red );
-    
-    return red;
-    
-end );
-
-##
 InstallMethod( OriginalJacobianOfPropagators,
         [ IsLoopDiagram and HasPropagators ],
         
@@ -310,17 +238,6 @@ InstallMethod( PairOfOriginalMatricesOfLoopDiagram,
 end );
 
 ##
-InstallMethod( JacobianOfPropagatorsInPropagators,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
-        
-  function( LD )
-    
-    return ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
-                   JacobianOfPropagators( LD ), LD );
-    
-end );
-
-##
 InstallMethod( PairOfMatricesOfLoopDiagram,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators ],
         
@@ -328,18 +245,6 @@ InstallMethod( PairOfMatricesOfLoopDiagram,
     
     return [ JacobianOfPropagators( LD ),
              HomalgDiagonalMatrix( Propagators( LD ) ) ];
-    
-end );
-
-##
-InstallMethod( PairOfMatricesOfLoopDiagramInPropagators,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
-        
-  function( LD )
-
-    return [ JacobianOfPropagatorsInPropagators( LD ),
-             ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
-                     HomalgDiagonalMatrix( Propagators( LD ) ), LD ) ];
     
 end );
 
@@ -578,11 +483,125 @@ InstallMethod( ExpressInIndependentLorentzInvariants,
 end );
 
 ##
+InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local rational, symbolD, D, N, propagators, symbolN, Z, A, numerators,
+          symbolK, K, M, invariants, indets, R, red, S;
+
+    ## do not treat the extra Lorentz invariants as rational parameters
+    ## as this slows down the syzygies computations in Singular significantly
+    rational := IsIdenticalObj( ValueOption( "rational" ), true );
+    
+    if rational then
+        if IsBound( LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational ) then
+            return LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational;
+        fi;
+    else
+        if IsBound( LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants ) then
+            return LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants;
+        fi;
+    fi;
+    
+    symbolD := ValueOption( "symbolD" );
+    
+    if symbolD = fail then
+        symbolD := LOOP_INTEGRALS.PropagatorSymbol;
+    fi;
+    
+    D := Propagators( LD );
+    
+    N := Length( D );
+    
+    propagators := List( [ 1 .. N ], i -> Concatenation( symbolD, String( i ) ) );
+    
+    symbolN := ValueOption( "symbolN" );
+    
+    if symbolN = fail then
+        symbolN := LOOP_INTEGRALS.NumeratorSymbol;
+    fi;
+    
+    Z := Numerators( LD );
+    
+    A := Length( Z );
+    
+    numerators := List( [ N + 1 .. N + A ], i -> Concatenation( symbolN, String( i ) ) );
+    
+    K := ExtraLorentzInvariants( LD );
+    
+    M := Length( K );
+    
+    symbolK := ValueOption( "symbolK" );
+    
+    if not IsStringRep( symbolK ) then
+        symbolK := LOOP_INTEGRALS.LorentzSymbol;
+    fi;
+    
+    invariants := List( [ 1 .. M ],
+                        function( i )
+                          if IsBound( K[i]!.Abbreviation ) then
+                              return K[i]!.Abbreviation;
+                          fi;
+                          return Concatenation( symbolK, String( N + A + i ) );
+                      end );
+    
+    indets := Concatenation( propagators, numerators, invariants );
+    
+    R := UnderlyingRing( LD );
+    
+    R := CoefficientsRing( R ) * indets * List( Indeterminates( R ), String );
+    
+    R := PolynomialRingWithProductOrdering( R );
+    
+    indets := List( indets, p -> p / R );
+    
+    R!.MatrixOfPropagatorsAndNumerators := HomalgMatrix( indets, 1, Length( propagators ) + Length( numerators ), R );
+    
+    indets := ListN( Concatenation( D, Z, K ), indets, {a,b} -> a / R - b );
+    
+    indets := HomalgMatrix( indets, N + A + M, 1, R );
+    
+    red := UnionOfRows( indets, R * RelationsMatrixOfMomenta( LD ) );
+    
+    red := BasisOfRows( red );
+    
+    if rational then
+        
+        invariants := Concatenation( [ LOOP_INTEGRALS.DimensionSymbol ], invariants );
+        
+        invariants := JoinStringsWithSeparator( invariants );
+        
+        indets := Concatenation( propagators, numerators );
+        
+        S := LOOP_INTEGRALS.ConstructorOfDefaultField( invariants, R ) * indets;
+        
+        LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational := red;
+        
+    else
+        
+        indets := Concatenation( propagators, numerators, invariants );
+        
+        S := LOOP_INTEGRALS.ConstructorOfDefaultField( LOOP_INTEGRALS.DimensionSymbol, R );
+        
+        S := S * indets;
+        
+        LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants := red;
+        
+    fi;
+    
+    red!.RingAfterSuccessfulReduction := S;
+    
+    return red;
+    
+end );
+
+##
 InstallMethod( ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( mat, LD )
-    local red, R, col;
+    local red, R, col, S, Smat;
     
     red := ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants( LD );
     
@@ -599,7 +618,17 @@ InstallMethod( ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants,
     mat := List( [ 1 .. col ],
                  j -> DecideZeroRows( CertainColumns( mat, [ j ] ), red ) );
     
-    return UnionOfColumns( mat );
+    mat := UnionOfColumns( mat );
+    
+    S := red!.RingAfterSuccessfulReduction;
+    
+    Smat := S * mat;
+    
+    if not R * Smat = mat then
+        Error( "expressing the matrix mat in terms of the propagators, numerators, and extra Lorentz invariants failed\n" );
+    fi;
+    
+    return Smat;
     
 end );
 
@@ -615,6 +644,17 @@ InstallMethod( JacobianOfPropagatorsInIndependentLorentzInvariants,
 end );
 
 ##
+InstallMethod( JacobianOfPropagatorsInPropagators,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    
+    return ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
+                   JacobianOfPropagators( LD ), LD );
+    
+end );
+
+##
 InstallMethod( PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasIndependentLorentzInvariants ],
         
@@ -623,6 +663,18 @@ InstallMethod( PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants,
     return [ JacobianOfPropagatorsInIndependentLorentzInvariants( LD ),
              ExpressInIndependentLorentzInvariants(
                      HomalgDiagonalMatrix( Propagators( LD ) ), LD ) ];
+end );
+
+##
+InstallMethod( PairOfMatricesOfLoopDiagramInPropagators,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+
+    return [ JacobianOfPropagatorsInPropagators( LD ),
+             ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
+                     HomalgDiagonalMatrix( Propagators( LD ) ), LD ) ];
+    
 end );
 
 #########################

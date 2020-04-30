@@ -21,6 +21,12 @@ This package is an ongoing work to compute master integrals using commutative an
 @Subsection 2 Loop cusp anomalous dimensions
 @InsertChunk 2LoopCuspAnomalousDimensions
 
+@Subsection 2 Loop box
+@InsertChunk 2LoopBox
+
+@Subsection Pentagon with off shell leg
+@InsertChunk PentagonWithOffShellLeg
+
 @Section Global variables
 @Section GAP categories
 @Section Properties
