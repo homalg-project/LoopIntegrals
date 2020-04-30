@@ -146,7 +146,7 @@ InstallMethod( UnderlyingMatrix,
         
   function( x )
     
-    return HomalgMatrix( Components( x ), Dimension( x ), 1, HomalgRing( x[1] ) );
+    return HomalgMatrix( Components( x ), Dimension( x ), 1, HomalgRing( x[0] ) );
     
 end );
     
