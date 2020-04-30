@@ -12,15 +12,15 @@
   [2XComponents[102X, for IsLorentzVector 1.5-4 
   [2XDimension[102X, for IsLorentzVector 1.5-1 
   [2XExpressInIndependentLorentzInvariants[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-10 
-  [2XExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-11 
+  [2XExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-12 
   [2XExternalMomenta[102X, for IsLoopDiagram 1.5-6 
   [2XExtraLorentzInvariants[102X, for IsLoopDiagram 1.5-13 
   [2XIndependentLorentzInvariants[102X, for IsLoopDiagram 1.5-10 
   [2XIsExternalMomentum[102X, for IsLoopDiagram 1.4-2 
   [2XIsLoopMomentum[102X, for IsLoopDiagram 1.4-1 
   [2XJacobianOfPropagators[102X, for IsLoopDiagram 1.5-16 
-  [2XJacobianOfPropagatorsInIndependentLorentzInvariants[102X, for IsLoopDiagram 1.7-12 
-  [2XJacobianOfPropagatorsInPropagators[102X, for IsLoopDiagram 1.5-18 
+  [2XJacobianOfPropagatorsInIndependentLorentzInvariants[102X, for IsLoopDiagram 1.7-13 
+  [2XJacobianOfPropagatorsInPropagators[102X, for IsLoopDiagram 1.7-14 
   [2XLOOP_INTEGRALS[102X 1.3-1 
   [2XLoopDiagram[102X, for IsList, IsList, IsInt 1.6-3 
       for IsLorentzVector 1.5-3 
@@ -30,13 +30,13 @@
   [2XMatrixOfMomenta[102X, for IsLoopDiagram 1.5-15 
   [2XNumerators[102X, for IsLoopDiagram 1.5-12 
   [2XOriginalJacobianOfPropagators[102X, for IsLoopDiagram 1.5-14 
-  [2XPairOfMatricesOfLoopDiagram[102X, for IsLoopDiagram 1.5-20 
-  [2XPairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[102X, for IsLoopDiagram 1.7-13 
-  [2XPairOfMatricesOfLoopDiagramInPropagators[102X, for IsLoopDiagram 1.5-21 
-  [2XPairOfOriginalMatricesOfLoopDiagram[102X, for IsLoopDiagram 1.5-19 
+  [2XPairOfMatricesOfLoopDiagram[102X, for IsLoopDiagram 1.5-18 
+  [2XPairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[102X, for IsLoopDiagram 1.7-15 
+  [2XPairOfMatricesOfLoopDiagramInPropagators[102X, for IsLoopDiagram 1.7-16 
+  [2XPairOfOriginalMatricesOfLoopDiagram[102X, for IsLoopDiagram 1.5-17 
   [2XPropagators[102X, for IsLoopDiagram 1.5-11 
   [2XReductionMatrixOfIndependentLorentzInvariants[102X, for IsLoopDiagram 1.7-9 
-  [2XReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsLoopDiagram 1.5-17 
+  [2XReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsLoopDiagram 1.7-11 
   [2XRelationsMatrixOfMomenta[102X, for IsLoopDiagram 1.5-9 
   [2XRelationsOfMomenta[102X, for IsLoopDiagram 1.5-8 
   [2XSetAbbreviation[102X, for IsHomalgRingElement, IsString 1.7-1 
