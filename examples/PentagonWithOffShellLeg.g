@@ -36,6 +36,6 @@ Display( E12[1] );
 #! -D2+D3+s12,    -D2+D3,        -D2+D3,    -D2+D3-s23,    -D2+D3+s34-s51,
 #! -D3+D4-s12+s45,-D3+D4+s23,    -D3+D4,    -D3+D4,        -D3+D4-s34,
 #! -D4+D5+pp5-s45,-D4+D5-s23+s51,-D4+D5+s34,-D4+D5,        -D4+D5
-S := SyzygiesOfRows( E12[1], E12[2] );
+S := SyzygiesOfRows( E12 );
 #! <A non-zero 56 x 5 matrix over an external ring>
 #! @EndExample

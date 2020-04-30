@@ -116,7 +116,7 @@ Dependencies := rec(
   GAP := ">= 4.9.1",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
-                   [ "MatricesForHomalg", ">= 2020.04.18" ],
+                   [ "MatricesForHomalg", ">= 2020.04.22" ],
                    [ "RingsForHomalg", ">= 2020.04.18" ],
                    ],
   SuggestedOtherPackages := [ ],

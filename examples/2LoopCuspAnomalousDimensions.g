@@ -16,7 +16,7 @@ SetExtraLorentzInvariants( LD, [ cos ] );
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <An unevaluated non-zero 8 x 6 matrix over an external ring>,
 #!   <An unevaluated non-zero 6 x 6 matrix over an external ring> ]
-S := SyzygiesOfRows( E12[1], E12[2] );
+S := SyzygiesOfRows( E12 );
 #! <A non-zero 68 x 8 matrix over an external ring>
 EntriesOfHomalgMatrix( S[1] );
 #! [ 2*D6*cos+2*D6, 0, -D6, -D6, 0, 2*D6*cos+2*D6, -D6, -D6 ]

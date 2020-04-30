@@ -25,7 +25,7 @@ Display( E12[1] );
 #! D1-D2,    D1-D2,     D1-D2+s12, D1-D2-s14,
 #! D2-D3-s12,D2-D3,     D2-D3,     D2-D3+s14,
 #! -D1+D4,   -D1+D4+s14,-D1+D4-s12,-D1+D4
-S := SyzygiesOfRows( E12[1], E12[2] );
+S := SyzygiesOfRows( E12 );
 #! <A non-zero 8 x 4 matrix over an external ring>
 Sred := ReducedBasisOfRowModule( S );
 #! <A non-zero 6 x 4 matrix over an external ring>
