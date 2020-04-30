@@ -125,6 +125,8 @@ InstallMethod( LoopDiagram,
     Perform( L, function( l ) SetLoopDiagram( l, LD ); end );
     Perform( K, function( k ) SetLoopDiagram( k, LD ); end );
     
+    LD!.DimensionSymbol := LOOP_INTEGRALS.DimensionSymbol;
+    
     return LD;
     
 end );
@@ -568,7 +570,7 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
     
     if rational then
         
-        invariants := Concatenation( [ LOOP_INTEGRALS.DimensionSymbol ], invariants );
+        invariants := Concatenation( [ LD!.DimensionSymbol ], invariants );
         
         invariants := JoinStringsWithSeparator( invariants );
         
@@ -576,21 +578,23 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
         
         S := LOOP_INTEGRALS.ConstructorOfDefaultField( invariants, R ) * indets;
         
+        R!.RingAfterSuccessfulReduction_rational := S;
+        
         LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational := red;
         
     else
         
         indets := Concatenation( propagators, numerators, invariants );
         
-        S := LOOP_INTEGRALS.ConstructorOfDefaultField( LOOP_INTEGRALS.DimensionSymbol, R );
+        S := LOOP_INTEGRALS.ConstructorOfDefaultField( LD!.DimensionSymbol, R );
         
         S := S * indets;
+        
+        R!.RingAfterSuccessfulReduction := S;
         
         LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants := red;
         
     fi;
-    
-    red!.RingAfterSuccessfulReduction := S;
     
     return red;
     
@@ -601,7 +605,11 @@ InstallMethod( ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( mat, LD )
-    local red, R, col, S, Smat;
+    local rational, red, R, col, S, Smat;
+    
+    ## do not treat the extra Lorentz invariants as rational parameters
+    ## as this slows down the syzygies computations in Singular significantly
+    rational := IsIdenticalObj( ValueOption( "rational" ), true );
     
     red := ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants( LD );
     
@@ -609,18 +617,22 @@ InstallMethod( ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants,
     
     col := NrColumns( mat );
     
-    mat := R * mat;
+    if rational then
+        S := R!.RingAfterSuccessfulReduction_rational;
+    else
+        S := R!.RingAfterSuccessfulReduction;
+    fi;
     
     if NrColumns( mat ) = 0 then
-        return mat;
+        return S * mat;
     fi;
+    
+    mat := R * mat;
     
     mat := List( [ 1 .. col ],
                  j -> DecideZeroRows( CertainColumns( mat, [ j ] ), red ) );
     
     mat := UnionOfColumns( mat );
-    
-    S := red!.RingAfterSuccessfulReduction;
     
     Smat := S * mat;
     
