@@ -757,6 +757,27 @@ InstallMethod( JacobianOfLoopDiagramInPropagators,
     
 end );
 
+##
+InstallMethod( JacobianOfCoefficientsVectorInPropagators,
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( vec, LD )
+    local red, R, S, indets;
+    
+    red := ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants( LD );
+    
+    R := HomalgRing( red );
+    
+    indets := R!.MatrixOfPropagatorsAndNumerators;
+    
+    S := R!.RingAfterSuccessfulReduction;
+    
+    indets := S * indets;
+    
+    return Diff( indets, Involution( vec ) );
+    
+end );
+
 #########################
 #
 # View & Display methods

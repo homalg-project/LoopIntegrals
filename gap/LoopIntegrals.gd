@@ -240,6 +240,10 @@ DeclareOperation( "PairOfMatricesOfLoopDiagramInPropagators",
 DeclareOperation( "JacobianOfLoopDiagramInPropagators",
         [ IsLoopDiagram ] );
 
+#!
+DeclareOperation( "JacobianOfCoefficientsVectorInPropagators",
+        [ IsHomalgMatrix, IsLoopDiagram ] );
+
 ####################################
 #
 #! @Section Tools
