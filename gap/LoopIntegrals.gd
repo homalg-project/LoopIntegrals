@@ -244,6 +244,18 @@ DeclareOperation( "JacobianOfLoopDiagramInPropagators",
 DeclareOperation( "JacobianOfCoefficientsVectorInPropagators",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
+#!
+DeclareOperation( "DivergenceOfCoefficientsVectorOfLoopDiagram",
+        [ IsHomalgMatrix, IsLoopDiagram ] );
+
+#!
+DeclareOperation( "ShiftOperator",
+        [ IsHomalgMatrix, IsLoopDiagram ] );
+
+#!
+DeclareOperation( "IBPRelation",
+        [ IsHomalgMatrix, IsLoopDiagram, IsList ] );
+
 ####################################
 #
 #! @Section Tools

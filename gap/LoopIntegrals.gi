@@ -11,6 +11,7 @@ InstallValue( LOOP_INTEGRALS,
             DimensionSymbol := "D",
             PropagatorSymbol := "D",
             NumeratorSymbol := "N",
+            ExponentSymbol := "a",
            ) );
 
 ##
@@ -775,6 +776,119 @@ InstallMethod( JacobianOfCoefficientsVectorInPropagators,
     indets := S * indets;
     
     return Diff( indets, Involution( vec ) );
+    
+end );
+
+##
+InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( vec, LD )
+    local l, k, jacLD, jacLV, trace, sum, D;
+    
+    l := Length( LoopMomenta( LD ) );
+    
+    k := Length( ExternalMomenta( LD ) );
+    
+    Assert( 0, NrRows( vec ) = 1 and NrColumns( vec ) = l * ( l + k ) );
+    
+    jacLD := JacobianOfLoopDiagramInPropagators( LD );
+    jacLV := JacobianOfCoefficientsVectorInPropagators( vec, LD );
+    
+    trace := Sum( [ 1 .. NrRows( jacLD ) ],  i -> ( jacLD[i] * Involution( jacLV[i] ) )[1,1] );
+    
+    sum := Sum( [ 1 .. l ], p -> vec[1, (p - 1) * (l + k) + p] );
+    
+    D := ( LD!.DimensionSymbol / HomalgRing( sum ) );
+    
+    return trace + D * sum;
+    
+end );
+
+##
+InstallMethod( ShiftOperator,
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( vec, LD )
+    local R, c, exponents, indets, Ds, D_s, C, S, T, oper, div, jacLD;
+    
+    R := HomalgRing( vec );
+    
+    c := Length( Propagators( LD ) ) + Length( Numerators( LD ) );
+    
+    exponents := List( [ 1 .. c ], i -> Concatenation( LOOP_INTEGRALS.ExponentSymbol, String( i ) ) );
+    
+    indets := Indeterminates( R );
+    
+    indets := List( indets, String );
+    
+    Ds := indets{[ 1 .. c ]};
+    
+    D_s := List( Ds, D -> Concatenation( D, "_" ) );
+    
+    if not IsBound( R!.ShiftAlgebra ) then
+        
+        indets := indets{[ c + 1 .. Length( indets ) ]};
+        
+        C := CoefficientsRing( R );
+        
+        S := C * JoinStringsWithSeparator( exponents ) * indets * Concatenation( Ds, D_s );
+        
+        S := S / List( Ds, D -> Concatenation( D, "*", D, "_", "-1" ) / S );
+        
+        R!.ShiftAlgebra := S;
+        
+        T := C * indets * Concatenation( Ds, D_s );
+        
+        T := T / List( Ds, D -> Concatenation( D, "*", D, "_", "-1" ) / T );
+        
+        R!.LaurentAlgebra := T;
+        
+    fi;
+    
+    S := R!.ShiftAlgebra;
+    
+    oper := List( [ 1 .. c ], i -> Concatenation( "-", exponents[i], "*", D_s[i]  ) );
+    
+    oper := Concatenation( "[", JoinStringsWithSeparator( oper ), "]" );
+    
+    oper := HomalgMatrix( oper, c, 1, S );
+    
+    div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
+    
+    jacLD := JacobianOfLoopDiagramInPropagators( LD );
+    
+    return DecideZero( ( div / S ) + ( ( S * vec ) * ( S * jacLD ) * oper )[1,1] );
+    
+end );
+
+##
+InstallMethod( IBPRelation,
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants, IsList ],
+        
+  function( vec, LD, exponents )
+    local ibp, R, S, T, var, phi, c;
+    
+    ibp := ShiftOperator( vec, LD );
+    
+    R := HomalgRing( vec );
+    
+    S := R!.ShiftAlgebra;
+    T := R!.LaurentAlgebra;
+
+    var := Indeterminates( T );
+    
+    phi := Concatenation( [ List( exponents, String ), List( var, String ) ] );
+
+    c := Length( phi );
+    
+    phi := Concatenation( "[", JoinStringsWithSeparator( phi ), "]" );
+    
+    phi := HomalgMatrix( phi, 1, c, T );
+    
+    phi := RingMap( phi, AmbientRing( S ), T );
+    
+    return Pullback( phi, ibp );
     
 end );
 
