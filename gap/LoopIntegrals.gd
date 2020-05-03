@@ -118,11 +118,19 @@ DeclareAttribute( "OriginalJacobianOfPropagators",
         IsLoopDiagram );
 
 #!
+DeclareAttribute( "OriginalJacobianOfNumerators",
+        IsLoopDiagram );
+
+#!
 DeclareAttribute( "MatrixOfMomenta",
         IsLoopDiagram );
 
 #!
 DeclareAttribute( "JacobianOfPropagators",
+        IsLoopDiagram );
+
+#!
+DeclareAttribute( "JacobianOfNumerators",
         IsLoopDiagram );
 
 #!
@@ -217,11 +225,19 @@ DeclareOperation( "JacobianOfPropagatorsInPropagators",
         [ IsLoopDiagram ] );
 
 #!
+DeclareOperation( "JacobianOfNumeratorsInPropagators",
+        [ IsLoopDiagram ] );
+
+#!
 DeclareOperation( "PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants",
         [ IsLoopDiagram ] );
 
 #!
 DeclareOperation( "PairOfMatricesOfLoopDiagramInPropagators",
+        [ IsLoopDiagram ] );
+
+#!
+DeclareOperation( "JacobianOfLoopDiagramInPropagators",
         [ IsLoopDiagram ] );
 
 ####################################

@@ -193,6 +193,27 @@ InstallMethod( OriginalJacobianOfPropagators,
 end );
 
 ##
+InstallMethod( OriginalJacobianOfNumerators,
+        [ IsLoopDiagram and HasNumerators ],
+        
+  function( LD )
+    local l, R, numerators;
+    
+    l := UnionOfRows( List( LoopMomenta( LD ), UnderlyingMatrix ) );
+    
+    R := UnderlyingRing( LD );
+    
+    numerators := Numerators( LD );
+    
+    if IsEmpty( numerators ) then
+        return HomalgZeroMatrix( NrRows( l ), 0, R );
+    fi;
+    
+    return UnionOfColumns( List( numerators, p -> Diff( l, HomalgMatrix( p, 1, 1, R ) ) ) );
+    
+end );
+
+##
 InstallMethod( MatrixOfMomenta,
         [ IsLoopDiagram ],
         
@@ -218,6 +239,30 @@ InstallMethod( JacobianOfPropagators,
     jac := OriginalJacobianOfPropagators( LD );
 
     jac := MatrixOfMomenta( LD ) * jac;
+    
+    rel := RelationsMatrixOfMomenta( LD );
+    
+    jac := List( [ 1 .. NrColumns( jac ) ],
+                   j -> DecideZeroRows( CertainColumns( jac, [ j ] ), rel ) );
+    
+    return UnionOfColumns( jac );
+    
+end );
+
+##
+InstallMethod( JacobianOfNumerators,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasNumerators ],
+        
+  function( LD )
+    local jac, rel;
+    
+    jac := OriginalJacobianOfNumerators( LD );
+    
+    jac := MatrixOfMomenta( LD ) * jac;
+    
+    if NrColumns( jac ) = 0 then
+        return jac;
+    fi;
     
     rel := RelationsMatrixOfMomenta( LD );
     
@@ -667,6 +712,17 @@ InstallMethod( JacobianOfPropagatorsInPropagators,
 end );
 
 ##
+InstallMethod( JacobianOfNumeratorsInPropagators,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    
+    return ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
+                   JacobianOfNumerators( LD ), LD );
+    
+end );
+
+##
 InstallMethod( PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasIndependentLorentzInvariants ],
         
@@ -686,6 +742,18 @@ InstallMethod( PairOfMatricesOfLoopDiagramInPropagators,
     return [ JacobianOfPropagatorsInPropagators( LD ),
              ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
                      HomalgDiagonalMatrix( Propagators( LD ) ), LD ) ];
+    
+end );
+
+##
+InstallMethod( JacobianOfLoopDiagramInPropagators,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    
+    return UnionOfColumns(
+                   JacobianOfPropagatorsInPropagators( LD ),
+                   JacobianOfNumeratorsInPropagators( LD ) );
     
 end );
 
