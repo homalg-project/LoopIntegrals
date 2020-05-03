@@ -7,10 +7,10 @@
 InstallValue( LOOP_INTEGRALS,
         rec(
             ConstructorOfDefaultField := HomalgFieldOfRationalsInSingular,
+            LorentzSymbol := "x",
             DimensionSymbol := "D",
             PropagatorSymbol := "D",
             NumeratorSymbol := "N",
-            LorentzSymbol := "x"
            ) );
 
 ##
