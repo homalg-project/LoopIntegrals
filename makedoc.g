@@ -26,8 +26,7 @@ AutoDoc(rec(
     extract_examples := rec( units := "Single" ),
     maketest := rec( folder := ".",
                      commands :=
-                     [ "LoadPackage( \"FinSetsForCAP\" );",
-                       "LoadPackage( \"IO_ForHomalg\" );",
+                     [ "LoadPackage( \"IO_ForHomalg\" );",
                        "HOMALG_IO.show_banners := false;",
                        "HOMALG_IO.suppress_PID := true;",
                        "HOMALG_IO.use_common_stream := true;",
