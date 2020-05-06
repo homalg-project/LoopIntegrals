@@ -217,6 +217,10 @@ DeclareOperation( "ExpressInIndependentLorentzInvariants",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
 #!
+DeclareOperation( "RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
+        [ IsLoopDiagram ] );
+
+#!
 DeclareOperation( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
         [ IsLoopDiagram ] );
 

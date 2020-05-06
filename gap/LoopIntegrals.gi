@@ -577,25 +577,15 @@ InstallMethod( ExpressInIndependentLorentzInvariants,
 end );
 
 ##
-InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
+InstallMethod( RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
-    local rational, symbolD, D, N, propagators, symbolN, Z, A, numerators,
-          symbolK, K, M, invariants, indets, R, red, S;
-
-    ## do not treat the extra Lorentz invariants as rational parameters
-    ## as this slows down the syzygies computations in Singular significantly
-    rational := IsIdenticalObj( ValueOption( "rational" ), true );
+    local symbolD, D, N, propagators, symbolN, Z, A, numerators,
+          symbolK, K, M, invariants, indets, R;
     
-    if rational then
-        if IsBound( LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational ) then
-            return LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational;
-        fi;
-    else
-        if IsBound( LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants ) then
-            return LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants;
-        fi;
+    if IsBound( LD!.RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants ) then
+        return LD!.RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants;
     fi;
     
     symbolD := ValueOption( "symbolD" );
@@ -640,21 +630,61 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
                           return Concatenation( symbolK, String( N + A + i ) );
                       end );
     
-    indets := Concatenation( propagators, numerators, invariants );
+    indets := Concatenation( propagators, numerators );
     
-    R := UnderlyingRing( LD );
+    R := CoefficientsRing( UnderlyingRing( LD ) ) * invariants * indets;
     
-    R := CoefficientsRing( R ) * indets * List( Indeterminates( R ), String );
+    LD!.RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants := R;
+    
+    return R;
+    
+end );
+
+##
+InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local rational, K, D, Z, R, indets, invariants, propagators, numerators, red, S;
+
+    ## do not treat the extra Lorentz invariants as rational parameters
+    ## as this slows down the syzygies computations in Singular significantly
+    rational := IsIdenticalObj( ValueOption( "rational" ), true );
+    
+    if rational then
+        if IsBound( LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational ) then
+            return LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational;
+        fi;
+    else
+        if IsBound( LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants ) then
+            return LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants;
+        fi;
+    fi;
+    
+    K := ExtraLorentzInvariants( LD );
+    D := Propagators( LD );
+    Z := Numerators( LD );
+    
+    R := RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants( LD );
+    
+    indets := Indeterminates( R );
+    indets := List( indets, String );
+    
+    invariants := indets{[ 1 .. Length( K ) ]};
+    propagators := indets{[ Length( K ) + 1 .. Length( K ) + Length( D ) ]};
+    numerators := indets{[ Length( K ) + Length( D ) + 1 .. Length( indets ) ]};
+    
+    R := R * List( Indeterminates( UnderlyingRing( LD ) ), String );
     
     R := PolynomialRingWithProductOrdering( R );
     
     indets := List( indets, p -> p / R );
     
-    R!.MatrixOfPropagatorsAndNumerators := HomalgMatrix( indets, 1, Length( propagators ) + Length( numerators ), R );
+    R!.MatrixOfPropagatorsAndNumerators := HomalgMatrix( indets{[ Length( K ) + 1 .. Length( indets ) ]}, 1, Length( D ) + Length( Z ), R );
     
-    indets := ListN( Concatenation( D, Z, K ), indets, {a,b} -> a / R - b );
+    indets := ListN( Concatenation( K, D, Z ), indets, {a,b} -> a / R - b );
     
-    indets := HomalgMatrix( indets, N + A + M, 1, R );
+    indets := HomalgMatrix( indets, Length( indets ), 1, R );
     
     red := UnionOfRows( indets, R * RelationsMatrixOfMomenta( LD ) );
     
