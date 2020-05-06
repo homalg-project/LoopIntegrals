@@ -29,6 +29,13 @@ S := SyzygiesOfRows( E12 );
 #! <A non-zero 8 x 4 matrix over an external ring>
 Sred := ReducedBasisOfRowModule( S );
 #! <A non-zero 6 x 4 matrix over an external ring>
+Display( Sred );
+#! D2-D4,                D4,                        0,          D2,
+#! D1-D3,                -D1,                       -D1,        0,
+#! 2*D3*D4-2*D4^2+D4*s12,D2*D4-D3*D4+2*D4^2-D4*s12, D1*D4+D2*D4,2*D2*D4,
+#! 2*D3^2-2*D3*D4-D3*s14,D1*D3+D3*D4,               2*D1*D3,    D1*D3+D2*D3,
+#! -D3*D4^2,             D3*D4^2,                   0,          D2*D3*D4,
+#! D3^2*D4+D3*D4*s12,    D2*D3*D4-D3^2*D4-D3*D4*s12,D2*D3*D4,   0
 Display( EntriesOfHomalgMatrixAsListList( Sred{[ 1 .. 3 ]} ) );
 #! [ [ D2-D4, D4, 0, D2 ],
 #!   [ D1-D3, -D1, -D1, 0 ],
