@@ -469,12 +469,6 @@ InstallMethod( ReductionMatrixOfIndependentLorentzInvariants,
     
     M := Length( I );
     
-    abbreviation := ValueOption( "abbreviation" );
-    
-    if not IsIdenticalObj( abbreviation, false ) then
-        abbreviation := true;
-    fi;
-    
     symbol := ValueOption( "symbol" );
     
     if not IsStringRep( symbol ) then
