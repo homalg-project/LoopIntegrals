@@ -443,11 +443,11 @@ InstallMethod( POW,
 end );
 
 ##
-InstallMethod( ReductionMatrixOfIndependentLorentzInvariants,
+InstallMethod( RingOfIndependentLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasIndependentLorentzInvariants ],
         
   function( LD )
-    local abbreviation, I, M, symbol, invariants, R, red;
+    local abbreviation, I, M, symbol, invariants, R;
     
     abbreviation := ValueOption( "abbreviation" );
     
@@ -456,12 +456,12 @@ InstallMethod( ReductionMatrixOfIndependentLorentzInvariants,
     fi;
     
     if abbreviation then
-        if IsBound( LD!.ReductionMatrixOfIndependentLorentzInvariants ) then
-            return LD!.ReductionMatrixOfIndependentLorentzInvariants;
+        if IsBound( LD!.RingOfIndependentLorentzInvariants ) then
+            return LD!.RingOfIndependentLorentzInvariants;
         fi;
     else
-        if IsBound( LD!.ReductionMatrixOfIndependentLorentzInvariants_noabbreviation ) then
-            return LD!.ReductionMatrixOfIndependentLorentzInvariants_noabbreviation;
+        if IsBound( LD!.RingOfIndependentLorentzInvariants_noabbreviation ) then
+            return LD!.RingOfIndependentLorentzInvariants_noabbreviation;
         fi;
     fi;
     
@@ -483,13 +483,54 @@ InstallMethod( ReductionMatrixOfIndependentLorentzInvariants,
                           return Concatenation( symbol, String( i ) );
                       end );
     
-    R := UnderlyingRing( LD );
+    R := CoefficientsRing( UnderlyingRing( LD ) ) * invariants;
     
-    R := CoefficientsRing( R ) * invariants * List( Indeterminates( R ), String );
+    if abbreviation then
+        LD!.RingOfIndependentLorentzInvariants := R;
+    else
+        LD!.RingOfIndependentLorentzInvariants_noabbreviation := R;
+    fi;
+    
+    return R;
+    
+end );
+
+##
+InstallMethod( ReductionMatrixOfIndependentLorentzInvariants,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasIndependentLorentzInvariants ],
+        
+  function( LD )
+    local abbreviation, R, invariants, I, M, red;
+    
+    abbreviation := ValueOption( "abbreviation" );
+    
+    if not IsIdenticalObj( abbreviation, false ) then
+        abbreviation := true;
+    fi;
+    
+    if abbreviation then
+        if IsBound( LD!.ReductionMatrixOfIndependentLorentzInvariants ) then
+            return LD!.ReductionMatrixOfIndependentLorentzInvariants;
+        fi;
+    else
+        if IsBound( LD!.ReductionMatrixOfIndependentLorentzInvariants_noabbreviation ) then
+            return LD!.ReductionMatrixOfIndependentLorentzInvariants_noabbreviation;
+        fi;
+    fi;
+    
+    R := RingOfIndependentLorentzInvariants( LD );
+    
+    invariants := Indeterminates( R );
+    
+    R := R * List( Indeterminates( UnderlyingRing( LD ) ), String );
     
     R := PolynomialRingWithProductOrdering( R );
     
     invariants := List( invariants, i -> i / R );
+    
+    I := IndependentLorentzInvariants( LD );
+    
+    M := Length( I );
     
     invariants := ListN( I, invariants, {a,b} -> a / R - b );
     

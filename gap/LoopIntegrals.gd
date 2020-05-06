@@ -205,6 +205,10 @@ DeclareOperation( "POW",
         [ IsLorentzVector, IsInt ] );
     
 #!
+DeclareOperation( "RingOfIndependentLorentzInvariants",
+        [ IsLoopDiagram ] );
+
+#!
 DeclareOperation( "ReductionMatrixOfIndependentLorentzInvariants",
         [ IsLoopDiagram ] );
 
