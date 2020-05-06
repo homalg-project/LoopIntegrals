@@ -3,7 +3,7 @@
 LoadPackage( "LoopIntegrals" );
 
 #! @Example
-LD := LoopDiagram( "k1", "p1, p2, p3, p4", 1 );
+LD := LoopDiagram( "k1", "p1, p2, p3, p4" );
 #! <A loop diagram with loop momenta [ k1 ] &
 #!  external momenta [ p1, p2, p3, p4 ]>
 pp5:= 2*p1*p2 + 2*p1*p3 + 2*p2*p3 + 2*p1*p4 + 2*p2*p4 + 2*p3*p4;;

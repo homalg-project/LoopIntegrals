@@ -8,6 +8,7 @@ InstallValue( LOOP_INTEGRALS,
         rec(
             ConstructorOfDefaultField := HomalgFieldOfRationalsInSingular,
             LorentzSymbol := "x",
+            Dimension := 1,
             DimensionSymbol := "D",
             PropagatorSymbol := "D",
             NumeratorSymbol := "N",
@@ -129,6 +130,16 @@ InstallMethod( LoopDiagram,
     LD!.DimensionSymbol := LOOP_INTEGRALS.DimensionSymbol;
     
     return LD;
+    
+end );
+
+##
+InstallMethod( LoopDiagram,
+        [ IsList, IsList ],
+        
+  function( L, K )
+    
+    return LoopDiagram( L, K, LOOP_INTEGRALS.Dimension );
     
 end );
 

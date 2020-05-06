@@ -155,9 +155,13 @@ DeclareOperation( "LorentzVector",
 DeclareOperation( "LorentzVector",
         [ IsHomalgMatrix ] );
 
-#!
+#! @Group LoopDiagram
 DeclareOperation( "LoopDiagram",
         [ IsList, IsList, IsInt ] );
+
+#! @Group LoopDiagram
+DeclareOperation( "LoopDiagram",
+        [ IsList, IsList ] );
 
 ####################################
 #
