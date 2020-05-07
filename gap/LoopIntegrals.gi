@@ -39,8 +39,12 @@ InstallMethod( LorentzVector,
         
   function( str, dim )
     local vector;
-    
-    vector := rec( symbols := List( [ 0 .. dim - 1 ], i -> Concatenation( str, "_", String( i ) ) ) );
+
+    if dim = 1 then
+        vector := rec( symbols := [ str ] );
+    else
+        vector := rec( symbols := List( [ 0 .. dim - 1 ], i -> Concatenation( str, "_", String( i ) ) ) );
+    fi;
     
     ObjectifyWithAttributes(
             vector, TheTypeLorentzVector,

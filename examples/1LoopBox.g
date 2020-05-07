@@ -3,13 +3,16 @@ s#! @Chunk 1LoopBox
 LoadPackage( "LoopIntegrals" );
 
 #! @Example
-LD := LoopDiagram( "l1", "k1..2,k4", 2 );
+LD := LoopDiagram( "l1", "k1..2,k4" );
 #! <A loop diagram with loop momenta [ l1 ] & external momenta [ k1, k2, k4 ]>
-s12 := 2*k1*k2;;
+s12 := 2*k1*k2;
+#! 2*k1*k2
 SetAbbreviation( s12, "s12" );
-s14 := 2*k1*k4;;
+s14 := 2*k1*k4;
+#! 2*k1*k4
 SetAbbreviation( s14, "s14" );
-rel1 := List( ExternalMomenta( LD ), k -> k^2 );;
+rel1 := List( ExternalMomenta( LD ), k -> k^2 );
+#! [ k1^2, k2^2, k4^2 ]
 rel2 := [ (k1+k2+k4)^2 ];;
 SetRelationsOfMomenta( LD, Concatenation( rel1, rel2 ) );
 SetIndependentLorentzInvariants( LD,
