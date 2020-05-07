@@ -86,6 +86,10 @@ DeclareAttribute( "ExternalMomenta",
         IsLoopDiagram );
 
 #!
+DeclareAttribute( "DimensionOfCoefficientsVector",
+        IsLoopDiagram );
+
+#!
 DeclareAttribute( "UnderlyingRing",
         IsLoopDiagram );
 

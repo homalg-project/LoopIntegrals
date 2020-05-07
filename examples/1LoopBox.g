@@ -1,4 +1,4 @@
-#! @Chunk 1LoopBox
+s#! @Chunk 1LoopBox
 
 LoadPackage( "LoopIntegrals" );
 
@@ -17,6 +17,21 @@ SetIndependentLorentzInvariants( LD,
 SetPropagators( LD, -[ l1^2, (l1-k1)^2, (l1-k1-k2)^2, (l1+k4)^2 ] );
 SetNumerators( LD, -[ ] );
 SetExtraLorentzInvariants( LD, [ s12, s14 ] );
+R := RingOfLoopDiagram( LD );
+#! Q(D)[s12,s14][D1,D2,D3,D4]
+id := HomalgIdentityMatrix( DimensionOfCoefficientsVector( LD ), R );
+#! <An unevaluated 4 x 4 identity matrix over an external ring>
+ibp := ShiftOperator( id[1], LD );
+#! |[ -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_-2*a1-a2-a3-a4+(D) ]|
+HomalgRing( ibp );
+#! Q(D)[s12,s14][a1,a2,a3,a4][D1,D2,D3,D4,D1_,D2_,D3_,D4_]/( D4*D4_-1, D3*D3_-1, \
+#! D2*D2_-1, D1*D1_-1 )
+ViewList( DecomposeInMonomials( ibp ) );
+#! [ [ |[ -a2 ]|, |[ D1*D2_ ]| ],
+#!   [ |[ -a3 ]|, |[ D1*D3_ ]| ],
+#!   [ |[ -a4 ]|, |[ D1*D4_ ]| ],
+#!   [ |[ -s12*a3 ]|, |[ D3_ ]| ],
+#!   [ |[ -2*a1-a2-a3-a4+(D) ]|, |[ 1 ]| ] ]
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <A 4 x 4 matrix over an external ring>,
 #!   <A 4 x 4 matrix over an external ring> ]

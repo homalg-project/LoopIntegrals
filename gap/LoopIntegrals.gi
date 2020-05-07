@@ -177,6 +177,19 @@ InstallMethod( Components,
 end );
     
 ##
+InstallMethod( DimensionOfCoefficientsVector,
+        [ IsLoopDiagram and HasLoopMomenta and HasExternalMomenta ],
+        
+  function( LD )
+    local L;
+    
+    L := Length( LoopMomenta( LD ) );
+    
+    return L * ( L + Length( ExternalMomenta( LD ) ) );
+    
+end );
+
+##
 InstallMethod( RelationsMatrixOfMomenta,
         [ IsLoopDiagram and HasRelationsOfMomenta ],
         
