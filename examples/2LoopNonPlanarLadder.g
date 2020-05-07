@@ -24,18 +24,21 @@ E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 Display( E12[1] );
 #! D1+N7,   D2+N7,   0,          0,            -D3+D5+N7,   D2-D3+D5,
 #! D4-D5+N7,D2+D3-D6,0,          0,            -D3-D5+N7,   D2-D3-D6,
-#! -D1+N7,  -D1+N7-s,0,          0,            -D1-D3+D4+N7,-D1-D3+D4+N7-s,
-#! D2-N7+s, D2-N7,   0,          0,            -D5+D6,      -D5+D6,
+#! -D1+N7,  -s-D1+N7,0,          0,            -D1-D3+D4+N7,-s-D1-D3+D4+N7,
+#! s+D2-N7, D2-N7,   0,          0,            -D5+D6,      -D5+D6,
 #! 0,       0,       D3-D5+N7,   D1+D3-D5,     D3-D5-N7,    -D2+D3-D5,
 #! 0,       0,       2*D3,       D3+D4,        D3+D5-N7,    -D2+D3+D6,
-#! 0,       0,       D3-D4,      D3-D4,        D1+D3-D4-N7, D1+D3-D4-N7+s,
-#! 0,       0,       D2+D5-D6-N7,D2+D5-D6-N7+s,D5-D6,       D5-D6
+#! 0,       0,       D3-D4,      D3-D4,        D1+D3-D4-N7, s+D1+D3-D4-N7,
+#! 0,       0,       D2+D5-D6-N7,s+D2+D5-D6-N7,D5-D6,       D5-D6
 S := SyzygiesOfRows( E12 );
-#! <A non-zero 52 x 8 matrix over an external ring>
+#! <A non-zero 58 x 8 matrix over an external ring>
 Display( EntriesOfHomalgMatrix( S[1] ) );
-#! [ -2*D2+2*N7-s, 0, D2-N7, D1+N7, 0, -2*D2-2*D5+2*D6+2*N7-s, D2+D5-D6-N7, D3+D4 ]
+#! [ D1-D2, 0, D2, D1,
+#!  -D3+D4, D1-D2+D3-D4-D5+D6, D2-D6, D4 ]
 Display( EntriesOfHomalgMatrix( S[2] ) );
-#! [ D1+D2-2*N7+s, 0, N7, -N7, -D3+D4, D1+D2+D3-D4+D5-D6-2*N7+s, -D5+N7, -D3 ]
+#! [ s+2*D2-2*N7, 0, -D2+N7, -D1-N7,
+#!   0, s+2*D2+2*D5-2*D6-2*N7, -D2-D5+D6+N7, -D3-D4 ]
 Display( EntriesOfHomalgMatrix( S[3] ) );
-#! [ 0, 0, 0, 0, -D3*D6+D4*D6, D1*D6+2*D3*D6-2*D4*D6-D6*N7, -D3*D6-D5*D6+D6*N7, 0 ]
+#! [ 0, 0, 0, 0,
+#!   -D3*D6+D4*D6, D1*D6+2*D3*D6-2*D4*D6-D6*N7, -D3*D6-D5*D6+D6*N7, 0 ]
 #! @EndExample

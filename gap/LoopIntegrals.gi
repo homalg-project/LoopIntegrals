@@ -690,15 +690,17 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
     
     red := BasisOfRows( red );
     
+    indets := Concatenation( propagators, numerators );
+    
     if rational then
         
         invariants := Concatenation( [ LD!.DimensionSymbol ], invariants );
         
         invariants := JoinStringsWithSeparator( invariants );
         
-        indets := Concatenation( propagators, numerators );
+        S := LOOP_INTEGRALS.ConstructorOfDefaultField( invariants, R );
         
-        S := LOOP_INTEGRALS.ConstructorOfDefaultField( invariants, R ) * indets;
+        S := S * indets;
         
         R!.RingAfterSuccessfulReduction_rational := S;
         
@@ -706,9 +708,7 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
         
     else
         
-        indets := Concatenation( propagators, numerators, invariants );
-        
-        S := LOOP_INTEGRALS.ConstructorOfDefaultField( LD!.DimensionSymbol, R );
+        S := LOOP_INTEGRALS.ConstructorOfDefaultField( LD!.DimensionSymbol, R ) * invariants;
         
         S := S * indets;
         
@@ -886,35 +886,31 @@ InstallMethod( ShiftOperator,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
-    local R, c, exponents, indets, Ds, D_s, C, S, T, oper, div, jacLD;
+    local R, Ds, D_s, c, exponents, B, S, T, oper, div, jacLD;
     
     R := HomalgRing( vec );
     
-    c := Length( Propagators( LD ) ) + Length( Numerators( LD ) );
+    Ds := RelativeIndeterminatesOfPolynomialRing( R );
     
-    exponents := List( [ 1 .. c ], i -> Concatenation( LOOP_INTEGRALS.ExponentSymbol, String( i ) ) );
-    
-    indets := Indeterminates( R );
-    
-    indets := List( indets, String );
-    
-    Ds := indets{[ 1 .. c ]};
+    Ds := List( Ds, String );
     
     D_s := List( Ds, D -> Concatenation( D, "_" ) );
     
+    c := Length( Ds );
+    
+    exponents := List( [ 1 .. c ], i -> Concatenation( LOOP_INTEGRALS.ExponentSymbol, String( i ) ) );
+    
     if not IsBound( R!.ShiftAlgebra ) then
         
-        indets := indets{[ c + 1 .. Length( indets ) ]};
+        B := BaseRing( R );
         
-        C := CoefficientsRing( R );
-        
-        S := C * JoinStringsWithSeparator( exponents ) * indets * Concatenation( Ds, D_s );
+        S := B * JoinStringsWithSeparator( exponents ) * Concatenation( Ds, D_s );
         
         S := S / List( Ds, D -> Concatenation( D, "*", D, "_", "-1" ) / S );
         
         R!.ShiftAlgebra := S;
         
-        T := C * indets * Concatenation( Ds, D_s );
+        T := B * Concatenation( Ds, D_s );
         
         T := T / List( Ds, D -> Concatenation( D, "*", D, "_", "-1" ) / T );
         
@@ -943,7 +939,7 @@ InstallMethod( IBPRelation,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants, IsList ],
         
   function( vec, LD, exponents )
-    local ibp, R, S, T, var, phi, c;
+    local ibp, R, S, T, phi, c;
     
     ibp := ShiftOperator( vec, LD );
     
@@ -951,10 +947,13 @@ InstallMethod( IBPRelation,
     
     S := R!.ShiftAlgebra;
     T := R!.LaurentAlgebra;
-
-    var := Indeterminates( T );
     
-    phi := Concatenation( [ List( exponents, String ), List( var, String ) ] );
+    phi := Concatenation(
+                   [ Indeterminates( BaseRing( T ) ),
+                     exponents,
+                     RelativeIndeterminatesOfPolynomialRing( T ) ] );
+    
+    phi := List( phi, String );
 
     c := Length( phi );
     

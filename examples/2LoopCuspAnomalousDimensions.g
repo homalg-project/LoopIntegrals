@@ -43,14 +43,14 @@ Display( E12[1] );
 #! -2,    -2*cos,D1-D4,    0,     0,     0,
 #! -2*cos,-2,    D2-D5,    0,     0,     0
 S := SyzygiesOfRows( E12 );
-#! <A non-zero 68 x 8 matrix over an external ring>
+#! <A non-zero 79 x 8 matrix over an external ring>
 EntriesOfHomalgMatrix( S[1] );
-#! [ 2*D6*cos+2*D6, 0, -D6, -D6,
-#!   0, 2*D6*cos+2*D6, -D6, -D6 ]
+#! [ -2*D4*D6-2*D5*D6, 0, D5*D6, D4*D6,
+#!   2*cos*D6-2*D6, -2*cos*D6-2*D4*D6-2*D5*D6+2*D6, D5*D6, D4*D6 ]
 EntriesOfHomalgMatrix( S[2] );
-#! [ 0, 0, 0, 0,
-#!   0, 2*D3*cos+2*D3, -D3, -D3 ]
+#! [ -2*D1*D6-2*D2*D6+4*D6, 2*cos*D6-2*D6, D2*D6-D6, D1*D6-D6,
+#!   0, 2*cos*D6-2*D1*D6-2*D2*D6+2*D6, D2*D6-D6, D1*D6-D6 ]
 EntriesOfHomalgMatrix( S[3] );
-#! [ 2*D4*D6+2*D5*D6, 0, -D5*D6, -D4*D6,
-#!   -2*D6*cos+2*D6, 2*D4*D6+2*D5*D6+2*D6*cos-2*D6, -D5*D6, -D4*D6 ]
+#! [ 2*cos*D6+2*D6, 0, -D6, -D6,
+#!   0, 2*cos*D6+2*D6, -D6, -D6 ]
 #! @EndExample

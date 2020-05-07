@@ -31,17 +31,13 @@ E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <A 5 x 5 matrix over an external ring>,
 #!   <A 5 x 5 matrix over an external ring> ]
 Display( E12[1] );
-#! 2*D1,          D1+D2,         D1+D3+s12, D1+D4+s45,     D1+D5+pp5,
-#! -D1+D2,        -D1+D2,        -D1+D2-s12,-D1+D2+s23-s45,-D1+D2-pp5+s51,
-#! -D2+D3+s12,    -D2+D3,        -D2+D3,    -D2+D3-s23,    -D2+D3+s34-s51,
-#! -D3+D4-s12+s45,-D3+D4+s23,    -D3+D4,    -D3+D4,        -D3+D4-s34,
-#! -D4+D5+pp5-s45,-D4+D5-s23+s51,-D4+D5+s34,-D4+D5,        -D4+D5
+#! 2*D1,          D1+D2,         s12+D1+D3, s45+D1+D4,    pp5+D1+D5,
+#! -D1+D2,        -D1+D2,        -s12-D1+D2,s23-s45-D1+D2,-pp5+s51-D1+D2,
+#! s12-D2+D3,     -D2+D3,        -D2+D3,    -s23-D2+D3,   s34-s51-D2+D3,
+#! -s12+s45-D3+D4,s23-D3+D4,     -D3+D4,    -D3+D4,       -s34-D3+D4,
+#! pp5-s45-D4+D5, -s23+s51-D4+D5,s34-D4+D5, -D4+D5,       -D4+D5
 S := SyzygiesOfRows( E12 );
-#! <A non-zero 56 x 5 matrix over an external ring>
+#! <A non-zero 81 x 5 matrix over an external ring>
 Display( EntriesOfHomalgMatrix( S[1] ) );
-#! [ D1*D3*s23-D1*D5*s23+D1*D2*s34-D1*D4*s34-D1*D3*s51+D1*D4*s51,
-#!   D1*D3*s23-D1*D5*s23+D1*D2*s34-D1*D4*s34-D1*D3*s51+D1*D4*s51,
-#!   D1*D3*s23-D1*D5*s23+D1*D2*s34-D1*D3*s51+D1*D4*s51,
-#!   D1*D3*s23+D1*D2*s34-D1*D3*s51,
-#!   D1*D3*s23 ]
+#! [ D1*D4*D5-D3*D4*D5, D1*D4*D5, D1*D4*D5, 0, 0 ]
 #! @EndExample
