@@ -221,6 +221,10 @@ DeclareOperation( "RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
         [ IsLoopDiagram ] );
 
 #!
+DeclareOperation( "RingOfLoopDiagram",
+        [ IsLoopDiagram ] );
+
+#!
 DeclareOperation( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
         [ IsLoopDiagram ] );
 

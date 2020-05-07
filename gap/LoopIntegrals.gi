@@ -641,11 +641,73 @@ InstallMethod( RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
 end );
 
 ##
+InstallMethod( RingOfLoopDiagram,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local rational, K, D, Z, R, indets, invariants, propagators, numerators, S;
+    
+    ## do not treat the extra Lorentz invariants as rational parameters
+    ## as this slows down the syzygies computations in Singular significantly
+    rational := IsIdenticalObj( ValueOption( "rational" ), true );
+    
+    if rational then
+        if IsBound( LD!.RingOfLoopDiagram_rational ) then
+            return LD!.RingOfLoopDiagram_rational;
+        fi;
+    else
+        if IsBound( LD!.RingOfLoopDiagram ) then
+            return LD!.RingOfLoopDiagram;
+        fi;
+    fi;
+    
+    K := ExtraLorentzInvariants( LD );
+    D := Propagators( LD );
+    Z := Numerators( LD );
+    
+    R := RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants( LD );
+    
+    indets := Indeterminates( R );
+    indets := List( indets, String );
+    
+    invariants := indets{[ 1 .. Length( K ) ]};
+    propagators := indets{[ Length( K ) + 1 .. Length( K ) + Length( D ) ]};
+    numerators := indets{[ Length( K ) + Length( D ) + 1 .. Length( indets ) ]};
+    
+    indets := Concatenation( propagators, numerators );
+    
+    if rational then
+        
+        invariants := Concatenation( [ LD!.DimensionSymbol ], invariants );
+        
+        invariants := JoinStringsWithSeparator( invariants );
+        
+        S := LOOP_INTEGRALS.ConstructorOfDefaultField( invariants, R );
+        
+        S := S * indets;
+        
+        LD!.RingOfLoopDiagram_rational := S;
+        
+    else
+        
+        S := LOOP_INTEGRALS.ConstructorOfDefaultField( LD!.DimensionSymbol, R ) * invariants;
+        
+        S := S * indets;
+        
+        LD!.RingOfLoopDiagram := S;
+        
+    fi;
+
+    return S;
+    
+end );
+
+##
 InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
-    local rational, K, D, Z, R, indets, invariants, propagators, numerators, red, S;
+    local rational, K, D, Z, R, indets, red, S;
 
     ## do not treat the extra Lorentz invariants as rational parameters
     ## as this slows down the syzygies computations in Singular significantly
@@ -670,10 +732,6 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
     indets := Indeterminates( R );
     indets := List( indets, String );
     
-    invariants := indets{[ 1 .. Length( K ) ]};
-    propagators := indets{[ Length( K ) + 1 .. Length( K ) + Length( D ) ]};
-    numerators := indets{[ Length( K ) + Length( D ) + 1 .. Length( indets ) ]};
-    
     R := R * List( Indeterminates( UnderlyingRing( LD ) ), String );
     
     R := PolynomialRingWithProductOrdering( R );
@@ -690,32 +748,14 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
     
     red := BasisOfRows( red );
     
-    indets := Concatenation( propagators, numerators );
+    S := RingOfLoopDiagram( LD );
     
     if rational then
-        
-        invariants := Concatenation( [ LD!.DimensionSymbol ], invariants );
-        
-        invariants := JoinStringsWithSeparator( invariants );
-        
-        S := LOOP_INTEGRALS.ConstructorOfDefaultField( invariants, R );
-        
-        S := S * indets;
-        
-        R!.RingAfterSuccessfulReduction_rational := S;
-        
         LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational := red;
-        
+        R!.RingAfterSuccessfulReduction_rational := S;
     else
-        
-        S := LOOP_INTEGRALS.ConstructorOfDefaultField( LD!.DimensionSymbol, R ) * invariants;
-        
-        S := S * indets;
-        
-        R!.RingAfterSuccessfulReduction := S;
-        
         LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants := red;
-        
+        R!.RingAfterSuccessfulReduction := S;
     fi;
     
     return red;
