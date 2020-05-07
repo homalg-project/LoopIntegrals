@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2020.05.02
+                                   2020.05.07
   
   
-                                   2 May 2020
+                                   7 May 2020
   
   
                                 Mohamed Barakat
@@ -83,20 +83,21 @@
       1.5-4 Components
       1.5-5 LoopMomenta
       1.5-6 ExternalMomenta
-      1.5-7 UnderlyingRing
-      1.5-8 RelationsOfMomenta
-      1.5-9 RelationsMatrixOfMomenta
-      1.5-10 IndependentLorentzInvariants
-      1.5-11 Propagators
-      1.5-12 Numerators
-      1.5-13 ExtraLorentzInvariants
-      1.5-14 OriginalJacobianOfPropagators
-      1.5-15 OriginalJacobianOfNumerators
-      1.5-16 MatrixOfMomenta
-      1.5-17 JacobianOfPropagators
-      1.5-18 JacobianOfNumerators
-      1.5-19 PairOfOriginalMatricesOfLoopDiagram
-      1.5-20 PairOfMatricesOfLoopDiagram
+      1.5-7 DimensionOfCoefficientsVector
+      1.5-8 UnderlyingRing
+      1.5-9 RelationsOfMomenta
+      1.5-10 RelationsMatrixOfMomenta
+      1.5-11 IndependentLorentzInvariants
+      1.5-12 Propagators
+      1.5-13 Numerators
+      1.5-14 ExtraLorentzInvariants
+      1.5-15 OriginalJacobianOfPropagators
+      1.5-16 OriginalJacobianOfNumerators
+      1.5-17 MatrixOfMomenta
+      1.5-18 JacobianOfPropagators
+      1.5-19 JacobianOfNumerators
+      1.5-20 PairOfOriginalMatricesOfLoopDiagram
+      1.5-21 PairOfMatricesOfLoopDiagram
     1.6 [33X[0;0YConstructors[133X
       1.6-1 LorentzVector
       1.6-2 LorentzVector
@@ -110,20 +111,23 @@
       1.7-6 *
       1.7-7 *
       1.7-8 *
-      1.7-9 ReductionMatrixOfIndependentLorentzInvariants
-      1.7-10 ExpressInIndependentLorentzInvariants
-      1.7-11 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
-      1.7-12 ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants
-      1.7-13 JacobianOfPropagatorsInIndependentLorentzInvariants
-      1.7-14 JacobianOfPropagatorsInPropagators
-      1.7-15 JacobianOfNumeratorsInPropagators
-      1.7-16 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants
-      1.7-17 PairOfMatricesOfLoopDiagramInPropagators
-      1.7-18 JacobianOfLoopDiagramInPropagators
-      1.7-19 JacobianOfCoefficientsVectorInPropagators
-      1.7-20 DivergenceOfCoefficientsVectorOfLoopDiagram
-      1.7-21 ShiftOperator
-      1.7-22 IBPRelation
+      1.7-9 RingOfIndependentLorentzInvariants
+      1.7-10 ReductionMatrixOfIndependentLorentzInvariants
+      1.7-11 ExpressInIndependentLorentzInvariants
+      1.7-12 RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
+      1.7-13 RingOfLoopDiagram
+      1.7-14 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
+      1.7-15 ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants
+      1.7-16 JacobianOfPropagatorsInIndependentLorentzInvariants
+      1.7-17 JacobianOfPropagatorsInPropagators
+      1.7-18 JacobianOfNumeratorsInPropagators
+      1.7-19 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants
+      1.7-20 PairOfMatricesOfLoopDiagramInPropagators
+      1.7-21 JacobianOfLoopDiagramInPropagators
+      1.7-22 JacobianOfCoefficientsVectorInPropagators
+      1.7-23 DivergenceOfCoefficientsVectorOfLoopDiagram
+      1.7-24 ShiftOperator
+      1.7-25 IBPRelation
   
   
   [32X
