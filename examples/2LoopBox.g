@@ -33,8 +33,8 @@ Display( EntriesOfHomalgMatrix( S[2] ) );
 #! [ D1-D2+2*N8, 0, -D1-2*N8, 0, -D2, 0, -D4+D5-2*N9, D5, 0, D4+2*N9 ]
 Display( EntriesOfHomalgMatrix( S[3] ) );
 #! [ 0, 0, 0, 0, 0, 0, D5*D7-D6*D7-2*D7*N9, D4*D7+D5*D7, D4*D7, D4*D7+2*D7*N9 ]
-ibp1 := ShiftOperator( S[1], LD );;
-ViewList( DecomposeInMonomials( ibp1 ) );
+Sibp1 := ShiftOperator( S[1], LD );;
+ViewList( DecomposeInMonomials( Sibp1 ) );
 #! [ [ |[ -1/2*s12*a8-1/2*s14*a8 ]|, |[ D1*N8_ ]| ],
 #!   [ |[ -1/2*s12*a9+1/2*s14*a9 ]|, |[ D4*N9_ ]| ],
 #!   [ |[ a1+a2+a3+a7+a8+(-D) ]|, |[ D2 ]| ],
@@ -45,10 +45,10 @@ ViewList( DecomposeInMonomials( ibp1 ) );
 #!   [ |[ -2*a1-2*a2-2*a3-2*a7-2*a8+(2*D) ]|, |[ N8 ]| ],
 #!   [ |[ 2*a4+2*a5+2*a6+2*a7+2*a9+(-2*D) ]|, |[ N9 ]| ],
 #!   [ |[ s12*a1+s14*a2-s12*a3+s12*a4-s14*a5-s12*a6-s14*a8+s14*a9 ]|, |[ 1 ]| ] ]
-ibp1_1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
+Sibp1_1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
 #! |[ -1/2*s12*D1*N8_-1/2*s14*D1*N8_-1/2*s12*D4*N9_+1/2*s14*D4*N9_
 #!    +(-D+5)*D2+(D-5)*D3+(-2*D+10)*D4+(D-5)*D5+(D-5)*D6+(2*D-10)*N8+(-2*D+10)*N9 ]|
-ViewList( DecomposeInMonomials( ibp1_1 ) );
+ViewList( DecomposeInMonomials( Sibp1_1 ) );
 #! [ [ |[ -1/2*s12-1/2*s14 ]|, |[ D1*N8_ ]| ],
 #!   [ |[ -1/2*s12+1/2*s14 ]|, |[ D4*N9_ ]| ],
 #!   [ |[ (-D+5) ]|, |[ D2 ]| ],
@@ -58,8 +58,8 @@ ViewList( DecomposeInMonomials( ibp1_1 ) );
 #!   [ |[ (D-5) ]|, |[ D6 ]| ],
 #!   [ |[ (2*D-10) ]|, |[ N8 ]| ],
 #!   [ |[ (-2*D+10) ]|, |[ N9 ]| ] ]
-ibp2 := ShiftOperator( S[2], LD );;
-ViewList( DecomposeInMonomials( ibp2 ) );
+Sibp2 := ShiftOperator( S[2], LD );;
+ViewList( DecomposeInMonomials( Sibp2 ) );
 #! [ [ |[ -1/2*s14*a8 ]|, |[ D1*N8_ ]| ],
 #!   [ |[ 1/2*s14*a9 ]|, |[ D4*N9_ ]| ],
 #!   [ |[ -a1-a2-a3-a7-a8+(D) ]|, |[ D1 ]| ],
@@ -69,10 +69,10 @@ ViewList( DecomposeInMonomials( ibp2 ) );
 #!   [ |[ -2*a1-2*a2-2*a3-2*a7-2*a8+(2*D) ]|, |[ N8 ]| ],
 #!   [ |[ 2*a4+2*a5+2*a6+2*a7+2*a9+(-2*D) ]|, |[ N9 ]| ],
 #!   [ |[ s14*a2-s14*a5-s14*a8+s14*a9 ]|, |[ 1 ]| ] ]
-ibp2_1 := IBPRelation( S[2], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
+Sibp2_1 := IBPRelation( S[2], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
 #! |[ -1/2*s14*D1*N8_+1/2*s14*D4*N9_+(D-5)*D1+(-D+5)*D2+(-D+5)*D4+(D-5)*D5
 #!    +(2*D-10)*N8+(-2*D+10)*N9 ]|
-ViewList( DecomposeInMonomials( ibp2_1 ) );
+ViewList( DecomposeInMonomials( Sibp2_1 ) );
 #! [ [ |[ -1/2*s14 ]|, |[ D1*N8_ ]| ],
 #!   [ |[ 1/2*s14 ]|, |[ D4*N9_ ]| ],
 #!   [ |[ (D-5) ]|, |[ D1 ]| ],
@@ -81,8 +81,8 @@ ViewList( DecomposeInMonomials( ibp2_1 ) );
 #!   [ |[ (D-5) ]|, |[ D5 ]| ],
 #!   [ |[ (2*D-10) ]|, |[ N8 ]| ],
 #!   [ |[ (-2*D+10) ]|, |[ N9 ]| ] ]
-ibp3 := ShiftOperator( S[3], LD );;
-ViewList( DecomposeInMonomials( ibp3 ) );
+Sibp3 := ShiftOperator( S[3], LD );;
+ViewList( DecomposeInMonomials( Sibp3 ) );
 #! [ [ |[ 1/2*s12*a9+1/2*s14*a9 ]|, |[ D4*D7*N9_ ]| ],
 #!   [ |[ -a7+1 ]|, |[ D1*D4 ]| ],
 #!   [ |[ a7-1 ]|, |[ D3*D4 ]| ],
@@ -95,10 +95,10 @@ ViewList( DecomposeInMonomials( ibp3 ) );
 #!   [ |[ 2*a4+2*a5+2*a6+2*a7+2*a9+(-2*D-2) ]|, |[ D7*N9 ]| ],
 #!   [ |[ -4*a7+4 ]|, |[ N8*N9 ]| ],
 #!   [ |[ -s12*a4-s14*a5+s12*a6+s14*a9 ]|, |[ D7 ]| ] ]
-ibp3_1 := IBPRelation( S[3], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
+Sibp3_1 := IBPRelation( S[3], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
 #! |[ 1/2*s12*D4*D7*N9_+1/2*s14*D4*D7*N9_
 #!    +(D-4)*D5*D7+(-D+4)*D6*D7+(-2*D+8)*D7*N9 ]|
-ViewList( DecomposeInMonomials( ibp3_1 ) );
+ViewList( DecomposeInMonomials( Sibp3_1 ) );
 #! [ [ |[ 1/2*s12+1/2*s14 ]|, |[ D4*D7*N9_ ]| ],
 #!   [ |[ (D-4) ]|, |[ D5*D7 ]| ],
 #!   [ |[ (-D+4) ]|, |[ D6*D7 ]| ],
