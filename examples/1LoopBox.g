@@ -1,4 +1,4 @@
-s#! @Chunk 1LoopBox
+#! @Chunk 1LoopBox
 
 LoadPackage( "LoopIntegrals" );
 
