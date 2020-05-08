@@ -939,7 +939,7 @@ InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
 end );
 
 ##
-InstallMethod( ShiftOperator,
+InstallMethod( IBPRelation,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
@@ -998,7 +998,7 @@ InstallMethod( IBPRelation,
   function( vec, LD, exponents )
     local ibp, R, S, T, phi, c;
     
-    ibp := ShiftOperator( vec, LD );
+    ibp := IBPRelation( vec, LD );
     
     R := HomalgRing( vec );
     

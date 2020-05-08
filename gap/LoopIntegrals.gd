@@ -269,7 +269,7 @@ DeclareOperation( "DivergenceOfCoefficientsVectorOfLoopDiagram",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
 #!
-DeclareOperation( "ShiftOperator",
+DeclareOperation( "IBPRelation",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
 #!

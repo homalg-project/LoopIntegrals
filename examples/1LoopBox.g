@@ -24,7 +24,7 @@ R := RingOfLoopDiagram( LD );
 #! Q(D)[s12,s14][D1,D2,D3,D4]
 id := HomalgIdentityMatrix( DimensionOfCoefficientsVector( LD ), R );
 #! <An unevaluated 4 x 4 identity matrix over an external ring>
-ibp := ShiftOperator( id[1], LD );
+ibp := IBPRelation( id[1], LD );
 #! |[ -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_-2*a1-a2-a3-a4+(D) ]|
 HomalgRing( ibp );
 #! Q(D)[s12,s14][a1,a2,a3,a4][D1,D2,D3,D4,D1_,D2_,D3_,D4_]/( D4*D4_-1, D3*D3_-1, \
@@ -58,7 +58,7 @@ Display( EntriesOfHomalgMatrixAsListList( Sred{[ 1 .. 3 ]} ) );
 #! [ [ D2-D4, D4, 0, D2 ],
 #!   [ D1-D3, -D1, -D1, 0 ],
 #!   [ s12*D4+2*D3*D4-2*D4^2, -s12*D4+D2*D4-D3*D4+2*D4^2, D1*D4+D2*D4, 2*D2*D4 ] ]
-Sibp1 := ShiftOperator( S[1], LD );
+Sibp1 := IBPRelation( S[1], LD );
 #! |[ -s14*a2+s14*a4-a1*D2-a2*D2-a3*D2-a4*D2
 #!    +a1*D4+a2*D4+a3*D4+a4*D4+(D)*D2+(-D)*D4 ]|
 ViewList( DecomposeInMonomials( Sibp1 ) );
@@ -67,7 +67,7 @@ ViewList( DecomposeInMonomials( Sibp1 ) );
 #!   [ |[ -s14*a2+s14*a4 ]|, |[ 1 ]| ] ]
 sibp1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1 ] );
 #! |[ (D-4)*D2+(-D+4)*D4 ]|
-Sibp2 := ShiftOperator( S[2], LD );
+Sibp2 := IBPRelation( S[2], LD );
 #! |[ -s12*a1+s12*a3-a1*D1-a2*D1-a3*D1-a4*D1
 #!    +a1*D3+a2*D3+a3*D3+a4*D3+(D)*D1+(-D)*D3 ]|
 ViewList( DecomposeInMonomials( Sibp2 ) );
@@ -76,7 +76,7 @@ ViewList( DecomposeInMonomials( Sibp2 ) );
 #!   [ |[ -s12*a1+s12*a3 ]|, |[ 1 ]| ] ]
 sibp2 := IBPRelation( S[2], LD, [ 1, 1, 1, 1 ] );
 #! |[ (D-4)*D1+(-D+4)*D3 ]|
-Sibp3 := ShiftOperator( S[3], LD );;
+Sibp3 := IBPRelation( S[3], LD );;
 ViewList( DecomposeInMonomials( Sibp3 ) );
 #! [ [ |[ -2*a1-2*a2-2*a3-2*a4+(2*D+2) ]|, |[ D3*D4 ]| ],
 #!   [ |[ 2*a1+2*a2+2*a3+2*a4+(-2*D-2) ]|, |[ D4^2 ]| ],
