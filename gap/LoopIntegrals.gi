@@ -943,7 +943,7 @@ InstallMethod( IBPRelation,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
-    local R, Ds, D_s, c, exponents, B, S, T, oper, div, jacLD;
+    local R, Ds, D_s, c, exponents, B, A, shifts, S, T, oper, div, jacLD;
     
     R := HomalgRing( vec );
     
@@ -961,13 +961,17 @@ InstallMethod( IBPRelation,
         
         B := BaseRing( R );
         
-        S := B * JoinStringsWithSeparator( exponents ) * Concatenation( Ds, D_s );
+        A := B * JoinStringsWithSeparator( exponents );
+
+        shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
+        
+        S := A * shifts;
         
         S := S / List( Ds, D -> Concatenation( D, "*", D, "_", "-1" ) / S );
         
         R!.ShiftAlgebra := S;
         
-        T := B * Concatenation( Ds, D_s );
+        T := B * shifts;
         
         T := T / List( Ds, D -> Concatenation( D, "*", D, "_", "-1" ) / T );
         
