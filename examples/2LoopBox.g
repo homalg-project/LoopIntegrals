@@ -45,10 +45,10 @@ ViewList( DecomposeInMonomials( Sibp1 ) );
 #!   [ |[ -2*a1-2*a2-2*a3-2*a7-2*a8+(2*D) ]|, |[ N8 ]| ],
 #!   [ |[ 2*a4+2*a5+2*a6+2*a7+2*a9+(-2*D) ]|, |[ N9 ]| ],
 #!   [ |[ s12*a1+s14*a2-s12*a3+s12*a4-s14*a5-s12*a6-s14*a8+s14*a9 ]|, |[ 1 ]| ] ]
-Sibp1_1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
+sibp1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
 #! |[ -1/2*s12*D1*N8_-1/2*s14*D1*N8_-1/2*s12*D4*N9_+1/2*s14*D4*N9_
 #!    +(-D+5)*D2+(D-5)*D3+(-2*D+10)*D4+(D-5)*D5+(D-5)*D6+(2*D-10)*N8+(-2*D+10)*N9 ]|
-ViewList( DecomposeInMonomials( Sibp1_1 ) );
+ViewList( DecomposeInMonomials( sibp1 ) );
 #! [ [ |[ -1/2*s12-1/2*s14 ]|, |[ D1*N8_ ]| ],
 #!   [ |[ -1/2*s12+1/2*s14 ]|, |[ D4*N9_ ]| ],
 #!   [ |[ (-D+5) ]|, |[ D2 ]| ],
@@ -69,10 +69,10 @@ ViewList( DecomposeInMonomials( Sibp2 ) );
 #!   [ |[ -2*a1-2*a2-2*a3-2*a7-2*a8+(2*D) ]|, |[ N8 ]| ],
 #!   [ |[ 2*a4+2*a5+2*a6+2*a7+2*a9+(-2*D) ]|, |[ N9 ]| ],
 #!   [ |[ s14*a2-s14*a5-s14*a8+s14*a9 ]|, |[ 1 ]| ] ]
-Sibp2_1 := IBPRelation( S[2], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
+sibp2 := IBPRelation( S[2], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
 #! |[ -1/2*s14*D1*N8_+1/2*s14*D4*N9_+(D-5)*D1+(-D+5)*D2+(-D+5)*D4+(D-5)*D5
 #!    +(2*D-10)*N8+(-2*D+10)*N9 ]|
-ViewList( DecomposeInMonomials( Sibp2_1 ) );
+ViewList( DecomposeInMonomials( sibp2 ) );
 #! [ [ |[ -1/2*s14 ]|, |[ D1*N8_ ]| ],
 #!   [ |[ 1/2*s14 ]|, |[ D4*N9_ ]| ],
 #!   [ |[ (D-5) ]|, |[ D1 ]| ],
@@ -95,10 +95,10 @@ ViewList( DecomposeInMonomials( Sibp3 ) );
 #!   [ |[ 2*a4+2*a5+2*a6+2*a7+2*a9+(-2*D-2) ]|, |[ D7*N9 ]| ],
 #!   [ |[ -4*a7+4 ]|, |[ N8*N9 ]| ],
 #!   [ |[ -s12*a4-s14*a5+s12*a6+s14*a9 ]|, |[ D7 ]| ] ]
-Sibp3_1 := IBPRelation( S[3], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
+sibp3 := IBPRelation( S[3], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );
 #! |[ 1/2*s12*D4*D7*N9_+1/2*s14*D4*D7*N9_
 #!    +(D-4)*D5*D7+(-D+4)*D6*D7+(-2*D+8)*D7*N9 ]|
-ViewList( DecomposeInMonomials( Sibp3_1 ) );
+ViewList( DecomposeInMonomials( sibp3 ) );
 #! [ [ |[ 1/2*s12+1/2*s14 ]|, |[ D4*D7*N9_ ]| ],
 #!   [ |[ (D-4) ]|, |[ D5*D7 ]| ],
 #!   [ |[ (-D+4) ]|, |[ D6*D7 ]| ],
