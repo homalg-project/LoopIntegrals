@@ -68,7 +68,7 @@ InstallMethod( LoopDiagram,
         [ IsList, IsList, IsInt ],
         
   function( L, K, dim )
-    local LD, LorentzVectors, C, momenta, R;
+    local LD, LorentzVectors, parameters, C, momenta, R;
     
     LD := rec( );
     
@@ -114,8 +114,20 @@ InstallMethod( LoopDiagram,
         BindGlobal( name, k );
     end );
     
-    if ValueOption( "C" ) = fail then
-        C := LOOP_INTEGRALS.ConstructorOfDefaultField( );
+    parameters := ValueOption( "parameters" );
+    
+    if not IsStringRep( parameters ) then
+        parameters := "";
+    fi;
+    
+    LD!.parameters := parameters;
+    
+    if IsIdenticalObj( ValueOption( "C" ), fail ) then
+        if parameters = "" then
+            C := LOOP_INTEGRALS.ConstructorOfDefaultField( );
+        else
+            C := LOOP_INTEGRALS.ConstructorOfDefaultField( parameters );
+        fi;
     fi;
     
     momenta := Concatenation( List( [ L, K ], M -> Concatenation( List( M, m -> m!.symbols ) ) ) );
@@ -132,6 +144,16 @@ InstallMethod( LoopDiagram,
     Perform( K, function( k ) SetLoopDiagram( k, LD ); end );
     
     LD!.DimensionSymbol := LOOP_INTEGRALS.DimensionSymbol;
+    
+    Perform( SplitString( parameters, "," ),
+      function( m )
+        local name;
+        if IsBoundGlobal( m ) then
+            MakeReadWriteGlobal( m );
+            UnbindGlobal( m );
+        fi;
+        BindGlobal( m, m / R );
+    end );
     
     return LD;
     
@@ -662,7 +684,7 @@ InstallMethod( RingOfLoopDiagram,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
-    local rational, K, D, Z, R, indets, invariants, propagators, numerators, S;
+    local rational, K, D, Z, R, indets, parameters, invariants, propagators, numerators, S;
     
     ## do not treat the extra Lorentz invariants as rational parameters
     ## as this slows down the syzygies computations in Singular significantly
@@ -693,9 +715,17 @@ InstallMethod( RingOfLoopDiagram,
     
     indets := Concatenation( propagators, numerators );
     
+    parameters := SplitString( LD!.parameters, "," );
+    
+    if parameters = [ ] then
+        parameters := [ LD!.DimensionSymbol ];
+    else
+        Add( parameters, LD!.DimensionSymbol );
+    fi;
+    
     if rational then
         
-        invariants := Concatenation( [ LD!.DimensionSymbol ], invariants );
+        invariants := Concatenation( parameters, invariants );
         
         invariants := JoinStringsWithSeparator( invariants );
         
@@ -707,7 +737,9 @@ InstallMethod( RingOfLoopDiagram,
         
     else
         
-        S := LOOP_INTEGRALS.ConstructorOfDefaultField( LD!.DimensionSymbol, R ) * invariants;
+        parameters := JoinStringsWithSeparator( parameters );
+        
+        S := LOOP_INTEGRALS.ConstructorOfDefaultField( parameters, R ) * invariants;
         
         S := S * indets;
         
