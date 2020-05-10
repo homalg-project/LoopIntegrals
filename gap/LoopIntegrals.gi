@@ -717,15 +717,9 @@ InstallMethod( RingOfLoopDiagram,
     
     parameters := SplitString( LD!.parameters, "," );
     
-    if parameters = [ ] then
-        parameters := [ LD!.DimensionSymbol ];
-    else
-        Add( parameters, LD!.DimensionSymbol );
-    fi;
+    invariants := Concatenation( parameters, [ LD!.DimensionSymbol ], invariants );
     
     if rational then
-        
-        invariants := Concatenation( parameters, invariants );
         
         invariants := JoinStringsWithSeparator( invariants );
         
@@ -737,16 +731,14 @@ InstallMethod( RingOfLoopDiagram,
         
     else
         
-        parameters := JoinStringsWithSeparator( parameters );
-        
-        S := LOOP_INTEGRALS.ConstructorOfDefaultField( parameters, R ) * invariants;
+        S := LOOP_INTEGRALS.ConstructorOfDefaultField( R ) * invariants;
         
         S := S * indets;
         
         LD!.RingOfLoopDiagram := S;
         
     fi;
-
+    
     return S;
     
 end );

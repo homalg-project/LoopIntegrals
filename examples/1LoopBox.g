@@ -21,20 +21,20 @@ SetPropagators( LD, -[ l1^2, (l1-k1)^2, (l1-k1-k2)^2, (l1+k4)^2 ] );
 SetNumerators( LD, -[ ] );
 SetExtraLorentzInvariants( LD, [ s12, s14 ] );
 R := RingOfLoopDiagram( LD );
-#! Q(D)[s12,s14][D1,D2,D3,D4]
+#! Q[D,s12,s14][D1,D2,D3,D4]
 id := HomalgIdentityMatrix( DimensionOfCoefficientsVector( LD ), R );
 #! <An unevaluated 4 x 4 identity matrix over an external ring>
-ibp := IBPRelation( id[1], LD );
-#! |[ -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_-2*a1-a2-a3-a4+(D) ]|
-HomalgRing( ibp );
-#! Q(D)[s12,s14][a1,a2,a3,a4][D1,D1_,D2,D2_,D3,D3_,D4,D4_]/( D4*D4_-1, D3*D3_-1, \
-#! D2*D2_-1, D1*D1_-1 )
-ViewList( DecomposeInMonomials( ibp ) );
+ibp1 := IBPRelation( id[1], LD );
+#! |[ -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_+D-2*a1-a2-a3-a4 ]|
+ViewList( DecomposeInMonomials( ibp1 ) );
 #! [ [ |[ -a2 ]|, |[ D1*D2_ ]| ],
 #!   [ |[ -a3 ]|, |[ D1*D3_ ]| ],
 #!   [ |[ -a4 ]|, |[ D1*D4_ ]| ],
 #!   [ |[ -s12*a3 ]|, |[ D3_ ]| ],
-#!   [ |[ -2*a1-a2-a3-a4+(D) ]|, |[ 1 ]| ] ]
+#!   [ |[ D-2*a1-a2-a3-a4 ]|, |[ 1 ]| ] ]
+HomalgRing( ibp1 );
+#! Q[D,s12,s14][a1,a2,a3,a4][D1,D1_,D2,D2_,D3,D3_,D4,D4_]/( D4*D4_-1, D3*D3_-1,\
+#!   D2*D2_-1, D1*D1_-1 )
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <A 4 x 4 matrix over an external ring>,
 #!   <A 4 x 4 matrix over an external ring> ]
@@ -59,33 +59,40 @@ Display( EntriesOfHomalgMatrixAsListList( Sred{[ 1 .. 3 ]} ) );
 #!   [ D1-D3, -D1, -D1, 0 ],
 #!   [ s12*D4+2*D3*D4-2*D4^2, -s12*D4+D2*D4-D3*D4+2*D4^2, D1*D4+D2*D4, 2*D2*D4 ] ]
 Sibp1 := IBPRelation( S[1], LD );
-#! |[ -s14*a2+s14*a4-a1*D2-a2*D2-a3*D2-a4*D2
-#!    +a1*D4+a2*D4+a3*D4+a4*D4+(D)*D2+(-D)*D4 ]|
+#! |[ -s14*a2+s14*a4+D*D2-a1*D2-a2*D2-a3*D2-a4*D2-D*D4+a1*D4+a2*D4+a3*D4+a4*D4 ]|
 ViewList( DecomposeInMonomials( Sibp1 ) );
-#! [ [ |[ -a1-a2-a3-a4+(D) ]|, |[ D2 ]| ],
-#!   [ |[ a1+a2+a3+a4+(-D) ]|, |[ D4 ]| ],
+#! [ [ |[ D-a1-a2-a3-a4 ]|, |[ D2 ]| ],
+#!   [ |[ -D+a1+a2+a3+a4 ]|, |[ D4 ]| ],
 #!   [ |[ -s14*a2+s14*a4 ]|, |[ 1 ]| ] ]
 sibp1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1 ] );
-#! |[ (D-4)*D2+(-D+4)*D4 ]|
+#! |[ D*D2-D*D4-4*D2+4*D4 ]|
+ViewList( DecomposeInMonomials( sibp1 ) );
+#! [ [ |[ D-4 ]|, |[ D2 ]| ],
+#!   [ |[ -D+4 ]|, |[ D4 ]| ] ]
 Sibp2 := IBPRelation( S[2], LD );
-#! |[ -s12*a1+s12*a3-a1*D1-a2*D1-a3*D1-a4*D1
-#!    +a1*D3+a2*D3+a3*D3+a4*D3+(D)*D1+(-D)*D3 ]|
+#! |[ -s12*a1+s12*a3+D*D1-a1*D1-a2*D1-a3*D1-a4*D1-D*D3+a1*D3+a2*D3+a3*D3+a4*D3 ]|
 ViewList( DecomposeInMonomials( Sibp2 ) );
-#! [ [ |[ -a1-a2-a3-a4+(D) ]|, |[ D1 ]| ],
-#!   [ |[ a1+a2+a3+a4+(-D) ]|, |[ D3 ]| ],
+#! [ [ |[ D-a1-a2-a3-a4 ]|, |[ D1 ]| ],
+#!   [ |[ -D+a1+a2+a3+a4 ]|, |[ D3 ]| ],
 #!   [ |[ -s12*a1+s12*a3 ]|, |[ 1 ]| ] ]
 sibp2 := IBPRelation( S[2], LD, [ 1, 1, 1, 1 ] );
-#! |[ (D-4)*D1+(-D+4)*D3 ]|
+#! |[ D*D1-D*D3-4*D1+4*D3 ]|
+ViewList( DecomposeInMonomials( sibp2 ) );
+#! [ [ |[ D-4 ]|, |[ D1 ]| ],
+#!   [ |[ -D+4 ]|, |[ D3 ]| ] ]
 Sibp3 := IBPRelation( S[3], LD );;
 ViewList( DecomposeInMonomials( Sibp3 ) );
-#! [ [ |[ -2*a1-2*a2-2*a3-2*a4+(2*D+2) ]|, |[ D3*D4 ]| ],
-#!   [ |[ 2*a1+2*a2+2*a3+2*a4+(-2*D-2) ]|, |[ D4^2 ]| ],
+#! [ [ |[ 2*D-2*a1-2*a2-2*a3-2*a4+2 ]|, |[ D3*D4 ]| ],
+#!   [ |[ -2*D+2*a1+2*a2+2*a3+2*a4-2 ]|, |[ D4^2 ]| ],
 #!   [ |[ -s14*a4+s14 ]|, |[ D1 ]| ],
 #!   [ |[ -s12*a4+s12 ]|, |[ D2 ]| ],
 #!   [ |[ -s14*a4+s14 ]|, |[ D3 ]| ],
-#!   [ |[ -2*s12*a2-2*s14*a2-2*s12*a3-s12*a4+2*s14*a4+(D+1)*s12-2*s14 ]|,
-#!   |[ D4 ]| ],
+#!   [ |[ D*s12-2*s12*a2-2*s14*a2-2*s12*a3-s12*a4+2*s14*a4+s12-2*s14 ]|, |[ D4 ]| ],
 #!   [ |[ -s12*s14*a4+s12*s14 ]|, |[ 1 ]| ] ]
 sibp3 := IBPRelation( S[3], LD, [ 1, 1, 1, 1 ] );
-#! |[ (D-4)*s12*D4-2*s14*D4+(2*D-6)*D3*D4+(-2*D+6)*D4^2 ]|
+#! |[ D*s12*D4+2*D*D3*D4-2*D*D4^2-4*s12*D4-2*s14*D4-6*D3*D4+6*D4^2 ]|
+ViewList( DecomposeInMonomials( sibp3 ) );
+#! [ [ |[ 2*D-6 ]|, |[ D3*D4 ]| ],
+#!   [ |[ -2*D+6 ]|, |[ D4^2 ]| ],
+#!   [ |[ D*s12-4*s12-2*s14 ]|, |[ D4 ]| ] ]
 #! @EndExample
