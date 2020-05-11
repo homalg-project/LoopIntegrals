@@ -9,15 +9,19 @@
   [2X-[102X, for IsLorentzVector, IsLorentzVector 1.7-3 
   [2X[][102X, for IsLorentzVector, IsInt 1.7-5 
   [2XAdditiveInverse[102X, for IsLorentzVector 1.7-4 
+  [2XBasisOfIBPRelations[102X, for IsLoopDiagram 1.7-28 
+  [2XBasisOfSpecialIBPRelations[102X, for IsLoopDiagram 1.7-30 
   [2XComponents[102X, for IsLorentzVector 1.5-4 
   [2XDimension[102X, for IsLorentzVector 1.5-1 
   [2XDimensionOfCoefficientsVector[102X, for IsLoopDiagram 1.5-7 
   [2XDivergenceOfCoefficientsVectorOfLoopDiagram[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-23 
+  [2XDoubleShiftAlgebra[102X, for IsHomalgRing 1.7-26 
   [2XExpressInIndependentLorentzInvariants[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-11 
   [2XExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-15 
   [2XExternalMomenta[102X, for IsLoopDiagram 1.5-6 
   [2XExtraLorentzInvariants[102X, for IsLoopDiagram 1.5-14 
-  [2XIBPRelation[102X, for IsHomalgMatrix, IsLoopDiagram, IsList 1.7-25 
+  [2XIBPRelation[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-24 
+      for IsHomalgMatrix, IsLoopDiagram, IsList 1.7-25 
   [2XIndependentLorentzInvariants[102X, for IsLoopDiagram 1.5-11 
   [2XIsExternalMomentum[102X, for IsLoopDiagram 1.4-2 
   [2XIsLoopMomentum[102X, for IsLoopDiagram 1.4-1 
@@ -35,7 +39,9 @@
   [2XLoopMomenta[102X, for IsLoopDiagram 1.5-5 
   [2XLorentzVector[102X, for IsHomalgMatrix 1.6-2 
       for IsString, IsInt 1.6-1 
+  [2XMatrixOfIBPRelations[102X, for IsLoopDiagram 1.7-27 
   [2XMatrixOfMomenta[102X, for IsLoopDiagram 1.5-17 
+  [2XMatrixOfSpecialIBPRelations[102X, for IsLoopDiagram 1.7-29 
   [2XNumerators[102X, for IsLoopDiagram 1.5-13 
   [2XOriginalJacobianOfNumerators[102X, for IsLoopDiagram 1.5-16 
   [2XOriginalJacobianOfPropagators[102X, for IsLoopDiagram 1.5-15 
@@ -52,7 +58,6 @@
   [2XRingOfLoopDiagram[102X, for IsLoopDiagram 1.7-13 
   [2XRingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsLoopDiagram 1.7-12 
   [2XSetAbbreviation[102X, for IsHomalgRingElement, IsString 1.7-1 
-  [2XShiftOperator[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-24 
   [2XUnderlyingMatrix[102X, for IsLorentzVector 1.5-2 
   [2XUnderlyingRing[102X, for IsLoopDiagram 1.5-8 
   

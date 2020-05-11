@@ -49,7 +49,81 @@
   [4X[32X[104X
   
   
-  [1X1.2-2 [33X[0;0YKite[133X[101X
+  [1X1.2-2 [33X[0;0YSimple example[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLD := LoopDiagram( "k", "": parameters := "m" );[127X[104X
+    [4X[28X<A loop diagram with loop momenta [ k ] & external momenta [ ]>[128X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfMomenta( LD, [ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD, [ k^2 ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetPropagators( LD, [ k^2 - m^2 ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetNumerators( LD, [ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetExtraLorentzInvariants( LD, [ ] );[127X[104X
+    [4X[25Xgap>[125X [27XR := RingOfLoopDiagram( LD );[127X[104X
+    [4X[28XQ[m,D][D1][128X[104X
+    [4X[25Xgap>[125X [27Xibps := MatrixOfIBPRelations( LD );[127X[104X
+    [4X[28X<A 1 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xibp := ibps[1,1];[127X[104X
+    [4X[28X|[ -2*m^2*a1*D1_+D-2*a1 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp ) );[127X[104X
+    [4X[28X[ [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],[128X[104X
+    [4X[28X  [ |[ D-2*a1 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XY := HomalgRing( ibp );[127X[104X
+    [4X[28XQ[m,D][a1]<D1,D1_>/( D1*D1_-1 )[128X[104X
+    [4X[25Xgap>[125X [27XE12 := PairOfMatricesOfLoopDiagramInPropagators( LD );[127X[104X
+    [4X[28X[ <A 1 x 1 matrix over an external ring>,[128X[104X
+    [4X[28X  <A 1 x 1 matrix over an external ring> ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( E12[1] );[127X[104X
+    [4X[28X2*m^2+2*D1[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( E12[2] );[127X[104X
+    [4X[28XD1[128X[104X
+    [4X[25Xgap>[125X [27XS := SyzygiesOfRows( E12 );[127X[104X
+    [4X[28X<A non-zero 1 x 1 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( S );[127X[104X
+    [4X[28XD1[128X[104X
+    [4X[25Xgap>[125X [27XSibp := IBPRelation( S[1], LD );[127X[104X
+    [4X[28X|[ -2*m^2*a1+2*m^2+D*D1-2*a1*D1+2*D1 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp ) );[127X[104X
+    [4X[28X[ [ |[ D-2*a1+2 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*m^2*a1+2*m^2 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XSibps := MatrixOfSpecialIBPRelations( LD );[127X[104X
+    [4X[28X<A 1 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xx := RightDivide( Sibps, ibps );[127X[104X
+    [4X[28X<An unevaluated 1 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xx * ibps = Sibps;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( x );[127X[104X
+    [4X[28XD1[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xmodulo [ D1*D1_-1 ][128X[104X
+    [4X[25Xgap>[125X [27Xy := RightDivide( ibps, Sibps );[127X[104X
+    [4X[28X<An unevaluated 1 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xy * Sibps = ibps;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( y );[127X[104X
+    [4X[28XD1_[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xmodulo [ D1*D1_-1 ][128X[104X
+    [4X[25Xgap>[125X [27Xbas := BasisOfIBPRelations( LD );[127X[104X
+    [4X[28X<A non-zero 1 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27XSbas := BasisOfSpecialIBPRelations( LD );[127X[104X
+    [4X[28X<A non-zero 1 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27XSbas = bas;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xr := "2 * m^2 * ( a1 + 4 - 2 ) * D1_^(4-1)" / Y;[127X[104X
+    [4X[28X|[ 2*m^2*a1*D1_^3+4*m^2*D1_^3 ]|[128X[104X
+    [4X[25Xgap>[125X [27Xd := DecideZero( r, bas );[127X[104X
+    [4X[28X|[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XDecideZero( r - d, bas );[127X[104X
+    [4X[28X|[ 0 ]|[128X[104X
+    [4X[25Xgap>[125X [27Xs := "D1_^(4 - 2) * ( D - 2 * a1 )" / Y;[127X[104X
+    [4X[28X|[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XDecideZero( r - s, bas );[127X[104X
+    [4X[28X|[ 0 ]|[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.2-3 [33X[0;0YKite[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "p", 4 );[127X[104X
@@ -120,56 +194,75 @@
     [4X[28X[ s+2*D2+D3+D4-2*D5, s+D1+D2, -D1+D3-D5, 0, 2*D4, 0 ][128X[104X
     [4X[25Xgap>[125X [27XDisplay( EntriesOfHomalgMatrix( S[4] ) );[127X[104X
     [4X[28X[ 0, 0, 0, 0, D4*D5, 0 ][128X[104X
-    [4X[25Xgap>[125X [27Xibp1 := ShiftOperator( S[1], LD );[127X[104X
-    [4X[28X|[ -s*a1+s*a2-s*a3+s*a4-a1*D1-a2*D1-a5*D1+a1*D2+a2*D2+a5*D2[128X[104X
-    [4X[28X   -a3*D3-a4*D3-a5*D3+a3*D4+a4*D4+a5*D4+(D)*D1+(-D)*D2+(D)*D3+(-D)*D4 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp1 ) );[127X[104X
-    [4X[28X[ [ |[ -a1-a2-a5+(D) ]|, |[ D1 ]| ],[128X[104X
-    [4X[28X  [ |[ a1+a2+a5+(-D) ]|, |[ D2 ]| ],[128X[104X
-    [4X[28X  [ |[ -a3-a4-a5+(D) ]|, |[ D3 ]| ],[128X[104X
-    [4X[28X  [ |[ a3+a4+a5+(-D) ]|, |[ D4 ]| ],[128X[104X
+    [4X[25Xgap>[125X [27XSibp1 := IBPRelation( S[1], LD );[127X[104X
+    [4X[28X|[ -s*a1+s*a2-s*a3+s*a4+D*D1-a1*D1-a2*D1-a5*D1-D*D2+a1*D2+a2*D2+a5*D2\[128X[104X
+    [4X[28X   +D*D3-a3*D3-a4*D3-a5*D3-D*D4+a3*D4+a4*D4+a5*D4 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp1 ) );[127X[104X
+    [4X[28X[ [ |[ D-a1-a2-a5 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+a1+a2+a5 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ D-a3-a4-a5 ]|, |[ D3 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+a3+a4+a5 ]|, |[ D4 ]| ],[128X[104X
     [4X[28X  [ |[ -s*a1+s*a2-s*a3+s*a4 ]|, |[ 1 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XIBPRelation( S[1], LD, [ 1, 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ (D-3)*D1+(-D+3)*D2+(D-3)*D3+(-D+3)*D4 ]|[128X[104X
-    [4X[25Xgap>[125X [27Xibp2 := ShiftOperator( S[2], LD );[127X[104X
-    [4X[28X|[ -2*s*a2-2*s*a4-2*s*a5-2*a2*D1-2*a4*D1-2*a5*D1[128X[104X
-    [4X[28X   -4*a1*D2-2*a2*D2-2*a3*D2-4*a5*D2-2*a3*D4-2*a4*D4-2*a5*D4[128X[104X
-    [4X[28X   +2*a3*D5+2*a4*D5+2*a5*D5+(D+2)*s+(D+2)*D1+(3*D+2)*D2+(2*D)*D4+(-2*D)*D5 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp2 ) );[127X[104X
-    [4X[28X[ [ |[ -2*a2-2*a4-2*a5+(D+2) ]|, |[ D1 ]| ],[128X[104X
-    [4X[28X  [ |[ -4*a1-2*a2-2*a3-4*a5+(3*D+2) ]|, |[ D2 ]| ],[128X[104X
-    [4X[28X  [ |[ -2*a3-2*a4-2*a5+(2*D) ]|, |[ D4 ]| ],[128X[104X
-    [4X[28X  [ |[ 2*a3+2*a4+2*a5+(-2*D) ]|, |[ D5 ]| ],[128X[104X
-    [4X[28X  [ |[ -2*s*a2-2*s*a4-2*s*a5+(D+2)*s ]|, |[ 1 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XIBPRelation( S[2], LD, [ 1, 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ (D-4)*s+(D-4)*D1+(3*D-10)*D2+(2*D-6)*D4+(-2*D+6)*D5 ]|[128X[104X
-    [4X[25Xgap>[125X [27Xibp3 := ShiftOperator( S[3], LD );[127X[104X
-    [4X[28X|[ -2*s*a2-2*s*a4-2*s*a5-2*a1*D2-2*a2*D2-2*a5*D2-2*a2*D3-2*a4*D3-2*a5*D3[128X[104X
-    [4X[28X   -2*a1*D4-4*a3*D4-2*a4*D4-4*a5*D4[128X[104X
-    [4X[28X   +2*a1*D5+2*a2*D5+2*a5*D5+(D+2)*s+(2*D)*D2+(D+2)*D3+(3*D+2)*D4+(-2*D)*D5 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp3 ) );[127X[104X
-    [4X[28X[ [ |[ -2*a1-2*a2-2*a5+(2*D) ]|, |[ D2 ]| ],[128X[104X
-    [4X[28X  [ |[ -2*a2-2*a4-2*a5+(D+2) ]|, |[ D3 ]| ],[128X[104X
-    [4X[28X  [ |[ -2*a1-4*a3-2*a4-4*a5+(3*D+2) ]|, |[ D4 ]| ],[128X[104X
-    [4X[28X  [ |[ 2*a1+2*a2+2*a5+(-2*D) ]|, |[ D5 ]| ],[128X[104X
-    [4X[28X  [ |[ -2*s*a2-2*s*a4-2*s*a5+(D+2)*s ]|, |[ 1 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XIBPRelation( S[3], LD, [ 1, 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ (D-4)*s+(2*D-6)*D2+(D-4)*D3+(3*D-10)*D4+(-2*D+6)*D5 ]|[128X[104X
-    [4X[25Xgap>[125X [27Xibp4 := ShiftOperator( S[4], LD );[127X[104X
-    [4X[28X|[ a5*D1*D4-a5*D3*D4-s*a4*D5-a4*D3*D5-2*a3*D4*D5-a4*D4*D5-a5*D4*D5[128X[104X
-    [4X[28X   -D1*D4+D3*D4+s*D5+D3*D5+(D+2)*D4*D5 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp4 ) );[127X[104X
+    [4X[25Xgap>[125X [27Xsibp1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1, 1 ] );[127X[104X
+    [4X[28X|[ D*D1-D*D2+D*D3-D*D4-3*D1+3*D2-3*D3+3*D4 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp1 ) );[127X[104X
+    [4X[28X[ [ |[ D-3 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+3 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ D-3 ]|, |[ D3 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+3 ]|, |[ D4 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XSibp2 := IBPRelation( S[2], LD );[127X[104X
+    [4X[28X|[ D*s-2*s*a2-2*s*a4-2*s*a5+D*D1-2*a2*D1-2*a4*D1-2*a5*D1\[128X[104X
+    [4X[28X   +3*D*D2-4*a1*D2-2*a2*D2-2*a3*D2-4*a5*D2+2*D*D4-2*a3*D4-2*a4*D4-2*a5*D4\[128X[104X
+    [4X[28X   -2*D*D5+2*a3*D5+2*a4*D5+2*a5*D5+2*s+2*D1+2*D2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp2 ) );[127X[104X
+    [4X[28X[ [ |[ D-2*a2-2*a4-2*a5+2 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ 3*D-4*a1-2*a2-2*a3-4*a5+2 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ 2*D-2*a3-2*a4-2*a5 ]|, |[ D4 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+2*a3+2*a4+2*a5 ]|, |[ D5 ]| ],[128X[104X
+    [4X[28X  [ |[ D*s-2*s*a2-2*s*a4-2*s*a5+2*s ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xsibp2 := IBPRelation( S[2], LD, [ 1, 1, 1, 1, 1 ] );[127X[104X
+    [4X[28X|[ D*s+D*D1+3*D*D2+2*D*D4-2*D*D5-4*s-4*D1-10*D2-6*D4+6*D5 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp2 ) );[127X[104X
+    [4X[28X[ [ |[ D-4 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ 3*D-10 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ 2*D-6 ]|, |[ D4 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+6 ]|, |[ D5 ]| ],[128X[104X
+    [4X[28X  [ |[ D*s-4*s ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XSibp3 := IBPRelation( S[3], LD );[127X[104X
+    [4X[28X|[ D*s-2*s*a2-2*s*a4-2*s*a5+2*D*D2-2*a1*D2-2*a2*D2-2*a5*D2\[128X[104X
+    [4X[28X   +D*D3-2*a2*D3-2*a4*D3-2*a5*D3+3*D*D4-2*a1*D4-4*a3*D4-2*a4*D4-4*a5*D4\[128X[104X
+    [4X[28X   -2*D*D5+2*a1*D5+2*a2*D5+2*a5*D5+2*s+2*D3+2*D4 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp3 ) );[127X[104X
+    [4X[28X[ [ |[ 2*D-2*a1-2*a2-2*a5 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ D-2*a2-2*a4-2*a5+2 ]|, |[ D3 ]| ],[128X[104X
+    [4X[28X  [ |[ 3*D-2*a1-4*a3-2*a4-4*a5+2 ]|, |[ D4 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+2*a1+2*a2+2*a5 ]|, |[ D5 ]| ],[128X[104X
+    [4X[28X  [ |[ D*s-2*s*a2-2*s*a4-2*s*a5+2*s ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xsibp3 := IBPRelation( S[3], LD, [ 1, 1, 1, 1, 1 ] );[127X[104X
+    [4X[28X|[ D*s+2*D*D2+D*D3+3*D*D4-2*D*D5-4*s-6*D2-4*D3-10*D4+6*D5 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp3 ) );[127X[104X
+    [4X[28X[ [ |[ 2*D-6 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ D-4 ]|, |[ D3 ]| ],[128X[104X
+    [4X[28X  [ |[ 3*D-10 ]|, |[ D4 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+6 ]|, |[ D5 ]| ],[128X[104X
+    [4X[28X  [ |[ D*s-4*s ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XSibp4 := IBPRelation( S[4], LD );[127X[104X
+    [4X[28X|[ a5*D1*D4-a5*D3*D4-s*a4*D5-a4*D3*D5+D*D4*D5-2*a3*D4*D5-a4*D4*D5-a5*D4*D5\[128X[104X
+    [4X[28X   -D1*D4+D3*D4+s*D5+D3*D5+2*D4*D5 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp4 ) );[127X[104X
     [4X[28X[ [ |[ a5-1 ]|, |[ D1*D4 ]| ],[128X[104X
     [4X[28X  [ |[ -a5+1 ]|, |[ D3*D4 ]| ],[128X[104X
     [4X[28X  [ |[ -a4+1 ]|, |[ D3*D5 ]| ],[128X[104X
-    [4X[28X  [ |[ -2*a3-a4-a5+(D+2) ]|, |[ D4*D5 ]| ],[128X[104X
+    [4X[28X  [ |[ D-2*a3-a4-a5+2 ]|, |[ D4*D5 ]| ],[128X[104X
     [4X[28X  [ |[ -s*a4+s ]|, |[ D5 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XIBPRelation( S[4], LD, [ 1, 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ (D-2)*D4*D5 ]|[128X[104X
+    [4X[25Xgap>[125X [27Xsibp4 := IBPRelation( S[4], LD, [ 1, 1, 1, 1, 1 ] );[127X[104X
+    [4X[28X|[ D*D4*D5-2*D4*D5 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp4 ) );[127X[104X
+    [4X[28X[ [ |[ D-2 ]|, |[ D4*D5 ]| ] ][128X[104X
   [4X[32X[104X
   
   
-  [1X1.2-3 [33X[0;0Y1 Loop box[133X[101X
+  [1X1.2-4 [33X[0;0Y1 Loop box[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1", "k1..2,k4" );[127X[104X
@@ -190,20 +283,20 @@
     [4X[25Xgap>[125X [27XSetNumerators( LD, -[ ] );[127X[104X
     [4X[25Xgap>[125X [27XSetExtraLorentzInvariants( LD, [ s12, s14 ] );[127X[104X
     [4X[25Xgap>[125X [27XR := RingOfLoopDiagram( LD );[127X[104X
-    [4X[28XQ(D)[s12,s14][D1,D2,D3,D4][128X[104X
-    [4X[25Xgap>[125X [27Xid := HomalgIdentityMatrix( DimensionOfCoefficientsVector( LD ), R );[127X[104X
-    [4X[28X<An unevaluated 4 x 4 identity matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27Xibp := ShiftOperator( id[1], LD );[127X[104X
-    [4X[28X|[ -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_-2*a1-a2-a3-a4+(D) ]|[128X[104X
-    [4X[25Xgap>[125X [27XHomalgRing( ibp );[127X[104X
-    [4X[28XQ(D)[s12,s14][a1,a2,a3,a4][D1,D2,D3,D4,D1_,D2_,D3_,D4_]/( D4*D4_-1, D3*D3_-1, \[128X[104X
-    [4X[28XD2*D2_-1, D1*D1_-1 )[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp ) );[127X[104X
+    [4X[28XQ[D,s12,s14][D1,D2,D3,D4][128X[104X
+    [4X[25Xgap>[125X [27Xibps := MatrixOfIBPRelations( LD );[127X[104X
+    [4X[28X<A 4 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xibp1 := ibps[1,1];[127X[104X
+    [4X[28X|[ -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_+D-2*a1-a2-a3-a4 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp1 ) );[127X[104X
     [4X[28X[ [ |[ -a2 ]|, |[ D1*D2_ ]| ],[128X[104X
     [4X[28X  [ |[ -a3 ]|, |[ D1*D3_ ]| ],[128X[104X
     [4X[28X  [ |[ -a4 ]|, |[ D1*D4_ ]| ],[128X[104X
     [4X[28X  [ |[ -s12*a3 ]|, |[ D3_ ]| ],[128X[104X
-    [4X[28X  [ |[ -2*a1-a2-a3-a4+(D) ]|, |[ 1 ]| ] ][128X[104X
+    [4X[28X  [ |[ D-2*a1-a2-a3-a4 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XY := HomalgRing( ibp1 );[127X[104X
+    [4X[28XQ[D,s12,s14][a1,a2,a3,a4]<D1,D1_,D2,D2_,D3,D3_,D4,D4_>/( D1*D1_-1, D2*D2_-1,\[128X[104X
+    [4X[28X  D3*D3_-1, D4*D4_-1 )[128X[104X
     [4X[25Xgap>[125X [27XE12 := PairOfMatricesOfLoopDiagramInPropagators( LD );[127X[104X
     [4X[28X[ <A 4 x 4 matrix over an external ring>,[128X[104X
     [4X[28X  <A 4 x 4 matrix over an external ring> ][128X[104X
@@ -227,40 +320,53 @@
     [4X[28X[ [ D2-D4, D4, 0, D2 ],[128X[104X
     [4X[28X  [ D1-D3, -D1, -D1, 0 ],[128X[104X
     [4X[28X  [ s12*D4+2*D3*D4-2*D4^2, -s12*D4+D2*D4-D3*D4+2*D4^2, D1*D4+D2*D4, 2*D2*D4 ] ][128X[104X
-    [4X[25Xgap>[125X [27XSibp1 := ShiftOperator( S[1], LD );[127X[104X
-    [4X[28X|[ -s14*a2+s14*a4-a1*D2-a2*D2-a3*D2-a4*D2[128X[104X
-    [4X[28X   +a1*D4+a2*D4+a3*D4+a4*D4+(D)*D2+(-D)*D4 ]|[128X[104X
+    [4X[25Xgap>[125X [27XSibp1 := IBPRelation( S[1], LD );[127X[104X
+    [4X[28X|[ -s14*a2+s14*a4+D*D2-a1*D2-a2*D2-a3*D2-a4*D2-D*D4+a1*D4+a2*D4+a3*D4+a4*D4 ]|[128X[104X
     [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp1 ) );[127X[104X
-    [4X[28X[ [ |[ -a1-a2-a3-a4+(D) ]|, |[ D2 ]| ],[128X[104X
-    [4X[28X  [ |[ a1+a2+a3+a4+(-D) ]|, |[ D4 ]| ],[128X[104X
+    [4X[28X[ [ |[ D-a1-a2-a3-a4 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+a1+a2+a3+a4 ]|, |[ D4 ]| ],[128X[104X
     [4X[28X  [ |[ -s14*a2+s14*a4 ]|, |[ 1 ]| ] ][128X[104X
     [4X[25Xgap>[125X [27Xsibp1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ (D-4)*D2+(-D+4)*D4 ]|[128X[104X
-    [4X[25Xgap>[125X [27XSibp2 := ShiftOperator( S[2], LD );[127X[104X
-    [4X[28X|[ -s12*a1+s12*a3-a1*D1-a2*D1-a3*D1-a4*D1[128X[104X
-    [4X[28X   +a1*D3+a2*D3+a3*D3+a4*D3+(D)*D1+(-D)*D3 ]|[128X[104X
+    [4X[28X|[ D*D2-D*D4-4*D2+4*D4 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp1 ) );[127X[104X
+    [4X[28X[ [ |[ D-4 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+4 ]|, |[ D4 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XSibp2 := IBPRelation( S[2], LD );[127X[104X
+    [4X[28X|[ -s12*a1+s12*a3+D*D1-a1*D1-a2*D1-a3*D1-a4*D1-D*D3+a1*D3+a2*D3+a3*D3+a4*D3 ]|[128X[104X
     [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp2 ) );[127X[104X
-    [4X[28X[ [ |[ -a1-a2-a3-a4+(D) ]|, |[ D1 ]| ],[128X[104X
-    [4X[28X  [ |[ a1+a2+a3+a4+(-D) ]|, |[ D3 ]| ],[128X[104X
+    [4X[28X[ [ |[ D-a1-a2-a3-a4 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+a1+a2+a3+a4 ]|, |[ D3 ]| ],[128X[104X
     [4X[28X  [ |[ -s12*a1+s12*a3 ]|, |[ 1 ]| ] ][128X[104X
     [4X[25Xgap>[125X [27Xsibp2 := IBPRelation( S[2], LD, [ 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ (D-4)*D1+(-D+4)*D3 ]|[128X[104X
-    [4X[25Xgap>[125X [27XSibp3 := ShiftOperator( S[3], LD );;[127X[104X
+    [4X[28X|[ D*D1-D*D3-4*D1+4*D3 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp2 ) );[127X[104X
+    [4X[28X[ [ |[ D-4 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+4 ]|, |[ D3 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XSibp3 := IBPRelation( S[3], LD );;[127X[104X
     [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp3 ) );[127X[104X
-    [4X[28X[ [ |[ -2*a1-2*a2-2*a3-2*a4+(2*D+2) ]|, |[ D3*D4 ]| ],[128X[104X
-    [4X[28X  [ |[ 2*a1+2*a2+2*a3+2*a4+(-2*D-2) ]|, |[ D4^2 ]| ],[128X[104X
+    [4X[28X[ [ |[ 2*D-2*a1-2*a2-2*a3-2*a4+2 ]|, |[ D3*D4 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+2*a1+2*a2+2*a3+2*a4-2 ]|, |[ D4^2 ]| ],[128X[104X
     [4X[28X  [ |[ -s14*a4+s14 ]|, |[ D1 ]| ],[128X[104X
     [4X[28X  [ |[ -s12*a4+s12 ]|, |[ D2 ]| ],[128X[104X
     [4X[28X  [ |[ -s14*a4+s14 ]|, |[ D3 ]| ],[128X[104X
-    [4X[28X  [ |[ -2*s12*a2-2*s14*a2-2*s12*a3-s12*a4+2*s14*a4+(D+1)*s12-2*s14 ]|,[128X[104X
-    [4X[28X  |[ D4 ]| ],[128X[104X
+    [4X[28X  [ |[ D*s12-2*s12*a2-2*s14*a2-2*s12*a3-s12*a4+2*s14*a4+s12-2*s14 ]|, |[ D4 ]| ],[128X[104X
     [4X[28X  [ |[ -s12*s14*a4+s12*s14 ]|, |[ 1 ]| ] ][128X[104X
     [4X[25Xgap>[125X [27Xsibp3 := IBPRelation( S[3], LD, [ 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ (D-4)*s12*D4-2*s14*D4+(2*D-6)*D3*D4+(-2*D+6)*D4^2 ]|[128X[104X
+    [4X[28X|[ D*s12*D4+2*D*D3*D4-2*D*D4^2-4*s12*D4-2*s14*D4-6*D3*D4+6*D4^2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp3 ) );[127X[104X
+    [4X[28X[ [ |[ 2*D-6 ]|, |[ D3*D4 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+6 ]|, |[ D4^2 ]| ],[128X[104X
+    [4X[28X  [ |[ D*s12-4*s12-2*s14 ]|, |[ D4 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xbas := BasisOfIBPRelations( LD );[127X[104X
+    [4X[28X<A non-zero 28 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27XSbas := BasisOfSpecialIBPRelations( LD );[127X[104X
+    [4X[28X<A non-zero 28 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xbas = Sbas;[127X[104X
+    [4X[28Xtrue[128X[104X
   [4X[32X[104X
   
   
-  [1X1.2-4 [33X[0;0Y2 Loop nonplanar ladder[133X[101X
+  [1X1.2-5 [33X[0;0Y2 Loop nonplanar ladder[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "p1..2", 2 );[127X[104X
@@ -304,7 +410,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-5 [33X[0;0Y2 Loop cusp anomalous dimensions[133X[101X
+  [1X1.2-6 [33X[0;0Y2 Loop cusp anomalous dimensions[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "k1, k2", "v1, v2", 2 );[127X[104X
@@ -360,7 +466,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-6 [33X[0;0Y2 Loop box[133X[101X
+  [1X1.2-7 [33X[0;0Y2 Loop box[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "k1..2,k4" );[127X[104X
@@ -393,80 +499,80 @@
     [4X[28X[ D1-D2+2*N8, 0, -D1-2*N8, 0, -D2, 0, -D4+D5-2*N9, D5, 0, D4+2*N9 ][128X[104X
     [4X[25Xgap>[125X [27XDisplay( EntriesOfHomalgMatrix( S[3] ) );[127X[104X
     [4X[28X[ 0, 0, 0, 0, 0, 0, D5*D7-D6*D7-2*D7*N9, D4*D7+D5*D7, D4*D7, D4*D7+2*D7*N9 ][128X[104X
-    [4X[25Xgap>[125X [27XSibp1 := ShiftOperator( S[1], LD );;[127X[104X
+    [4X[25Xgap>[125X [27XSibp1 := IBPRelation( S[1], LD );;[127X[104X
     [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp1 ) );[127X[104X
     [4X[28X[ [ |[ -1/2*s12*a8-1/2*s14*a8 ]|, |[ D1*N8_ ]| ],[128X[104X
     [4X[28X  [ |[ -1/2*s12*a9+1/2*s14*a9 ]|, |[ D4*N9_ ]| ],[128X[104X
-    [4X[28X  [ |[ a1+a2+a3+a7+a8+(-D) ]|, |[ D2 ]| ],[128X[104X
-    [4X[28X  [ |[ -a1-a2-a3-a7-a8+(D) ]|, |[ D3 ]| ],[128X[104X
-    [4X[28X  [ |[ 2*a4+2*a5+2*a6+2*a7+2*a9+(-2*D) ]|, |[ D4 ]| ],[128X[104X
-    [4X[28X  [ |[ -a4-a5-a6-a7-a9+(D) ]|, |[ D5 ]| ],[128X[104X
-    [4X[28X  [ |[ -a4-a5-a6-a7-a9+(D) ]|, |[ D6 ]| ],[128X[104X
-    [4X[28X  [ |[ -2*a1-2*a2-2*a3-2*a7-2*a8+(2*D) ]|, |[ N8 ]| ],[128X[104X
-    [4X[28X  [ |[ 2*a4+2*a5+2*a6+2*a7+2*a9+(-2*D) ]|, |[ N9 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+a1+a2+a3+a7+a8 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ D-a1-a2-a3-a7-a8 ]|, |[ D3 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+2*a4+2*a5+2*a6+2*a7+2*a9 ]|, |[ D4 ]| ],[128X[104X
+    [4X[28X  [ |[ D-a4-a5-a6-a7-a9 ]|, |[ D5 ]| ],[128X[104X
+    [4X[28X  [ |[ D-a4-a5-a6-a7-a9 ]|, |[ D6 ]| ],[128X[104X
+    [4X[28X  [ |[ 2*D-2*a1-2*a2-2*a3-2*a7-2*a8 ]|, |[ N8 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+2*a4+2*a5+2*a6+2*a7+2*a9 ]|, |[ N9 ]| ],[128X[104X
     [4X[28X  [ |[ s12*a1+s14*a2-s12*a3+s12*a4-s14*a5-s12*a6-s14*a8+s14*a9 ]|, |[ 1 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XSibp1_1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ -1/2*s12*D1*N8_-1/2*s14*D1*N8_-1/2*s12*D4*N9_+1/2*s14*D4*N9_[128X[104X
-    [4X[28X   +(-D+5)*D2+(D-5)*D3+(-2*D+10)*D4+(D-5)*D5+(D-5)*D6+(2*D-10)*N8+(-2*D+10)*N9 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp1_1 ) );[127X[104X
+    [4X[25Xgap>[125X [27Xsibp1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );[127X[104X
+    [4X[28X|[ -1/2*s12*D1*N8_-1/2*s14*D1*N8_-1/2*s12*D4*N9_+1/2*s14*D4*N9_-D*D2+D*D3\[128X[104X
+    [4X[28X   -2*D*D4+D*D5+D*D6+2*D*N8-2*D*N9+5*D2-5*D3+10*D4-5*D5-5*D6-10*N8+10*N9 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp1 ) );[127X[104X
     [4X[28X[ [ |[ -1/2*s12-1/2*s14 ]|, |[ D1*N8_ ]| ],[128X[104X
     [4X[28X  [ |[ -1/2*s12+1/2*s14 ]|, |[ D4*N9_ ]| ],[128X[104X
-    [4X[28X  [ |[ (-D+5) ]|, |[ D2 ]| ],[128X[104X
-    [4X[28X  [ |[ (D-5) ]|, |[ D3 ]| ],[128X[104X
-    [4X[28X  [ |[ (-2*D+10) ]|, |[ D4 ]| ],[128X[104X
-    [4X[28X  [ |[ (D-5) ]|, |[ D5 ]| ],[128X[104X
-    [4X[28X  [ |[ (D-5) ]|, |[ D6 ]| ],[128X[104X
-    [4X[28X  [ |[ (2*D-10) ]|, |[ N8 ]| ],[128X[104X
-    [4X[28X  [ |[ (-2*D+10) ]|, |[ N9 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XSibp2 := ShiftOperator( S[2], LD );;[127X[104X
+    [4X[28X  [ |[ -D+5 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ D-5 ]|, |[ D3 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+10 ]|, |[ D4 ]| ],[128X[104X
+    [4X[28X  [ |[ D-5 ]|, |[ D5 ]| ],[128X[104X
+    [4X[28X  [ |[ D-5 ]|, |[ D6 ]| ],[128X[104X
+    [4X[28X  [ |[ 2*D-10 ]|, |[ N8 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+10 ]|, |[ N9 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XSibp2 := IBPRelation( S[2], LD );;[127X[104X
     [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp2 ) );[127X[104X
     [4X[28X[ [ |[ -1/2*s14*a8 ]|, |[ D1*N8_ ]| ],[128X[104X
     [4X[28X  [ |[ 1/2*s14*a9 ]|, |[ D4*N9_ ]| ],[128X[104X
-    [4X[28X  [ |[ -a1-a2-a3-a7-a8+(D) ]|, |[ D1 ]| ],[128X[104X
-    [4X[28X  [ |[ a1+a2+a3+a7+a8+(-D) ]|, |[ D2 ]| ],[128X[104X
-    [4X[28X  [ |[ a4+a5+a6+a7+a9+(-D) ]|, |[ D4 ]| ],[128X[104X
-    [4X[28X  [ |[ -a4-a5-a6-a7-a9+(D) ]|, |[ D5 ]| ],[128X[104X
-    [4X[28X  [ |[ -2*a1-2*a2-2*a3-2*a7-2*a8+(2*D) ]|, |[ N8 ]| ],[128X[104X
-    [4X[28X  [ |[ 2*a4+2*a5+2*a6+2*a7+2*a9+(-2*D) ]|, |[ N9 ]| ],[128X[104X
+    [4X[28X  [ |[ D-a1-a2-a3-a7-a8 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+a1+a2+a3+a7+a8 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+a4+a5+a6+a7+a9 ]|, |[ D4 ]| ],[128X[104X
+    [4X[28X  [ |[ D-a4-a5-a6-a7-a9 ]|, |[ D5 ]| ],[128X[104X
+    [4X[28X  [ |[ 2*D-2*a1-2*a2-2*a3-2*a7-2*a8 ]|, |[ N8 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+2*a4+2*a5+2*a6+2*a7+2*a9 ]|, |[ N9 ]| ],[128X[104X
     [4X[28X  [ |[ s14*a2-s14*a5-s14*a8+s14*a9 ]|, |[ 1 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XSibp2_1 := IBPRelation( S[2], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ -1/2*s14*D1*N8_+1/2*s14*D4*N9_+(D-5)*D1+(-D+5)*D2+(-D+5)*D4+(D-5)*D5[128X[104X
-    [4X[28X   +(2*D-10)*N8+(-2*D+10)*N9 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp2_1 ) );[127X[104X
+    [4X[25Xgap>[125X [27Xsibp2 := IBPRelation( S[2], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );[127X[104X
+    [4X[28X|[ -1/2*s14*D1*N8_+1/2*s14*D4*N9_+D*D1-D*D2-D*D4+D*D5\[128X[104X
+    [4X[28X   +2*D*N8-2*D*N9-5*D1+5*D2+5*D4-5*D5-10*N8+10*N9 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp2 ) );[127X[104X
     [4X[28X[ [ |[ -1/2*s14 ]|, |[ D1*N8_ ]| ],[128X[104X
     [4X[28X  [ |[ 1/2*s14 ]|, |[ D4*N9_ ]| ],[128X[104X
-    [4X[28X  [ |[ (D-5) ]|, |[ D1 ]| ],[128X[104X
-    [4X[28X  [ |[ (-D+5) ]|, |[ D2 ]| ],[128X[104X
-    [4X[28X  [ |[ (-D+5) ]|, |[ D4 ]| ],[128X[104X
-    [4X[28X  [ |[ (D-5) ]|, |[ D5 ]| ],[128X[104X
-    [4X[28X  [ |[ (2*D-10) ]|, |[ N8 ]| ],[128X[104X
-    [4X[28X  [ |[ (-2*D+10) ]|, |[ N9 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XSibp3 := ShiftOperator( S[3], LD );;[127X[104X
+    [4X[28X  [ |[ D-5 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+5 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+5 ]|, |[ D4 ]| ],[128X[104X
+    [4X[28X  [ |[ D-5 ]|, |[ D5 ]| ],[128X[104X
+    [4X[28X  [ |[ 2*D-10 ]|, |[ N8 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+10 ]|, |[ N9 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XSibp3 := IBPRelation( S[3], LD );;[127X[104X
     [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp3 ) );[127X[104X
     [4X[28X[ [ |[ 1/2*s12*a9+1/2*s14*a9 ]|, |[ D4*D7*N9_ ]| ],[128X[104X
     [4X[28X  [ |[ -a7+1 ]|, |[ D1*D4 ]| ],[128X[104X
     [4X[28X  [ |[ a7-1 ]|, |[ D3*D4 ]| ],[128X[104X
     [4X[28X  [ |[ a7-1 ]|, |[ D2*D5 ]| ],[128X[104X
     [4X[28X  [ |[ -a7+1 ]|, |[ D1*D6 ]| ],[128X[104X
-    [4X[28X  [ |[ -a4-a5-a6-a7-a9+(D+1) ]|, |[ D5*D7 ]| ],[128X[104X
-    [4X[28X  [ |[ a4+a5+a6+a7+a9+(-D-1) ]|, |[ D6*D7 ]| ],[128X[104X
+    [4X[28X  [ |[ D-a4-a5-a6-a7-a9+1 ]|, |[ D5*D7 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+a4+a5+a6+a7+a9-1 ]|, |[ D6*D7 ]| ],[128X[104X
     [4X[28X  [ |[ -2*a7+2 ]|, |[ D4*N8 ]| ],[128X[104X
     [4X[28X  [ |[ -2*a7+2 ]|, |[ D1*N9 ]| ],[128X[104X
-    [4X[28X  [ |[ 2*a4+2*a5+2*a6+2*a7+2*a9+(-2*D-2) ]|, |[ D7*N9 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+2*a4+2*a5+2*a6+2*a7+2*a9-2 ]|, |[ D7*N9 ]| ],[128X[104X
     [4X[28X  [ |[ -4*a7+4 ]|, |[ N8*N9 ]| ],[128X[104X
     [4X[28X  [ |[ -s12*a4-s14*a5+s12*a6+s14*a9 ]|, |[ D7 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XSibp3_1 := IBPRelation( S[3], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ 1/2*s12*D4*D7*N9_+1/2*s14*D4*D7*N9_[128X[104X
-    [4X[28X   +(D-4)*D5*D7+(-D+4)*D6*D7+(-2*D+8)*D7*N9 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp3_1 ) );[127X[104X
+    [4X[25Xgap>[125X [27Xsibp3 := IBPRelation( S[3], LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );[127X[104X
+    [4X[28X|[ 1/2*s12*D4*D7*N9_+1/2*s14*D4*D7*N9_+D*D5*D7-D*D6*D7\[128X[104X
+    [4X[28X   -2*D*D7*N9-4*D5*D7+4*D6*D7+8*D7*N9 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp3 ) );[127X[104X
     [4X[28X[ [ |[ 1/2*s12+1/2*s14 ]|, |[ D4*D7*N9_ ]| ],[128X[104X
-    [4X[28X  [ |[ (D-4) ]|, |[ D5*D7 ]| ],[128X[104X
-    [4X[28X  [ |[ (-D+4) ]|, |[ D6*D7 ]| ],[128X[104X
-    [4X[28X  [ |[ (-2*D+8) ]|, |[ D7*N9 ]| ] ][128X[104X
+    [4X[28X  [ |[ D-4 ]|, |[ D5*D7 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+4 ]|, |[ D6*D7 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+8 ]|, |[ D7*N9 ]| ] ][128X[104X
   [4X[32X[104X
   
   
-  [1X1.2-7 [33X[0;0YPentagon with off shell leg[133X[101X
+  [1X1.2-8 [33X[0;0YPentagon with off shell leg[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "k1", "p1, p2, p3, p4" );[127X[104X
@@ -726,11 +832,31 @@
   
   [33X[1;0Y[29X[2XDivergenceOfCoefficientsVectorOfLoopDiagram[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X1.7-24 ShiftOperator[101X
+  [1X1.7-24 IBPRelation[101X
   
-  [33X[1;0Y[29X[2XShiftOperator[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XIBPRelation[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
   [1X1.7-25 IBPRelation[101X
   
   [33X[1;0Y[29X[2XIBPRelation[102X( [3Xarg1[103X, [3Xarg2[103X, [3Xarg3[103X ) [32X operation[133X
+  
+  [1X1.7-26 DoubleShiftAlgebra[101X
+  
+  [33X[1;0Y[29X[2XDoubleShiftAlgebra[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [1X1.7-27 MatrixOfIBPRelations[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [1X1.7-28 BasisOfIBPRelations[101X
+  
+  [33X[1;0Y[29X[2XBasisOfIBPRelations[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [1X1.7-29 MatrixOfSpecialIBPRelations[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3Xarg[103X ) [32X operation[133X
+  
+  [1X1.7-30 BasisOfSpecialIBPRelations[101X
+  
+  [33X[1;0Y[29X[2XBasisOfSpecialIBPRelations[102X( [3Xarg[103X ) [32X operation[133X
   
