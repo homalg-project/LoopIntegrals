@@ -963,13 +963,15 @@ InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
 end );
 
 ##
-InstallMethod( IBPRelation,
-        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+InstallMethod( DoubleShiftAlgebra,
+        [ IsHomalgRing ],
         
-  function( vec, LD )
-    local R, Ds, D_s, c, exponents, B, A, shifts, S, T, oper, div, jacLD;
+  function( R )
+    local Ds, D_s, c, exponents, B, A, shifts, Y;
     
-    R := HomalgRing( vec );
+    if IsBound( R!.DoubleShiftAlgebra ) then
+        return R!.DoubleShiftAlgebra;
+    fi;
     
     Ds := RelativeIndeterminatesOfPolynomialRing( R );
     
@@ -981,33 +983,48 @@ InstallMethod( IBPRelation,
     
     exponents := List( [ 1 .. c ], i -> Concatenation( LOOP_INTEGRALS.ExponentSymbol, String( i ) ) );
     
-    if not IsBound( R!.ShiftAlgebra ) then
-        
-        B := BaseRing( R );
-        
-        A := B * JoinStringsWithSeparator( exponents );
-
+    B := BaseRing( R );
+    
+    A := B * JoinStringsWithSeparator( exponents );
+    
+    if IsIdenticalObj( ValueOption( "pairs" ), true ) then
         shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
-        
-        S := A * shifts;
-        
-        S := S / List( Ds, D -> Concatenation( D, "*", D, "_", "-1" ) / S );
-        
-        R!.ShiftAlgebra := S;
-        
-        T := B * shifts;
-        
-        T := T / List( Ds, D -> Concatenation( D, "*", D, "_", "-1" ) / T );
-        
-        R!.LaurentAlgebra := T;
-        
+    else
+        shifts := Concatenation( Ds, D_s );
     fi;
     
-    S := R!.ShiftAlgebra;
+    Y := DoubleShiftAlgebra( A, shifts : steps := -1 );
+    
+    R!.DoubleShiftAlgebra := Y;
+    
+    return Y;
+    
+end );
+
+##
+InstallMethod( IBPRelation,
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( vec, LD )
+    local R, Y, exponents, c, D_s, oper, S, div, jacLD;
+    
+    R := HomalgRing( vec );
+    
+    Y := DoubleShiftAlgebra( R : pairs := true );
+    
+    exponents := RelativeIndeterminatesOfPolynomialRing( BaseRing( Y ) );
+    exponents := List( exponents, String );
+    
+    c := Length( exponents );
+    
+    D_s := IndeterminateShiftsOfDoubleShiftAlgebra( Y ){List( [ 1 .. c ], i -> 2 * i )};
+    D_s := List( D_s, String );
     
     oper := List( [ 1 .. c ], i -> Concatenation( "-", exponents[i], "*", D_s[i]  ) );
     
     oper := Concatenation( "[", JoinStringsWithSeparator( oper ), "]" );
+    
+    S := Y!.CommutativeDoubleShiftAlgebra;
     
     oper := HomalgMatrix( oper, c, 1, S );
     
@@ -1015,7 +1032,9 @@ InstallMethod( IBPRelation,
     
     jacLD := JacobianOfLoopDiagramInPropagators( LD );
     
-    return DecideZero( ( div / S ) + ( ( S * vec ) * ( S * jacLD ) * oper )[1,1] );
+    oper := DecideZero( ( div / S ) + ( ( S * vec ) * ( S * jacLD ) * oper )[1,1] );
+    
+    return oper / Y;
     
 end );
 
@@ -1024,14 +1043,18 @@ InstallMethod( IBPRelation,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants, IsList ],
         
   function( vec, LD, exponents )
-    local ibp, R, S, T, phi, c;
+    local ibp, Y, P, S, T, phi, c;
     
     ibp := IBPRelation( vec, LD );
     
-    R := HomalgRing( vec );
+    Y := HomalgRing( ibp );
+
+    P := AmbientRing( Y );
     
-    S := R!.ShiftAlgebra;
-    T := R!.LaurentAlgebra;
+    S := P!.CommutativeDoubleShiftAlgebra;
+    T := P!.LaurentAlgebra;
+    
+    ibp := ibp / S;
     
     phi := Concatenation(
                    [ Indeterminates( BaseRing( T ) ),
@@ -1039,7 +1062,7 @@ InstallMethod( IBPRelation,
                      RelativeIndeterminatesOfPolynomialRing( T ) ] );
     
     phi := List( phi, String );
-
+    
     c := Length( phi );
     
     phi := Concatenation( "[", JoinStringsWithSeparator( phi ), "]" );
@@ -1049,6 +1072,56 @@ InstallMethod( IBPRelation,
     phi := RingMap( phi, AmbientRing( S ), T );
     
     return Pullback( phi, ibp );
+    
+end );
+
+##
+InstallMethod( MatrixOfIBPRelations,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local id, ibps;
+    
+    id := HomalgIdentityMatrix( DimensionOfCoefficientsVector( LD ), RingOfLoopDiagram( LD ) );
+    
+    ibps := List( [ 1 .. NrRows( id ) ], i -> IBPRelation( id[i], LD ) );
+    
+    return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
+
+end );
+
+##
+InstallMethod( BasisOfIBPRelations,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+
+    return BasisOfRows(  MatrixOfIBPRelations( LD ) );
+    
+end );
+
+##
+InstallMethod( MatrixOfSpecialIBPRelations,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local syz, id, ibps;
+    
+    syz := SyzygiesOfRows( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
+    
+    ibps := List( [ 1 .. NrRows( syz ) ], i -> IBPRelation( syz[i], LD ) );
+    
+    return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
+    
+end );
+
+##
+InstallMethod( BasisOfSpecialIBPRelations,
+        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    
+    return BasisOfRows( MatrixOfSpecialIBPRelations( LD ) );
     
 end );
 

@@ -22,9 +22,9 @@ SetNumerators( LD, -[ ] );
 SetExtraLorentzInvariants( LD, [ s12, s14 ] );
 R := RingOfLoopDiagram( LD );
 #! Q[D,s12,s14][D1,D2,D3,D4]
-id := HomalgIdentityMatrix( DimensionOfCoefficientsVector( LD ), R );
-#! <An unevaluated 4 x 4 identity matrix over an external ring>
-ibp1 := IBPRelation( id[1], LD );
+ibps := MatrixOfIBPRelations( LD );
+#! <A 4 x 1 matrix over a residue class ring>
+ibp1 := ibps[1,1];
 #! |[ -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_+D-2*a1-a2-a3-a4 ]|
 ViewList( DecomposeInMonomials( ibp1 ) );
 #! [ [ |[ -a2 ]|, |[ D1*D2_ ]| ],
@@ -32,9 +32,9 @@ ViewList( DecomposeInMonomials( ibp1 ) );
 #!   [ |[ -a4 ]|, |[ D1*D4_ ]| ],
 #!   [ |[ -s12*a3 ]|, |[ D3_ ]| ],
 #!   [ |[ D-2*a1-a2-a3-a4 ]|, |[ 1 ]| ] ]
-HomalgRing( ibp1 );
-#! Q[D,s12,s14][a1,a2,a3,a4][D1,D1_,D2,D2_,D3,D3_,D4,D4_]/( D4*D4_-1, D3*D3_-1,\
-#!   D2*D2_-1, D1*D1_-1 )
+Y := HomalgRing( ibp1 );
+#! Q[D,s12,s14][a1,a2,a3,a4]<D1,D1_,D2,D2_,D3,D3_,D4,D4_>/( D1*D1_-1, D2*D2_-1,\
+#!   D3*D3_-1, D4*D4_-1 )
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <A 4 x 4 matrix over an external ring>,
 #!   <A 4 x 4 matrix over an external ring> ]
@@ -95,4 +95,10 @@ ViewList( DecomposeInMonomials( sibp3 ) );
 #! [ [ |[ 2*D-6 ]|, |[ D3*D4 ]| ],
 #!   [ |[ -2*D+6 ]|, |[ D4^2 ]| ],
 #!   [ |[ D*s12-4*s12-2*s14 ]|, |[ D4 ]| ] ]
+bas := BasisOfIBPRelations( LD );
+#! <A non-zero 28 x 1 matrix over a residue class ring>
+Sbas := BasisOfSpecialIBPRelations( LD );
+#! <A non-zero 28 x 1 matrix over a residue class ring>
+bas = Sbas;
+#! true
 #! @EndExample

@@ -29,13 +29,13 @@ SetExtraLorentzInvariants( LD, [ s12, s14 ] )
 
 R = RingOfLoopDiagram( LD )
 
-id = HomalgIdentityMatrix( DimensionOfCoefficientsVector( LD ), R )
+ibps = MatrixOfIBPRelations( LD )
 
-ibp1 = IBPRelation( id[1], LD )
+ibp1 = MatElm( ibps, 1, 1 )
 
 ViewList( DecomposeInMonomials( ibp1 ) )
 
-HomalgRing( ibp1 )
+Y = HomalgRing( ibp1 )
 
 E12 = PairOfMatricesOfLoopDiagramInPropagators( LD )
 
@@ -72,3 +72,9 @@ ViewList( DecomposeInMonomials( Sibp3 ) )
 sibp3 = IBPRelation( Sred[3], LD, [ 1, 1, 1, 1 ] )
 
 ViewList( DecomposeInMonomials( sibp2 ) )
+
+bas = BasisOfIBPRelations( LD )
+
+Sbas = BasisOfSpecialIBPRelations( LD )
+
+bas == Sbas

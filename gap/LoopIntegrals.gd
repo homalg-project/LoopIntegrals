@@ -276,6 +276,26 @@ DeclareOperation( "IBPRelation",
 DeclareOperation( "IBPRelation",
         [ IsHomalgMatrix, IsLoopDiagram, IsList ] );
 
+#!
+DeclareOperation( "DoubleShiftAlgebra",
+        [ IsHomalgRing ] );
+
+#!
+DeclareOperation( "MatrixOfIBPRelations",
+        [ IsLoopDiagram ] );
+
+#!
+DeclareOperation( "BasisOfIBPRelations",
+        [ IsLoopDiagram ] );
+
+#!
+DeclareOperation( "MatrixOfSpecialIBPRelations",
+        [ IsLoopDiagram ] );
+
+#!
+DeclareOperation( "BasisOfSpecialIBPRelations",
+        [ IsLoopDiagram ] );
+
 ####################################
 #
 #! @Section Tools
