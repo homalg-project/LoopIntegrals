@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2020.05.10
+                                   2020.05.11
   
   
-                                  10 May 2020
+                                  11 May 2020
   
   
                                 Mohamed Barakat
@@ -131,9 +131,10 @@
       1.7-25 IBPRelation
       1.7-26 DoubleShiftAlgebra
       1.7-27 MatrixOfIBPRelations
-      1.7-28 BasisOfIBPRelations
-      1.7-29 MatrixOfSpecialIBPRelations
-      1.7-30 BasisOfSpecialIBPRelations
+      1.7-28 MatrixOfIBPRelations
+      1.7-29 BasisOfIBPRelations
+      1.7-30 MatrixOfSpecialIBPRelations
+      1.7-31 BasisOfSpecialIBPRelations
   
   
   [32X

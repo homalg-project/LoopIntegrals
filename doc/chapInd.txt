@@ -9,8 +9,8 @@
   [2X-[102X, for IsLorentzVector, IsLorentzVector 1.7-3 
   [2X[][102X, for IsLorentzVector, IsInt 1.7-5 
   [2XAdditiveInverse[102X, for IsLorentzVector 1.7-4 
-  [2XBasisOfIBPRelations[102X, for IsLoopDiagram 1.7-28 
-  [2XBasisOfSpecialIBPRelations[102X, for IsLoopDiagram 1.7-30 
+  [2XBasisOfIBPRelations[102X, for IsLoopDiagram 1.7-29 
+  [2XBasisOfSpecialIBPRelations[102X, for IsLoopDiagram 1.7-31 
   [2XComponents[102X, for IsLorentzVector 1.5-4 
   [2XDimension[102X, for IsLorentzVector 1.5-1 
   [2XDimensionOfCoefficientsVector[102X, for IsLoopDiagram 1.5-7 
@@ -39,9 +39,10 @@
   [2XLoopMomenta[102X, for IsLoopDiagram 1.5-5 
   [2XLorentzVector[102X, for IsHomalgMatrix 1.6-2 
       for IsString, IsInt 1.6-1 
-  [2XMatrixOfIBPRelations[102X, for IsLoopDiagram 1.7-27 
+  [2XMatrixOfIBPRelations[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-27 
+      for IsLoopDiagram 1.7-28 
   [2XMatrixOfMomenta[102X, for IsLoopDiagram 1.5-17 
-  [2XMatrixOfSpecialIBPRelations[102X, for IsLoopDiagram 1.7-29 
+  [2XMatrixOfSpecialIBPRelations[102X, for IsLoopDiagram 1.7-30 
   [2XNumerators[102X, for IsLoopDiagram 1.5-13 
   [2XOriginalJacobianOfNumerators[102X, for IsLoopDiagram 1.5-16 
   [2XOriginalJacobianOfPropagators[102X, for IsLoopDiagram 1.5-15 
