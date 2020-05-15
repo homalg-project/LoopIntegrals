@@ -1,10 +1,11 @@
-#! @Chunk Simple
+#! @Chunk 1LoopTadpole
 
 LoadPackage( "LoopIntegrals" );
 
 #! @Example
-LD := LoopDiagram( "k", "": parameters := "m" );
-#! <A loop diagram with loop momenta [ k ] & external momenta [ ]>
+LD := LoopDiagram( "k", "": masses := "m" );
+#! <A loop diagram with loop momenta [ k ] & external momenta [ ] &
+#!  masses [ m ]>
 SetRelationsOfMomenta( LD, [ ] );
 SetIndependentLorentzInvariants( LD, [ k^2 ] );
 SetPropagators( LD, [ k^2 - m^2 ] );
@@ -61,14 +62,24 @@ Sbas := BasisOfSpecialIBPRelations( LD );
 #! <A non-zero 1 x 1 matrix over a residue class ring>
 Sbas = bas;
 #! true
-r := "2 * m^2 * ( a1 + 4 - 2 ) * D1_^(4-1)" / Y;
+ExportVariables( Y );
+#! [ |[ m ]|, |[ D ]|, |[ a1 ]|, |[ D1 ]|, |[ D1_ ]| ]
+r := 2 * m^2 * ( a1 + 4 - 2 ) * D1_^(4-1);
 #! |[ 2*m^2*a1*D1_^3+4*m^2*D1_^3 ]|
 d := DecideZero( r, bas );
 #! |[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
-DecideZero( r - d, bas );
+DecideZero( d - r, bas );
 #! |[ 0 ]|
-s := "D1_^(4 - 2) * ( D - 2 * a1 )" / Y;
+s := D1_^(4 - 2) * ( D - 2 * a1 );
 #! |[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
-DecideZero( r - s, bas );
-#! |[ 0 ]|
+s = d;
+#! true
+t := ( D - 2 * a1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);
+#! |[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
+t = d;
+#! true
+w := ( D - 2 * 1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);
+#! |[ D*D1_^2-6*D1_^2 ]|
+DecideZero( w, bas );
+#! |[ D*D1_^2-6*D1_^2 ]|
 #! @EndExample

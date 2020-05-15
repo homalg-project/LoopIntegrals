@@ -68,7 +68,7 @@ InstallMethod( LoopDiagram,
         [ IsList, IsList, IsInt ],
         
   function( L, K, dim )
-    local LD, LorentzVectors, parameters, C, momenta, R;
+    local LD, LorentzVectors, masses, C, momenta, R;
     
     LD := rec( );
     
@@ -114,19 +114,19 @@ InstallMethod( LoopDiagram,
         BindGlobal( name, k );
     end );
     
-    parameters := ValueOption( "parameters" );
+    masses := ValueOption( "masses" );
     
-    if not IsStringRep( parameters ) then
-        parameters := "";
+    if IsStringRep( masses ) then
+        masses := SplitString( masses, "," );
+    elif not IsList( masses ) then
+        masses := [ ];
     fi;
     
-    LD!.parameters := parameters;
-    
     if IsIdenticalObj( ValueOption( "C" ), fail ) then
-        if parameters = "" then
+        if masses = "" then
             C := LOOP_INTEGRALS.ConstructorOfDefaultField( );
         else
-            C := LOOP_INTEGRALS.ConstructorOfDefaultField( parameters );
+            C := LOOP_INTEGRALS.ConstructorOfDefaultField( JoinStringsWithSeparator( masses ) );
         fi;
     fi;
     
@@ -145,15 +145,17 @@ InstallMethod( LoopDiagram,
     
     LD!.DimensionSymbol := LOOP_INTEGRALS.DimensionSymbol;
     
-    Perform( SplitString( parameters, "," ),
+    Perform( masses,
       function( m )
-        local name;
         if IsBoundGlobal( m ) then
             MakeReadWriteGlobal( m );
             UnbindGlobal( m );
         fi;
         BindGlobal( m, m / R );
+        SetString( ValueGlobal( m ), m );
     end );
+    
+    LD!.masses := List( masses, ValueGlobal );
     
     return LD;
     
@@ -684,7 +686,7 @@ InstallMethod( RingOfLoopDiagram,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
-    local rational, K, D, Z, R, indets, parameters, invariants, propagators, numerators, S;
+    local rational, K, D, Z, R, indets, invariants, propagators, numerators, masses, S;
     
     ## do not treat the extra Lorentz invariants as rational parameters
     ## as this slows down the syzygies computations in Singular significantly
@@ -715,9 +717,9 @@ InstallMethod( RingOfLoopDiagram,
     
     indets := Concatenation( propagators, numerators );
     
-    parameters := SplitString( LD!.parameters, "," );
+    masses := List( LD!.masses, String );
     
-    invariants := Concatenation( parameters, [ LD!.DimensionSymbol ], invariants );
+    invariants := Concatenation( masses, [ LD!.DimensionSymbol ], invariants );
     
     if rational then
         
@@ -1158,6 +1160,12 @@ InstallMethod( ViewObj,
   function( LD )
     
     Print( "<A loop diagram with loop momenta ", LoopMomenta( LD ),
-           " & external momenta ", ExternalMomenta( LD ), ">" );
+           " & external momenta ", ExternalMomenta( LD ) );
+    
+    if IsBound( LD!.masses ) and not IsEmpty( LD!.masses ) then
+        Print( " & masses ", LD!.masses );
+    fi;
+    
+    Print( ">" );
     
 end );

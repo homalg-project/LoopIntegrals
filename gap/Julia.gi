@@ -1,14 +1,26 @@
 ##
 InstallOtherMethod( LoopDiagram,
-        [ IsJuliaObject, IsJuliaObject, IsInt ], 10001,
+        [ IsJuliaObject, IsJuliaObject, IsInt ],
         
   function( L, K, dim )
-    local LD;
+    local masses, LD;
     
-    LD := LoopDiagram( JuliaToGAP( IsString, L ), JuliaToGAP( IsString, K ), dim );
+    masses := ValueOption( "masses" );
+    
+    if IsJuliaObject( masses ) then
+        masses := JuliaToGAP( IsString, masses );
+    else
+        masses := fail;
+    fi;
+    
+    LD := LoopDiagram( JuliaToGAP( IsString, L ), JuliaToGAP( IsString, K ), dim : masses := masses );
     
     Perform( LoopMomenta( LD ), function( a ) JuliaEvalString( Concatenation( Name( a ), " = GAP.Globals.", Name( a ) ) ); end );
     Perform( ExternalMomenta( LD ), function( a ) JuliaEvalString( Concatenation( Name( a ), " = GAP.Globals.", Name( a ) ) ); end );
+    
+    if not masses = fail then
+        Perform( LD!.masses, function( a ) JuliaEvalString( Concatenation( String( a ), " = GAP.Globals.", String( a ) ) ); end );
+    fi;
     
     return LD;
     
@@ -16,7 +28,7 @@ end );
 
 ##
 InstallOtherMethod( LoopDiagram,
-        [ IsJuliaObject, IsJuliaObject ], 10001,
+        [ IsJuliaObject, IsJuliaObject ],
         
   function( L, K )
     
