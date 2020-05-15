@@ -30,7 +30,7 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X79D1F2257A4621F8">1.2-1 <span class="Heading">Lorentz vectors</span></a>
 </span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X811824A37C2C1786">1.2-2 <span class="Heading">Simple example</span></a>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B81F02282B1E9D0">1.2-2 <span class="Heading">1 Loop tadpole</span></a>
 </span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X85383F147BF76F74">1.2-3 <span class="Heading">Kite</span></a>
 </span>
@@ -175,14 +175,15 @@ true
 true
 </pre></div>
 
-<p><a id="X811824A37C2C1786" name="X811824A37C2C1786"></a></p>
+<p><a id="X7B81F02282B1E9D0" name="X7B81F02282B1E9D0"></a></p>
 
-<h5>1.2-2 <span class="Heading">Simple example</span></h5>
+<h5>1.2-2 <span class="Heading">1 Loop tadpole</span></h5>
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LD := LoopDiagram( "k", "": parameters := "m" );</span>
-&lt;A loop diagram with loop momenta [ k ] &amp; external momenta [ ]&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LD := LoopDiagram( "k", "": masses := "m" );</span>
+&lt;A loop diagram with loop momenta [ k ] &amp; external momenta [ ] &amp;
+ masses [ m ]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfMomenta( LD, [ ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependentLorentzInvariants( LD, [ k^2 ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetPropagators( LD, [ k^2 - m^2 ] );</span>
@@ -239,16 +240,26 @@ modulo [ D1*D1_-1 ]
 &lt;A non-zero 1 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sbas = bas;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">r := "2 * m^2 * ( a1 + 4 - 2 ) * D1_^(4-1)" / Y;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ExportVariables( Y );</span>
+[ |[ m ]|, |[ D ]|, |[ a1 ]|, |[ D1 ]|, |[ D1_ ]| ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">r := 2 * m^2 * ( a1 + 4 - 2 ) * D1_^(4-1);</span>
 |[ 2*m^2*a1*D1_^3+4*m^2*D1_^3 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := DecideZero( r, bas );</span>
 |[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecideZero( r - d, bas );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecideZero( d - r, bas );</span>
 |[ 0 ]|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := "D1_^(4 - 2) * ( D - 2 * a1 )" / Y;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := D1_^(4 - 2) * ( D - 2 * a1 );</span>
 |[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecideZero( r - s, bas );</span>
-|[ 0 ]|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s = d;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := ( D - 2 * a1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);</span>
+|[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t = d;</span>
+true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := ( D - 2 * 1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);</span>
+|[ D*D1_^2-6*D1_^2 ]|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecideZero( w, bas );</span>
+|[ D*D1_^2-6*D1_^2 ]|
 </pre></div>
 
 <p><a id="X85383F147BF76F74" name="X85383F147BF76F74"></a></p>

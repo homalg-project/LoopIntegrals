@@ -49,11 +49,12 @@
   [4X[32X[104X
   
   
-  [1X1.2-2 [33X[0;0YSimple example[133X[101X
+  [1X1.2-2 [33X[0;0Y1 Loop tadpole[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLD := LoopDiagram( "k", "": parameters := "m" );[127X[104X
-    [4X[28X<A loop diagram with loop momenta [ k ] & external momenta [ ]>[128X[104X
+    [4X[25Xgap>[125X [27XLD := LoopDiagram( "k", "": masses := "m" );[127X[104X
+    [4X[28X<A loop diagram with loop momenta [ k ] & external momenta [ ] &[128X[104X
+    [4X[28X masses [ m ]>[128X[104X
     [4X[25Xgap>[125X [27XSetRelationsOfMomenta( LD, [ ] );[127X[104X
     [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD, [ k^2 ] );[127X[104X
     [4X[25Xgap>[125X [27XSetPropagators( LD, [ k^2 - m^2 ] );[127X[104X
@@ -110,16 +111,26 @@
     [4X[28X<A non-zero 1 x 1 matrix over a residue class ring>[128X[104X
     [4X[25Xgap>[125X [27XSbas = bas;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xr := "2 * m^2 * ( a1 + 4 - 2 ) * D1_^(4-1)" / Y;[127X[104X
+    [4X[25Xgap>[125X [27XExportVariables( Y );[127X[104X
+    [4X[28X[ |[ m ]|, |[ D ]|, |[ a1 ]|, |[ D1 ]|, |[ D1_ ]| ][128X[104X
+    [4X[25Xgap>[125X [27Xr := 2 * m^2 * ( a1 + 4 - 2 ) * D1_^(4-1);[127X[104X
     [4X[28X|[ 2*m^2*a1*D1_^3+4*m^2*D1_^3 ]|[128X[104X
     [4X[25Xgap>[125X [27Xd := DecideZero( r, bas );[127X[104X
     [4X[28X|[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|[128X[104X
-    [4X[25Xgap>[125X [27XDecideZero( r - d, bas );[127X[104X
+    [4X[25Xgap>[125X [27XDecideZero( d - r, bas );[127X[104X
     [4X[28X|[ 0 ]|[128X[104X
-    [4X[25Xgap>[125X [27Xs := "D1_^(4 - 2) * ( D - 2 * a1 )" / Y;[127X[104X
+    [4X[25Xgap>[125X [27Xs := D1_^(4 - 2) * ( D - 2 * a1 );[127X[104X
     [4X[28X|[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|[128X[104X
-    [4X[25Xgap>[125X [27XDecideZero( r - s, bas );[127X[104X
-    [4X[28X|[ 0 ]|[128X[104X
+    [4X[25Xgap>[125X [27Xs = d;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xt := ( D - 2 * a1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);[127X[104X
+    [4X[28X|[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|[128X[104X
+    [4X[25Xgap>[125X [27Xt = d;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xw := ( D - 2 * 1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);[127X[104X
+    [4X[28X|[ D*D1_^2-6*D1_^2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XDecideZero( w, bas );[127X[104X
+    [4X[28X|[ D*D1_^2-6*D1_^2 ]|[128X[104X
   [4X[32X[104X
   
   

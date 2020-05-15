@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2020.05.09
+                                   2020.05.10
   
   
-                                   9 May 2020
+                                  10 May 2020
   
   
                                 Mohamed Barakat
@@ -65,7 +65,7 @@
     1.1 [33X[0;0YIntroduction[133X
     1.2 [33X[0;0YExamples[133X
       1.2-1 [33X[0;0YLorentz vectors[133X
-      1.2-2 [33X[0;0YSimple example[133X
+      1.2-2 [33X[0;0Y1 Loop tadpole[133X
       1.2-3 [33X[0;0YKite[133X
       1.2-4 [33X[0;0Y1 Loop box[133X
       1.2-5 [33X[0;0Y2 Loop nonplanar ladder[133X
