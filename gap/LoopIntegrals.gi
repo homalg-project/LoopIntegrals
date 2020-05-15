@@ -1079,17 +1079,28 @@ end );
 
 ##
 InstallMethod( MatrixOfIBPRelations,
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( mat, LD )
+    local ibps;
+    
+    ibps := List( [ 1 .. NrRows( mat ) ], i -> IBPRelation( mat[i], LD ) );
+    
+    return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
+    
+end );
+
+##
+InstallMethod( MatrixOfIBPRelations,
         [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
-    local id, ibps;
+    local id;
     
     id := HomalgIdentityMatrix( DimensionOfCoefficientsVector( LD ), RingOfLoopDiagram( LD ) );
     
-    ibps := List( [ 1 .. NrRows( id ) ], i -> IBPRelation( id[i], LD ) );
+    return MatrixOfIBPRelations( id, LD );
     
-    return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
-
 end );
 
 ##

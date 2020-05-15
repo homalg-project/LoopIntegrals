@@ -282,6 +282,10 @@ DeclareOperation( "DoubleShiftAlgebra",
 
 #!
 DeclareOperation( "MatrixOfIBPRelations",
+        [ IsHomalgMatrix, IsLoopDiagram ] );
+
+#!
+DeclareOperation( "MatrixOfIBPRelations",
         [ IsLoopDiagram ] );
 
 #!
