@@ -1,6 +1,6 @@
-## ZariskiFrames
+## LoopIntegrals
 
-This directory contains a collection of [Jupyter](https://jupyter.org/) notebooks demonstrating the functionality the [GAP](https://www.gap-system.org/) package [ZariskiFrames](https://github.com/homalg-project/ZariskiFrames), which is based on the
+This directory contains a collection of [Jupyter](https://jupyter.org/) notebooks demonstrating the functionality the [GAP](https://www.gap-system.org/) package [LoopIntegrals](https://github.com/homalg-project/LoopIntegrals), which is based on the
 
 * [homalg project](https://github.com/homalg-project/homalg_project/),
 * [CAP project](https://github.com/homalg-project/CAP_project/).
