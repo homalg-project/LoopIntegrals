@@ -922,7 +922,7 @@ InstallMethod( JacobianOfCoefficientsVectorInPropagators,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
-    local red, R, S, indets;
+    local red, R, rational, S, indets;
     
     red := ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants( LD );
     
@@ -930,7 +930,15 @@ InstallMethod( JacobianOfCoefficientsVectorInPropagators,
     
     indets := R!.MatrixOfPropagatorsAndNumerators;
     
-    S := R!.RingAfterSuccessfulReduction;
+    ## do not treat the extra Lorentz invariants as rational parameters
+    ## as this slows down the syzygies computations in Singular significantly
+    rational := IsIdenticalObj( ValueOption( "rational" ), true );
+    
+    if rational then
+        S := R!.RingAfterSuccessfulReduction_rational;
+    else
+        S := R!.RingAfterSuccessfulReduction;
+    fi;
     
     indets := S * indets;
     
