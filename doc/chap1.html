@@ -67,8 +67,8 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7CECFE5181232039">1.5-6 ExternalMomenta</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87712A318196D154">1.5-7 DimensionOfCoefficientsVector</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X836F0A967AACEA18">1.5-8 UnderlyingRing</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7EEBF92582330B00">1.5-9 RelationsOfMomenta</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7CC2D50A846E97D5">1.5-10 RelationsMatrixOfMomenta</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X822A9D50863B40CC">1.5-9 RelationsOfExternalMomenta</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8672A8DD8160358F">1.5-10 RelationsMatrixOfExternalMomenta</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7BBD84027BBECEE4">1.5-11 IndependentLorentzInvariants</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X848700327B42BF81">1.5-12 Propagators</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86CE62AA7B7F63D9">1.5-13 Numerators</a></span>
@@ -185,7 +185,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LD := LoopDiagram( "k", "": masses := "m" );</span>
 &lt;A loop diagram with loop momenta [ k ] &amp; external momenta [ ] &amp;
  masses [ m ]&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfMomenta( LD, [ ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfExternalMomenta( LD, [ ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependentLorentzInvariants( LD, [ k^2 ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetPropagators( LD, [ k^2 - m^2 ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetNumerators( LD, [ ] );</span>
@@ -273,7 +273,7 @@ true
 &lt;A loop diagram with loop momenta [ l1, l2 ] &amp; external momenta [ p ]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := p^2;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetAbbreviation( s, "s" );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfMomenta( LD, [ ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfExternalMomenta( LD, [ ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependentLorentzInvariants( LD, [ l1^2, l2^2, l1*l2, l1*p, l2*p, s ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetPropagators( LD, -[ l1^2, (l1+p)^2, l2^2, (l2-p)^2, (l1+l2)^2 ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetNumerators( LD, -[ ] );</span>
@@ -421,7 +421,7 @@ D1,0, 0, 0, 0,
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel1 := List( ExternalMomenta( LD ), k -&gt; k^2 );</span>
 [ k1^2, k2^2, k4^2 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel2 := [ (k1+k2+k4)^2 ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfMomenta( LD, Concatenation( rel1, rel2 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfExternalMomenta( LD, Concatenation( rel1, rel2 ) );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependentLorentzInvariants( LD,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ l1^2, l1*k1, l1*k2, l1*k4, s12, s14 ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetPropagators( LD, -[ l1^2, (l1-k1)^2, (l1-k1-k2)^2, (l1+k4)^2 ] );</span>
@@ -516,12 +516,12 @@ true
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LD := LoopDiagram( "l1..2", "p1..2", 2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LD := LoopDiagram( "l1..2", "p1..2" );</span>
 &lt;A loop diagram with loop momenta [ l1, l2 ] &amp; external momenta [ p1, p2 ]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := 2*p1*p2;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetAbbreviation( s, "s" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel := List( ExternalMomenta( LD ), p -&gt; p^2 );;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfMomenta( LD, rel );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfExternalMomenta( LD, rel );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependentLorentzInvariants( LD,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ l1^2, l2^2, l1*l2,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">          l1*p1, l2*p1, l1*p2, l2*p2,</span>
@@ -562,12 +562,12 @@ s+D2-N7, D2-N7,   0,          0,            -D5+D6,      -D5+D6,
 
 
 <div class="example"><pre>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LD := LoopDiagram( "k1, k2", "v1, v2", 2 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LD := LoopDiagram( "k1, k2", "v1, v2" );</span>
 &lt;A loop diagram with loop momenta [ k1, k2 ] &amp; external momenta [ v1, v2 ]&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">cos:= v1*v2;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetAbbreviation( cos, "cos" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel := [ v1^2 - 1, v2^2 - 1 ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfMomenta( LD, rel );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfExternalMomenta( LD, rel );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependentLorentzInvariants( LD,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ k1^2, k1*k2, k1*v1, k1*v2, k2^2, k2*v1, k2*v2, cos ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetPropagators( LD,</span>
@@ -629,7 +629,7 @@ D1-1,  D2-1,  D3-D6+N7, 0,     0,     0,
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetAbbreviation( s14, "s14" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel1 := List( ExternalMomenta( LD ), k -&gt; k^2 );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel2 := [ (k1+k2+k4)^2 ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfMomenta( LD, Concatenation( rel1, rel2 ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfExternalMomenta( LD, Concatenation( rel1, rel2 ) );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependentLorentzInvariants( LD,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ l1^2, l1*l2, l2^2, l1*k1, l1*k2, l1*k4,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">          l2*k1, l2*k2, l2*k4, s12, s14 ] );</span>
@@ -744,7 +744,7 @@ D1-1,  D2-1,  D3-D6+N7, 0,     0,     0,
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s51:= 2*p2*p3 + 2*p2*p4 + 2*p3*p4;;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetAbbreviation( s51, "s51" );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel := [ p1^2, p2^2, p3^2, p4^2 ];;</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfMomenta( LD, rel );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfExternalMomenta( LD, rel );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependentLorentzInvariants( LD,</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        [ k1^2, k1*p1, k1*p2, k1*p3, k1*p4, pp5, s12, s23, s34, s45, s51 ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetPropagators( LD,</span>
@@ -838,16 +838,16 @@ pp5-s45-D4+D5, -s23+s51-D4+D5,s34-D4+D5, -D4+D5,       -D4+D5
 <h5>1.5-8 UnderlyingRing</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingRing</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7EEBF92582330B00" name="X7EEBF92582330B00"></a></p>
+<p><a id="X822A9D50863B40CC" name="X822A9D50863B40CC"></a></p>
 
-<h5>1.5-9 RelationsOfMomenta</h5>
+<h5>1.5-9 RelationsOfExternalMomenta</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RelationsOfMomenta</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p><a id="X7CC2D50A846E97D5" name="X7CC2D50A846E97D5"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RelationsOfExternalMomenta</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p><a id="X8672A8DD8160358F" name="X8672A8DD8160358F"></a></p>
 
-<h5>1.5-10 RelationsMatrixOfMomenta</h5>
+<h5>1.5-10 RelationsMatrixOfExternalMomenta</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RelationsMatrixOfMomenta</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; RelationsMatrixOfExternalMomenta</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p><a id="X7BBD84027BBECEE4" name="X7BBD84027BBECEE4"></a></p>
 
 <h5>1.5-11 IndependentLorentzInvariants</h5>

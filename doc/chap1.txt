@@ -55,7 +55,7 @@
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "k", "": masses := "m" );[127X[104X
     [4X[28X<A loop diagram with loop momenta [ k ] & external momenta [ ] &[128X[104X
     [4X[28X masses [ m ]>[128X[104X
-    [4X[25Xgap>[125X [27XSetRelationsOfMomenta( LD, [ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, [ ] );[127X[104X
     [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD, [ k^2 ] );[127X[104X
     [4X[25Xgap>[125X [27XSetPropagators( LD, [ k^2 - m^2 ] );[127X[104X
     [4X[25Xgap>[125X [27XSetNumerators( LD, [ ] );[127X[104X
@@ -141,7 +141,7 @@
     [4X[28X<A loop diagram with loop momenta [ l1, l2 ] & external momenta [ p ]>[128X[104X
     [4X[25Xgap>[125X [27Xs := p^2;;[127X[104X
     [4X[25Xgap>[125X [27XSetAbbreviation( s, "s" );[127X[104X
-    [4X[25Xgap>[125X [27XSetRelationsOfMomenta( LD, [ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, [ ] );[127X[104X
     [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD, [ l1^2, l2^2, l1*l2, l1*p, l2*p, s ] );[127X[104X
     [4X[25Xgap>[125X [27XSetPropagators( LD, -[ l1^2, (l1+p)^2, l2^2, (l2-p)^2, (l1+l2)^2 ] );[127X[104X
     [4X[25Xgap>[125X [27XSetNumerators( LD, -[ ] );[127X[104X
@@ -287,7 +287,7 @@
     [4X[25Xgap>[125X [27Xrel1 := List( ExternalMomenta( LD ), k -> k^2 );[127X[104X
     [4X[28X[ k1^2, k2^2, k4^2 ][128X[104X
     [4X[25Xgap>[125X [27Xrel2 := [ (k1+k2+k4)^2 ];;[127X[104X
-    [4X[25Xgap>[125X [27XSetRelationsOfMomenta( LD, Concatenation( rel1, rel2 ) );[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, Concatenation( rel1, rel2 ) );[127X[104X
     [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD,[127X[104X
     [4X[25X>[125X [27X        [ l1^2, l1*k1, l1*k2, l1*k4, s12, s14 ] );[127X[104X
     [4X[25Xgap>[125X [27XSetPropagators( LD, -[ l1^2, (l1-k1)^2, (l1-k1-k2)^2, (l1+k4)^2 ] );[127X[104X
@@ -380,12 +380,12 @@
   [1X1.2-5 [33X[0;0Y2 Loop nonplanar ladder[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "p1..2", 2 );[127X[104X
+    [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "p1..2" );[127X[104X
     [4X[28X<A loop diagram with loop momenta [ l1, l2 ] & external momenta [ p1, p2 ]>[128X[104X
     [4X[25Xgap>[125X [27Xs := 2*p1*p2;;[127X[104X
     [4X[25Xgap>[125X [27XSetAbbreviation( s, "s" );[127X[104X
     [4X[25Xgap>[125X [27Xrel := List( ExternalMomenta( LD ), p -> p^2 );;[127X[104X
-    [4X[25Xgap>[125X [27XSetRelationsOfMomenta( LD, rel );[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, rel );[127X[104X
     [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD,[127X[104X
     [4X[25X>[125X [27X        [ l1^2, l2^2, l1*l2,[127X[104X
     [4X[25X>[125X [27X          l1*p1, l2*p1, l1*p2, l2*p2,[127X[104X
@@ -424,12 +424,12 @@
   [1X1.2-6 [33X[0;0Y2 Loop cusp anomalous dimensions[133X[101X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLD := LoopDiagram( "k1, k2", "v1, v2", 2 );[127X[104X
+    [4X[25Xgap>[125X [27XLD := LoopDiagram( "k1, k2", "v1, v2" );[127X[104X
     [4X[28X<A loop diagram with loop momenta [ k1, k2 ] & external momenta [ v1, v2 ]>[128X[104X
     [4X[25Xgap>[125X [27Xcos:= v1*v2;;[127X[104X
     [4X[25Xgap>[125X [27XSetAbbreviation( cos, "cos" );[127X[104X
     [4X[25Xgap>[125X [27Xrel := [ v1^2 - 1, v2^2 - 1 ];;[127X[104X
-    [4X[25Xgap>[125X [27XSetRelationsOfMomenta( LD, rel );[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, rel );[127X[104X
     [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD,[127X[104X
     [4X[25X>[125X [27X        [ k1^2, k1*k2, k1*v1, k1*v2, k2^2, k2*v1, k2*v2, cos ] );[127X[104X
     [4X[25Xgap>[125X [27XSetPropagators( LD,[127X[104X
@@ -489,7 +489,7 @@
     [4X[25Xgap>[125X [27XSetAbbreviation( s14, "s14" );[127X[104X
     [4X[25Xgap>[125X [27Xrel1 := List( ExternalMomenta( LD ), k -> k^2 );;[127X[104X
     [4X[25Xgap>[125X [27Xrel2 := [ (k1+k2+k4)^2 ];;[127X[104X
-    [4X[25Xgap>[125X [27XSetRelationsOfMomenta( LD, Concatenation( rel1, rel2 ) );[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, Concatenation( rel1, rel2 ) );[127X[104X
     [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD,[127X[104X
     [4X[25X>[125X [27X        [ l1^2, l1*l2, l2^2, l1*k1, l1*k2, l1*k4,[127X[104X
     [4X[25X>[125X [27X          l2*k1, l2*k2, l2*k4, s12, s14 ] );[127X[104X
@@ -602,7 +602,7 @@
     [4X[25Xgap>[125X [27Xs51:= 2*p2*p3 + 2*p2*p4 + 2*p3*p4;;[127X[104X
     [4X[25Xgap>[125X [27XSetAbbreviation( s51, "s51" );[127X[104X
     [4X[25Xgap>[125X [27Xrel := [ p1^2, p2^2, p3^2, p4^2 ];;[127X[104X
-    [4X[25Xgap>[125X [27XSetRelationsOfMomenta( LD, rel );[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, rel );[127X[104X
     [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD,[127X[104X
     [4X[25X>[125X [27X        [ k1^2, k1*p1, k1*p2, k1*p3, k1*p4, pp5, s12, s23, s34, s45, s51 ] );[127X[104X
     [4X[25Xgap>[125X [27XSetPropagators( LD,[127X[104X
@@ -680,13 +680,13 @@
   
   [33X[1;0Y[29X[2XUnderlyingRing[102X( [3Xarg[103X ) [32X attribute[133X
   
-  [1X1.5-9 RelationsOfMomenta[101X
+  [1X1.5-9 RelationsOfExternalMomenta[101X
   
-  [33X[1;0Y[29X[2XRelationsOfMomenta[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XRelationsOfExternalMomenta[102X( [3Xarg[103X ) [32X attribute[133X
   
-  [1X1.5-10 RelationsMatrixOfMomenta[101X
+  [1X1.5-10 RelationsMatrixOfExternalMomenta[101X
   
-  [33X[1;0Y[29X[2XRelationsMatrixOfMomenta[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XRelationsMatrixOfExternalMomenta[102X( [3Xarg[103X ) [32X attribute[133X
   
   [1X1.5-11 IndependentLorentzInvariants[101X
   

@@ -53,8 +53,8 @@
   [2XPropagators[102X, for IsLoopDiagram 1.5-12 
   [2XReductionMatrixOfIndependentLorentzInvariants[102X, for IsLoopDiagram 1.7-10 
   [2XReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsLoopDiagram 1.7-14 
-  [2XRelationsMatrixOfMomenta[102X, for IsLoopDiagram 1.5-10 
-  [2XRelationsOfMomenta[102X, for IsLoopDiagram 1.5-9 
+  [2XRelationsMatrixOfExternalMomenta[102X, for IsLoopDiagram 1.5-10 
+  [2XRelationsOfExternalMomenta[102X, for IsLoopDiagram 1.5-9 
   [2XRingOfIndependentLorentzInvariants[102X, for IsLoopDiagram 1.7-9 
   [2XRingOfLoopDiagram[102X, for IsLoopDiagram 1.7-13 
   [2XRingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsLoopDiagram 1.7-12 
