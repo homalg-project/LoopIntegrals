@@ -17,7 +17,7 @@ rel1 = List( ExternalMomenta( LD ), k -> k^2 )
 
 rel2 = @gap([ (k1+k2+k4)^2 ]);
 
-SetRelationsOfMomenta( LD, Concatenation( rel1, rel2 ) )
+SetRelationsOfExternalMomenta( LD, Concatenation( rel1, rel2 ) )
 
 SetIndependentLorentzInvariants( LD, [ l1^2, l1*k1, l1*k2, l1*k4, s12, s14 ] )
 

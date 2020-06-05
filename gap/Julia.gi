@@ -47,13 +47,13 @@ InstallOtherMethod( SetAbbreviation,
 end );
 
 ##
-InstallMethod( SetRelationsOfMomenta,
+InstallMethod( SetRelationsOfExternalMomenta,
         [ IsLoopDiagram, IsJuliaObject ], 10000000001,
         
   function( LD, rel )
     
-    LD!.RelationsOfMomenta := JuliaToGAP( IsList, rel );
-    SetFilterObj( LD, HasRelationsOfMomenta );
+    LD!.RelationsOfExternalMomenta := JuliaToGAP( IsList, rel );
+    SetFilterObj( LD, HasRelationsOfExternalMomenta );
     
 end );
 

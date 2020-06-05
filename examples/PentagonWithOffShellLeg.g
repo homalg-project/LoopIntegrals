@@ -19,7 +19,7 @@ SetAbbreviation( s45, "s45" );
 s51:= 2*p2*p3 + 2*p2*p4 + 2*p3*p4;;
 SetAbbreviation( s51, "s51" );
 rel := [ p1^2, p2^2, p3^2, p4^2 ];;
-SetRelationsOfMomenta( LD, rel );
+SetRelationsOfExternalMomenta( LD, rel );
 SetIndependentLorentzInvariants( LD,
         [ k1^2, k1*p1, k1*p2, k1*p3, k1*p4, pp5, s12, s23, s34, s45, s51 ] );
 SetPropagators( LD,

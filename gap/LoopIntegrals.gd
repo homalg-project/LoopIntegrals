@@ -94,11 +94,11 @@ DeclareAttribute( "UnderlyingRing",
         IsLoopDiagram );
 
 #!
-DeclareAttribute( "RelationsOfMomenta",
+DeclareAttribute( "RelationsOfExternalMomenta",
         IsLoopDiagram );
 
 #!
-DeclareAttribute( "RelationsMatrixOfMomenta",
+DeclareAttribute( "RelationsMatrixOfExternalMomenta",
         IsLoopDiagram );
 
 #!

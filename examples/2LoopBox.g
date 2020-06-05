@@ -12,7 +12,7 @@ s14 := 2*k1*k4;;
 SetAbbreviation( s14, "s14" );
 rel1 := List( ExternalMomenta( LD ), k -> k^2 );;
 rel2 := [ (k1+k2+k4)^2 ];;
-SetRelationsOfMomenta( LD, Concatenation( rel1, rel2 ) );
+SetRelationsOfExternalMomenta( LD, Concatenation( rel1, rel2 ) );
 SetIndependentLorentzInvariants( LD,
         [ l1^2, l1*l2, l2^2, l1*k1, l1*k2, l1*k4,
           l2*k1, l2*k2, l2*k4, s12, s14 ] );

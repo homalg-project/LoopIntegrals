@@ -218,13 +218,13 @@ InstallMethod( DimensionOfCoefficientsVector,
 end );
 
 ##
-InstallMethod( RelationsMatrixOfMomenta,
-        [ IsLoopDiagram and HasRelationsOfMomenta ],
+InstallMethod( RelationsMatrixOfExternalMomenta,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta ],
         
   function( LD )
     local rel;
     
-    rel := RelationsOfMomenta( LD );
+    rel := RelationsOfExternalMomenta( LD );
     
     return HomalgMatrix( rel, Length( rel ), 1, UnderlyingRing( LD ) );
     
@@ -284,7 +284,7 @@ end );
 
 ##
 InstallMethod( JacobianOfPropagators,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators ],
         
   function( LD )
     local jac, rel;
@@ -293,7 +293,7 @@ InstallMethod( JacobianOfPropagators,
 
     jac := MatrixOfMomenta( LD ) * jac;
     
-    rel := RelationsMatrixOfMomenta( LD );
+    rel := RelationsMatrixOfExternalMomenta( LD );
     
     jac := List( [ 1 .. NrColumns( jac ) ],
                    j -> DecideZeroRows( CertainColumns( jac, [ j ] ), rel ) );
@@ -304,7 +304,7 @@ end );
 
 ##
 InstallMethod( JacobianOfNumerators,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasNumerators ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasNumerators ],
         
   function( LD )
     local jac, rel;
@@ -317,7 +317,7 @@ InstallMethod( JacobianOfNumerators,
         return jac;
     fi;
     
-    rel := RelationsMatrixOfMomenta( LD );
+    rel := RelationsMatrixOfExternalMomenta( LD );
     
     jac := List( [ 1 .. NrColumns( jac ) ],
                    j -> DecideZeroRows( CertainColumns( jac, [ j ] ), rel ) );
@@ -328,7 +328,7 @@ end );
 
 ##
 InstallMethod( PairOfOriginalMatricesOfLoopDiagram,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators ],
         
   function( LD )
     
@@ -339,7 +339,7 @@ end );
 
 ##
 InstallMethod( PairOfMatricesOfLoopDiagram,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators ],
         
   function( LD )
     
@@ -485,7 +485,7 @@ end );
 
 ##
 InstallMethod( RingOfIndependentLorentzInvariants,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasIndependentLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
   function( LD )
     local abbreviation, I, M, symbol, invariants, R;
@@ -538,7 +538,7 @@ end );
 
 ##
 InstallMethod( ReductionMatrixOfIndependentLorentzInvariants,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasIndependentLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
   function( LD )
     local abbreviation, R, invariants, I, M, red;
@@ -577,7 +577,7 @@ InstallMethod( ReductionMatrixOfIndependentLorentzInvariants,
     
     invariants := HomalgMatrix( invariants, M, 1, R );
     
-    red := UnionOfRows( invariants, R * RelationsMatrixOfMomenta( LD ) );
+    red := UnionOfRows( invariants, R * RelationsMatrixOfExternalMomenta( LD ) );
     
     red := BasisOfRows( red );
     
@@ -593,7 +593,7 @@ end );
 
 ##
 InstallMethod( ExpressInIndependentLorentzInvariants,
-        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasIndependentLorentzInvariants ],
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
   function( mat, LD )
     local red, R, col;
@@ -619,7 +619,7 @@ end );
 
 ##
 InstallMethod( RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     local symbolD, D, N, propagators, symbolN, Z, A, numerators,
@@ -683,7 +683,7 @@ end );
 
 ##
 InstallMethod( RingOfLoopDiagram,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     local rational, K, D, Z, R, indets, invariants, propagators, numerators, masses, S;
@@ -747,7 +747,7 @@ end );
 
 ##
 InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     local rational, K, D, Z, R, indets, red, S;
@@ -787,7 +787,7 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
     
     indets := HomalgMatrix( indets, Length( indets ), 1, R );
     
-    red := UnionOfRows( indets, R * RelationsMatrixOfMomenta( LD ) );
+    red := UnionOfRows( indets, R * RelationsMatrixOfExternalMomenta( LD ) );
     
     red := BasisOfRows( red );
     
@@ -807,7 +807,7 @@ end );
 
 ##
 InstallMethod( ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants,
-        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( mat, LD )
     local rational, red, R, col, S, Smat;
@@ -851,7 +851,7 @@ end );
 
 ##
 InstallMethod( JacobianOfPropagatorsInIndependentLorentzInvariants,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasIndependentLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
   function( LD )
     
@@ -862,7 +862,7 @@ end );
 
 ##
 InstallMethod( JacobianOfPropagatorsInPropagators,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
@@ -873,7 +873,7 @@ end );
 
 ##
 InstallMethod( JacobianOfNumeratorsInPropagators,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
@@ -884,7 +884,7 @@ end );
 
 ##
 InstallMethod( PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasIndependentLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
   function( LD )
 
@@ -895,7 +895,7 @@ end );
 
 ##
 InstallMethod( PairOfMatricesOfLoopDiagramInPropagators,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
 
@@ -907,7 +907,7 @@ end );
 
 ##
 InstallMethod( JacobianOfLoopDiagramInPropagators,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
@@ -919,7 +919,7 @@ end );
 
 ##
 InstallMethod( JacobianOfCoefficientsVectorInPropagators,
-        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
     local red, R, rational, S, indets;
@@ -948,7 +948,7 @@ end );
 
 ##
 InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
-        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
     local l, k, jacLD, jacLV, trace, sum, D;
@@ -1013,7 +1013,7 @@ end );
 
 ##
 InstallMethod( IBPRelation,
-        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
     local R, Y, exponents, c, D_s, oper, S, div, jacLD;
@@ -1050,7 +1050,7 @@ end );
 
 ##
 InstallMethod( IBPRelation,
-        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants, IsList ],
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants, IsList ],
         
   function( vec, LD, exponents )
     local ibp, Y, P, S, T, phi, c;
@@ -1087,7 +1087,7 @@ end );
 
 ##
 InstallMethod( MatrixOfIBPRelations,
-        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( mat, LD )
     local ibps;
@@ -1100,7 +1100,7 @@ end );
 
 ##
 InstallMethod( MatrixOfIBPRelations,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     local id;
@@ -1113,7 +1113,7 @@ end );
 
 ##
 InstallMethod( BasisOfIBPRelations,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
 
@@ -1123,7 +1123,7 @@ end );
 
 ##
 InstallMethod( MatrixOfSpecialIBPRelations,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     local syz, id, ibps;
@@ -1138,7 +1138,7 @@ end );
 
 ##
 InstallMethod( BasisOfSpecialIBPRelations,
-        [ IsLoopDiagram and HasRelationsOfMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     

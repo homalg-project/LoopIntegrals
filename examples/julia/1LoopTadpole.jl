@@ -5,7 +5,7 @@ LoadPackage( "LoopIntegrals" )
 
 LD = LoopDiagram( "k", "", masses = "m" )
 
-SetRelationsOfMomenta( LD, [ ] )
+SetRelationsOfExternalMomenta( LD, [ ] )
 
 SetIndependentLorentzInvariants( LD, [ k^2 ] )
 

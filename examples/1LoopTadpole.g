@@ -6,7 +6,7 @@ LoadPackage( "LoopIntegrals" );
 LD := LoopDiagram( "k", "": masses := "m" );
 #! <A loop diagram with loop momenta [ k ] & external momenta [ ] &
 #!  masses [ m ]>
-SetRelationsOfMomenta( LD, [ ] );
+SetRelationsOfExternalMomenta( LD, [ ] );
 SetIndependentLorentzInvariants( LD, [ k^2 ] );
 SetPropagators( LD, [ k^2 - m^2 ] );
 SetNumerators( LD, [ ] );

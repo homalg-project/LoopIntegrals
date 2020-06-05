@@ -3,12 +3,12 @@
 LoadPackage( "LoopIntegrals" );
 
 #! @Example
-LD := LoopDiagram( "k1, k2", "v1, v2", 2 );
+LD := LoopDiagram( "k1, k2", "v1, v2" );
 #! <A loop diagram with loop momenta [ k1, k2 ] & external momenta [ v1, v2 ]>
 cos:= v1*v2;;
 SetAbbreviation( cos, "cos" );
 rel := [ v1^2 - 1, v2^2 - 1 ];;
-SetRelationsOfMomenta( LD, rel );
+SetRelationsOfExternalMomenta( LD, rel );
 SetIndependentLorentzInvariants( LD,
         [ k1^2, k1*k2, k1*v1, k1*v2, k2^2, k2*v1, k2*v2, cos ] );
 SetPropagators( LD,
