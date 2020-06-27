@@ -3,7 +3,7 @@
 LoadPackage( "LoopIntegrals" );
 
 #! @Example
-LD := LoopDiagram( "k", "": masses := "m" );
+LD := LoopDiagram( "k", "" : masses := "m" );
 #! <A loop diagram with loop momenta [ k ] & external momenta [ ] &
 #!  masses [ m ]>
 SetRelationsOfExternalMomenta( LD, [ ] );
