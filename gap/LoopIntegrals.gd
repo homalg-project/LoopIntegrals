@@ -286,7 +286,15 @@ DeclareOperation( "MatrixOfIBPRelations",
 
 #!
 DeclareOperation( "MatrixOfIBPRelations",
+        [ IsHomalgMatrix, IsLoopDiagram, IsList ] );
+
+#!
+DeclareOperation( "MatrixOfIBPRelations",
         [ IsLoopDiagram ] );
+
+#!
+DeclareOperation( "MatrixOfIBPRelations",
+        [ IsLoopDiagram, IsList ] );
 
 #!
 DeclareOperation( "BasisOfIBPRelations",
