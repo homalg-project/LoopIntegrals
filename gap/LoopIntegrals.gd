@@ -305,6 +305,10 @@ DeclareOperation( "MatrixOfSpecialIBPRelations",
         [ IsLoopDiagram ] );
 
 #!
+DeclareOperation( "MatrixOfSpecialIBPRelations",
+        [ IsLoopDiagram, IsList ] );
+
+#!
 DeclareOperation( "BasisOfSpecialIBPRelations",
         [ IsLoopDiagram ] );
 
