@@ -1081,6 +1081,7 @@ InstallMethod( IBPRelation,
     
     phi := RingMap( phi, AmbientRing( S ), T );
     
+    ## specify the exponents
     return Pullback( phi, ibp );
     
 end );
