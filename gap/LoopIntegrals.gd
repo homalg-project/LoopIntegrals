@@ -153,6 +153,10 @@ DeclareAttribute( "PairOfMatricesOfLoopDiagram",
 DeclareAttribute( "SymanzikPolynomials",
         IsLoopDiagram );
 
+#!
+DeclareAttribute( "GeneratorsOfScalelessSectors",
+        IsLoopDiagram );
+
 ####################################
 #
 #! @Section Constructors
@@ -334,6 +338,18 @@ DeclareOperation( "BasisOfSpecialIBPRelations",
 
 #! @Arguments LD, list_of_ones
 DeclareOperation( "SymanzikPolynomials",
+        [ IsLoopDiagram, IsList ] );
+
+#! @Arguments LD, list_of_ones
+DeclareOperation( "DegreesOfMonomialsOfProductOfSymanzikPolynomials",
+        [ IsLoopDiagram, IsList ] );
+
+#! @Arguments LD, list_of_ones
+DeclareOperation( "IsScalelessLoopIntegral",
+        [ IsLoopDiagram, IsList ] );
+
+#! @Arguments LD, exponents
+DeclareOperation( "GeneratorsOfScalelessSectors",
         [ IsLoopDiagram, IsList ] );
 
 ####################################

@@ -1441,6 +1441,141 @@ InstallMethod( SymanzikPolynomials,
     
 end );
 
+##
+InstallMethod( DegreesOfMonomialsOfProductOfSymanzikPolynomials,
+        [ IsLoopDiagram and HasPropagators, IsList ],
+        
+  function( LD, list_of_ones )
+    local s, degree, R, l, b, monomials;
+    
+    s := Product( SymanzikPolynomials( LD, list_of_ones ) );
+    
+    R := HomalgRing( s );
+    
+    l := Length( list_of_ones );
+    b := Length( Indeterminates( BaseRing( R ) ) );
+    
+    degree := ListWithIdenticalEntries( b + l, ListWithIdenticalEntries( l, 0 ) );
+    
+    degree{b + [ 1 .. l ]} := IdentityMat( l );
+    
+    degree := DegreeOfRingElementFunction( HomalgRing( s ), degree );
+    
+    monomials := Coefficients( s )!.monomials;
+    
+    return List( monomials, degree );
+    
+end );
+
+##
+InstallMethod( IsScalelessLoopIntegral,
+        [ IsLoopDiagram and HasPropagators, IsList ],
+        
+  function( LD, list_of_ones )
+    local degrees, v1, l, rank;
+    
+    if IsEmpty( list_of_ones ) then
+        return true;
+    fi;
+    
+    degrees := DegreesOfMonomialsOfProductOfSymanzikPolynomials( LD, list_of_ones );
+    
+    if IsEmpty( degrees ) then
+        return true;
+    fi;
+    
+    v1 := degrees[1];
+    
+    l := Length( degrees );
+    
+    if l = 1 then
+        degrees := [ v1 ];
+    else
+        degrees := List( degrees{[ 2 .. Length( degrees ) ]}, v -> v1 - v );
+    fi;
+    
+    rank := Rank( degrees );
+    
+    return rank < Length( v1 ) - 1 and rank > 0;
+    
+end );
+
+##
+InstallMethod( GeneratorsOfScalelessSectors,
+        [ IsLoopDiagram and HasPropagators ],
+        
+  function( LD )
+    local n, generators, k, iter, comb, Y, shifts;
+    
+    n := [ 1 .. Length( Propagators( LD ) ) ];
+    
+    generators := [ ];
+    
+    for k in Reversed( [ 0 .. Length( n ) - 1 ] ) do
+        
+        iter := IteratorOfCombinations( n, k );
+        
+        for comb in iter do
+            
+            if ForAny( generators, gen -> IsSubset( gen, comb ) ) then
+                continue;
+            fi;
+            
+            if IsScalelessLoopIntegral( LD, comb ) then
+                Add( generators, comb );
+            fi;
+            
+        od;
+        
+    od;
+    
+    shifts :=
+      Concatenation(
+              List( n, i -> Concatenation( LOOP_INTEGRALS.PropagatorSymbol, String( i ) ) ),
+              List( Length( n ) + [ 1 .. Length( Numerators( LD ) ) ], i -> Concatenation( LOOP_INTEGRALS.NumeratorSymbol, String( i ) ) ) );
+    
+    n := [ 1 .. Length( shifts ) ];
+    
+    Y := HomalgRing( MatrixOfIBPRelations( LD ) );
+    
+    shifts := List( shifts, D -> D / Y );
+    
+    generators := List( generators, gen -> Product( shifts{Difference( n , gen )} ) );
+    
+    return HomalgMatrix( generators, 1, Length( generators ), Y );
+    
+end );
+
+##
+InstallMethod( GeneratorsOfScalelessSectors,
+        [ IsLoopDiagram and HasPropagators, IsList ],
+        
+  function( LD, exponents )
+    local n, shifts, Y, a;
+    
+    if not Length( exponents ) = Length( Propagators( LD ) ) + Length( Numerators( LD ) ) then
+        Error( "the length of the list exponents must be equal to the sum of the number of propagators and numerators\n" );
+    fi;
+    
+    exponents := List( exponents, a -> a - 1 );
+    
+    n := [ 1 .. Length( Propagators( LD ) ) ];
+    
+    shifts :=
+      Concatenation(
+              List( n, i -> Concatenation( LOOP_INTEGRALS.PropagatorSymbol, String( i ) ) ),
+              List( Length( n ) + [ 1 .. Length( Numerators( LD ) ) ], i -> Concatenation( LOOP_INTEGRALS.NumeratorSymbol, String( i ) ) ) );
+    
+    Y := HomalgRing( MatrixOfIBPRelations( LD ) );
+    
+    shifts := List( shifts, D -> D / Y );
+    
+    a := Product( ListN( shifts, exponents, {D,a} -> D^a ) );
+    
+    return a * GeneratorsOfScalelessSectors( LD );
+    
+end );
+
 #########################
 #
 # View & Display methods
