@@ -78,3 +78,25 @@ bas = BasisOfIBPRelations( LD )
 Sbas = BasisOfSpecialIBPRelations( LD )
 
 bas == Sbas
+
+SymanzikPolynomials( LD )
+
+SymanzikPolynomials( LD, [ 1, 2, 3, 4 ] )
+
+SymanzikPolynomials( LD, [ 1, 2, 3 ] )
+
+SymanzikPolynomials( LD, [ 1, 2 ] )
+
+SymanzikPolynomials( LD, [ 1 ] )
+
+SymanzikPolynomials( LD, [ ] )
+
+gen = GeneratorsOfScalelessSectors( LD )
+
+Display( gen )
+
+gen2 = GeneratorsOfScalelessSectors( LD, [ 2, 2, 2, 2 ] )
+
+Display( gen2 )
+
+

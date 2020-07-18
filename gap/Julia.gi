@@ -110,3 +110,23 @@ InstallOtherMethod( IBPRelation,
     return IBPRelation( row, LD, JuliaToGAP( IsList, vec ) );
     
 end );
+
+##
+InstallOtherMethod( SymanzikPolynomials,
+        [ IsLoopDiagram and HasPropagators, IsJuliaObject ], 10000000001,
+        
+  function( LD, list_of_ones )
+    
+    return SymanzikPolynomials( LD, JuliaToGAP( IsList, list_of_ones ) );
+    
+end );
+
+##
+InstallOtherMethod( GeneratorsOfScalelessSectors,
+        [ IsLoopDiagram and HasPropagators, IsJuliaObject ], 10000000001,
+        
+  function( LD, list_of_ones )
+    
+    return GeneratorsOfScalelessSectors( LD, JuliaToGAP( IsList, list_of_ones ) );
+    
+end );
