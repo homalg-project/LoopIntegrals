@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2020.05.13
+                                   2020.06.01
   
   
-                                  13 May 2020
+                                  1 June 2020
   
   
                                 Mohamed Barakat
@@ -94,11 +94,14 @@
       1.5-14 ExtraLorentzInvariants
       1.5-15 OriginalJacobianOfPropagators
       1.5-16 OriginalJacobianOfNumerators
-      1.5-17 MatrixOfMomenta
-      1.5-18 JacobianOfPropagators
-      1.5-19 JacobianOfNumerators
-      1.5-20 PairOfOriginalMatricesOfLoopDiagram
-      1.5-21 PairOfMatricesOfLoopDiagram
+      1.5-17 OriginalTaylorOfPropagators
+      1.5-18 MatrixOfMomenta
+      1.5-19 JacobianOfPropagators
+      1.5-20 JacobianOfNumerators
+      1.5-21 PairOfOriginalMatricesOfLoopDiagram
+      1.5-22 PairOfMatricesOfLoopDiagram
+      1.5-23 SymanzikPolynomials
+      1.5-24 GeneratorsOfScalelessSectors
     1.6 [33X[0;0YConstructors[133X
       1.6-1 LorentzVector
       1.6-2 LorentzVector
@@ -112,29 +115,39 @@
       1.7-6 *
       1.7-7 *
       1.7-8 *
-      1.7-9 RingOfIndependentLorentzInvariants
-      1.7-10 ReductionMatrixOfIndependentLorentzInvariants
-      1.7-11 ExpressInIndependentLorentzInvariants
-      1.7-12 RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
-      1.7-13 RingOfLoopDiagram
-      1.7-14 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
-      1.7-15 ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants
-      1.7-16 JacobianOfPropagatorsInIndependentLorentzInvariants
-      1.7-17 JacobianOfPropagatorsInPropagators
-      1.7-18 JacobianOfNumeratorsInPropagators
-      1.7-19 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants
-      1.7-20 PairOfMatricesOfLoopDiagramInPropagators
-      1.7-21 JacobianOfLoopDiagramInPropagators
-      1.7-22 JacobianOfCoefficientsVectorInPropagators
-      1.7-23 DivergenceOfCoefficientsVectorOfLoopDiagram
-      1.7-24 IBPRelation
-      1.7-25 IBPRelation
-      1.7-26 DoubleShiftAlgebra
-      1.7-27 MatrixOfIBPRelations
-      1.7-28 MatrixOfIBPRelations
-      1.7-29 BasisOfIBPRelations
-      1.7-30 MatrixOfSpecialIBPRelations
-      1.7-31 BasisOfSpecialIBPRelations
+      1.7-9 RingOfExtraLorentzInvariants
+      1.7-10 ReductionMatrixOfExtraLorentzInvariants
+      1.7-11 ExpressInExtraLorentzInvariants
+      1.7-12 RingOfIndependentLorentzInvariants
+      1.7-13 ReductionMatrixOfIndependentLorentzInvariants
+      1.7-14 ExpressInIndependentLorentzInvariants
+      1.7-15 RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
+      1.7-16 RingOfLoopDiagram
+      1.7-17 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
+      1.7-18 ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants
+      1.7-19 JacobianOfPropagatorsInIndependentLorentzInvariants
+      1.7-20 JacobianOfPropagatorsInPropagators
+      1.7-21 JacobianOfNumeratorsInPropagators
+      1.7-22 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants
+      1.7-23 PairOfMatricesOfLoopDiagramInPropagators
+      1.7-24 JacobianOfLoopDiagramInPropagators
+      1.7-25 JacobianOfCoefficientsVectorInPropagators
+      1.7-26 DivergenceOfCoefficientsVectorOfLoopDiagram
+      1.7-27 IBPRelation
+      1.7-28 IBPRelation
+      1.7-29 DoubleShiftAlgebra
+      1.7-30 MatrixOfIBPRelations
+      1.7-31 MatrixOfIBPRelations
+      1.7-32 MatrixOfIBPRelations
+      1.7-33 MatrixOfIBPRelations
+      1.7-34 BasisOfIBPRelations
+      1.7-35 MatrixOfSpecialIBPRelations
+      1.7-36 MatrixOfSpecialIBPRelations
+      1.7-37 BasisOfSpecialIBPRelations
+      1.7-38 SymanzikPolynomials
+      1.7-39 DegreesOfMonomialsOfProductOfSymanzikPolynomials
+      1.7-40 IsScalelessLoopIntegral
+      1.7-41 GeneratorsOfScalelessSectors
   
   
   [32X
