@@ -280,19 +280,19 @@ DeclareOperation( "PairOfMatricesOfLoopDiagramInPropagators",
 DeclareOperation( "JacobianOfLoopDiagramInPropagators",
         [ IsLoopDiagram ] );
 
-#!
+#! @Arguments vec, LD
 DeclareOperation( "JacobianOfCoefficientsVectorInPropagators",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
-#!
+#! @Arguments vec, LD
 DeclareOperation( "DivergenceOfCoefficientsVectorOfLoopDiagram",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
-#!
+#! @Arguments vec, LD
 DeclareOperation( "IBPRelation",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
-#!
+#! @Arguments vec, LD, exponents
 DeclareOperation( "IBPRelation",
         [ IsHomalgMatrix, IsLoopDiagram, IsList ] );
 
@@ -300,11 +300,11 @@ DeclareOperation( "IBPRelation",
 DeclareOperation( "DoubleShiftAlgebra",
         [ IsHomalgRing ] );
 
-#!
+#! @Arguments mat, LD
 DeclareOperation( "MatrixOfIBPRelations",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
-#!
+#! @Arguments mat, LD, exponents
 DeclareOperation( "MatrixOfIBPRelations",
         [ IsHomalgMatrix, IsLoopDiagram, IsList ] );
 
@@ -312,7 +312,7 @@ DeclareOperation( "MatrixOfIBPRelations",
 DeclareOperation( "MatrixOfIBPRelations",
         [ IsLoopDiagram ] );
 
-#!
+#! @Arguments LD, exponents
 DeclareOperation( "MatrixOfIBPRelations",
         [ IsLoopDiagram, IsList ] );
 
@@ -324,7 +324,7 @@ DeclareOperation( "BasisOfIBPRelations",
 DeclareOperation( "MatrixOfSpecialIBPRelations",
         [ IsLoopDiagram ] );
 
-#!
+#! @Arguments LD, exponents
 DeclareOperation( "MatrixOfSpecialIBPRelations",
         [ IsLoopDiagram, IsList ] );
 
@@ -332,7 +332,7 @@ DeclareOperation( "MatrixOfSpecialIBPRelations",
 DeclareOperation( "BasisOfSpecialIBPRelations",
         [ IsLoopDiagram ] );
 
-#!
+#! @Arguments LD, list_of_ones
 DeclareOperation( "SymanzikPolynomials",
         [ IsLoopDiagram, IsList ] );
 
