@@ -101,4 +101,16 @@ Sbas := BasisOfSpecialIBPRelations( LD );
 #! <A non-zero 28 x 1 matrix over a residue class ring>
 bas = Sbas;
 #! true
+SymanzikPolynomials( LD );
+#! [ z1+z2+z3+z4, -s12*z1*z3-s14*z2*z4 ]
+SymanzikPolynomials( LD, [ 1, 2, 3, 4 ] );
+#! [ z1+z2+z3+z4, -s12*z1*z3-s14*z2*z4 ]
+SymanzikPolynomials( LD, [ 1, 2, 3 ] );
+#! [ z1+z2+z3, -s12*z1*z3 ]
+SymanzikPolynomials( LD, [ 1, 2 ] );
+#! [ z1+z2, 0 ]
+SymanzikPolynomials( LD, [ 1 ] );
+#! [ z1, 0 ]
+SymanzikPolynomials( LD, [ ] );
+#! [ 0, 0 ]
 #! @EndExample

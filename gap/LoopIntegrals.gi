@@ -671,6 +671,33 @@ InstallMethod( ExpressInExtraLorentzInvariants,
 end );
 
 ##
+InstallMethod( SymanzikPolynomials,
+        [ IsLoopDiagram and HasPropagators ],
+        
+  function( LD )
+    local taylor, U, R, F;
+    
+    taylor := OriginalTaylorOfPropagators( LD );
+    
+    U := Determinant( taylor[1] );
+    
+    R := HomalgRing( U );
+    
+    F := ( ( TransposedMatrix( taylor[2] ) * AdjunctMatrix( taylor[1] ) * taylor[2] )[1,1] + U * taylor[3] );
+    
+    F := HomalgMatrix( [ F ], 1, 1, R );
+    
+    F := ExpressInExtraLorentzInvariants( F, LD );
+    
+    if not IsEmpty( ExternalMomenta( LD ) ) then
+        R := BaseRing( R );
+    fi;
+    
+    return [ U / R, F[1,1] / R ];
+    
+end );
+
+##
 InstallMethod( RingOfIndependentLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
@@ -1372,6 +1399,45 @@ InstallMethod( BasisOfSpecialIBPRelations,
   function( LD )
     
     return BasisOfRows( MatrixOfSpecialIBPRelations( LD ) );
+    
+end );
+
+##
+InstallMethod( SymanzikPolynomials,
+        [ IsLoopDiagram and HasPropagators, IsList ],
+        
+  function( LD, list_of_ones )
+    local UF, R, var, Tvar, B, T, map, Bvar;
+    
+    UF := SymanzikPolynomials( LD );
+    
+    R := HomalgRing( UF[1] );
+    
+    if HasRelativeIndeterminatesOfPolynomialRing( R ) then
+        var := RelativeIndeterminatesOfPolynomialRing( R );
+    else
+        var := Indeterminates( R );
+    fi;
+    
+    Tvar := var{list_of_ones};
+    
+    B := BaseRing( R );
+    
+    T := B * List( Tvar, String );
+    
+    map := ListWithIdenticalEntries( Length( var ), 0 );
+    
+    map{list_of_ones} := Tvar;
+    
+    Bvar := Indeterminates( B );
+    
+    map := Concatenation( Bvar, map );
+    
+    map := List( map, a -> a / T );
+    
+    map := RingMap( map, R, T );
+    
+    return List( UF, s -> Pullback( map, s ) );
     
 end );
 

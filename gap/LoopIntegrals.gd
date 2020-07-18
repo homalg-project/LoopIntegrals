@@ -149,6 +149,10 @@ DeclareAttribute( "PairOfOriginalMatricesOfLoopDiagram",
 DeclareAttribute( "PairOfMatricesOfLoopDiagram",
         IsLoopDiagram );
 
+#!
+DeclareAttribute( "SymanzikPolynomials",
+        IsLoopDiagram );
+
 ####################################
 #
 #! @Section Constructors
@@ -327,6 +331,10 @@ DeclareOperation( "MatrixOfSpecialIBPRelations",
 #!
 DeclareOperation( "BasisOfSpecialIBPRelations",
         [ IsLoopDiagram ] );
+
+#!
+DeclareOperation( "SymanzikPolynomials",
+        [ IsLoopDiagram, IsList ] );
 
 ####################################
 #
