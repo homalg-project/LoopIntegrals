@@ -126,6 +126,10 @@ DeclareAttribute( "OriginalJacobianOfNumerators",
         IsLoopDiagram );
 
 #!
+DeclareAttribute( "OriginalTaylorOfPropagators",
+        IsLoopDiagram );
+
+#!
 DeclareAttribute( "MatrixOfMomenta",
         IsLoopDiagram );
 
@@ -208,6 +212,18 @@ DeclareOperation( "*",
 DeclareOperation( "POW",
         [ IsLorentzVector, IsInt ] );
     
+#!
+DeclareOperation( "RingOfExtraLorentzInvariants",
+        [ IsLoopDiagram ] );
+
+#!
+DeclareOperation( "ReductionMatrixOfExtraLorentzInvariants",
+        [ IsLoopDiagram ] );
+
+#!
+DeclareOperation( "ExpressInExtraLorentzInvariants",
+        [ IsHomalgMatrix, IsLoopDiagram ] );
+
 #!
 DeclareOperation( "RingOfIndependentLorentzInvariants",
         [ IsLoopDiagram ] );

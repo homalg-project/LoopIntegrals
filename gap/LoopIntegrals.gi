@@ -8,6 +8,7 @@ InstallValue( LOOP_INTEGRALS,
         rec(
             ConstructorOfDefaultField := HomalgFieldOfRationalsInSingular,
             LorentzSymbol := "x",
+            DualSymbol := "z",
             Dimension := 1,
             DimensionSymbol := "D",
             PropagatorSymbol := "D",
@@ -267,6 +268,54 @@ InstallMethod( OriginalJacobianOfNumerators,
 end );
 
 ##
+InstallMethod( OriginalTaylorOfPropagators,
+        [ IsLoopDiagram and HasPropagators ],
+        
+  function( LD )
+    local l, lt, R, propagators, jac, symbols, sum, hess, taylor;
+    
+    l := UnionOfRows( List( LoopMomenta( LD ), UnderlyingMatrix ) );
+    lt := TransposedMatrix( l );
+    
+    R := UnderlyingRing( LD );
+    
+    propagators := Propagators( LD );
+    
+    jac := List( propagators, p -> Diff( l, HomalgMatrix( p, 1, 1, R ) ) );
+    
+    symbols := List( [ 1 .. Length( propagators ) ], i -> Concatenation( LOOP_INTEGRALS.DualSymbol, String( i ) ) );
+    
+    R := R * symbols;
+    
+    symbols := List( symbols, a -> a / R );
+    
+    sum := Sum( ListN( symbols, propagators, {x,p} -> x * ( p / R ) ) );
+    
+    hess := -Sum( ListN( symbols, jac, {x,p} -> 1/2 * x * ( R * Diff( lt, p ) ) ) );
+    
+    taylor := [ hess ];
+    
+    hess := -( ( R * lt ) * hess * ( R * l ) )[1,1];
+    
+    sum := sum - hess;
+    
+    jac := 1/2 * Diff( ( R * l ), HomalgMatrix( [ sum ], 1, 1, R ) );
+    
+    Add( taylor, jac );
+    
+    jac := ( ( R * lt ) * jac )[1,1];
+    
+    sum := sum - 2 * jac;
+    
+    Add( taylor, sum );
+    
+    R := HomalgRing( ReductionMatrixOfExtraLorentzInvariants( LD ) );
+    
+    return [ R * taylor[1], R * taylor[2], taylor[3] / R ];
+    
+end );
+
+##
 InstallMethod( MatrixOfMomenta,
         [ IsLoopDiagram ],
         
@@ -480,6 +529,144 @@ InstallMethod( POW,
     fi;
     
     return Product( ListWithIdenticalEntries( power, x ) );
+    
+end );
+
+##
+InstallMethod( RingOfExtraLorentzInvariants,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasExtraLorentzInvariants and HasPropagators ],
+        
+  function( LD )
+    local abbreviation, I, M, symbol, invariants, R, symbols;
+    
+    abbreviation := ValueOption( "abbreviation" );
+    
+    if not IsIdenticalObj( abbreviation, false ) then
+        abbreviation := true;
+    fi;
+    
+    if abbreviation then
+        if IsBound( LD!.RingOfExtraLorentzInvariants ) then
+            return LD!.RingOfExtraLorentzInvariants;
+        fi;
+    else
+        if IsBound( LD!.RingOfExtraLorentzInvariants_noabbreviation ) then
+            return LD!.RingOfExtraLorentzInvariants_noabbreviation;
+        fi;
+    fi;
+    
+    I := ExtraLorentzInvariants( LD );
+    
+    M := Length( I );
+    
+    symbol := ValueOption( "symbol" );
+    
+    if not IsStringRep( symbol ) then
+        symbol := LOOP_INTEGRALS.LorentzSymbol;
+    fi;
+    
+    invariants := List( [ 1 .. M ],
+                        function( i )
+                          if IsBound( I[i]!.Abbreviation ) and abbreviation then
+                              return I[i]!.Abbreviation;
+                          fi;
+                          return Concatenation( symbol, String( i ) );
+                      end );
+    
+    R := CoefficientsRing( UnderlyingRing( LD ) ) * invariants;
+    
+    symbols := List( [ 1 .. Length( Propagators( LD ) ) ], i -> Concatenation( LOOP_INTEGRALS.DualSymbol, String( i ) ) );
+    
+    R := R * symbols;
+    
+    if abbreviation then
+        LD!.RingOfExtraLorentzInvariants := R;
+    else
+        LD!.RingOfExtraLorentzInvariants_noabbreviation := R;
+    fi;
+    
+    return R;
+    
+end );
+
+##
+InstallMethod( ReductionMatrixOfExtraLorentzInvariants,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local abbreviation, R, invariants, I, M, red;
+    
+    abbreviation := ValueOption( "abbreviation" );
+    
+    if not IsIdenticalObj( abbreviation, false ) then
+        abbreviation := true;
+    fi;
+    
+    if abbreviation then
+        if IsBound( LD!.ReductionMatrixOfExtraLorentzInvariants ) then
+            return LD!.ReductionMatrixOfExtraLorentzInvariants;
+        fi;
+    else
+        if IsBound( LD!.ReductionMatrixOfExtraLorentzInvariants_noabbreviation ) then
+            return LD!.ReductionMatrixOfExtraLorentzInvariants_noabbreviation;
+        fi;
+    fi;
+    
+    R := RingOfExtraLorentzInvariants( LD );
+    
+    invariants := Indeterminates( BaseRing( R ) );
+    
+    R := R * Concatenation( List( ExternalMomenta( LD ), p -> p!.symbols ) );
+    
+    R := PolynomialRingWithProductOrdering( R );
+    
+    invariants := List( invariants, i -> i / R );
+    
+    I := ExtraLorentzInvariants( LD );
+    
+    M := Length( I );
+    
+    invariants := ListN( I, invariants, {a,b} -> a / R - b );
+    
+    invariants := HomalgMatrix( invariants, M, 1, R );
+    
+    red := UnionOfRows( invariants, R * RelationsMatrixOfExternalMomenta( LD ) );
+    
+    red := BasisOfRows( red );
+    
+    if abbreviation then
+        LD!.ReductionMatrixOfExtraLorentzInvariants := red;
+    else
+        LD!.ReductionMatrixOfExtraLorentzInvariants_noabbreviation := red;
+    fi;
+    
+    return red;
+    
+end );
+
+##
+InstallMethod( ExpressInExtraLorentzInvariants,
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasExtraLorentzInvariants and HasPropagators ],
+        
+  function( mat, LD )
+    local red, R, col;
+    
+    red := ReductionMatrixOfExtraLorentzInvariants( LD );
+    
+    R := HomalgRing( red );
+    
+    col := NrColumns( mat );
+    
+    mat := R * mat;
+    
+    if NrColumns( mat ) = 0 then
+        return mat;
+    fi;
+    
+    mat := List( [ 1 .. col ],
+                 j -> DecideZeroRows( CertainColumns( mat, [ j ] ), red ) );
+    
+    return UnionOfColumns( mat );
     
 end );
 
