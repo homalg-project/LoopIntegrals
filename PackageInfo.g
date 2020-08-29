@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "LoopIntegrals",
 Subtitle := "Compute master integrals using commutative and noncommutative methods from computational algebraic geometry",
 Version := Maximum( [
-                   "2020.06.03", ## Mohamed's version
+                   "2020.06.04", ## Mohamed's version
                    ## this line prevents merge conflicts
                    ] ),
 
@@ -28,7 +28,7 @@ Persons := [
     Email := "mohamed.barakat@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
-               "57072 Siegen\n",
+               "57068 Siegen\n",
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
@@ -42,7 +42,7 @@ Persons := [
     Email := "brueser@uni-mainz.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
-               "57072 Siegen\n",
+               "57068 Siegen\n",
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
@@ -56,7 +56,7 @@ Persons := [
     Email := "huber@tp1.physik.uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
-               "57072 Siegen\n",
+               "57068 Siegen\n",
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
@@ -70,7 +70,7 @@ Persons := [
     Email := "piclum@physik.uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
-               "57072 Siegen\n",
+               "57068 Siegen\n",
                "Germany" ),
     Place := "Siegen",
     Institution := "University of Siegen",
