@@ -1,6 +1,6 @@
 name: LoopIntegrals
-version: "2020.06.03"
-date: 2020-06-03
+version: "2020.06.04"
+date: 2020-06-04
 description: |
     Compute master integrals using commutative and noncommutative methods from computational algebraic geometry
 
@@ -46,7 +46,7 @@ packageinfo: https://homalg-project.github.io/LoopIntegrals/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2020.06.03/LoopIntegrals-2020.06.03.tar.gz
+      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2020.06.04/LoopIntegrals-2020.06.04.tar.gz
 
 abstract: |
 
@@ -59,7 +59,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BBHP20</span>]   <b class='BibAuthor'>Barakat, M., Brüser, R., Huber, T. and Piclum, J.</b>,
      <i class='BibTitle'>LoopIntegrals, Compute master integrals using commutative and noncommutative methods from computational algebraic geometry,
-             Version 2020.06.03</i>
+             Version 2020.06.04</i>
      (<span class='BibYear'>2020</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/LoopIntegrals">https://homalg-project.github.io/LoopIntegrals</a></span>.
@@ -67,9 +67,9 @@ citeas: |
     
 
 bibtex: |
-    @misc{ LoopIntegrals2020.06.03,
+    @misc{ LoopIntegrals2020.06.04,
       author =           {Barakat, M. and Br{\"u}ser, R. and Huber, T. and Piclum, J.},
-      title =            {{LoopIntegrals}, Compute master integrals using commutative and noncommutative methods from computational algebraic geometry, {V}ersion 2020.06.03},
+      title =            {{LoopIntegrals}, Compute master integrals using commutative and noncommutative methods from computational algebraic geometry, {V}ersion 2020.06.04},
       month =            {Jun},
       year =             {2020},
       note =             {GAP package},
