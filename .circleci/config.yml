@@ -12,8 +12,9 @@ jobs:
       - run: |
           sudo apt update
           sudo apt dist-upgrade -y
-          sudo apt install -y texlive-latex-extra texlive-science curl
+          sudo apt install -y texlive-latex-extra texlive-science
           cd ..
+          git clone --depth 1 https://github.com/gap-packages/AutoDoc
           git clone --depth 1 https://github.com/homalg-project/homalg_project
           cd LoopIntegrals
           TERM=dumb make ci-test

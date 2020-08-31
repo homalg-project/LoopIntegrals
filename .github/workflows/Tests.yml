@@ -22,6 +22,7 @@ jobs:
       - run: |
           export HOME="/home/gap"
           cd /home/gap/.gap/pkg/
+          git clone --depth 1 https://github.com/gap-packages/AutoDoc
           git clone --depth 1 https://github.com/homalg-project/homalg_project.git
           cd LoopIntegrals
           TERM=dumb make -j $(nproc) --output-sync ci-test
