@@ -54,7 +54,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Tobias",
     LastName := "Huber",
-    WWWHome := "https://www.physik.uni-siegen.de/tp1/research/researchgroups/huber.html.en?lang=en",
+    WWWHome := "https://www.physik.uni-siegen.de/tp1/research/researchgroups/huber.html",
     Email := "huber@tp1.physik.uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
