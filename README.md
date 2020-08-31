@@ -16,7 +16,7 @@ The most recent versions of all packages can be cloned or downloaded from the [h
 [docs-stable-url]: https://homalg-project.github.io/LoopIntegrals/doc/chap0.html
 
 [tests-img]: https://github.com/homalg-project/LoopIntegrals/workflows/Tests/badge.svg
-[tests-url]: https://github.com/homalg-project/LoopIntegrals/
+[tests-url]: https://github.com/homalg-project/LoopIntegrals/actions?query=workflow%3ATests
 
 [codecov-img]: https://codecov.io/gh/homalg-project/LoopIntegrals/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/homalg-project/LoopIntegrals

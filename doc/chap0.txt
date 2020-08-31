@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2020.06.05
+                                   2020.06.06
   
   
-                                  5 June 2020
+                                  6 June 2020
   
   
                                 Mohamed Barakat
