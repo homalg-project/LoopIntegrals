@@ -1,23 +1,15 @@
-#
-# LoopIntegrals
+# SPDX-License-Identifier: GPL-2.0-or-later
+# LoopIntegrals: Compute master integrals using commutative and noncommutative methods from computational algebraic geometry
 #
 # This file runs package tests. It is also referenced in the package
 # metadata in PackageInfo.g.
 #
-
-LoadPackage( "FinSetsForCAP", ">= 2019.12.15" );
-
-LoadPackage( "IO_ForHomalg" );
-HOMALG_IO.show_banners := false;
-
 options := rec(
     exitGAP := true,
     testOptions := rec(
-        compareFunction := "uptowhitespace"
+        compareFunction := "uptowhitespace",
     ),
 );
-
-LoadPackage( "LoopIntegrals" );
 
 TestDirectory( DirectoriesPackageLibrary( "LoopIntegrals", "tst" ), options );
 
