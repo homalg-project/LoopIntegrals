@@ -1,5 +1,5 @@
-#
-# LoopIntegrals
+# SPDX-License-Identifier: GPL-2.0-or-later
+# LoopIntegrals: Compute master integrals using commutative and noncommutative methods from computational algebraic geometry
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -11,12 +11,12 @@ SetPackageInfo( rec(
 PackageName := "LoopIntegrals",
 Subtitle := "Compute master integrals using commutative and noncommutative methods from computational algebraic geometry",
 Version := Maximum( [
-                   "2020.06.06", ## Mohamed's version
+                   "2020.09.02", ## Mohamed's version
                    ## this line prevents merge conflicts
                    ] ),
 
 Date := ~.Version{[ 1 .. 10 ]},
-Date := Concatenation( ~.Date{[ 9, 10 ]}, "/", ~.Date{[ 6, 7 ]}, "/", ~.Date{[ 1 .. 4 ]} ),
+Date := Concatenation( ~.Version{[ 9, 10 ]}, "/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 License := "GPL-2.0-or-later",
 
 
@@ -26,7 +26,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Mohamed",
     LastName := "Barakat",
-    WWWHome := "https://mohamed-barakat.github.io",
+    WWWHome := "https://mohamed-barakat.github.io/",
     Email := "mohamed.barakat@uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
@@ -54,7 +54,7 @@ Persons := [
     IsMaintainer := true,
     FirstNames := "Tobias",
     LastName := "Huber",
-    WWWHome := "https://www.physik.uni-siegen.de/tp1/research/researchgroups/huber.html.en?lang=en",
+    WWWHome := "https://www.physik.uni-siegen.de/tp1/research/researchgroups/huber.html",
     Email := "huber@tp1.physik.uni-siegen.de",
     PostalAddress := Concatenation(
                "Walter-Flex-Str. 3\n",
@@ -79,17 +79,17 @@ Persons := [
   ),
 ],
 
+# BEGIN URLS
 SourceRepository := rec(
     Type := "git",
-    URL := Concatenation( "https://github.com/homalg-project/", ~.PackageName ),
+    URL := "https://github.com/homalg-project/LoopIntegrals",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := Concatenation( "https://homalg-project.github.io/", ~.PackageName ),
-PackageInfoURL  := Concatenation( ~.PackageWWWHome, "/PackageInfo.g" ),
-README_URL      := Concatenation( ~.PackageWWWHome, "/README.md" ),
-ArchiveURL      := Concatenation( ~.SourceRepository.URL,
-                                 "/releases/download/v", ~.Version,
-                                 "/", ~.PackageName, "-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/LoopIntegrals",
+PackageInfoURL  := "https://homalg-project.github.io/LoopIntegrals/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/LoopIntegrals/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/LoopIntegrals/releases/download/v", ~.Version, "/LoopIntegrals-", ~.Version ),
+# END URLS
 
 ArchiveFormats := ".tar.gz",
 

@@ -1,27 +1,27 @@
 name: LoopIntegrals
-version: "2020.06.06"
+version: "2020.09.02"
 license: "GPL-2.0-or-later"
-date: 2020-06-06
+date: 2020-09-02
 description: |
     Compute master integrals using commutative and noncommutative methods from computational algebraic geometry
 
 authors:
     - name: Mohamed Barakat
-      url: https://mohamed-barakat.github.io
+      url: https://mohamed-barakat.github.io/
     - name: Robin Brüser
       url: https://www.researchgate.net/scientific-contributions/2138634848_Robin_Brueser
     - name: Tobias Huber
-      url: https://www.physik.uni-siegen.de/tp1/research/researchgroups/huber.html.en?lang=en
+      url: https://www.physik.uni-siegen.de/tp1/research/researchgroups/huber.html
     - name: Jan Piclum
       url: https://www.researchgate.net/scientific-contributions/34408173_Jan_Piclum
 
 maintainers:
     - name: Mohamed Barakat
-      url: https://mohamed-barakat.github.io
+      url: https://mohamed-barakat.github.io/
     - name: Robin Brüser
       url: https://www.researchgate.net/scientific-contributions/2138634848_Robin_Brueser
     - name: Tobias Huber
-      url: https://www.physik.uni-siegen.de/tp1/research/researchgroups/huber.html.en?lang=en
+      url: https://www.physik.uni-siegen.de/tp1/research/researchgroups/huber.html
     - name: Jan Piclum
       url: https://www.researchgate.net/scientific-contributions/34408173_Jan_Piclum
 
@@ -33,13 +33,13 @@ needed-pkgs:
       url: "http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc"
     - name: "MatricesForHomalg"
       version: ">= 2020.05.20"
-      url: "https://homalg-project.github.io/homalg_project/MatricesForHomalg/"
+      url: "https://homalg-project.github.io/homalg_project/MatricesForHomalg"
     - name: "RingsForHomalg"
       version: ">= 2020.05.07"
-      url: "https://homalg-project.github.io/homalg_project/RingsForHomalg/"
+      url: "https://homalg-project.github.io/homalg_project/RingsForHomalg"
     - name: "GradedRingForHomalg"
       version: ">= 2020.05.01"
-      url: "https://homalg-project.github.io/homalg_project/GradedRingForHomalg/"
+      url: "https://homalg-project.github.io/homalg_project/GradedRingForHomalg"
 
 www: https://homalg-project.github.io/LoopIntegrals
 readme: README.md
@@ -47,7 +47,7 @@ packageinfo: https://homalg-project.github.io/LoopIntegrals/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2020.06.06/LoopIntegrals-2020.06.06.tar.gz
+      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2020.09.02/LoopIntegrals-2020.09.02.tar.gz
 
 abstract: |
 
@@ -60,7 +60,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BBHP20</span>]   <b class='BibAuthor'>Barakat, M., Brüser, R., Huber, T. and Piclum, J.</b>,
      <i class='BibTitle'>LoopIntegrals, Compute master integrals using commutative and noncommutative methods from computational algebraic geometry,
-             Version 2020.06.06</i>
+             Version 2020.09.02</i>
      (<span class='BibYear'>2020</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/LoopIntegrals">https://homalg-project.github.io/LoopIntegrals</a></span>.
@@ -68,14 +68,20 @@ citeas: |
     
 
 bibtex: |
-    @misc{ LoopIntegrals2020.06.06,
-      author =           {Barakat, M. and Br{\"u}ser, R. and Huber, T. and Piclum, J.},
-      title =            {{LoopIntegrals}, Compute master integrals using commutative and noncommutative methods from computational algebraic geometry, {V}ersion 2020.06.06},
-      month =            {Jun},
+    @misc{ LoopIntegrals2020.09.02,
+      author =           {Barakat,  M.  and  Br{\"u}ser,  R.  and  Huber, T. and
+                          Piclum, J.},
+      title =            {{LoopIntegrals},   Compute   master   integrals  using
+                          commutative    and    noncommutative    methods   from
+                          computational algebraic geometry, {V}ersion 2020.09.02},
+      month =            {Sep},
       year =             {2020},
       note =             {GAP package},
-      howpublished =     {\href {https://homalg-project.github.io/LoopIntegrals} {\texttt{https://homalg-project.github.io/}\discretionary {}{}{}\texttt{LoopIntegrals}}},
-      keywords =         {loop diagrams; generating vectors; syzygies; master integrals},
+      howpublished =     {\href {https://homalg-project.github.io/LoopIntegrals}
+                          {\texttt{https://homalg-project.github.io/}\discretionary
+                          {}{}{}\texttt{LoopIntegrals}}},
+      keywords =         {loop  diagrams;  generating  vectors; syzygies; master
+                          integrals},
       printedkey =       {BBHP20}
     }
 

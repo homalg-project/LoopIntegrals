@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2020.06.06
+                                   2020.09.02
   
   
-                                  6 June 2020
+                                2 September 2020
   
   
                                 Mohamed Barakat
@@ -25,7 +25,7 @@
   
   Mohamed Barakat
       Email:    [7Xmailto:mohamed.barakat@uni-siegen.de[107X
-      Homepage: [7Xhttps://mohamed-barakat.github.io[107X
+      Homepage: [7Xhttps://mohamed-barakat.github.io/[107X
       Address:  [33X[0;14YWalter-Flex-Str. 3[133X
                 [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
@@ -41,7 +41,7 @@
   
   Tobias Huber
       Email:    [7Xmailto:huber@tp1.physik.uni-siegen.de[107X
-      Homepage: [7Xhttps://www.physik.uni-siegen.de/tp1/research/researchgroups/huber.html.en?lang=en[107X
+      Homepage: [7Xhttps://www.physik.uni-siegen.de/tp1/research/researchgroups/huber.html[107X
       Address:  [33X[0;14YWalter-Flex-Str. 3[133X
                 [33X[0;14Y57068 Siegen[133X
                 [33X[0;14YGermany[133X
