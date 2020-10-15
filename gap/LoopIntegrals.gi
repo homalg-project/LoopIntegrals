@@ -205,7 +205,7 @@ InstallMethod( Components,
     
 end );
     
-##
+## L * ( L + E )
 InstallMethod( DimensionOfCoefficientsVector,
         [ IsLoopDiagram and HasLoopMomenta and HasExternalMomenta ],
         
