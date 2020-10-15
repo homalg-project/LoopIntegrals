@@ -1256,7 +1256,7 @@ InstallMethod( IBPRelation,
     
     jacLD := JacobianOfLoopDiagramInPropagators( LD );
     
-    oper := DecideZero( ( div / S ) + ( ( S * vec ) * ( S * jacLD ) * oper )[1,1] );
+    oper := DecideZero( ( div / S ) + ( ( S * ( vec * jacLD ) ) * oper )[1,1] );
     
     return oper / Y;
     
