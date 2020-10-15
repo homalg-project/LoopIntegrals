@@ -1403,6 +1403,94 @@ InstallMethod( BasisOfSpecialIBPRelations,
 end );
 
 ##
+InstallMethod( IBPRelationInWeylAlgebra,
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( vec, LD )
+    local R, c, W, D_s, oper, S, div, jacLD;
+    
+    R := HomalgRing( vec );
+    
+    c := Length( RelativeIndeterminatesOfPolynomialRing( R ) );
+    
+    oper := List( [ 1 .. c ], i -> Concatenation( "A", String( i ) ) );
+    
+    W := RingOfDerivations( R, oper );
+    
+    oper := Concatenation( "[", JoinStringsWithSeparator( oper ), "]" );
+    
+    oper := -HomalgMatrix( oper, c, 1, W );
+    
+    div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
+    
+    jacLD := JacobianOfLoopDiagramInPropagators( LD );
+    
+    return div / W + ( ( W * ( vec * jacLD ) ) * oper )[1,1];
+    
+end );
+
+##
+InstallMethod( MatrixOfIBPRelationsInWeylAlgebra,
+        [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( mat, LD )
+    local ibps;
+    
+    ibps := List( [ 1 .. NrRows( mat ) ], i -> IBPRelationInWeylAlgebra( mat[i], LD ) );
+    
+    return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
+    
+end );
+
+##
+InstallMethod( MatrixOfIBPRelationsInWeylAlgebra,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local id;
+    
+    id := HomalgIdentityMatrix( DimensionOfCoefficientsVector( LD ), RingOfLoopDiagram( LD ) );
+    
+    return MatrixOfIBPRelationsInWeylAlgebra( id, LD );
+    
+end );
+
+##
+InstallMethod( BasisOfIBPRelationsInWeylAlgebra,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+
+    return BasisOfRows( MatrixOfIBPRelationsInWeylAlgebra( LD ) );
+    
+end );
+
+##
+InstallMethod( MatrixOfSpecialIBPRelationsInWeylAlgebra,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local syz, id, ibps;
+    
+    syz := SyzygiesOfRows( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
+    
+    ibps := List( [ 1 .. NrRows( syz ) ], i -> IBPRelationInWeylAlgebra( syz[i], LD ) );
+    
+    return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
+    
+end );
+
+##
+InstallMethod( BasisOfSpecialIBPRelationsInWeylAlgebra,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    
+    return BasisOfRows( MatrixOfSpecialIBPRelationsInWeylAlgebra( LD ) );
+    
+end );
+
+##
 InstallMethod( SymanzikPolynomials,
         [ IsLoopDiagram and HasPropagators, IsList ],
         

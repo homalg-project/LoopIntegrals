@@ -336,6 +336,30 @@ DeclareOperation( "MatrixOfSpecialIBPRelations",
 DeclareOperation( "BasisOfSpecialIBPRelations",
         [ IsLoopDiagram ] );
 
+#! @Arguments vec, LD
+DeclareOperation( "IBPRelationInWeylAlgebra",
+        [ IsHomalgMatrix, IsLoopDiagram ] );
+
+#! @Arguments mat, LD
+DeclareOperation( "MatrixOfIBPRelationsInWeylAlgebra",
+        [ IsHomalgMatrix, IsLoopDiagram ] );
+
+#! @Arguments LD
+DeclareOperation( "MatrixOfIBPRelationsInWeylAlgebra",
+        [ IsLoopDiagram ] );
+
+#! @Arguments LD
+DeclareOperation( "BasisOfIBPRelationsInWeylAlgebra",
+        [ IsLoopDiagram ] );
+
+#! @Arguments LD
+DeclareOperation( "MatrixOfSpecialIBPRelationsInWeylAlgebra",
+        [ IsLoopDiagram ] );
+
+#! @Arguments LD
+DeclareOperation( "BasisOfSpecialIBPRelationsInWeylAlgebra",
+        [ IsLoopDiagram ] );
+
 #! @Arguments LD, list_of_ones
 DeclareOperation( "SymanzikPolynomials",
         [ IsLoopDiagram, IsList ] );
