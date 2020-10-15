@@ -312,7 +312,7 @@ DeclareOperation( "MatrixOfIBPRelations",
 DeclareOperation( "MatrixOfIBPRelations",
         [ IsHomalgMatrix, IsLoopDiagram, IsList ] );
 
-#!
+#! @Arguments LD
 DeclareOperation( "MatrixOfIBPRelations",
         [ IsLoopDiagram ] );
 
@@ -320,11 +320,11 @@ DeclareOperation( "MatrixOfIBPRelations",
 DeclareOperation( "MatrixOfIBPRelations",
         [ IsLoopDiagram, IsList ] );
 
-#!
+#! @Arguments LD
 DeclareOperation( "BasisOfIBPRelations",
         [ IsLoopDiagram ] );
 
-#!
+#! @Arguments LD
 DeclareOperation( "MatrixOfSpecialIBPRelations",
         [ IsLoopDiagram ] );
 
@@ -332,7 +332,7 @@ DeclareOperation( "MatrixOfSpecialIBPRelations",
 DeclareOperation( "MatrixOfSpecialIBPRelations",
         [ IsLoopDiagram, IsList ] );
 
-#!
+#! @Arguments LD
 DeclareOperation( "BasisOfSpecialIBPRelations",
         [ IsLoopDiagram ] );
 
