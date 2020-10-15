@@ -292,6 +292,10 @@ DeclareOperation( "JacobianOfCoefficientsVectorInPropagators",
 DeclareOperation( "DivergenceOfCoefficientsVectorOfLoopDiagram",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
+#!
+DeclareOperation( "DoubleShiftAlgebra",
+        [ IsHomalgRing ] );
+
 #! @Arguments vec, LD
 DeclareOperation( "IBPRelation",
         [ IsHomalgMatrix, IsLoopDiagram ] );
@@ -299,10 +303,6 @@ DeclareOperation( "IBPRelation",
 #! @Arguments vec, LD, exponents
 DeclareOperation( "IBPRelation",
         [ IsHomalgMatrix, IsLoopDiagram, IsList ] );
-
-#!
-DeclareOperation( "DoubleShiftAlgebra",
-        [ IsHomalgRing ] );
 
 #! @Arguments mat, LD
 DeclareOperation( "MatrixOfIBPRelations",
