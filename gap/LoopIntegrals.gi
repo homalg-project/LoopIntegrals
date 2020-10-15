@@ -1358,7 +1358,7 @@ InstallMethod( BasisOfIBPRelations,
         
   function( LD )
 
-    return BasisOfRows(  MatrixOfIBPRelations( LD ) );
+    return BasisOfRows( MatrixOfIBPRelations( LD ) );
     
 end );
 
