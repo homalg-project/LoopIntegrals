@@ -71,6 +71,12 @@
     [4X[28X  [ |[ D-2*a1 ]|, |[ 1 ]| ] ][128X[104X
     [4X[25Xgap>[125X [27XY := HomalgRing( ibp );[127X[104X
     [4X[28XQ[m,D][a1]<D1,D1_>/( D1*D1_-1 )[128X[104X
+    [4X[25Xgap>[125X [27Xibpws := MatrixOfIBPRelationsInWeylAlgebra( LD );[127X[104X
+    [4X[28X<A 1 x 1 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27Xibpw := MatElm( ibpws, 1, 1 );[127X[104X
+    [4X[28X-2*m^2*A1+D-2*D1*A1-2[128X[104X
+    [4X[25Xgap>[125X [27XW := HomalgRing( ibpw );[127X[104X
+    [4X[28XQ[m,D][D1]<A1>[128X[104X
     [4X[25Xgap>[125X [27XE12 := PairOfMatricesOfLoopDiagramInPropagators( LD );[127X[104X
     [4X[28X[ <A 1 x 1 matrix over an external ring>,[128X[104X
     [4X[28X  <A 1 x 1 matrix over an external ring> ][128X[104X
@@ -306,8 +312,8 @@
     [4X[28X  [ |[ -s12*a3 ]|, |[ D3_ ]| ],[128X[104X
     [4X[28X  [ |[ D-2*a1-a2-a3-a4 ]|, |[ 1 ]| ] ][128X[104X
     [4X[25Xgap>[125X [27XY := HomalgRing( ibp1 );[127X[104X
-    [4X[28XQ[D,s12,s14][a1,a2,a3,a4]<D1,D1_,D2,D2_,D3,D3_,D4,D4_>/( D1*D1_-1, D2*D2_-1,\[128X[104X
-    [4X[28X  D3*D3_-1, D4*D4_-1 )[128X[104X
+    [4X[28XQ[D,s12,s14][a1,a2,a3,a4]<D1,D1_,D2,D2_,D3,D3_,D4,D4_>/( D4*D4_-1, D3*D3_-1,\[128X[104X
+    [4X[28X  D2*D2_-1, D1*D1_-1 )[128X[104X
     [4X[25Xgap>[125X [27XE12 := PairOfMatricesOfLoopDiagramInPropagators( LD );[127X[104X
     [4X[28X[ <A 4 x 4 matrix over an external ring>,[128X[104X
     [4X[28X  <A 4 x 4 matrix over an external ring> ][128X[104X
@@ -897,17 +903,17 @@
   
   [33X[1;0Y[29X[2XDivergenceOfCoefficientsVectorOfLoopDiagram[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-27 IBPRelation[101X
+  [1X1.7-27 DoubleShiftAlgebra[101X
   
-  [33X[1;0Y[29X[2XIBPRelation[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDoubleShiftAlgebra[102X( [3Xarg[103X ) [32X operation[133X
   
   [1X1.7-28 IBPRelation[101X
   
+  [33X[1;0Y[29X[2XIBPRelation[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
+  
+  [1X1.7-29 IBPRelation[101X
+  
   [33X[1;0Y[29X[2XIBPRelation[102X( [3Xvec[103X, [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
-  
-  [1X1.7-29 DoubleShiftAlgebra[101X
-  
-  [33X[1;0Y[29X[2XDoubleShiftAlgebra[102X( [3Xarg[103X ) [32X operation[133X
   
   [1X1.7-30 MatrixOfIBPRelations[101X
   
@@ -919,7 +925,7 @@
   
   [1X1.7-32 MatrixOfIBPRelations[101X
   
-  [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3XLD[103X ) [32X operation[133X
   
   [1X1.7-33 MatrixOfIBPRelations[101X
   
@@ -927,11 +933,11 @@
   
   [1X1.7-34 BasisOfIBPRelations[101X
   
-  [33X[1;0Y[29X[2XBasisOfIBPRelations[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XBasisOfIBPRelations[102X( [3XLD[103X ) [32X operation[133X
   
   [1X1.7-35 MatrixOfSpecialIBPRelations[101X
   
-  [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3XLD[103X ) [32X operation[133X
   
   [1X1.7-36 MatrixOfSpecialIBPRelations[101X
   
@@ -939,21 +945,45 @@
   
   [1X1.7-37 BasisOfSpecialIBPRelations[101X
   
-  [33X[1;0Y[29X[2XBasisOfSpecialIBPRelations[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XBasisOfSpecialIBPRelations[102X( [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-38 SymanzikPolynomials[101X
+  [1X1.7-38 IBPRelationInWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XIBPRelationInWeylAlgebra[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
+  
+  [1X1.7-39 MatrixOfIBPRelationsInWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfIBPRelationsInWeylAlgebra[102X( [3Xmat[103X, [3XLD[103X ) [32X operation[133X
+  
+  [1X1.7-40 MatrixOfIBPRelationsInWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X operation[133X
+  
+  [1X1.7-41 BasisOfIBPRelationsInWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XBasisOfIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X operation[133X
+  
+  [1X1.7-42 MatrixOfSpecialIBPRelationsInWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X operation[133X
+  
+  [1X1.7-43 BasisOfSpecialIBPRelationsInWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XBasisOfSpecialIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X operation[133X
+  
+  [1X1.7-44 SymanzikPolynomials[101X
   
   [33X[1;0Y[29X[2XSymanzikPolynomials[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-39 DegreesOfMonomialsOfProductOfSymanzikPolynomials[101X
+  [1X1.7-45 DegreesOfMonomialsOfProductOfSymanzikPolynomials[101X
   
   [33X[1;0Y[29X[2XDegreesOfMonomialsOfProductOfSymanzikPolynomials[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-40 IsScalelessLoopIntegral[101X
+  [1X1.7-46 IsScalelessLoopIntegral[101X
   
   [33X[1;0Y[29X[2XIsScalelessLoopIntegral[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-41 GeneratorsOfScalelessSectors[101X
+  [1X1.7-47 GeneratorsOfScalelessSectors[101X
   
   [33X[1;0Y[29X[2XGeneratorsOfScalelessSectors[102X( [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   

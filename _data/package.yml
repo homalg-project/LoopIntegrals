@@ -1,7 +1,7 @@
 name: LoopIntegrals
-version: "2020.09.02"
+version: "2020.10-01"
 license: "GPL-2.0-or-later"
-date: 2020-09-02
+date: 2020-10-16
 description: |
     Compute master integrals using commutative and noncommutative methods from computational algebraic geometry
 
@@ -47,7 +47,11 @@ packageinfo: https://homalg-project.github.io/LoopIntegrals/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2020.09.02/LoopIntegrals-2020.09.02.tar.gz
+      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2020.10-01/LoopIntegrals-2020.10-01.tar.gz
+    - name: .zip
+      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2020.10-01/LoopIntegrals-2020.10-01.zip
+
+pdf: https://github.com/homalg-project/LoopIntegrals/releases/download/v2020.10-01/LoopIntegrals-2020.10-01.pdf
 
 abstract: |
 
@@ -60,7 +64,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BBHP20</span>]   <b class='BibAuthor'>Barakat, M., Brüser, R., Huber, T. and Piclum, J.</b>,
      <i class='BibTitle'>LoopIntegrals, Compute master integrals using commutative and noncommutative methods from computational algebraic geometry,
-             Version 2020.09.02</i>
+             Version 2020.10-01</i>
      (<span class='BibYear'>2020</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/LoopIntegrals">https://homalg-project.github.io/LoopIntegrals</a></span>.
@@ -68,13 +72,13 @@ citeas: |
     
 
 bibtex: |
-    @misc{ LoopIntegrals2020.09.02,
+    @misc{ LoopIntegrals2020.10-01,
       author =           {Barakat,  M.  and  Br{\"u}ser,  R.  and  Huber, T. and
                           Piclum, J.},
       title =            {{LoopIntegrals},   Compute   master   integrals  using
                           commutative    and    noncommutative    methods   from
-                          computational algebraic geometry, {V}ersion 2020.09.02},
-      month =            {Sep},
+                          computational algebraic geometry, {V}ersion 2020.10-01},
+      month =            {Oct},
       year =             {2020},
       note =             {GAP package},
       howpublished =     {\href {https://homalg-project.github.io/LoopIntegrals}

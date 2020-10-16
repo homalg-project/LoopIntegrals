@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2020.09.02
+                                   2020.10-01
   
   
-                                2 September 2020
+                                16 October 2020
   
   
                                 Mohamed Barakat
@@ -133,9 +133,9 @@
       1.7-24 JacobianOfLoopDiagramInPropagators
       1.7-25 JacobianOfCoefficientsVectorInPropagators
       1.7-26 DivergenceOfCoefficientsVectorOfLoopDiagram
-      1.7-27 IBPRelation
+      1.7-27 DoubleShiftAlgebra
       1.7-28 IBPRelation
-      1.7-29 DoubleShiftAlgebra
+      1.7-29 IBPRelation
       1.7-30 MatrixOfIBPRelations
       1.7-31 MatrixOfIBPRelations
       1.7-32 MatrixOfIBPRelations
@@ -144,10 +144,16 @@
       1.7-35 MatrixOfSpecialIBPRelations
       1.7-36 MatrixOfSpecialIBPRelations
       1.7-37 BasisOfSpecialIBPRelations
-      1.7-38 SymanzikPolynomials
-      1.7-39 DegreesOfMonomialsOfProductOfSymanzikPolynomials
-      1.7-40 IsScalelessLoopIntegral
-      1.7-41 GeneratorsOfScalelessSectors
+      1.7-38 IBPRelationInWeylAlgebra
+      1.7-39 MatrixOfIBPRelationsInWeylAlgebra
+      1.7-40 MatrixOfIBPRelationsInWeylAlgebra
+      1.7-41 BasisOfIBPRelationsInWeylAlgebra
+      1.7-42 MatrixOfSpecialIBPRelationsInWeylAlgebra
+      1.7-43 BasisOfSpecialIBPRelationsInWeylAlgebra
+      1.7-44 SymanzikPolynomials
+      1.7-45 DegreesOfMonomialsOfProductOfSymanzikPolynomials
+      1.7-46 IsScalelessLoopIntegral
+      1.7-47 GeneratorsOfScalelessSectors
   
   
   [32X
