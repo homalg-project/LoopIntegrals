@@ -22,6 +22,12 @@ ViewList( DecomposeInMonomials( ibp ) );
 #!   [ |[ D-2*a1 ]|, |[ 1 ]| ] ]
 Y := HomalgRing( ibp );
 #! Q[m,D][a1]<D1,D1_>/( D1*D1_-1 )
+ibpws := MatrixOfIBPRelationsInWeylAlgebra( LD );
+#! <A 1 x 1 matrix over an external ring>
+ibpw := MatElm( ibpws, 1, 1 );
+#! -2*m^2*A1+D-2*D1*A1-2
+W := HomalgRing( ibpw );
+#! Q[m,D][D1]<A1>
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <A 1 x 1 matrix over an external ring>,
 #!   <A 1 x 1 matrix over an external ring> ]

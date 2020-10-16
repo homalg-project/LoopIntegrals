@@ -25,6 +25,12 @@ ViewList( DecomposeInMonomials( ibp ) )
 
 Y = HomalgRing( ibp )
 
+ibpws = MatrixOfIBPRelationsInWeylAlgebra( LD )
+
+ibpw = MatElm( ibpws, 1, 1 )
+
+W = HomalgRing( ibpw )
+
 E12 = PairOfMatricesOfLoopDiagramInPropagators( LD )
 
 Display( E12[1] )

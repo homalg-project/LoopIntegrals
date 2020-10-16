@@ -1230,7 +1230,7 @@ InstallMethod( IBPRelation,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
-    local R, Y, exponents, c, D_s, oper, S, div, jacLD;
+    local R, Y, exponents, c, D_s, oper, div, jacLD;
     
     R := HomalgRing( vec );
     
@@ -1244,21 +1244,17 @@ InstallMethod( IBPRelation,
     D_s := IndeterminateShiftsOfDoubleShiftAlgebra( Y ){List( [ 1 .. c ], i -> 2 * i )};
     D_s := List( D_s, String );
     
-    oper := List( [ 1 .. c ], i -> Concatenation( exponents[i], "*", D_s[i]  ) );
+    oper := List( [ 1 .. c ], i -> Concatenation( exponents[i], "*", D_s[i] ) );
     
     oper := Concatenation( "[", JoinStringsWithSeparator( oper ), "]" );
     
-    S := Y!.CommutativeDoubleShiftAlgebra;
-    
-    oper := -HomalgMatrix( oper, c, 1, S );
+    oper := -HomalgMatrix( oper, 1, c, Y );
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
     
     jacLD := JacobianOfLoopDiagramInPropagators( LD );
     
-    oper := DecideZero( ( div / S ) + ( ( S * ( vec * jacLD ) ) * oper )[1,1] );
-    
-    return oper / Y;
+    return div / Y + ( oper * TransposedMatrix( Y * ( vec * jacLD ) ) )[1,1];
     
 end );
 
@@ -1419,13 +1415,13 @@ InstallMethod( IBPRelationInWeylAlgebra,
     
     oper := Concatenation( "[", JoinStringsWithSeparator( oper ), "]" );
     
-    oper := -HomalgMatrix( oper, c, 1, W );
+    oper := -HomalgMatrix( oper, 1, c, W );
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
     
     jacLD := JacobianOfLoopDiagramInPropagators( LD );
     
-    return div / W + ( ( W * ( vec * jacLD ) ) * oper )[1,1];
+    return div / W + ( oper * TransposedMatrix( W * ( vec * jacLD ) ) )[1,1];
     
 end );
 
