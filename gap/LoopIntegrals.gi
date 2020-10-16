@@ -1244,13 +1244,13 @@ InstallMethod( IBPRelation,
     D_s := IndeterminateShiftsOfDoubleShiftAlgebra( Y ){List( [ 1 .. c ], i -> 2 * i )};
     D_s := List( D_s, String );
     
-    oper := List( [ 1 .. c ], i -> Concatenation( "-", exponents[i], "*", D_s[i]  ) );
+    oper := List( [ 1 .. c ], i -> Concatenation( exponents[i], "*", D_s[i]  ) );
     
     oper := Concatenation( "[", JoinStringsWithSeparator( oper ), "]" );
     
     S := Y!.CommutativeDoubleShiftAlgebra;
     
-    oper := HomalgMatrix( oper, c, 1, S );
+    oper := -HomalgMatrix( oper, c, 1, S );
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
     
