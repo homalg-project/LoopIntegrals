@@ -154,6 +154,10 @@ DeclareAttribute( "SymanzikPolynomials",
         IsLoopDiagram );
 
 #!
+DeclareAttribute( "AssociatedWeylAlgebra",
+        IsLoopDiagram );
+
+#!
 DeclareAttribute( "GeneratorsOfScalelessSectors",
         IsLoopDiagram );
 

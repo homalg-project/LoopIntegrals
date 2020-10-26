@@ -14,6 +14,7 @@ InstallValue( LOOP_INTEGRALS,
             PropagatorSymbol := "D",
             NumeratorSymbol := "N",
             ExponentSymbol := "a",
+            WeylSymbol := "A",
            ) );
 
 ##
@@ -1226,6 +1227,23 @@ InstallMethod( DoubleShiftAlgebra,
 end );
 
 ##
+InstallMethod( AssociatedWeylAlgebra,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local R, c, oper;
+    
+    R := RingOfLoopDiagram( LD );
+    
+    c := Length( RelativeIndeterminatesOfPolynomialRing( R ) );
+    
+    oper := List( [ 1 .. c ], i -> Concatenation( LOOP_INTEGRALS.WeylSymbol, String( i ) ) );
+    
+    return RingOfDerivations( R, oper );
+    
+end );
+
+##
 InstallMethod( IBPRelation,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
@@ -1403,19 +1421,13 @@ InstallMethod( IBPRelationInWeylAlgebra,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
-    local R, c, W, D_s, oper, S, div, jacLD;
+    local W, oper, div, jacLD;
     
-    R := HomalgRing( vec );
+    W := AssociatedWeylAlgebra( LD );
     
-    c := Length( RelativeIndeterminatesOfPolynomialRing( R ) );
+    oper := IndeterminateDerivationsOfRingOfDerivations( W );
     
-    oper := List( [ 1 .. c ], i -> Concatenation( "A", String( i ) ) );
-    
-    W := RingOfDerivations( R, oper );
-    
-    oper := Concatenation( "[", JoinStringsWithSeparator( oper ), "]" );
-    
-    oper := -HomalgMatrix( oper, 1, c, W );
+    oper := -HomalgMatrix( oper, 1, Length( oper ), W );
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
     
