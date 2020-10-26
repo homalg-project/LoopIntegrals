@@ -161,6 +161,10 @@ DeclareAttribute( "AssociatedWeylAlgebra",
 DeclareAttribute( "GeneratorsOfScalelessSectors",
         IsLoopDiagram );
 
+#!
+DeclareAttribute( "GeneratorsOfScalelessSectorsInWeylAlgebra",
+        IsLoopDiagram );
+
 ####################################
 #
 #! @Section Constructors

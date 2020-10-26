@@ -1672,6 +1672,16 @@ InstallMethod( GeneratorsOfScalelessSectors,
     
 end );
 
+##
+InstallMethod( GeneratorsOfScalelessSectorsInWeylAlgebra,
+        [ IsLoopDiagram and HasPropagators ],
+        
+  function( LD )
+    
+    return AssociatedWeylAlgebra( LD ) * GeneratorsOfScalelessSectors( LD );
+    
+end );
+
 #########################
 #
 # View & Display methods
