@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2020.10-02
+                                   2020.10-04
   
   
-                                18 October 2020
+                                26 October 2020
   
   
                                 Mohamed Barakat
@@ -101,7 +101,9 @@
       1.5-21 PairOfOriginalMatricesOfLoopDiagram
       1.5-22 PairOfMatricesOfLoopDiagram
       1.5-23 SymanzikPolynomials
-      1.5-24 GeneratorsOfScalelessSectors
+      1.5-24 AssociatedWeylAlgebra
+      1.5-25 GeneratorsOfScalelessSectors
+      1.5-26 GeneratorsOfScalelessSectorsInWeylAlgebra
     1.6 [33X[0;0YConstructors[133X
       1.6-1 LorentzVector
       1.6-2 LorentzVector
