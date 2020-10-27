@@ -11,7 +11,7 @@ SetPackageInfo( rec(
 PackageName := "LoopIntegrals",
 Subtitle := "Compute master integrals using commutative and noncommutative methods from computational algebraic geometry",
 Version := Maximum( [
-                   "2020.10-04", ## Mohamed's version
+                   "2020.10-05", ## Mohamed's version
                    ## this line prevents merge conflicts
                    ] ),
 
@@ -119,7 +119,7 @@ Dependencies := rec(
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "MatricesForHomalg", ">= 2020.05.20" ],
-                   [ "RingsForHomalg", ">= 2020.05.07" ],
+                   [ "RingsForHomalg", ">= 2020.10-05" ],
                    [ "GradedRingForHomalg", ">= 2020.05.01" ],
                    ],
   SuggestedOtherPackages := [ ],
