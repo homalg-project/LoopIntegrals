@@ -1601,9 +1601,11 @@ InstallMethod( GeneratorsOfScalelessSectors,
         [ IsLoopDiagram and HasPropagators ],
         
   function( LD )
-    local n, generators, k, iter, comb, Y, shifts;
+    local m, n, generators, k, iter, comb, Y, shifts, mults;
     
-    n := [ 1 .. Length( Propagators( LD ) ) ];
+    m := Length( Propagators( LD ) );
+    
+    n := [ 1 .. m ];
     
     generators := [ ];
     
@@ -1638,6 +1640,12 @@ InstallMethod( GeneratorsOfScalelessSectors,
     
     generators := List( generators, gen -> Product( shifts{Difference( n , gen )} ) );
     
+    mults := RelativeIndeterminateCoordinatesOfDoubleShiftAlgebra( Y );
+    
+    Append( generators, List( mults{[ 1 .. m ]}, a -> a - 1 ) );
+    
+    Append( generators, mults{[ m + 1 .. Length( shifts ) ]} );
+    
     return HomalgMatrix( generators, 1, Length( generators ), Y );
     
 end );
@@ -1647,7 +1655,7 @@ InstallMethod( GeneratorsOfScalelessSectors,
         [ IsLoopDiagram and HasPropagators, IsList ],
         
   function( LD, exponents )
-    local n, shifts, Y, a;
+    local n, shifts, Y, a, gen;
     
     if not Length( exponents ) = Length( Propagators( LD ) ) + Length( Numerators( LD ) ) then
         Error( "the length of the list exponents must be equal to the sum of the number of propagators and numerators\n" );
@@ -1668,7 +1676,9 @@ InstallMethod( GeneratorsOfScalelessSectors,
     
     a := Product( ListN( shifts, exponents, {D,a} -> D^a ) );
     
-    return a * GeneratorsOfScalelessSectors( LD );
+    gen := GeneratorsOfScalelessSectors( LD );
+    
+    return a * CertainColumns( gen, [ 1 .. NrColumns( gen ) - Length( exponents ) ] );
     
 end );
 
