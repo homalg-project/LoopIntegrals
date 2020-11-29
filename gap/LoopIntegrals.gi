@@ -1634,7 +1634,7 @@ InstallMethod( GeneratorsOfScalelessSectors,
     
     n := [ 1 .. Length( shifts ) ];
     
-    Y := HomalgRing( MatrixOfIBPRelations( LD ) );
+    Y := DoubleShiftAlgebra( RingOfLoopDiagram( LD ) : pairs := true );
     
     shifts := List( shifts, D -> D / Y );
     
@@ -1670,13 +1670,13 @@ InstallMethod( GeneratorsOfScalelessSectors,
               List( n, i -> Concatenation( LOOP_INTEGRALS.PropagatorSymbol, String( i ) ) ),
               List( Length( n ) + [ 1 .. Length( Numerators( LD ) ) ], i -> Concatenation( LOOP_INTEGRALS.NumeratorSymbol, String( i ) ) ) );
     
-    Y := HomalgRing( MatrixOfIBPRelations( LD ) );
+    gen := GeneratorsOfScalelessSectors( LD );
+    
+    Y := HomalgRing( gen );
     
     shifts := List( shifts, D -> D / Y );
     
     a := Product( ListN( shifts, exponents, {D,a} -> D^a ) );
-    
-    gen := GeneratorsOfScalelessSectors( LD );
     
     return a * CertainColumns( gen, [ 1 .. NrColumns( gen ) - Length( exponents ) ] );
     
