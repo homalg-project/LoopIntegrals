@@ -104,11 +104,9 @@ ViewList( DecomposeInMonomials( sibp3 ) );
 #!   [ |[ -D+4 ]|, |[ D6*D7 ]| ],
 #!   [ |[ -2*D+8 ]|, |[ D7*N9 ]| ] ]
 gen := GeneratorsOfScalelessSectors( LD );
-#! <A 1 x 19 matrix over a residue class ring>
+#! <A 1 x 19 matrix over an external ring>
 EntriesOfHomalgMatrix( gen );
-#! [ |[ D6*D7*N8*N9 ]|, |[ D4*D7*N8*N9 ]|, |[ D3*D7*N8*N9 ]|, |[ D1*D7*N8*N9 ]|,
-#!   |[ D4*D5*D6*N8*N9 ]|, |[ D3*D5*D6*N8*N9 ]|, |[ D2*D3*D6*N8*N9 ]|,
-#!   |[ D1*D4*D5*N8*N9 ]|, |[ D1*D2*D4*N8*N9 ]|, |[ D1*D2*D3*N8*N9 ]|,
-#!   |[ a1-1 ]|, |[ a2-1 ]|, |[ a3-1 ]|, |[ a4-1 ]|, |[ a5-1 ]|, |[ a6-1 ]|,
-#!   |[ a7-1 ]|, |[ a8 ]|, |[ a9 ]| ]
+#! [ D6*D7*N8*N9, D4*D7*N8*N9, D3*D7*N8*N9, D1*D7*N8*N9, D4*D5*D6*N8*N9,
+#!   D3*D5*D6*N8*N9, D2*D3*D6*N8*N9, D1*D4*D5*N8*N9, D1*D2*D4*N8*N9,
+#!   D1*D2*D3*N8*N9, a1-1, a2-1, a3-1, a4-1, a5-1, a6-1, a7-1, a8, a9 ]
 #! @EndExample

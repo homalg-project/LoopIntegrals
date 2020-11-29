@@ -114,15 +114,11 @@ SymanzikPolynomials( LD, [ 1 ] );
 SymanzikPolynomials( LD, [ ] );
 #! [ 0, 0 ]
 gen := GeneratorsOfScalelessSectors( LD );
-#! <A 1 x 8 matrix over a residue class ring>
+#! <A 1 x 8 matrix over an external ring>
 Display( gen );
 #! D3*D4,D1*D4,D2*D3,D1*D2,a1-1,a2-1,a3-1,a4-1
-#! 
-#! modulo [ D4*D4_-1, D3*D3_-1, D2*D2_-1, D1*D1_-1 ]
 gen2 := GeneratorsOfScalelessSectors( LD, [ 2, 2, 2, 2 ] );
-#! <An unevaluated 1 x 4 matrix over a residue class ring>
+#! <An unevaluated 1 x 4 matrix over an external ring>
 Display( gen2 );
 #! D1*D2*D3^2*D4^2,D1^2*D2*D3*D4^2,D1*D2^2*D3^2*D4,D1^2*D2^2*D3*D4
-#! 
-#! modulo [ D4*D4_-1, D3*D3_-1, D2*D2_-1, D1*D1_-1 ]
 #! @EndExample

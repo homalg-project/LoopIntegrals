@@ -1636,11 +1636,15 @@ InstallMethod( GeneratorsOfScalelessSectors,
     
     Y := DoubleShiftAlgebra( RingOfLoopDiagram( LD ) : pairs := true );
     
+    Y := AmbientRing( Y );
+    
     shifts := List( shifts, D -> D / Y );
     
     generators := List( generators, gen -> Product( shifts{Difference( n , gen )} ) );
     
-    mults := RelativeIndeterminateCoordinatesOfDoubleShiftAlgebra( Y );
+    mults := RelativeIndeterminateCoordinatesOfPseudoDoubleShiftAlgebra( Y );
+    
+    mults := List( mults, a -> a / Y );
     
     Append( generators, List( mults{[ 1 .. m ]}, a -> a - 1 ) );
     
