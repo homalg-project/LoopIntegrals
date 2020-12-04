@@ -551,17 +551,13 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SymanzikPolynomials( LD, [ ] );</span>
 [ 0, 0 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gen := GeneratorsOfScalelessSectors( LD );</span>
-&lt;A 1 x 4 matrix over a residue class ring&gt;
+&lt;A 1 x 8 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( gen );</span>
-D3*D4,D1*D4,D2*D3,D1*D2
-
-modulo [ D4*D4_-1, D3*D3_-1, D2*D2_-1, D1*D1_-1 ]
+D3*D4,D1*D4,D2*D3,D1*D2,a1-1,a2-1,a3-1,a4-1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gen2 := GeneratorsOfScalelessSectors( LD, [ 2, 2, 2, 2 ] );</span>
-&lt;An unevaluated 1 x 4 matrix over a residue class ring&gt;
+&lt;An unevaluated 1 x 4 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( gen2 );</span>
 D1*D2*D3^2*D4^2,D1^2*D2*D3*D4^2,D1*D2^2*D3^2*D4,D1^2*D2^2*D3*D4
-
-modulo [ D4*D4_-1, D3*D3_-1, D2*D2_-1, D1*D1_-1 ]
 </pre></div>
 
 <p><a id="X830CAA957A5CDFB8" name="X830CAA957A5CDFB8"></a></p>
@@ -775,11 +771,11 @@ D1-1,  D2-1,  D3-D6+N7, 0,     0,     0,
   [ |[ -D+4 ]|, |[ D6*D7 ]| ],
   [ |[ -2*D+8 ]|, |[ D7*N9 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gen := GeneratorsOfScalelessSectors( LD );</span>
-&lt;A 1 x 10 matrix over a residue class ring&gt;
+&lt;A 1 x 19 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EntriesOfHomalgMatrix( gen );</span>
-[ |[ D6*D7*N8*N9 ]|, |[ D4*D7*N8*N9 ]|, |[ D3*D7*N8*N9 ]|, |[ D1*D7*N8*N9 ]|,
-  |[ D4*D5*D6*N8*N9 ]|, |[ D3*D5*D6*N8*N9 ]|, |[ D2*D3*D6*N8*N9 ]|,
-  |[ D1*D4*D5*N8*N9 ]|, |[ D1*D2*D4*N8*N9 ]|, |[ D1*D2*D3*N8*N9 ]| ]
+[ D6*D7*N8*N9, D4*D7*N8*N9, D3*D7*N8*N9, D1*D7*N8*N9, D4*D5*D6*N8*N9,
+  D3*D5*D6*N8*N9, D2*D3*D6*N8*N9, D1*D4*D5*N8*N9, D1*D2*D4*N8*N9,
+  D1*D2*D3*N8*N9, a1-1, a2-1, a3-1, a4-1, a5-1, a6-1, a7-1, a8, a9 ]
 </pre></div>
 
 <p><a id="X7D49A8BA83883D73" name="X7D49A8BA83883D73"></a></p>

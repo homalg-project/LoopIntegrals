@@ -393,17 +393,13 @@
     [4X[25Xgap>[125X [27XSymanzikPolynomials( LD, [ ] );[127X[104X
     [4X[28X[ 0, 0 ][128X[104X
     [4X[25Xgap>[125X [27Xgen := GeneratorsOfScalelessSectors( LD );[127X[104X
-    [4X[28X<A 1 x 4 matrix over a residue class ring>[128X[104X
+    [4X[28X<A 1 x 8 matrix over an external ring>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( gen );[127X[104X
-    [4X[28XD3*D4,D1*D4,D2*D3,D1*D2[128X[104X
-    [4X[28X[128X[104X
-    [4X[28Xmodulo [ D4*D4_-1, D3*D3_-1, D2*D2_-1, D1*D1_-1 ][128X[104X
+    [4X[28XD3*D4,D1*D4,D2*D3,D1*D2,a1-1,a2-1,a3-1,a4-1[128X[104X
     [4X[25Xgap>[125X [27Xgen2 := GeneratorsOfScalelessSectors( LD, [ 2, 2, 2, 2 ] );[127X[104X
-    [4X[28X<An unevaluated 1 x 4 matrix over a residue class ring>[128X[104X
+    [4X[28X<An unevaluated 1 x 4 matrix over an external ring>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( gen2 );[127X[104X
     [4X[28XD1*D2*D3^2*D4^2,D1^2*D2*D3*D4^2,D1*D2^2*D3^2*D4,D1^2*D2^2*D3*D4[128X[104X
-    [4X[28X[128X[104X
-    [4X[28Xmodulo [ D4*D4_-1, D3*D3_-1, D2*D2_-1, D1*D1_-1 ][128X[104X
   [4X[32X[104X
   
   
@@ -611,11 +607,11 @@
     [4X[28X  [ |[ -D+4 ]|, |[ D6*D7 ]| ],[128X[104X
     [4X[28X  [ |[ -2*D+8 ]|, |[ D7*N9 ]| ] ][128X[104X
     [4X[25Xgap>[125X [27Xgen := GeneratorsOfScalelessSectors( LD );[127X[104X
-    [4X[28X<A 1 x 10 matrix over a residue class ring>[128X[104X
+    [4X[28X<A 1 x 19 matrix over an external ring>[128X[104X
     [4X[25Xgap>[125X [27XEntriesOfHomalgMatrix( gen );[127X[104X
-    [4X[28X[ |[ D6*D7*N8*N9 ]|, |[ D4*D7*N8*N9 ]|, |[ D3*D7*N8*N9 ]|, |[ D1*D7*N8*N9 ]|,[128X[104X
-    [4X[28X  |[ D4*D5*D6*N8*N9 ]|, |[ D3*D5*D6*N8*N9 ]|, |[ D2*D3*D6*N8*N9 ]|,[128X[104X
-    [4X[28X  |[ D1*D4*D5*N8*N9 ]|, |[ D1*D2*D4*N8*N9 ]|, |[ D1*D2*D3*N8*N9 ]| ][128X[104X
+    [4X[28X[ D6*D7*N8*N9, D4*D7*N8*N9, D3*D7*N8*N9, D1*D7*N8*N9, D4*D5*D6*N8*N9,[128X[104X
+    [4X[28X  D3*D5*D6*N8*N9, D2*D3*D6*N8*N9, D1*D4*D5*N8*N9, D1*D2*D4*N8*N9,[128X[104X
+    [4X[28X  D1*D2*D3*N8*N9, a1-1, a2-1, a3-1, a4-1, a5-1, a6-1, a7-1, a8, a9 ][128X[104X
   [4X[32X[104X
   
   
