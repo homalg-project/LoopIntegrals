@@ -85,7 +85,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/LoopIntegrals",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/LoopIntegrals",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/LoopIntegrals",
 PackageInfoURL  := "https://homalg-project.github.io/LoopIntegrals/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/LoopIntegrals/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/LoopIntegrals/releases/download/v", ~.Version, "/LoopIntegrals-", ~.Version ),
