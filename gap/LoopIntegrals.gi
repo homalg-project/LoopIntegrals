@@ -1272,6 +1272,13 @@ InstallMethod( IBPRelation,
     
     jacLD := JacobianOfLoopDiagramInPropagators( LD );
     
+    ## * Usually we would act on the space of integrals as usual from the left.
+    ## * This action is only linear w.r.t. the constants (= BaseRing( R ) ).
+    ## * The IBP relations would then generate a right ideal over Y which is much larger
+    ##   than the set of IBP relations parametrized by vec over R.
+    ## * However, the GB engines only support GB of left ideals in the noncommutative setup.
+    ## * This forces us to act from the right in order for the above mentioned ideal
+    ##   to be a left ideal.
     return div / Y + ( oper * TransposedMatrix( Y * ( vec * jacLD ) ) )[1,1];
     
 end );
