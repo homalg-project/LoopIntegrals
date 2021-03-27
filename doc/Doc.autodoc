@@ -12,11 +12,20 @@ This package is an ongoing work to compute master integrals using commutative an
 @Subsection 1 Loop tadpole
 @InsertChunk 1LoopTadpole
 
-@Subsection Kite
-@InsertChunk Kite
+@Subsection 1 Loop bubble
+@InsertChunk 1LoopBubble
+
+@Subsection 1 Loop massive bubble
+@InsertChunk 1LoopMassiveBubble
+
+@Subsection 1 Loop double massive bubble
+@InsertChunk 1LoopDoubleMassiveBubble
 
 @Subsection 1 Loop box
 @InsertChunk 1LoopBox
+
+@Subsection Kite
+@InsertChunk Kite
 
 @Subsection 2 Loop nonplanar ladder
 @InsertChunk 2LoopNonPlanarLadder
