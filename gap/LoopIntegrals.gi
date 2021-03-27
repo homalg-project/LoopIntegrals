@@ -1642,14 +1642,6 @@ InstallMethod( GeneratorsOfScalelessSectors,
     
     generators := List( generators, gen -> Product( shifts{Difference( n , gen )} ) );
     
-    mults := RelativeIndeterminateCoordinatesOfPseudoDoubleShiftAlgebra( Y );
-    
-    mults := List( mults, a -> a / Y );
-    
-    Append( generators, List( mults{[ 1 .. m ]}, a -> a - 1 ) );
-    
-    Append( generators, mults{[ m + 1 .. Length( shifts ) ]} );
-    
     return HomalgMatrix( generators, 1, Length( generators ), Y );
     
 end );
@@ -1682,7 +1674,7 @@ InstallMethod( GeneratorsOfScalelessSectors,
     
     a := Product( ListN( shifts, exponents, {D,a} -> D^a ) );
     
-    return a * CertainColumns( gen, [ 1 .. NrColumns( gen ) - Length( exponents ) ] );
+    return a * gen;
     
 end );
 
