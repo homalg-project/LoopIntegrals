@@ -140,7 +140,252 @@
   [4X[32X[104X
   
   
-  [1X1.2-3 [33X[0;0YKite[133X[101X
+  [1X1.2-3 [33X[0;0Y1 Loop bubble[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1", "k1" );[127X[104X
+    [4X[28X<A loop diagram with loop momenta [ l1 ] & external momenta [ k1 ]>[128X[104X
+    [4X[25Xgap>[125X [27Xs := k1*k1;[127X[104X
+    [4X[28Xk1^2[128X[104X
+    [4X[25Xgap>[125X [27XSetAbbreviation( s, "s" );[127X[104X
+    [4X[25Xgap>[125X [27Xrel := [ ];;[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, rel );[127X[104X
+    [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD, [ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetPropagators( LD, -[ l1^2, ( l1 + k1 )^2 ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetNumerators( LD, -[ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetExtraLorentzInvariants( LD, [ s ] );[127X[104X
+    [4X[25Xgap>[125X [27XR := RingOfLoopDiagram( LD );[127X[104X
+    [4X[28XQ[D,s][D1,D2][128X[104X
+    [4X[25Xgap>[125X [27Xibps := MatrixOfIBPRelations( LD );[127X[104X
+    [4X[28X<A 2 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xibp1 := ibps[1,1];[127X[104X
+    [4X[28X|[ -s*a2*D2_-a2*D1*D2_+D-2*a1-a2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp1 ) );[127X[104X
+    [4X[28X[ [ |[ -a2 ]|, |[ D1*D2_ ]| ],[128X[104X
+    [4X[28X  [ |[ -s*a2 ]|, |[ D2_ ]| ],[128X[104X
+    [4X[28X  [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XY := HomalgRing( ibp1 );[127X[104X
+    [4X[28XQ[D,s][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )[128X[104X
+    [4X[25Xgap>[125X [27Xbas := BasisOfRows( ibps );[127X[104X
+    [4X[28X<A non-zero 4 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xgen := GeneratorsOfScalelessSectors( LD );[127X[104X
+    [4X[28X<A 1 x 2 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gen );[127X[104X
+    [4X[28XD2,D1[128X[104X
+    [4X[25Xgap>[125X [27Xgen2 := GeneratorsOfScalelessSectors( LD, [ 2, 2 ] );[127X[104X
+    [4X[28X<An unevaluated 1 x 2 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gen2 );[127X[104X
+    [4X[28XD1*D2^2,D1^2*D2[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.2-4 [33X[0;0Y1 Loop massive bubble[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1", "k1" : masses := "m" );[127X[104X
+    [4X[28X<A loop diagram with loop momenta [ l1 ] & external momenta [ k1 ] &[128X[104X
+    [4X[28X masses [ m ]>[128X[104X
+    [4X[25Xgap>[125X [27Xs := k1*k1;[127X[104X
+    [4X[28Xk1^2[128X[104X
+    [4X[25Xgap>[125X [27XSetAbbreviation( s, "s" );[127X[104X
+    [4X[25Xgap>[125X [27Xrel := [ ];;[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, rel );[127X[104X
+    [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD, [ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetPropagators( LD, -[ l1^2 + m^2, ( l1 + k1 )^2 ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetNumerators( LD, -[ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetExtraLorentzInvariants( LD, [ s ] );[127X[104X
+    [4X[25Xgap>[125X [27XR := RingOfLoopDiagram( LD );[127X[104X
+    [4X[28XQ[m,D,s][D1,D2][128X[104X
+    [4X[25Xgap>[125X [27Xibps := MatrixOfIBPRelations( LD );[127X[104X
+    [4X[28X<A 2 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xibp1 := ibps[1,1];[127X[104X
+    [4X[28X|[ -2*m^2*a1*D1_-m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+D-2*a1-a2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp1 ) );[127X[104X
+    [4X[28X[ [ |[ -a2 ]|, |[ D1*D2_ ]| ],[128X[104X
+    [4X[28X  [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],[128X[104X
+    [4X[28X  [ |[ -m^2*a2-s*a2 ]|, |[ D2_ ]| ],[128X[104X
+    [4X[28X  [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XY := HomalgRing( ibp1 );[127X[104X
+    [4X[28XQ[m,D,s][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )[128X[104X
+    [4X[25Xgap>[125X [27Xbas := BasisOfRows( ibps );[127X[104X
+    [4X[28X<A non-zero 7 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xgen := GeneratorsOfScalelessSectors( LD );[127X[104X
+    [4X[28X<A 1 x 1 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gen );[127X[104X
+    [4X[28XD1[128X[104X
+    [4X[25Xgap>[125X [27Xgen2 := GeneratorsOfScalelessSectors( LD, [ 2, 2 ] );[127X[104X
+    [4X[28X<An unevaluated 1 x 1 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gen2 );[127X[104X
+    [4X[28XD1^2*D2[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.2-5 [33X[0;0Y1 Loop double massive bubble[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1", "k1" : masses := "m" );[127X[104X
+    [4X[28X<A loop diagram with loop momenta [ l1 ] & external momenta [ k1 ] &[128X[104X
+    [4X[28X masses [ m ]>[128X[104X
+    [4X[25Xgap>[125X [27Xs := k1*k1;[127X[104X
+    [4X[28Xk1^2[128X[104X
+    [4X[25Xgap>[125X [27XSetAbbreviation( s, "s" );[127X[104X
+    [4X[25Xgap>[125X [27Xrel := [ ];;[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, rel );[127X[104X
+    [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD, [ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetPropagators( LD, -[ l1^2 + m^2, ( l1 + k1 )^2 + m^2 ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetNumerators( LD, -[ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetExtraLorentzInvariants( LD, [ s ] );[127X[104X
+    [4X[25Xgap>[125X [27XR := RingOfLoopDiagram( LD );[127X[104X
+    [4X[28XQ[m,D,s][D1,D2][128X[104X
+    [4X[25Xgap>[125X [27Xibps := MatrixOfIBPRelations( LD );[127X[104X
+    [4X[28X<A 2 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xibp1 := ibps[1,1];[127X[104X
+    [4X[28X|[ -2*m^2*a1*D1_-2*m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+D-2*a1-a2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp1 ) );[127X[104X
+    [4X[28X[ [ |[ -a2 ]|, |[ D1*D2_ ]| ],[128X[104X
+    [4X[28X  [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],[128X[104X
+    [4X[28X  [ |[ -2*m^2*a2-s*a2 ]|, |[ D2_ ]| ],[128X[104X
+    [4X[28X  [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XY := HomalgRing( ibp1 );[127X[104X
+    [4X[28XQ[m,D,s][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )[128X[104X
+    [4X[25Xgap>[125X [27Xbas := BasisOfRows( ibps );[127X[104X
+    [4X[28X<A non-zero 6 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xgen := GeneratorsOfScalelessSectors( LD );[127X[104X
+    [4X[28X<A 1 x 1 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gen );[127X[104X
+    [4X[28XD1*D2[128X[104X
+    [4X[25Xgap>[125X [27Xgen2 := GeneratorsOfScalelessSectors( LD, [ 2, 2 ] );[127X[104X
+    [4X[28X<An unevaluated 1 x 1 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gen2 );[127X[104X
+    [4X[28XD1^2*D2^2[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.2-6 [33X[0;0Y1 Loop box[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1", "k1..2,k4" );[127X[104X
+    [4X[28X<A loop diagram with loop momenta [ l1 ] & external momenta [ k1, k2, k4 ]>[128X[104X
+    [4X[25Xgap>[125X [27Xs12 := 2*k1*k2;[127X[104X
+    [4X[28X2*k1*k2[128X[104X
+    [4X[25Xgap>[125X [27XSetAbbreviation( s12, "s12" );[127X[104X
+    [4X[25Xgap>[125X [27Xs14 := 2*k1*k4;[127X[104X
+    [4X[28X2*k1*k4[128X[104X
+    [4X[25Xgap>[125X [27XSetAbbreviation( s14, "s14" );[127X[104X
+    [4X[25Xgap>[125X [27Xrel1 := List( ExternalMomenta( LD ), k -> k^2 );[127X[104X
+    [4X[28X[ k1^2, k2^2, k4^2 ][128X[104X
+    [4X[25Xgap>[125X [27Xrel2 := [ (k1+k2+k4)^2 ];;[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, Concatenation( rel1, rel2 ) );[127X[104X
+    [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD,[127X[104X
+    [4X[25X>[125X [27X        [ l1^2, l1*k1, l1*k2, l1*k4, s12, s14 ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetPropagators( LD, -[ l1^2, (l1-k1)^2, (l1-k1-k2)^2, (l1+k4)^2 ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetNumerators( LD, -[ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetExtraLorentzInvariants( LD, [ s12, s14 ] );[127X[104X
+    [4X[25Xgap>[125X [27XR := RingOfLoopDiagram( LD );[127X[104X
+    [4X[28XQ[D,s12,s14][D1,D2,D3,D4][128X[104X
+    [4X[25Xgap>[125X [27Xibps := MatrixOfIBPRelations( LD );[127X[104X
+    [4X[28X<A 4 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xibp1 := ibps[1,1];[127X[104X
+    [4X[28X|[ -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_+D-2*a1-a2-a3-a4 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp1 ) );[127X[104X
+    [4X[28X[ [ |[ -a2 ]|, |[ D1*D2_ ]| ],[128X[104X
+    [4X[28X  [ |[ -a3 ]|, |[ D1*D3_ ]| ],[128X[104X
+    [4X[28X  [ |[ -a4 ]|, |[ D1*D4_ ]| ],[128X[104X
+    [4X[28X  [ |[ -s12*a3 ]|, |[ D3_ ]| ],[128X[104X
+    [4X[28X  [ |[ D-2*a1-a2-a3-a4 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XY := HomalgRing( ibp1 );[127X[104X
+    [4X[28XQ[D,s12,s14][a1,a2,a3,a4]<D1,D1_,D2,D2_,D3,D3_,D4,D4_>/( D4*D4_-1, D3*D3_-1,\[128X[104X
+    [4X[28X  D2*D2_-1, D1*D1_-1 )[128X[104X
+    [4X[25Xgap>[125X [27XE12 := PairOfMatricesOfLoopDiagramInPropagators( LD );[127X[104X
+    [4X[28X[ <A 4 x 4 matrix over an external ring>,[128X[104X
+    [4X[28X  <A 4 x 4 matrix over an external ring> ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( E12[1] );[127X[104X
+    [4X[28X2*D1,      D1+D2,    s12+D1+D3, D1+D4,[128X[104X
+    [4X[28XD1-D2,     D1-D2,    s12+D1-D2, -s14+D1-D2,[128X[104X
+    [4X[28X-s12+D2-D3,D2-D3,    D2-D3,     s14+D2-D3,[128X[104X
+    [4X[28X-D1+D4,    s14-D1+D4,-s12-D1+D4,-D1+D4[128X[104X
+    [4X[25Xgap>[125X [27XS := SyzygiesOfRows( E12 );[127X[104X
+    [4X[28X<A non-zero 12 x 4 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XSred := ReducedBasisOfRowModule( S );[127X[104X
+    [4X[28X<A non-zero 6 x 4 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Sred );[127X[104X
+    [4X[28XD2-D4,                D4,                        0,          D2,[128X[104X
+    [4X[28XD1-D3,                -D1,                       -D1,        0,[128X[104X
+    [4X[28Xs12*D4+2*D3*D4-2*D4^2,-s12*D4+D2*D4-D3*D4+2*D4^2,D1*D4+D2*D4,2*D2*D4,[128X[104X
+    [4X[28Xs14*D3-2*D3^2+2*D3*D4,-D1*D3-D3*D4,              -2*D1*D3,   -D1*D3-D2*D3,[128X[104X
+    [4X[28X-D3*D4^2,             D3*D4^2,                   0,          D2*D3*D4,[128X[104X
+    [4X[28XD3^2*D4,              0,                         D1*D3*D4,   0[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( EntriesOfHomalgMatrixAsListList( Sred{[ 1 .. 3 ]} ) );[127X[104X
+    [4X[28X[ [ D2-D4, D4, 0, D2 ],[128X[104X
+    [4X[28X  [ D1-D3, -D1, -D1, 0 ],[128X[104X
+    [4X[28X  [ s12*D4+2*D3*D4-2*D4^2, -s12*D4+D2*D4-D3*D4+2*D4^2, D1*D4+D2*D4, 2*D2*D4 ] ][128X[104X
+    [4X[25Xgap>[125X [27XSibp1 := IBPRelation( S[1], LD );[127X[104X
+    [4X[28X|[ -s14*a2+s14*a4+D*D2-a1*D2-a2*D2-a3*D2-a4*D2-D*D4+a1*D4+a2*D4+a3*D4+a4*D4 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp1 ) );[127X[104X
+    [4X[28X[ [ |[ D-a1-a2-a3-a4 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+a1+a2+a3+a4 ]|, |[ D4 ]| ],[128X[104X
+    [4X[28X  [ |[ -s14*a2+s14*a4 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xsibp1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1 ] );[127X[104X
+    [4X[28X|[ D*D2-D*D4-4*D2+4*D4 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp1 ) );[127X[104X
+    [4X[28X[ [ |[ D-4 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+4 ]|, |[ D4 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XSibp2 := IBPRelation( S[2], LD );[127X[104X
+    [4X[28X|[ -s12*a1+s12*a3+D*D1-a1*D1-a2*D1-a3*D1-a4*D1-D*D3+a1*D3+a2*D3+a3*D3+a4*D3 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp2 ) );[127X[104X
+    [4X[28X[ [ |[ D-a1-a2-a3-a4 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+a1+a2+a3+a4 ]|, |[ D3 ]| ],[128X[104X
+    [4X[28X  [ |[ -s12*a1+s12*a3 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xsibp2 := IBPRelation( S[2], LD, [ 1, 1, 1, 1 ] );[127X[104X
+    [4X[28X|[ D*D1-D*D3-4*D1+4*D3 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp2 ) );[127X[104X
+    [4X[28X[ [ |[ D-4 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ -D+4 ]|, |[ D3 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XSibp3 := IBPRelation( S[3], LD );;[127X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp3 ) );[127X[104X
+    [4X[28X[ [ |[ 2*D-2*a1-2*a2-2*a3-2*a4+2 ]|, |[ D3*D4 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+2*a1+2*a2+2*a3+2*a4-2 ]|, |[ D4^2 ]| ],[128X[104X
+    [4X[28X  [ |[ -s14*a4+s14 ]|, |[ D1 ]| ],[128X[104X
+    [4X[28X  [ |[ -s12*a4+s12 ]|, |[ D2 ]| ],[128X[104X
+    [4X[28X  [ |[ -s14*a4+s14 ]|, |[ D3 ]| ],[128X[104X
+    [4X[28X  [ |[ D*s12-2*s12*a2-2*s14*a2-2*s12*a3-s12*a4+2*s14*a4+s12-2*s14 ]|, |[ D4 ]| ],[128X[104X
+    [4X[28X  [ |[ -s12*s14*a4+s12*s14 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xsibp3 := IBPRelation( S[3], LD, [ 1, 1, 1, 1 ] );[127X[104X
+    [4X[28X|[ D*s12*D4+2*D*D3*D4-2*D*D4^2-4*s12*D4-2*s14*D4-6*D3*D4+6*D4^2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp3 ) );[127X[104X
+    [4X[28X[ [ |[ 2*D-6 ]|, |[ D3*D4 ]| ],[128X[104X
+    [4X[28X  [ |[ -2*D+6 ]|, |[ D4^2 ]| ],[128X[104X
+    [4X[28X  [ |[ D*s12-4*s12-2*s14 ]|, |[ D4 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xbas := BasisOfIBPRelations( LD );[127X[104X
+    [4X[28X<A non-zero 28 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27XSbas := BasisOfSpecialIBPRelations( LD );[127X[104X
+    [4X[28X<A non-zero 28 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27Xbas = Sbas;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD );[127X[104X
+    [4X[28X[ z1+z2+z3+z4, -s12*z1*z3-s14*z2*z4 ][128X[104X
+    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD, [ 1, 2, 3, 4 ] );[127X[104X
+    [4X[28X[ z1+z2+z3+z4, -s12*z1*z3-s14*z2*z4 ][128X[104X
+    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD, [ 1, 2, 3 ] );[127X[104X
+    [4X[28X[ z1+z2+z3, -s12*z1*z3 ][128X[104X
+    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD, [ 1, 2 ] );[127X[104X
+    [4X[28X[ z1+z2, 0 ][128X[104X
+    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD, [ 1 ] );[127X[104X
+    [4X[28X[ z1, 0 ][128X[104X
+    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD, [ ] );[127X[104X
+    [4X[28X[ 0, 0 ][128X[104X
+    [4X[25Xgap>[125X [27Xgen := GeneratorsOfScalelessSectors( LD );[127X[104X
+    [4X[28X<A 1 x 4 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gen );[127X[104X
+    [4X[28XD3*D4,D1*D4,D2*D3,D1*D2[128X[104X
+    [4X[25Xgap>[125X [27Xgen2 := GeneratorsOfScalelessSectors( LD, [ 2, 2, 2, 2 ] );[127X[104X
+    [4X[28X<An unevaluated 1 x 4 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gen2 );[127X[104X
+    [4X[28XD1*D2*D3^2*D4^2,D1^2*D2*D3*D4^2,D1*D2^2*D3^2*D4,D1^2*D2^2*D3*D4[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.2-7 [33X[0;0YKite[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "p", 4 );[127X[104X
@@ -279,131 +524,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-4 [33X[0;0Y1 Loop box[133X[101X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1", "k1..2,k4" );[127X[104X
-    [4X[28X<A loop diagram with loop momenta [ l1 ] & external momenta [ k1, k2, k4 ]>[128X[104X
-    [4X[25Xgap>[125X [27Xs12 := 2*k1*k2;[127X[104X
-    [4X[28X2*k1*k2[128X[104X
-    [4X[25Xgap>[125X [27XSetAbbreviation( s12, "s12" );[127X[104X
-    [4X[25Xgap>[125X [27Xs14 := 2*k1*k4;[127X[104X
-    [4X[28X2*k1*k4[128X[104X
-    [4X[25Xgap>[125X [27XSetAbbreviation( s14, "s14" );[127X[104X
-    [4X[25Xgap>[125X [27Xrel1 := List( ExternalMomenta( LD ), k -> k^2 );[127X[104X
-    [4X[28X[ k1^2, k2^2, k4^2 ][128X[104X
-    [4X[25Xgap>[125X [27Xrel2 := [ (k1+k2+k4)^2 ];;[127X[104X
-    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, Concatenation( rel1, rel2 ) );[127X[104X
-    [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD,[127X[104X
-    [4X[25X>[125X [27X        [ l1^2, l1*k1, l1*k2, l1*k4, s12, s14 ] );[127X[104X
-    [4X[25Xgap>[125X [27XSetPropagators( LD, -[ l1^2, (l1-k1)^2, (l1-k1-k2)^2, (l1+k4)^2 ] );[127X[104X
-    [4X[25Xgap>[125X [27XSetNumerators( LD, -[ ] );[127X[104X
-    [4X[25Xgap>[125X [27XSetExtraLorentzInvariants( LD, [ s12, s14 ] );[127X[104X
-    [4X[25Xgap>[125X [27XR := RingOfLoopDiagram( LD );[127X[104X
-    [4X[28XQ[D,s12,s14][D1,D2,D3,D4][128X[104X
-    [4X[25Xgap>[125X [27Xibps := MatrixOfIBPRelations( LD );[127X[104X
-    [4X[28X<A 4 x 1 matrix over a residue class ring>[128X[104X
-    [4X[25Xgap>[125X [27Xibp1 := ibps[1,1];[127X[104X
-    [4X[28X|[ -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_+D-2*a1-a2-a3-a4 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp1 ) );[127X[104X
-    [4X[28X[ [ |[ -a2 ]|, |[ D1*D2_ ]| ],[128X[104X
-    [4X[28X  [ |[ -a3 ]|, |[ D1*D3_ ]| ],[128X[104X
-    [4X[28X  [ |[ -a4 ]|, |[ D1*D4_ ]| ],[128X[104X
-    [4X[28X  [ |[ -s12*a3 ]|, |[ D3_ ]| ],[128X[104X
-    [4X[28X  [ |[ D-2*a1-a2-a3-a4 ]|, |[ 1 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XY := HomalgRing( ibp1 );[127X[104X
-    [4X[28XQ[D,s12,s14][a1,a2,a3,a4]<D1,D1_,D2,D2_,D3,D3_,D4,D4_>/( D4*D4_-1, D3*D3_-1,\[128X[104X
-    [4X[28X  D2*D2_-1, D1*D1_-1 )[128X[104X
-    [4X[25Xgap>[125X [27XE12 := PairOfMatricesOfLoopDiagramInPropagators( LD );[127X[104X
-    [4X[28X[ <A 4 x 4 matrix over an external ring>,[128X[104X
-    [4X[28X  <A 4 x 4 matrix over an external ring> ][128X[104X
-    [4X[25Xgap>[125X [27XDisplay( E12[1] );[127X[104X
-    [4X[28X2*D1,      D1+D2,    s12+D1+D3, D1+D4,[128X[104X
-    [4X[28XD1-D2,     D1-D2,    s12+D1-D2, -s14+D1-D2,[128X[104X
-    [4X[28X-s12+D2-D3,D2-D3,    D2-D3,     s14+D2-D3,[128X[104X
-    [4X[28X-D1+D4,    s14-D1+D4,-s12-D1+D4,-D1+D4[128X[104X
-    [4X[25Xgap>[125X [27XS := SyzygiesOfRows( E12 );[127X[104X
-    [4X[28X<A non-zero 12 x 4 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XSred := ReducedBasisOfRowModule( S );[127X[104X
-    [4X[28X<A non-zero 6 x 4 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( Sred );[127X[104X
-    [4X[28XD2-D4,                D4,                        0,          D2,[128X[104X
-    [4X[28XD1-D3,                -D1,                       -D1,        0,[128X[104X
-    [4X[28Xs12*D4+2*D3*D4-2*D4^2,-s12*D4+D2*D4-D3*D4+2*D4^2,D1*D4+D2*D4,2*D2*D4,[128X[104X
-    [4X[28Xs14*D3-2*D3^2+2*D3*D4,-D1*D3-D3*D4,              -2*D1*D3,   -D1*D3-D2*D3,[128X[104X
-    [4X[28X-D3*D4^2,             D3*D4^2,                   0,          D2*D3*D4,[128X[104X
-    [4X[28XD3^2*D4,              0,                         D1*D3*D4,   0[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( EntriesOfHomalgMatrixAsListList( Sred{[ 1 .. 3 ]} ) );[127X[104X
-    [4X[28X[ [ D2-D4, D4, 0, D2 ],[128X[104X
-    [4X[28X  [ D1-D3, -D1, -D1, 0 ],[128X[104X
-    [4X[28X  [ s12*D4+2*D3*D4-2*D4^2, -s12*D4+D2*D4-D3*D4+2*D4^2, D1*D4+D2*D4, 2*D2*D4 ] ][128X[104X
-    [4X[25Xgap>[125X [27XSibp1 := IBPRelation( S[1], LD );[127X[104X
-    [4X[28X|[ -s14*a2+s14*a4+D*D2-a1*D2-a2*D2-a3*D2-a4*D2-D*D4+a1*D4+a2*D4+a3*D4+a4*D4 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp1 ) );[127X[104X
-    [4X[28X[ [ |[ D-a1-a2-a3-a4 ]|, |[ D2 ]| ],[128X[104X
-    [4X[28X  [ |[ -D+a1+a2+a3+a4 ]|, |[ D4 ]| ],[128X[104X
-    [4X[28X  [ |[ -s14*a2+s14*a4 ]|, |[ 1 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27Xsibp1 := IBPRelation( S[1], LD, [ 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ D*D2-D*D4-4*D2+4*D4 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp1 ) );[127X[104X
-    [4X[28X[ [ |[ D-4 ]|, |[ D2 ]| ],[128X[104X
-    [4X[28X  [ |[ -D+4 ]|, |[ D4 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XSibp2 := IBPRelation( S[2], LD );[127X[104X
-    [4X[28X|[ -s12*a1+s12*a3+D*D1-a1*D1-a2*D1-a3*D1-a4*D1-D*D3+a1*D3+a2*D3+a3*D3+a4*D3 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp2 ) );[127X[104X
-    [4X[28X[ [ |[ D-a1-a2-a3-a4 ]|, |[ D1 ]| ],[128X[104X
-    [4X[28X  [ |[ -D+a1+a2+a3+a4 ]|, |[ D3 ]| ],[128X[104X
-    [4X[28X  [ |[ -s12*a1+s12*a3 ]|, |[ 1 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27Xsibp2 := IBPRelation( S[2], LD, [ 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ D*D1-D*D3-4*D1+4*D3 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp2 ) );[127X[104X
-    [4X[28X[ [ |[ D-4 ]|, |[ D1 ]| ],[128X[104X
-    [4X[28X  [ |[ -D+4 ]|, |[ D3 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27XSibp3 := IBPRelation( S[3], LD );;[127X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( Sibp3 ) );[127X[104X
-    [4X[28X[ [ |[ 2*D-2*a1-2*a2-2*a3-2*a4+2 ]|, |[ D3*D4 ]| ],[128X[104X
-    [4X[28X  [ |[ -2*D+2*a1+2*a2+2*a3+2*a4-2 ]|, |[ D4^2 ]| ],[128X[104X
-    [4X[28X  [ |[ -s14*a4+s14 ]|, |[ D1 ]| ],[128X[104X
-    [4X[28X  [ |[ -s12*a4+s12 ]|, |[ D2 ]| ],[128X[104X
-    [4X[28X  [ |[ -s14*a4+s14 ]|, |[ D3 ]| ],[128X[104X
-    [4X[28X  [ |[ D*s12-2*s12*a2-2*s14*a2-2*s12*a3-s12*a4+2*s14*a4+s12-2*s14 ]|, |[ D4 ]| ],[128X[104X
-    [4X[28X  [ |[ -s12*s14*a4+s12*s14 ]|, |[ 1 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27Xsibp3 := IBPRelation( S[3], LD, [ 1, 1, 1, 1 ] );[127X[104X
-    [4X[28X|[ D*s12*D4+2*D*D3*D4-2*D*D4^2-4*s12*D4-2*s14*D4-6*D3*D4+6*D4^2 ]|[128X[104X
-    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( sibp3 ) );[127X[104X
-    [4X[28X[ [ |[ 2*D-6 ]|, |[ D3*D4 ]| ],[128X[104X
-    [4X[28X  [ |[ -2*D+6 ]|, |[ D4^2 ]| ],[128X[104X
-    [4X[28X  [ |[ D*s12-4*s12-2*s14 ]|, |[ D4 ]| ] ][128X[104X
-    [4X[25Xgap>[125X [27Xbas := BasisOfIBPRelations( LD );[127X[104X
-    [4X[28X<A non-zero 28 x 1 matrix over a residue class ring>[128X[104X
-    [4X[25Xgap>[125X [27XSbas := BasisOfSpecialIBPRelations( LD );[127X[104X
-    [4X[28X<A non-zero 28 x 1 matrix over a residue class ring>[128X[104X
-    [4X[25Xgap>[125X [27Xbas = Sbas;[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD );[127X[104X
-    [4X[28X[ z1+z2+z3+z4, -s12*z1*z3-s14*z2*z4 ][128X[104X
-    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD, [ 1, 2, 3, 4 ] );[127X[104X
-    [4X[28X[ z1+z2+z3+z4, -s12*z1*z3-s14*z2*z4 ][128X[104X
-    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD, [ 1, 2, 3 ] );[127X[104X
-    [4X[28X[ z1+z2+z3, -s12*z1*z3 ][128X[104X
-    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD, [ 1, 2 ] );[127X[104X
-    [4X[28X[ z1+z2, 0 ][128X[104X
-    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD, [ 1 ] );[127X[104X
-    [4X[28X[ z1, 0 ][128X[104X
-    [4X[25Xgap>[125X [27XSymanzikPolynomials( LD, [ ] );[127X[104X
-    [4X[28X[ 0, 0 ][128X[104X
-    [4X[25Xgap>[125X [27Xgen := GeneratorsOfScalelessSectors( LD );[127X[104X
-    [4X[28X<A 1 x 8 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( gen );[127X[104X
-    [4X[28XD3*D4,D1*D4,D2*D3,D1*D2,a1-1,a2-1,a3-1,a4-1[128X[104X
-    [4X[25Xgap>[125X [27Xgen2 := GeneratorsOfScalelessSectors( LD, [ 2, 2, 2, 2 ] );[127X[104X
-    [4X[28X<An unevaluated 1 x 4 matrix over an external ring>[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( gen2 );[127X[104X
-    [4X[28XD1*D2*D3^2*D4^2,D1^2*D2*D3*D4^2,D1*D2^2*D3^2*D4,D1^2*D2^2*D3*D4[128X[104X
-  [4X[32X[104X
-  
-  
-  [1X1.2-5 [33X[0;0Y2 Loop nonplanar ladder[133X[101X
+  [1X1.2-8 [33X[0;0Y2 Loop nonplanar ladder[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "p1..2" );[127X[104X
@@ -447,7 +568,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-6 [33X[0;0Y2 Loop cusp anomalous dimensions[133X[101X
+  [1X1.2-9 [33X[0;0Y2 Loop cusp anomalous dimensions[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "k1, k2", "v1, v2" );[127X[104X
@@ -503,7 +624,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-7 [33X[0;0Y2 Loop box[133X[101X
+  [1X1.2-10 [33X[0;0Y2 Loop box[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "k1..2,k4" );[127X[104X
@@ -607,15 +728,15 @@
     [4X[28X  [ |[ -D+4 ]|, |[ D6*D7 ]| ],[128X[104X
     [4X[28X  [ |[ -2*D+8 ]|, |[ D7*N9 ]| ] ][128X[104X
     [4X[25Xgap>[125X [27Xgen := GeneratorsOfScalelessSectors( LD );[127X[104X
-    [4X[28X<A 1 x 19 matrix over an external ring>[128X[104X
+    [4X[28X<A 1 x 10 matrix over an external ring>[128X[104X
     [4X[25Xgap>[125X [27XEntriesOfHomalgMatrix( gen );[127X[104X
     [4X[28X[ D6*D7*N8*N9, D4*D7*N8*N9, D3*D7*N8*N9, D1*D7*N8*N9, D4*D5*D6*N8*N9,[128X[104X
     [4X[28X  D3*D5*D6*N8*N9, D2*D3*D6*N8*N9, D1*D4*D5*N8*N9, D1*D2*D4*N8*N9,[128X[104X
-    [4X[28X  D1*D2*D3*N8*N9, a1-1, a2-1, a3-1, a4-1, a5-1, a6-1, a7-1, a8, a9 ][128X[104X
+    [4X[28X  D1*D2*D3*N8*N9 ][128X[104X
   [4X[32X[104X
   
   
-  [1X1.2-8 [33X[0;0YPentagon with off shell leg[133X[101X
+  [1X1.2-11 [33X[0;0YPentagon with off shell leg[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "k1", "p1, p2, p3, p4" );[127X[104X
@@ -662,7 +783,7 @@
   
   [1X1.3-1 LOOP_INTEGRALS[101X
   
-  [33X[1;0Y[29X[2XLOOP_INTEGRALS[102X[32X global variable[133X
+  [33X[1;0Y[29X[2XLOOP_INTEGRALS[102X [32X global variable[133X
   
   
   [1X1.4 [33X[0;0YProperties[133X[101X

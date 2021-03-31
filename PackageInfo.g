@@ -11,11 +11,11 @@ SetPackageInfo( rec(
 PackageName := "LoopIntegrals",
 Subtitle := "Compute master integrals using commutative and noncommutative methods from computational algebraic geometry",
 Version := Maximum( [
-                   "2020.11-03", ## Mohamed's version
+                   "2021.03-02", ## Mohamed's version
                    ## this line prevents merge conflicts
                    ] ),
 
-Date := "04/12/2020",
+Date := "31/03/2021",
 
 License := "GPL-2.0-or-later",
 
@@ -85,7 +85,7 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/LoopIntegrals",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/LoopIntegrals",
+PackageWWWHome  := "https://homalg-project.github.io/pkg/LoopIntegrals",
 PackageInfoURL  := "https://homalg-project.github.io/LoopIntegrals/PackageInfo.g",
 README_URL      := "https://homalg-project.github.io/LoopIntegrals/README.md",
 ArchiveURL      := Concatenation( "https://github.com/homalg-project/LoopIntegrals/releases/download/v", ~.Version, "/LoopIntegrals-", ~.Version ),
