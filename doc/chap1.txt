@@ -413,23 +413,6 @@
     [4X[28X0,    0,            -l2l2,0,            0,[128X[104X
     [4X[28X0,    0,            0,    -l2l2+2*l2p-s,0,[128X[104X
     [4X[28X0,    0,            0,    0,            -l1l1-l2l2-2*l1l2[128X[104X
-    [4X[25Xgap>[125X [27Xe12 := PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants( LD :[127X[104X
-    [4X[25X>[125X [27X               abbreviation := false );[127X[104X
-    [4X[28X[ <An unevaluated non-zero 6 x 5 matrix over an external ring>,[128X[104X
-    [4X[28X  <An unevaluated non-zero 5 x 5 matrix over an external ring> ][128X[104X
-    [4X[25Xgap>[125X [27XDisplay( e12[1] );[127X[104X
-    [4X[28X-2*x1,-2*x1-2*x4,0,    0,         -2*x1-2*x3,[128X[104X
-    [4X[28X-2*x3,-2*x3-2*x5,0,    0,         -2*x2-2*x3,[128X[104X
-    [4X[28X-2*x4,-2*x4-2*x6,0,    0,         -2*x4-2*x5,[128X[104X
-    [4X[28X0,    0,         -2*x3,-2*x3+2*x4,-2*x1-2*x3,[128X[104X
-    [4X[28X0,    0,         -2*x2,-2*x2+2*x5,-2*x2-2*x3,[128X[104X
-    [4X[28X0,    0,         -2*x5,-2*x5+2*x6,-2*x4-2*x5[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( e12[2] );[127X[104X
-    [4X[28X-x1,0,          0,  0,          0,[128X[104X
-    [4X[28X0,  -x1-2*x4-x6,0,  0,          0,[128X[104X
-    [4X[28X0,  0,          -x2,0,          0,[128X[104X
-    [4X[28X0,  0,          0,  -x2+2*x5-x6,0,[128X[104X
-    [4X[28X0,  0,          0,  0,          -x1-x2-2*x3[128X[104X
     [4X[25Xgap>[125X [27XE12 := PairOfMatricesOfLoopDiagramInPropagators( LD );[127X[104X
     [4X[28X[ <A 6 x 5 matrix over an external ring>,[128X[104X
     [4X[28X  <A 5 x 5 matrix over an external ring> ][128X[104X
@@ -523,6 +506,34 @@
     [4X[28X[ [ |[ D-2 ]|, |[ D4*D5 ]| ] ][128X[104X
   [4X[32X[104X
   
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "p", 4 : abbreviation := false );[127X[104X
+    [4X[28X<A loop diagram with loop momenta [ l1, l2 ] & external momenta [ p ]>[128X[104X
+    [4X[25Xgap>[125X [27Xs := p^2;;[127X[104X
+    [4X[25Xgap>[125X [27XSetAbbreviation( s, "s" );[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, [ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD, [ l1^2, l2^2, l1*l2, l1*p, l2*p, s ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetPropagators( LD, -[ l1^2, (l1+p)^2, l2^2, (l2-p)^2, (l1+l2)^2 ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetNumerators( LD, -[ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetExtraLorentzInvariants( LD, [ s ] );[127X[104X
+    [4X[25Xgap>[125X [27Xe12 := PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants( LD );[127X[104X
+    [4X[28X[ <An unevaluated non-zero 6 x 5 matrix over an external ring>,[128X[104X
+    [4X[28X  <An unevaluated non-zero 5 x 5 matrix over an external ring> ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( e12[1] );[127X[104X
+    [4X[28X-2*x1,-2*x1-2*x4,0,    0,         -2*x1-2*x3,[128X[104X
+    [4X[28X-2*x3,-2*x3-2*x5,0,    0,         -2*x2-2*x3,[128X[104X
+    [4X[28X-2*x4,-2*x4-2*x6,0,    0,         -2*x4-2*x5,[128X[104X
+    [4X[28X0,    0,         -2*x3,-2*x3+2*x4,-2*x1-2*x3,[128X[104X
+    [4X[28X0,    0,         -2*x2,-2*x2+2*x5,-2*x2-2*x3,[128X[104X
+    [4X[28X0,    0,         -2*x5,-2*x5+2*x6,-2*x4-2*x5[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( e12[2] );[127X[104X
+    [4X[28X-x1,0,          0,  0,          0,[128X[104X
+    [4X[28X0,  -x1-2*x4-x6,0,  0,          0,[128X[104X
+    [4X[28X0,  0,          -x2,0,          0,[128X[104X
+    [4X[28X0,  0,          0,  -x2+2*x5-x6,0,[128X[104X
+    [4X[28X0,  0,          0,  0,          -x1-x2-2*x3[128X[104X
+  [4X[32X[104X
+  
   
   [1X1.2-8 [33X[0;0Y2 Loop nonplanar ladder[133X[101X
   
@@ -584,20 +595,6 @@
     [4X[25X>[125X [27X           2*k1*v1 - 1, 2*k1*v2 - 1, k1^2 ] );[127X[104X
     [4X[25Xgap>[125X [27XSetNumerators( LD, -[ k2^2 ] );[127X[104X
     [4X[25Xgap>[125X [27XSetExtraLorentzInvariants( LD, [ cos ] );[127X[104X
-    [4X[25Xgap>[125X [27Xe12 := PairOfMatricesOfLoopDiagramInPropagators( LD : rational := true );[127X[104X
-    [4X[28X[ <A 8 x 6 matrix over an external ring>,[128X[104X
-    [4X[28X  <A 6 x 6 matrix over an external ring> ][128X[104X
-    [4X[25Xgap>[125X [27XDisplay( e12[1] );[127X[104X
-    [4X[28X0,       0,       D3+D6-N7, D4-1,    D5-1,    2*D6,[128X[104X
-    [4X[28X0,       0,       -D3+D6-N7,D1-1,    D2-1,    -D3+D6+N7,[128X[104X
-    [4X[28X0,       0,       -D1+D4,   -2,      (-2*cos),D4-1,[128X[104X
-    [4X[28X0,       0,       -D2+D5,   (-2*cos),-2,      D5-1,[128X[104X
-    [4X[28XD4-1,    D5-1,    -D3-D6+N7,0,       0,       0,[128X[104X
-    [4X[28XD1-1,    D2-1,    D3-D6+N7, 0,       0,       0,[128X[104X
-    [4X[28X-2,      (-2*cos),D1-D4,    0,       0,       0,[128X[104X
-    [4X[28X(-2*cos),-2,      D2-D5,    0,       0,       0[128X[104X
-    [4X[25Xgap>[125X [27Xs := SyzygiesOfRows( e12 );[127X[104X
-    [4X[28X<A non-zero 46 x 8 matrix over an external ring>[128X[104X
     [4X[25Xgap>[125X [27XE12 := PairOfMatricesOfLoopDiagramInPropagators( LD );[127X[104X
     [4X[28X[ <A 8 x 6 matrix over an external ring>,[128X[104X
     [4X[28X  <A 6 x 6 matrix over an external ring> ][128X[104X
@@ -621,6 +618,36 @@
     [4X[25Xgap>[125X [27XEntriesOfHomalgMatrix( S[3] );[127X[104X
     [4X[28X[ 2*cos*D6+2*D6, 0, -D6, -D6,[128X[104X
     [4X[28X  0, 2*cos*D6+2*D6, -D6, -D6 ][128X[104X
+  [4X[32X[104X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLD := LoopDiagram( "k1, k2", "v1, v2" : rational := true );[127X[104X
+    [4X[28X<A loop diagram with loop momenta [ k1, k2 ] & external momenta [ v1, v2 ]>[128X[104X
+    [4X[25Xgap>[125X [27Xcos:= v1*v2;;[127X[104X
+    [4X[25Xgap>[125X [27XSetAbbreviation( cos, "cos" );[127X[104X
+    [4X[25Xgap>[125X [27Xrel := [ v1^2 - 1, v2^2 - 1 ];;[127X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, rel );[127X[104X
+    [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD,[127X[104X
+    [4X[25X>[125X [27X        [ k1^2, k1*k2, k1*v1, k1*v2, k2^2, k2*v1, k2*v2, cos ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetPropagators( LD,[127X[104X
+    [4X[25X>[125X [27X        -[ 2*k2*v1 - 1, 2*k2*v2 - 1, (k1 - k2)^2,[127X[104X
+    [4X[25X>[125X [27X           2*k1*v1 - 1, 2*k1*v2 - 1, k1^2 ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetNumerators( LD, -[ k2^2 ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetExtraLorentzInvariants( LD, [ cos ] );[127X[104X
+    [4X[25Xgap>[125X [27XE12 := PairOfMatricesOfLoopDiagramInPropagators( LD );[127X[104X
+    [4X[28X[ <A 8 x 6 matrix over an external ring>,[128X[104X
+    [4X[28X  <A 6 x 6 matrix over an external ring> ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( E12[1] );[127X[104X
+    [4X[28X0,       0,       D3+D6-N7, D4-1,    D5-1,    2*D6,[128X[104X
+    [4X[28X0,       0,       -D3+D6-N7,D1-1,    D2-1,    -D3+D6+N7,[128X[104X
+    [4X[28X0,       0,       -D1+D4,   -2,      (-2*cos),D4-1,[128X[104X
+    [4X[28X0,       0,       -D2+D5,   (-2*cos),-2,      D5-1,[128X[104X
+    [4X[28XD4-1,    D5-1,    -D3-D6+N7,0,       0,       0,[128X[104X
+    [4X[28XD1-1,    D2-1,    D3-D6+N7, 0,       0,       0,[128X[104X
+    [4X[28X-2,      (-2*cos),D1-D4,    0,       0,       0,[128X[104X
+    [4X[28X(-2*cos),-2,      D2-D5,    0,       0,       0[128X[104X
+    [4X[25Xgap>[125X [27Xs := SyzygiesOfRows( E12 );[127X[104X
+    [4X[28X<A non-zero 46 x 8 matrix over an external ring>[128X[104X
   [4X[32X[104X
   
   
@@ -819,91 +846,175 @@
   
   [1X1.5-5 LoopMomenta[101X
   
-  [33X[1;0Y[29X[2XLoopMomenta[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XLoopMomenta[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-6 ExternalMomenta[101X
   
-  [33X[1;0Y[29X[2XExternalMomenta[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XExternalMomenta[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-7 DimensionOfCoefficientsVector[101X
   
-  [33X[1;0Y[29X[2XDimensionOfCoefficientsVector[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XDimensionOfCoefficientsVector[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-8 UnderlyingRing[101X
   
-  [33X[1;0Y[29X[2XUnderlyingRing[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XUnderlyingRing[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-9 RelationsOfExternalMomenta[101X
   
-  [33X[1;0Y[29X[2XRelationsOfExternalMomenta[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XRelationsOfExternalMomenta[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-10 RelationsMatrixOfExternalMomenta[101X
   
-  [33X[1;0Y[29X[2XRelationsMatrixOfExternalMomenta[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XRelationsMatrixOfExternalMomenta[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-11 IndependentLorentzInvariants[101X
   
-  [33X[1;0Y[29X[2XIndependentLorentzInvariants[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-12 Propagators[101X
   
-  [33X[1;0Y[29X[2XPropagators[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-13 Numerators[101X
   
-  [33X[1;0Y[29X[2XNumerators[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XNumerators[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-14 ExtraLorentzInvariants[101X
   
-  [33X[1;0Y[29X[2XExtraLorentzInvariants[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XExtraLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-15 OriginalJacobianOfPropagators[101X
   
-  [33X[1;0Y[29X[2XOriginalJacobianOfPropagators[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XOriginalJacobianOfPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-16 OriginalJacobianOfNumerators[101X
   
-  [33X[1;0Y[29X[2XOriginalJacobianOfNumerators[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XOriginalJacobianOfNumerators[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-17 OriginalTaylorOfPropagators[101X
   
-  [33X[1;0Y[29X[2XOriginalTaylorOfPropagators[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XOriginalTaylorOfPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-18 MatrixOfMomenta[101X
   
-  [33X[1;0Y[29X[2XMatrixOfMomenta[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XMatrixOfMomenta[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-19 JacobianOfPropagators[101X
   
-  [33X[1;0Y[29X[2XJacobianOfPropagators[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XJacobianOfPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-20 JacobianOfNumerators[101X
   
-  [33X[1;0Y[29X[2XJacobianOfNumerators[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XJacobianOfNumerators[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-21 PairOfOriginalMatricesOfLoopDiagram[101X
   
-  [33X[1;0Y[29X[2XPairOfOriginalMatricesOfLoopDiagram[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XPairOfOriginalMatricesOfLoopDiagram[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-22 PairOfMatricesOfLoopDiagram[101X
   
-  [33X[1;0Y[29X[2XPairOfMatricesOfLoopDiagram[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XPairOfMatricesOfLoopDiagram[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-23 SymanzikPolynomials[101X
+  [1X1.5-23 RingOfExtraLorentzInvariants[101X
   
-  [33X[1;0Y[29X[2XSymanzikPolynomials[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XRingOfExtraLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-24 AssociatedWeylAlgebra[101X
+  [1X1.5-24 ReductionMatrixOfExtraLorentzInvariants[101X
   
-  [33X[1;0Y[29X[2XAssociatedWeylAlgebra[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XReductionMatrixOfExtraLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-25 GeneratorsOfScalelessSectors[101X
+  [1X1.5-25 RingOfIndependentLorentzInvariants[101X
   
-  [33X[1;0Y[29X[2XGeneratorsOfScalelessSectors[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XRingOfIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-26 GeneratorsOfScalelessSectorsInWeylAlgebra[101X
+  [1X1.5-26 ReductionMatrixOfIndependentLorentzInvariants[101X
   
-  [33X[1;0Y[29X[2XGeneratorsOfScalelessSectorsInWeylAlgebra[102X( [3Xarg[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XReductionMatrixOfIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-27 RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
+  
+  [33X[1;0Y[29X[2XRingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-28 RingOfLoopDiagram[101X
+  
+  [33X[1;0Y[29X[2XRingOfLoopDiagram[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-29 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
+  
+  [33X[1;0Y[29X[2XReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-30 JacobianOfPropagatorsInIndependentLorentzInvariants[101X
+  
+  [33X[1;0Y[29X[2XJacobianOfPropagatorsInIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-31 JacobianOfPropagatorsInPropagators[101X
+  
+  [33X[1;0Y[29X[2XJacobianOfPropagatorsInPropagators[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-32 JacobianOfNumeratorsInPropagators[101X
+  
+  [33X[1;0Y[29X[2XJacobianOfNumeratorsInPropagators[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-33 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[101X
+  
+  [33X[1;0Y[29X[2XPairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-34 PairOfMatricesOfLoopDiagramInPropagators[101X
+  
+  [33X[1;0Y[29X[2XPairOfMatricesOfLoopDiagramInPropagators[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-35 JacobianOfLoopDiagramInPropagators[101X
+  
+  [33X[1;0Y[29X[2XJacobianOfLoopDiagramInPropagators[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-36 MatrixOfIBPRelations[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-37 BasisOfIBPRelations[101X
+  
+  [33X[1;0Y[29X[2XBasisOfIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-38 MatrixOfSpecialIBPRelations[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-39 BasisOfSpecialIBPRelations[101X
+  
+  [33X[1;0Y[29X[2XBasisOfSpecialIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-40 MatrixOfIBPRelationsInWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-41 BasisOfIBPRelationsInWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XBasisOfIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-42 MatrixOfSpecialIBPRelationsInWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-43 BasisOfSpecialIBPRelationsInWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XBasisOfSpecialIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-44 SymanzikPolynomials[101X
+  
+  [33X[1;0Y[29X[2XSymanzikPolynomials[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-45 AssociatedWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XAssociatedWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-46 GeneratorsOfScalelessSectors[101X
+  
+  [33X[1;0Y[29X[2XGeneratorsOfScalelessSectors[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-47 GeneratorsOfScalelessSectorsInWeylAlgebra[101X
+  
+  [33X[1;0Y[29X[2XGeneratorsOfScalelessSectorsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
   
   [1X1.6 [33X[0;0YConstructors[133X[101X
@@ -956,159 +1067,75 @@
   
   [33X[1;0Y[29X[2X*[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X1.7-9 RingOfExtraLorentzInvariants[101X
-  
-  [33X[1;0Y[29X[2XRingOfExtraLorentzInvariants[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-10 ReductionMatrixOfExtraLorentzInvariants[101X
-  
-  [33X[1;0Y[29X[2XReductionMatrixOfExtraLorentzInvariants[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-11 ExpressInExtraLorentzInvariants[101X
+  [1X1.7-9 ExpressInExtraLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XExpressInExtraLorentzInvariants[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X1.7-12 RingOfIndependentLorentzInvariants[101X
-  
-  [33X[1;0Y[29X[2XRingOfIndependentLorentzInvariants[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-13 ReductionMatrixOfIndependentLorentzInvariants[101X
-  
-  [33X[1;0Y[29X[2XReductionMatrixOfIndependentLorentzInvariants[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-14 ExpressInIndependentLorentzInvariants[101X
+  [1X1.7-10 ExpressInIndependentLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XExpressInIndependentLorentzInvariants[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X1.7-15 RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
-  
-  [33X[1;0Y[29X[2XRingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-16 RingOfLoopDiagram[101X
-  
-  [33X[1;0Y[29X[2XRingOfLoopDiagram[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-17 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
-  
-  [33X[1;0Y[29X[2XReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-18 ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
+  [1X1.7-11 ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X( [3Xarg1[103X, [3Xarg2[103X ) [32X operation[133X
   
-  [1X1.7-19 JacobianOfPropagatorsInIndependentLorentzInvariants[101X
-  
-  [33X[1;0Y[29X[2XJacobianOfPropagatorsInIndependentLorentzInvariants[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-20 JacobianOfPropagatorsInPropagators[101X
-  
-  [33X[1;0Y[29X[2XJacobianOfPropagatorsInPropagators[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-21 JacobianOfNumeratorsInPropagators[101X
-  
-  [33X[1;0Y[29X[2XJacobianOfNumeratorsInPropagators[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-22 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[101X
-  
-  [33X[1;0Y[29X[2XPairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-23 PairOfMatricesOfLoopDiagramInPropagators[101X
-  
-  [33X[1;0Y[29X[2XPairOfMatricesOfLoopDiagramInPropagators[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-24 JacobianOfLoopDiagramInPropagators[101X
-  
-  [33X[1;0Y[29X[2XJacobianOfLoopDiagramInPropagators[102X( [3Xarg[103X ) [32X operation[133X
-  
-  [1X1.7-25 JacobianOfCoefficientsVectorInPropagators[101X
+  [1X1.7-12 JacobianOfCoefficientsVectorInPropagators[101X
   
   [33X[1;0Y[29X[2XJacobianOfCoefficientsVectorInPropagators[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-26 DivergenceOfCoefficientsVectorOfLoopDiagram[101X
+  [1X1.7-13 DivergenceOfCoefficientsVectorOfLoopDiagram[101X
   
   [33X[1;0Y[29X[2XDivergenceOfCoefficientsVectorOfLoopDiagram[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-27 DoubleShiftAlgebra[101X
+  [1X1.7-14 DoubleShiftAlgebra[101X
   
   [33X[1;0Y[29X[2XDoubleShiftAlgebra[102X( [3Xarg[103X ) [32X operation[133X
   
-  [1X1.7-28 IBPRelation[101X
+  [1X1.7-15 IBPRelation[101X
   
   [33X[1;0Y[29X[2XIBPRelation[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-29 IBPRelation[101X
+  [1X1.7-16 IBPRelation[101X
   
   [33X[1;0Y[29X[2XIBPRelation[102X( [3Xvec[103X, [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
-  [1X1.7-30 MatrixOfIBPRelations[101X
+  [1X1.7-17 MatrixOfIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3Xmat[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-31 MatrixOfIBPRelations[101X
+  [1X1.7-18 MatrixOfIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3Xmat[103X, [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
-  [1X1.7-32 MatrixOfIBPRelations[101X
-  
-  [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3XLD[103X ) [32X operation[133X
-  
-  [1X1.7-33 MatrixOfIBPRelations[101X
+  [1X1.7-19 MatrixOfIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
-  [1X1.7-34 BasisOfIBPRelations[101X
-  
-  [33X[1;0Y[29X[2XBasisOfIBPRelations[102X( [3XLD[103X ) [32X operation[133X
-  
-  [1X1.7-35 MatrixOfSpecialIBPRelations[101X
-  
-  [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3XLD[103X ) [32X operation[133X
-  
-  [1X1.7-36 MatrixOfSpecialIBPRelations[101X
+  [1X1.7-20 MatrixOfSpecialIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
-  [1X1.7-37 BasisOfSpecialIBPRelations[101X
-  
-  [33X[1;0Y[29X[2XBasisOfSpecialIBPRelations[102X( [3XLD[103X ) [32X operation[133X
-  
-  [1X1.7-38 IBPRelationInWeylAlgebra[101X
+  [1X1.7-21 IBPRelationInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XIBPRelationInWeylAlgebra[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-39 MatrixOfIBPRelationsInWeylAlgebra[101X
+  [1X1.7-22 MatrixOfIBPRelationsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelationsInWeylAlgebra[102X( [3Xmat[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-40 MatrixOfIBPRelationsInWeylAlgebra[101X
-  
-  [33X[1;0Y[29X[2XMatrixOfIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X operation[133X
-  
-  [1X1.7-41 BasisOfIBPRelationsInWeylAlgebra[101X
-  
-  [33X[1;0Y[29X[2XBasisOfIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X operation[133X
-  
-  [1X1.7-42 MatrixOfSpecialIBPRelationsInWeylAlgebra[101X
-  
-  [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X operation[133X
-  
-  [1X1.7-43 BasisOfSpecialIBPRelationsInWeylAlgebra[101X
-  
-  [33X[1;0Y[29X[2XBasisOfSpecialIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X operation[133X
-  
-  [1X1.7-44 SymanzikPolynomials[101X
+  [1X1.7-23 SymanzikPolynomials[101X
   
   [33X[1;0Y[29X[2XSymanzikPolynomials[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-45 DegreesOfMonomialsOfProductOfSymanzikPolynomials[101X
+  [1X1.7-24 DegreesOfMonomialsOfProductOfSymanzikPolynomials[101X
   
   [33X[1;0Y[29X[2XDegreesOfMonomialsOfProductOfSymanzikPolynomials[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-46 IsScalelessLoopIntegral[101X
+  [1X1.7-25 IsScalelessLoopIntegral[101X
   
   [33X[1;0Y[29X[2XIsScalelessLoopIntegral[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-47 GeneratorsOfScalelessSectors[101X
+  [1X1.7-26 GeneratorsOfScalelessSectors[101X
   
   [33X[1;0Y[29X[2XGeneratorsOfScalelessSectors[102X( [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
