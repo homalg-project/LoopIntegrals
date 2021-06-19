@@ -1054,7 +1054,7 @@ InstallMethod( DoubleShiftAlgebra,
         [ IsHomalgRing ],
         
   function( R )
-    local Ds, D_s, c, exponents, B, A, shifts, Y;
+    local Ds, D_s, c, exponents, B, A, shifts, pairs, Y;
     
     if IsBound( R!.DoubleShiftAlgebra ) then
         return R!.DoubleShiftAlgebra;
@@ -1074,13 +1074,15 @@ InstallMethod( DoubleShiftAlgebra,
     
     A := B * JoinStringsWithSeparator( exponents );
     
-    if IsIdenticalObj( ValueOption( "pairs" ), true ) then
-        shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
-    else
+    if IsIdenticalObj( ValueOption( "pairs" ), false ) then
         shifts := Concatenation( Ds, D_s );
+        pairs := false;
+    else
+        shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
+        pairs := true;
     fi;
     
-    Y := DoubleShiftAlgebra( A, shifts : steps := -1 );
+    Y := DoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
     
     R!.DoubleShiftAlgebra := Y;
     
@@ -1114,7 +1116,7 @@ InstallMethod( IBPRelation,
     
     R := HomalgRing( vec );
     
-    Y := DoubleShiftAlgebra( R : pairs := true );
+    Y := DoubleShiftAlgebra( R );
     
     exponents := RelativeIndeterminatesOfPolynomialRing( BaseRing( Y ) );
     exponents := List( exponents, String );
@@ -1503,7 +1505,7 @@ InstallMethod( GeneratorsOfScalelessSectors,
     
     n := [ 1 .. Length( shifts ) ];
     
-    Y := DoubleShiftAlgebra( RingOfLoopDiagram( LD ) : pairs := true );
+    Y := DoubleShiftAlgebra( RingOfLoopDiagram( LD )  );
     
     Y := AmbientRing( Y );
     
