@@ -77,91 +77,175 @@ DeclareAttribute( "LoopDiagram",
 DeclareAttribute( "Components",
         IsLorentzVector );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "LoopMomenta",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "ExternalMomenta",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "DimensionOfCoefficientsVector",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "UnderlyingRing",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "RelationsOfExternalMomenta",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "RelationsMatrixOfExternalMomenta",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "IndependentLorentzInvariants",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "Propagators",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "Numerators",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "ExtraLorentzInvariants",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "OriginalJacobianOfPropagators",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "OriginalJacobianOfNumerators",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "OriginalTaylorOfPropagators",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "MatrixOfMomenta",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "JacobianOfPropagators",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "JacobianOfNumerators",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "PairOfOriginalMatricesOfLoopDiagram",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "PairOfMatricesOfLoopDiagram",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
+DeclareAttribute( "RingOfExtraLorentzInvariants",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "ReductionMatrixOfExtraLorentzInvariants",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "RingOfIndependentLorentzInvariants",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "ReductionMatrixOfIndependentLorentzInvariants",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "RingOfLoopDiagram",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "JacobianOfPropagatorsInIndependentLorentzInvariants",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "JacobianOfPropagatorsInPropagators",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "JacobianOfNumeratorsInPropagators",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "PairOfMatricesOfLoopDiagramInPropagators",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "JacobianOfLoopDiagramInPropagators",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "MatrixOfIBPRelations",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "BasisOfIBPRelations",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "MatrixOfSpecialIBPRelations",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "BasisOfSpecialIBPRelations",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "MatrixOfIBPRelationsInWeylAlgebra",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "BasisOfIBPRelationsInWeylAlgebra",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "MatrixOfSpecialIBPRelationsInWeylAlgebra",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "BasisOfSpecialIBPRelationsInWeylAlgebra",
+        IsLoopDiagram );
+
+#! @Arguments LD
 DeclareAttribute( "SymanzikPolynomials",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "AssociatedWeylAlgebra",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "GeneratorsOfScalelessSectors",
         IsLoopDiagram );
 
-#!
+#! @Arguments LD
 DeclareAttribute( "GeneratorsOfScalelessSectorsInWeylAlgebra",
         IsLoopDiagram );
 
@@ -229,68 +313,16 @@ DeclareOperation( "POW",
         [ IsLorentzVector, IsInt ] );
     
 #!
-DeclareOperation( "RingOfExtraLorentzInvariants",
-        [ IsLoopDiagram ] );
-
-#!
-DeclareOperation( "ReductionMatrixOfExtraLorentzInvariants",
-        [ IsLoopDiagram ] );
-
-#!
 DeclareOperation( "ExpressInExtraLorentzInvariants",
         [ IsHomalgMatrix, IsLoopDiagram ] );
-
-#!
-DeclareOperation( "RingOfIndependentLorentzInvariants",
-        [ IsLoopDiagram ] );
-
-#!
-DeclareOperation( "ReductionMatrixOfIndependentLorentzInvariants",
-        [ IsLoopDiagram ] );
 
 #!
 DeclareOperation( "ExpressInIndependentLorentzInvariants",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
 #!
-DeclareOperation( "RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
-        [ IsLoopDiagram ] );
-
-#!
-DeclareOperation( "RingOfLoopDiagram",
-        [ IsLoopDiagram ] );
-
-#!
-DeclareOperation( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
-        [ IsLoopDiagram ] );
-
-#!
 DeclareOperation( "ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants",
         [ IsHomalgMatrix, IsLoopDiagram ] );
-
-#!
-DeclareOperation( "JacobianOfPropagatorsInIndependentLorentzInvariants",
-        [ IsLoopDiagram ] );
-
-#!
-DeclareOperation( "JacobianOfPropagatorsInPropagators",
-        [ IsLoopDiagram ] );
-
-#!
-DeclareOperation( "JacobianOfNumeratorsInPropagators",
-        [ IsLoopDiagram ] );
-
-#!
-DeclareOperation( "PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants",
-        [ IsLoopDiagram ] );
-
-#!
-DeclareOperation( "PairOfMatricesOfLoopDiagramInPropagators",
-        [ IsLoopDiagram ] );
-
-#!
-DeclareOperation( "JacobianOfLoopDiagramInPropagators",
-        [ IsLoopDiagram ] );
 
 #! @Arguments vec, LD
 DeclareOperation( "JacobianOfCoefficientsVectorInPropagators",
@@ -320,29 +352,13 @@ DeclareOperation( "MatrixOfIBPRelations",
 DeclareOperation( "MatrixOfIBPRelations",
         [ IsHomalgMatrix, IsLoopDiagram, IsList ] );
 
-#! @Arguments LD
-DeclareOperation( "MatrixOfIBPRelations",
-        [ IsLoopDiagram ] );
-
 #! @Arguments LD, exponents
 DeclareOperation( "MatrixOfIBPRelations",
         [ IsLoopDiagram, IsList ] );
 
-#! @Arguments LD
-DeclareOperation( "BasisOfIBPRelations",
-        [ IsLoopDiagram ] );
-
-#! @Arguments LD
-DeclareOperation( "MatrixOfSpecialIBPRelations",
-        [ IsLoopDiagram ] );
-
 #! @Arguments LD, exponents
 DeclareOperation( "MatrixOfSpecialIBPRelations",
         [ IsLoopDiagram, IsList ] );
-
-#! @Arguments LD
-DeclareOperation( "BasisOfSpecialIBPRelations",
-        [ IsLoopDiagram ] );
 
 #! @Arguments vec, LD
 DeclareOperation( "IBPRelationInWeylAlgebra",
@@ -351,22 +367,6 @@ DeclareOperation( "IBPRelationInWeylAlgebra",
 #! @Arguments mat, LD
 DeclareOperation( "MatrixOfIBPRelationsInWeylAlgebra",
         [ IsHomalgMatrix, IsLoopDiagram ] );
-
-#! @Arguments LD
-DeclareOperation( "MatrixOfIBPRelationsInWeylAlgebra",
-        [ IsLoopDiagram ] );
-
-#! @Arguments LD
-DeclareOperation( "BasisOfIBPRelationsInWeylAlgebra",
-        [ IsLoopDiagram ] );
-
-#! @Arguments LD
-DeclareOperation( "MatrixOfSpecialIBPRelationsInWeylAlgebra",
-        [ IsLoopDiagram ] );
-
-#! @Arguments LD
-DeclareOperation( "BasisOfSpecialIBPRelationsInWeylAlgebra",
-        [ IsLoopDiagram ] );
 
 #! @Arguments LD, list_of_ones
 DeclareOperation( "SymanzikPolynomials",

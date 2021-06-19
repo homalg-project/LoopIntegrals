@@ -26,12 +26,14 @@ This package is an ongoing work to compute master integrals using commutative an
 
 @Subsection Kite
 @InsertChunk Kite
+@InsertChunk Kite_no_abbreviation
 
 @Subsection 2 Loop nonplanar ladder
 @InsertChunk 2LoopNonPlanarLadder
 
 @Subsection 2 Loop cusp anomalous dimensions
 @InsertChunk 2LoopCuspAnomalousDimensions
+@InsertChunk 2LoopCuspAnomalousDimensions_rational
 
 @Subsection 2 Loop box
 @InsertChunk 2LoopBox

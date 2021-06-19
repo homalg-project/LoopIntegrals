@@ -70,7 +70,7 @@ InstallMethod( LoopDiagram,
         [ IsList, IsList, IsInt ],
         
   function( L, K, dim )
-    local LD, LorentzVectors, masses, C, momenta, R;
+    local LD, LorentzVectors, masses, C, momenta, R, symbol, symbolD, symbolN;
     
     LD := rec( );
     
@@ -158,6 +158,44 @@ InstallMethod( LoopDiagram,
     end );
     
     LD!.masses := List( masses, ValueGlobal );
+    
+    symbol := ValueOption( "symbol" );
+    
+    if IsStringRep( symbol ) then
+        LD!.LorentzSymbol := symbol;
+    else
+        LD!.LorentzSymbol := LOOP_INTEGRALS.LorentzSymbol;
+    fi;
+    
+    symbolD := ValueOption( "symbolD" );
+    
+    if IsStringRep( symbolD ) then
+        LD!.PropagatorSymbol := symbolD;
+    else
+        LD!.PropagatorSymbol := LOOP_INTEGRALS.PropagatorSymbol;
+    fi;
+    
+    symbolN := ValueOption( "symbolN" );
+    
+    if IsStringRep( symbolN ) then
+        LD!.NumeratorSymbol := symbolN;
+    else
+        LD!.NumeratorSymbol := LOOP_INTEGRALS.NumeratorSymbol;
+    fi;
+    
+    if IsIdenticalObj( ValueOption( "abbreviation" ), false ) then
+        LD!.abbreviation := false;
+    else
+        LD!.abbreviation := true;
+    fi;
+    
+    ## do not treat the extra Lorentz invariants as rational parameters
+    ## as this slows down the syzygies computations in Singular significantly
+    if IsIdenticalObj( ValueOption( "rational" ), true ) then
+        LD!.rational := true;
+    else
+        LD!.rational := false;
+    fi;
     
     return LD;
     
@@ -538,33 +576,15 @@ InstallMethod( RingOfExtraLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasExtraLorentzInvariants and HasPropagators ],
         
   function( LD )
-    local abbreviation, I, M, symbol, invariants, R, symbols;
-    
-    abbreviation := ValueOption( "abbreviation" );
-    
-    if not IsIdenticalObj( abbreviation, false ) then
-        abbreviation := true;
-    fi;
-    
-    if abbreviation then
-        if IsBound( LD!.RingOfExtraLorentzInvariants ) then
-            return LD!.RingOfExtraLorentzInvariants;
-        fi;
-    else
-        if IsBound( LD!.RingOfExtraLorentzInvariants_noabbreviation ) then
-            return LD!.RingOfExtraLorentzInvariants_noabbreviation;
-        fi;
-    fi;
+    local I, M, abbreviation, symbol, invariants, R, symbols;
     
     I := ExtraLorentzInvariants( LD );
     
     M := Length( I );
     
-    symbol := ValueOption( "symbol" );
+    abbreviation := LD!.abbreviation;
     
-    if not IsStringRep( symbol ) then
-        symbol := LOOP_INTEGRALS.LorentzSymbol;
-    fi;
+    symbol := LD!.LorentzSymbol;
     
     invariants := List( [ 1 .. M ],
                         function( i )
@@ -578,15 +598,7 @@ InstallMethod( RingOfExtraLorentzInvariants,
     
     symbols := List( [ 1 .. Length( Propagators( LD ) ) ], i -> Concatenation( LOOP_INTEGRALS.DualSymbol, String( i ) ) );
     
-    R := R * symbols;
-    
-    if abbreviation then
-        LD!.RingOfExtraLorentzInvariants := R;
-    else
-        LD!.RingOfExtraLorentzInvariants_noabbreviation := R;
-    fi;
-    
-    return R;
+    return R * symbols;
     
 end );
 
@@ -595,23 +607,7 @@ InstallMethod( ReductionMatrixOfExtraLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasExtraLorentzInvariants ],
         
   function( LD )
-    local abbreviation, R, invariants, I, M, red;
-    
-    abbreviation := ValueOption( "abbreviation" );
-    
-    if not IsIdenticalObj( abbreviation, false ) then
-        abbreviation := true;
-    fi;
-    
-    if abbreviation then
-        if IsBound( LD!.ReductionMatrixOfExtraLorentzInvariants ) then
-            return LD!.ReductionMatrixOfExtraLorentzInvariants;
-        fi;
-    else
-        if IsBound( LD!.ReductionMatrixOfExtraLorentzInvariants_noabbreviation ) then
-            return LD!.ReductionMatrixOfExtraLorentzInvariants_noabbreviation;
-        fi;
-    fi;
+    local R, invariants, I, M, red;
     
     R := RingOfExtraLorentzInvariants( LD );
     
@@ -633,15 +629,7 @@ InstallMethod( ReductionMatrixOfExtraLorentzInvariants,
     
     red := UnionOfRows( invariants, R * RelationsMatrixOfExternalMomenta( LD ) );
     
-    red := BasisOfRows( red );
-    
-    if abbreviation then
-        LD!.ReductionMatrixOfExtraLorentzInvariants := red;
-    else
-        LD!.ReductionMatrixOfExtraLorentzInvariants_noabbreviation := red;
-    fi;
-    
-    return red;
+    return BasisOfRows( red );
     
 end );
 
@@ -703,33 +691,15 @@ InstallMethod( RingOfIndependentLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
   function( LD )
-    local abbreviation, I, M, symbol, invariants, R;
-    
-    abbreviation := ValueOption( "abbreviation" );
-    
-    if not IsIdenticalObj( abbreviation, false ) then
-        abbreviation := true;
-    fi;
-    
-    if abbreviation then
-        if IsBound( LD!.RingOfIndependentLorentzInvariants ) then
-            return LD!.RingOfIndependentLorentzInvariants;
-        fi;
-    else
-        if IsBound( LD!.RingOfIndependentLorentzInvariants_noabbreviation ) then
-            return LD!.RingOfIndependentLorentzInvariants_noabbreviation;
-        fi;
-    fi;
+    local I, M, abbreviation, symbol, invariants;
     
     I := IndependentLorentzInvariants( LD );
     
     M := Length( I );
     
-    symbol := ValueOption( "symbol" );
+    abbreviation := LD!.abbreviation;
     
-    if not IsStringRep( symbol ) then
-        symbol := LOOP_INTEGRALS.LorentzSymbol;
-    fi;
+    symbol := LD!.LorentzSymbol;
     
     invariants := List( [ 1 .. M ],
                         function( i )
@@ -739,15 +709,7 @@ InstallMethod( RingOfIndependentLorentzInvariants,
                           return Concatenation( symbol, String( i ) );
                       end );
     
-    R := CoefficientsRing( UnderlyingRing( LD ) ) * invariants;
-    
-    if abbreviation then
-        LD!.RingOfIndependentLorentzInvariants := R;
-    else
-        LD!.RingOfIndependentLorentzInvariants_noabbreviation := R;
-    fi;
-    
-    return R;
+    return CoefficientsRing( UnderlyingRing( LD ) ) * invariants;
     
 end );
 
@@ -756,23 +718,7 @@ InstallMethod( ReductionMatrixOfIndependentLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
   function( LD )
-    local abbreviation, R, invariants, I, M, red;
-    
-    abbreviation := ValueOption( "abbreviation" );
-    
-    if not IsIdenticalObj( abbreviation, false ) then
-        abbreviation := true;
-    fi;
-    
-    if abbreviation then
-        if IsBound( LD!.ReductionMatrixOfIndependentLorentzInvariants ) then
-            return LD!.ReductionMatrixOfIndependentLorentzInvariants;
-        fi;
-    else
-        if IsBound( LD!.ReductionMatrixOfIndependentLorentzInvariants_noabbreviation ) then
-            return LD!.ReductionMatrixOfIndependentLorentzInvariants_noabbreviation;
-        fi;
-    fi;
+    local R, invariants, I, M, red;
     
     R := RingOfIndependentLorentzInvariants( LD );
     
@@ -794,15 +740,7 @@ InstallMethod( ReductionMatrixOfIndependentLorentzInvariants,
     
     red := UnionOfRows( invariants, R * RelationsMatrixOfExternalMomenta( LD ) );
     
-    red := BasisOfRows( red );
-    
-    if abbreviation then
-        LD!.ReductionMatrixOfIndependentLorentzInvariants := red;
-    else
-        LD!.ReductionMatrixOfIndependentLorentzInvariants_noabbreviation := red;
-    fi;
-    
-    return red;
+    return BasisOfRows( red );
     
 end );
 
@@ -838,17 +776,9 @@ InstallMethod( RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
         
   function( LD )
     local symbolD, D, N, propagators, symbolN, Z, A, numerators,
-          symbolK, K, M, invariants, indets, R;
+          symbolK, abbreviation, K, M, invariants, indets;
     
-    if IsBound( LD!.RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants ) then
-        return LD!.RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants;
-    fi;
-    
-    symbolD := ValueOption( "symbolD" );
-    
-    if symbolD = fail then
-        symbolD := LOOP_INTEGRALS.PropagatorSymbol;
-    fi;
+    symbolD := LD!.PropagatorSymbol;
     
     D := Propagators( LD );
     
@@ -856,11 +786,7 @@ InstallMethod( RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
     
     propagators := List( [ 1 .. N ], i -> Concatenation( symbolD, String( i ) ) );
     
-    symbolN := ValueOption( "symbolN" );
-    
-    if symbolN = fail then
-        symbolN := LOOP_INTEGRALS.NumeratorSymbol;
-    fi;
+    symbolN := LD!.NumeratorSymbol;
     
     Z := Numerators( LD );
     
@@ -872,15 +798,13 @@ InstallMethod( RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
     
     M := Length( K );
     
-    symbolK := ValueOption( "symbolK" );
+    symbolK := LD!.LorentzSymbol;
     
-    if not IsStringRep( symbolK ) then
-        symbolK := LOOP_INTEGRALS.LorentzSymbol;
-    fi;
+    abbreviation := LD!.abbreviation;
     
     invariants := List( [ 1 .. M ],
                         function( i )
-                          if IsBound( K[i]!.Abbreviation ) then
+                          if IsBound( K[i]!.Abbreviation ) and abbreviation then
                               return K[i]!.Abbreviation;
                           fi;
                           return Concatenation( symbolK, String( N + A + i ) );
@@ -888,11 +812,7 @@ InstallMethod( RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
     
     indets := Concatenation( propagators, numerators );
     
-    R := CoefficientsRing( UnderlyingRing( LD ) ) * invariants * indets;
-    
-    LD!.RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants := R;
-    
-    return R;
+    return CoefficientsRing( UnderlyingRing( LD ) ) * invariants * indets;
     
 end );
 
@@ -901,21 +821,7 @@ InstallMethod( RingOfLoopDiagram,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
-    local rational, K, D, Z, R, indets, invariants, propagators, numerators, masses, S;
-    
-    ## do not treat the extra Lorentz invariants as rational parameters
-    ## as this slows down the syzygies computations in Singular significantly
-    rational := IsIdenticalObj( ValueOption( "rational" ), true );
-    
-    if rational then
-        if IsBound( LD!.RingOfLoopDiagram_rational ) then
-            return LD!.RingOfLoopDiagram_rational;
-        fi;
-    else
-        if IsBound( LD!.RingOfLoopDiagram ) then
-            return LD!.RingOfLoopDiagram;
-        fi;
-    fi;
+    local K, D, Z, R, indets, invariants, propagators, numerators, masses, S;
     
     K := ExtraLorentzInvariants( LD );
     D := Propagators( LD );
@@ -936,7 +842,7 @@ InstallMethod( RingOfLoopDiagram,
     
     invariants := Concatenation( masses, [ LD!.DimensionSymbol ], invariants );
     
-    if rational then
+    if LD!.rational then
         
         invariants := JoinStringsWithSeparator( invariants );
         
@@ -944,15 +850,11 @@ InstallMethod( RingOfLoopDiagram,
         
         S := S * indets;
         
-        LD!.RingOfLoopDiagram_rational := S;
-        
     else
         
         S := LOOP_INTEGRALS.ConstructorOfDefaultField( R ) * invariants;
         
         S := S * indets;
-        
-        LD!.RingOfLoopDiagram := S;
         
     fi;
     
@@ -965,21 +867,7 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
-    local rational, K, D, Z, R, indets, red, S;
-
-    ## do not treat the extra Lorentz invariants as rational parameters
-    ## as this slows down the syzygies computations in Singular significantly
-    rational := IsIdenticalObj( ValueOption( "rational" ), true );
-    
-    if rational then
-        if IsBound( LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational ) then
-            return LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational;
-        fi;
-    else
-        if IsBound( LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants ) then
-            return LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants;
-        fi;
-    fi;
+    local K, D, Z, R, indets, red, S;
     
     K := ExtraLorentzInvariants( LD );
     D := Propagators( LD );
@@ -1004,17 +892,7 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
     
     red := UnionOfRows( indets, R * RelationsMatrixOfExternalMomenta( LD ) );
     
-    red := BasisOfRows( red );
-    
     S := RingOfLoopDiagram( LD );
-    
-    if rational then
-        LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants_rational := red;
-        R!.RingAfterSuccessfulReduction_rational := S;
-    else
-        LD!.ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants := red;
-        R!.RingAfterSuccessfulReduction := S;
-    fi;
     
     return red;
     
@@ -1025,11 +903,7 @@ InstallMethod( ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( mat, LD )
-    local rational, red, R, col, S, Smat;
-    
-    ## do not treat the extra Lorentz invariants as rational parameters
-    ## as this slows down the syzygies computations in Singular significantly
-    rational := IsIdenticalObj( ValueOption( "rational" ), true );
+    local red, R, col, S, Smat;
     
     red := ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants( LD );
     
@@ -1037,11 +911,7 @@ InstallMethod( ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants,
     
     col := NrColumns( mat );
     
-    if rational then
-        S := R!.RingAfterSuccessfulReduction_rational;
-    else
-        S := R!.RingAfterSuccessfulReduction;
-    fi;
+    S := RingOfLoopDiagram( LD );
     
     if NrColumns( mat ) = 0 then
         return S * mat;
@@ -1137,7 +1007,7 @@ InstallMethod( JacobianOfCoefficientsVectorInPropagators,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
-    local red, R, rational, S, indets;
+    local red, R, S, indets;
     
     red := ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants( LD );
     
@@ -1145,15 +1015,7 @@ InstallMethod( JacobianOfCoefficientsVectorInPropagators,
     
     indets := R!.MatrixOfPropagatorsAndNumerators;
     
-    ## do not treat the extra Lorentz invariants as rational parameters
-    ## as this slows down the syzygies computations in Singular significantly
-    rational := IsIdenticalObj( ValueOption( "rational" ), true );
-    
-    if rational then
-        S := R!.RingAfterSuccessfulReduction_rational;
-    else
-        S := R!.RingAfterSuccessfulReduction;
-    fi;
+    S := RingOfLoopDiagram( LD );
     
     indets := S * indets;
     

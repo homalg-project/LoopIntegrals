@@ -28,23 +28,6 @@ Display( e12[2] );
 #! 0,    0,            -l2l2,0,            0,
 #! 0,    0,            0,    -l2l2+2*l2p-s,0,
 #! 0,    0,            0,    0,            -l1l1-l2l2-2*l1l2
-e12 := PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants( LD :
-               abbreviation := false );
-#! [ <An unevaluated non-zero 6 x 5 matrix over an external ring>,
-#!   <An unevaluated non-zero 5 x 5 matrix over an external ring> ]
-Display( e12[1] );
-#! -2*x1,-2*x1-2*x4,0,    0,         -2*x1-2*x3,
-#! -2*x3,-2*x3-2*x5,0,    0,         -2*x2-2*x3,
-#! -2*x4,-2*x4-2*x6,0,    0,         -2*x4-2*x5,
-#! 0,    0,         -2*x3,-2*x3+2*x4,-2*x1-2*x3,
-#! 0,    0,         -2*x2,-2*x2+2*x5,-2*x2-2*x3,
-#! 0,    0,         -2*x5,-2*x5+2*x6,-2*x4-2*x5
-Display( e12[2] );
-#! -x1,0,          0,  0,          0,
-#! 0,  -x1-2*x4-x6,0,  0,          0,
-#! 0,  0,          -x2,0,          0,
-#! 0,  0,          0,  -x2+2*x5-x6,0,
-#! 0,  0,          0,  0,          -x1-x2-2*x3
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <A 6 x 5 matrix over an external ring>,
 #!   <A 5 x 5 matrix over an external ring> ]
