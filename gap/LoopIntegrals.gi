@@ -1252,13 +1252,11 @@ InstallMethod( MatrixOfSpecialIBPRelations,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
-    local syz, id, ibps;
+    local syz;
     
     syz := SyzygiesOfRows( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
     
-    ibps := List( [ 1 .. NrRows( syz ) ], i -> IBPRelation( syz[i], LD ) );
-    
-    return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
+    return MatrixOfIBPRelations( syz, LD );
     
 end );
 
@@ -1267,13 +1265,11 @@ InstallMethod( MatrixOfSpecialIBPRelations,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants, IsList ],
         
   function( LD, exponents )
-    local syz, id, ibps;
+    local syz;
     
     syz := SyzygiesOfRows( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
     
-    ibps := List( [ 1 .. NrRows( syz ) ], i -> IBPRelation( syz[i], LD, exponents ) );
-    
-    return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
+    return MatrixOfIBPRelations( syz, LD, exponents );
     
 end );
 
