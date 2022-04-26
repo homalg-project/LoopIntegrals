@@ -1621,6 +1621,94 @@ InstallMethod( GeneratorsOfScalelessSectorsInWeylAlgebra,
     
 end );
 
+##
+InstallMethod( NormalForm,
+        [ IsHomalgRingElement, IsHomalgMatrix ],
+        
+  function( operator, G )
+    
+    return DecideZero( operator, G );
+    
+end );
+
+##
+InstallMethod( NormalForm,
+        [ IsHomalgRingElement, IsHomalgMatrix ],
+        
+  function( operator, G )
+    local Y, P, NF;
+    
+    Y := HomalgRing( operator );
+    
+    P := AmbientRing( Y );
+    
+    if not IsHomalgExternalRingInMapleRep( P ) then
+        TryNextMethod( );
+    fi;
+    
+    NF := DecideZero( operator, G );
+    
+    NF := homalgSendBlocking(
+                  [ "map(factor, collect( ", EvalRingElement( NF ), ", ",
+                    String( IndeterminateShiftsOfRationalPseudoDoubleShiftAlgebra( P ) ), " ) )" ],
+                  P, "define" );
+    
+    NF := HomalgExternalRingElement( NF, P );
+    
+    return NF / Y;
+    
+end );
+
+##
+InstallMethod( NormalForm,
+        [ IsHomalgRingElement, IsHomalgMatrix, IsList ],
+        
+  function( operator, G, initial_integral )
+    local Y, P, NF;
+    
+    Y := HomalgRing( operator );
+    
+    P := AmbientRing( Y );
+    
+    if not IsHomalgExternalRingInMapleRep( P ) then
+        TryNextMethod( );
+    fi;
+    
+    NF := NormalForm( operator, G );
+    
+    NF := homalgSendBlocking(
+                  [ "map(factor, collect( simplify( subs( [ ",
+                    JoinStringsWithSeparator(
+                            ListN( RelativeParametersOfRationalPseudoDoubleShiftAlgebra( P ), initial_integral,
+                                   { a, v } -> Concatenation( String( a ), " = ", String( v ), " " ) ) ),
+                    "], ", EvalRingElement( NF ), " ) ), ",
+                    String( IndeterminateShiftsOfRationalPseudoDoubleShiftAlgebra( P ) ), " ) )" ],
+                  P, "define" );
+    
+    NF := HomalgExternalRingElement( NF, P );
+    
+    return NF / Y;
+    
+end );
+
+##
+InstallMethod( NormalFormWrtInitialIntegral,
+        [ IsHomalgRingElement, IsHomalgMatrix ],
+        
+  function( operator, G )
+    local P, initial_integral;
+    
+    P := AmbientRing( HomalgRing( operator ) );
+    
+    initial_integral :=
+      Concatenation(
+              ListWithIdenticalEntries( Length( Filtered( P!.Ds, Di -> Di{[1]} = LOOP_INTEGRALS.PropagatorSymbol ) ), 1 ),
+              ListWithIdenticalEntries( Length( Filtered( P!.Ds, Di -> Di{[1]} = LOOP_INTEGRALS.NumeratorSymbol ) ), 0 ) );
+    
+    return NormalForm( operator, G, initial_integral );
+    
+end );
+
 #########################
 #
 # View & Display methods

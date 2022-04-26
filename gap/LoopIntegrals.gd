@@ -388,6 +388,18 @@ DeclareOperation( "IsScalelessLoopIntegral",
 DeclareOperation( "GeneratorsOfScalelessSectors",
         [ IsLoopDiagram, IsList ] );
 
+#! @Arguments operator, G
+DeclareOperation( "NormalForm",
+        [ IsHomalgRingElement, IsHomalgMatrix ] );
+
+#! @Arguments operator, G, initial_integral
+DeclareOperation( "NormalForm",
+        [ IsHomalgRingElement, IsHomalgMatrix, IsList ] );
+
+#! @Arguments operator, G
+DeclareOperation( "NormalFormWrtInitialIntegral",
+        [ IsHomalgRingElement, IsHomalgMatrix ] );
+
 ####################################
 #
 #! @Section Tools
