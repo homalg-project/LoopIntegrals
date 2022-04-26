@@ -332,7 +332,7 @@ DeclareOperation( "JacobianOfCoefficientsVectorInPropagators",
 DeclareOperation( "DivergenceOfCoefficientsVectorOfLoopDiagram",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
-#!
+#! @Arguments R
 DeclareOperation( "DoubleShiftAlgebra",
         [ IsHomalgRing ] );
 
