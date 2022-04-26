@@ -332,8 +332,12 @@ DeclareOperation( "JacobianOfCoefficientsVectorInPropagators",
 DeclareOperation( "DivergenceOfCoefficientsVectorOfLoopDiagram",
         [ IsHomalgMatrix, IsLoopDiagram ] );
 
-#!
+#! @Arguments R
 DeclareOperation( "DoubleShiftAlgebra",
+        [ IsHomalgRing ] );
+
+#! @Arguments R
+DeclareOperation( "RationalDoubleShiftAlgebra",
         [ IsHomalgRing ] );
 
 #! @Arguments vec, LD
@@ -383,6 +387,18 @@ DeclareOperation( "IsScalelessLoopIntegral",
 #! @Arguments LD, exponents
 DeclareOperation( "GeneratorsOfScalelessSectors",
         [ IsLoopDiagram, IsList ] );
+
+#! @Arguments operator, G
+DeclareOperation( "NormalForm",
+        [ IsHomalgRingElement, IsHomalgMatrix ] );
+
+#! @Arguments operator, G, initial_integral
+DeclareOperation( "NormalForm",
+        [ IsHomalgRingElement, IsHomalgMatrix, IsList ] );
+
+#! @Arguments operator, G
+DeclareOperation( "NormalFormWrtInitialIntegral",
+        [ IsHomalgRingElement, IsHomalgMatrix ] );
 
 ####################################
 #

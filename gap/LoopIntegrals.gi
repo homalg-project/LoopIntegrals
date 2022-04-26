@@ -378,7 +378,7 @@ InstallMethod( JacobianOfPropagators,
     local jac, rel;
     
     jac := OriginalJacobianOfPropagators( LD );
-
+    
     jac := MatrixOfMomenta( LD ) * jac;
     
     rel := RelationsMatrixOfExternalMomenta( LD );
@@ -1039,7 +1039,7 @@ InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
     jacLD := JacobianOfLoopDiagramInPropagators( LD );
     jacLV := JacobianOfCoefficientsVectorInPropagators( vec, LD );
     
-    trace := Sum( [ 1 .. NrRows( jacLD ) ],  i -> ( jacLD[i] * Involution( jacLV[i] ) )[1,1] );
+    trace := Sum( [ 1 .. NrRows( jacLD ) ], i -> ( jacLD[i] * Involution( jacLV[i] ) )[1,1] );
     
     sum := Sum( [ 1 .. l ], p -> vec[1, (p - 1) * (l + k) + p] );
     
@@ -1084,7 +1084,62 @@ InstallMethod( DoubleShiftAlgebra,
     
     Y := DoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
     
+    Y!.Ds := Ds;
+    Y!.D_s := D_s;
+    
+    AmbientRing( Y )!.Ds := Ds;
+    AmbientRing( Y )!.D_s := D_s;
+    
     R!.DoubleShiftAlgebra := Y;
+    
+    return Y;
+    
+end );
+
+##
+InstallMethod( RationalDoubleShiftAlgebra,
+        [ IsHomalgRing ],
+        
+  function( R )
+    local Q, r, Ds, D_s, c, exponents, B, A, shifts, pairs, Y;
+    
+    if IsBound( R!.RationalDoubleShiftAlgebra ) then
+        return R!.RationalDoubleShiftAlgebra;
+    fi;
+    
+    Q := HomalgFieldOfRationalsInMaple();
+    
+    B := Q * List( Indeterminates( BaseRing( R ) ), String );
+    
+    Ds := RelativeIndeterminatesOfPolynomialRing( R );
+    
+    Ds := List( Ds, String );
+    
+    D_s := List( Ds, D -> Concatenation( D, "_" ) );
+    
+    c := Length( Ds );
+    
+    exponents := List( [ 1 .. c ], i -> Concatenation( LOOP_INTEGRALS.ExponentSymbol, String( i ) ) );
+    
+    A := B * JoinStringsWithSeparator( exponents );
+    
+    if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+        shifts := Concatenation( Ds, D_s );
+        pairs := false;
+    else
+        shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
+        pairs := true;
+    fi;
+    
+    Y := RationalDoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
+    
+    Y!.Ds := Ds;
+    Y!.D_s := D_s;
+    
+    AmbientRing( Y )!.Ds := Ds;
+    AmbientRing( Y )!.D_s := D_s;
+    
+    R!.RationalDoubleShiftAlgebra := Y;
     
     return Y;
     
@@ -1097,6 +1152,8 @@ InstallMethod( AssociatedWeylAlgebra,
   function( LD )
     local R, c, oper;
     
+    ## Q[m,s,D][a1,...,a_s]<D1,D1_,...,Ds,Ds_>
+    ## IBPRelation is a construction which is linear only over Q[m,s,D]
     R := RingOfLoopDiagram( LD );
     
     c := Length( RelativeIndeterminatesOfPolynomialRing( R ) );
@@ -1114,15 +1171,20 @@ InstallMethod( IBPRelation,
   function( vec, LD )
     local R, Y, exponents, c, D_s, oper, div, jacLD;
     
+    ## Q[D,s12,s14][D1,D2,D3,D4,D5,D6,D7,N8,N9]
     R := HomalgRing( vec );
     
+    ## Q[D,s12,s14][a1,a2,a3,a4,a5,a6,a7,a8,a9]<D1,D1_,D2,D2_,D3,D3_,D4,D4_,D5,D5_,D6,D6_,D7,D7_,N8,N8_,N9,N9_>/( D1*D1_-1, D2*D2_-1, D3*D3_-1, D4*D4_-1, D5*D5_-1, D6*D6_-1, D7*D7_-1, N8*N8_-1, N9*N9_-1 )
     Y := DoubleShiftAlgebra( R );
     
+    ## [ "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9" ]
     exponents := RelativeIndeterminatesOfPolynomialRing( BaseRing( Y ) );
     exponents := List( exponents, String );
     
+    ## n + z
     c := Length( exponents );
     
+    ## [ "D1_", "D2_", "D3_", "D4_", "D5_", "D6_", "D7_", "N8_", "N9_" ]
     D_s := IndeterminateShiftsOfDoubleShiftAlgebra( Y ){List( [ 1 .. c ], i -> 2 * i )};
     D_s := List( D_s, String );
     
@@ -1130,6 +1192,7 @@ InstallMethod( IBPRelation,
     
     oper := Concatenation( "[", JoinStringsWithSeparator( oper ), "]" );
     
+    ## -[ ... -a_i D_i ... -a_{j+n} N_{j+n} ... | i = 1 .. L, j = 1 .. E ]
     oper := -HomalgMatrix( oper, 1, c, Y );
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
@@ -1254,7 +1317,10 @@ InstallMethod( MatrixOfSpecialIBPRelations,
   function( LD )
     local syz;
     
+    ## Q[m,s,D][D1,...,Ds]
     syz := SyzygiesOfRows( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
+    
+    #syz := ReducedBasisOfRowModule( syz );
     
     return MatrixOfIBPRelations( syz, LD );
     
@@ -1501,7 +1567,7 @@ InstallMethod( GeneratorsOfScalelessSectors,
     
     n := [ 1 .. Length( shifts ) ];
     
-    Y := DoubleShiftAlgebra( RingOfLoopDiagram( LD )  );
+    Y := DoubleShiftAlgebra( RingOfLoopDiagram( LD ) );
     
     Y := AmbientRing( Y );
     
@@ -1552,6 +1618,94 @@ InstallMethod( GeneratorsOfScalelessSectorsInWeylAlgebra,
   function( LD )
     
     return AssociatedWeylAlgebra( LD ) * GeneratorsOfScalelessSectors( LD );
+    
+end );
+
+##
+InstallMethod( NormalForm,
+        [ IsHomalgRingElement, IsHomalgMatrix ],
+        
+  function( operator, G )
+    
+    return DecideZero( operator, G );
+    
+end );
+
+##
+InstallMethod( NormalForm,
+        [ IsHomalgRingElement, IsHomalgMatrix ],
+        
+  function( operator, G )
+    local Y, P, NF;
+    
+    Y := HomalgRing( operator );
+    
+    P := AmbientRing( Y );
+    
+    if not IsHomalgExternalRingInMapleRep( P ) then
+        TryNextMethod( );
+    fi;
+    
+    NF := DecideZero( operator, G );
+    
+    NF := homalgSendBlocking(
+                  [ "map(factor, collect( ", EvalRingElement( NF ), ", ",
+                    String( IndeterminateShiftsOfRationalPseudoDoubleShiftAlgebra( P ) ), " ) )" ],
+                  P, "define" );
+    
+    NF := HomalgExternalRingElement( NF, P );
+    
+    return NF / Y;
+    
+end );
+
+##
+InstallMethod( NormalForm,
+        [ IsHomalgRingElement, IsHomalgMatrix, IsList ],
+        
+  function( operator, G, initial_integral )
+    local Y, P, NF;
+    
+    Y := HomalgRing( operator );
+    
+    P := AmbientRing( Y );
+    
+    if not IsHomalgExternalRingInMapleRep( P ) then
+        TryNextMethod( );
+    fi;
+    
+    NF := NormalForm( operator, G );
+    
+    NF := homalgSendBlocking(
+                  [ "map(factor, collect( simplify( subs( [ ",
+                    JoinStringsWithSeparator(
+                            ListN( RelativeParametersOfRationalPseudoDoubleShiftAlgebra( P ), initial_integral,
+                                   { a, v } -> Concatenation( String( a ), " = ", String( v ), " " ) ) ),
+                    "], ", EvalRingElement( NF ), " ) ), ",
+                    String( IndeterminateShiftsOfRationalPseudoDoubleShiftAlgebra( P ) ), " ) )" ],
+                  P, "define" );
+    
+    NF := HomalgExternalRingElement( NF, P );
+    
+    return NF / Y;
+    
+end );
+
+##
+InstallMethod( NormalFormWrtInitialIntegral,
+        [ IsHomalgRingElement, IsHomalgMatrix ],
+        
+  function( operator, G )
+    local P, initial_integral;
+    
+    P := AmbientRing( HomalgRing( operator ) );
+    
+    initial_integral :=
+      Concatenation(
+              ListWithIdenticalEntries( Length( Filtered( P!.Ds, Di -> Di{[1]} = LOOP_INTEGRALS.PropagatorSymbol ) ), 1 ),
+              ListWithIdenticalEntries( Length( Filtered( P!.Ds, Di -> Di{[1]} = LOOP_INTEGRALS.NumeratorSymbol ) ), 0 ) );
+    
+    return NormalForm( operator, G, initial_integral );
     
 end );
 
