@@ -12,7 +12,7 @@ SetAbbreviation( s, "s" );
 rel := [ ];;
 SetRelationsOfExternalMomenta( LD, rel );
 SetIndependentLorentzInvariants( LD, [ ] );
-SetPropagators( LD, -[ l1^2 + m^2, ( l1 + k1 )^2 ] );
+SetPropagators( LD, -[ l1^2 - m^2, ( l1 + k1 )^2 ] );
 SetNumerators( LD, -[ ] );
 SetExtraLorentzInvariants( LD, [ s ] );
 R := RingOfLoopDiagram( LD );
@@ -20,11 +20,11 @@ R := RingOfLoopDiagram( LD );
 ibps := MatrixOfIBPRelations( LD );
 #! <A 2 x 1 matrix over a residue class ring>
 ibp1 := ibps[1,1];
-#! |[ -2*m^2*a1*D1_-m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+D-2*a1-a2 ]|
+#! |[ 2*m^2*a1*D1_+m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+D-2*a1-a2 ]|
 ViewList( DecomposeInMonomials( ibp1 ) );
 #! [ [ |[ -a2 ]|, |[ D1*D2_ ]| ],
-#!   [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],
-#!   [ |[ -m^2*a2-s*a2 ]|, |[ D2_ ]| ],
+#!   [ |[ 2*m^2*a1 ]|, |[ D1_ ]| ],
+#!   [ |[ m^2*a2-s*a2 ]|, |[ D2_ ]| ],
 #!   [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ]
 Y := HomalgRing( ibp1 );
 #! Q[m,D,s][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )
