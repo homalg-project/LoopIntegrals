@@ -1114,15 +1114,20 @@ InstallMethod( IBPRelation,
   function( vec, LD )
     local R, Y, exponents, c, D_s, oper, div, jacLD;
     
+    ## Q[D,s12,s14][D1,D2,D3,D4,D5,D6,D7,N8,N9]
     R := HomalgRing( vec );
     
+    ## Q[D,s12,s14][a1,a2,a3,a4,a5,a6,a7,a8,a9]<D1,D1_,D2,D2_,D3,D3_,D4,D4_,D5,D5_,D6,D6_,D7,D7_,N8,N8_,N9,N9_>/( D1*D1_-1, D2*D2_-1, D3*D3_-1, D4*D4_-1, D5*D5_-1, D6*D6_-1, D7*D7_-1, N8*N8_-1, N9*N9_-1 )
     Y := DoubleShiftAlgebra( R );
     
+    ## [ "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9" ]
     exponents := RelativeIndeterminatesOfPolynomialRing( BaseRing( Y ) );
     exponents := List( exponents, String );
     
+    ## n + z
     c := Length( exponents );
     
+    ## [ "D1_", "D2_", "D3_", "D4_", "D5_", "D6_", "D7_", "N8_", "N9_" ]
     D_s := IndeterminateShiftsOfDoubleShiftAlgebra( Y ){List( [ 1 .. c ], i -> 2 * i )};
     D_s := List( D_s, String );
     
@@ -1130,6 +1135,7 @@ InstallMethod( IBPRelation,
     
     oper := Concatenation( "[", JoinStringsWithSeparator( oper ), "]" );
     
+    ## -[ ... -a_i D_i ... -a_{j+n} N_{j+n} ... | i = 1 .. L, j = 1 .. E ]
     oper := -HomalgMatrix( oper, 1, c, Y );
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
