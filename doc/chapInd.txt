@@ -15,7 +15,7 @@
   [2XBasisOfSpecialIBPRelations[102X, for IsLoopDiagram 1.5-39 
   [2XBasisOfSpecialIBPRelationsInWeylAlgebra[102X, for IsLoopDiagram 1.5-43 
   [2XComponents[102X, for IsLorentzVector 1.5-4 
-  [2XDegreesOfMonomialsOfProductOfSymanzikPolynomials[102X, for IsLoopDiagram, IsList 1.7-24 
+  [2XDegreesOfMonomialsOfProductOfSymanzikPolynomials[102X, for IsLoopDiagram, IsList 1.7-25 
   [2XDimension[102X, for IsLorentzVector 1.5-1 
   [2XDimensionOfCoefficientsVector[102X, for IsLoopDiagram 1.5-7 
   [2XDivergenceOfCoefficientsVectorOfLoopDiagram[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-13 
@@ -26,15 +26,15 @@
   [2XExternalMomenta[102X, for IsLoopDiagram 1.5-6 
   [2XExtraLorentzInvariants[102X, for IsLoopDiagram 1.5-14 
   [2XGeneratorsOfScalelessSectors[102X, for IsLoopDiagram 1.5-46 
-      for IsLoopDiagram, IsList 1.7-26 
+      for IsLoopDiagram, IsList 1.7-27 
   [2XGeneratorsOfScalelessSectorsInWeylAlgebra[102X, for IsLoopDiagram 1.5-47 
-  [2XIBPRelation[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-15 
-      for IsHomalgMatrix, IsLoopDiagram, IsList 1.7-16 
-  [2XIBPRelationInWeylAlgebra[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-21 
+  [2XIBPRelation[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-16 
+      for IsHomalgMatrix, IsLoopDiagram, IsList 1.7-17 
+  [2XIBPRelationInWeylAlgebra[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-22 
   [2XIndependentLorentzInvariants[102X, for IsLoopDiagram 1.5-11 
   [2XIsExternalMomentum[102X, for IsLoopDiagram 1.4-2 
   [2XIsLoopMomentum[102X, for IsLoopDiagram 1.4-1 
-  [2XIsScalelessLoopIntegral[102X, for IsLoopDiagram, IsList 1.7-25 
+  [2XIsScalelessLoopIntegral[102X, for IsLoopDiagram, IsList 1.7-26 
   [2XJacobianOfCoefficientsVectorInPropagators[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-12 
   [2XJacobianOfLoopDiagramInPropagators[102X, for IsLoopDiagram 1.5-35 
   [2XJacobianOfNumerators[102X, for IsLoopDiagram 1.5-20 
@@ -49,16 +49,19 @@
   [2XLoopMomenta[102X, for IsLoopDiagram 1.5-5 
   [2XLorentzVector[102X, for IsHomalgMatrix 1.6-2 
       for IsString, IsInt 1.6-1 
-  [2XMatrixOfIBPRelations[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-17 
-      for IsHomalgMatrix, IsLoopDiagram, IsList 1.7-18 
+  [2XMatrixOfIBPRelations[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-18 
+      for IsHomalgMatrix, IsLoopDiagram, IsList 1.7-19 
       for IsLoopDiagram 1.5-36 
-      for IsLoopDiagram, IsList 1.7-19 
-  [2XMatrixOfIBPRelationsInWeylAlgebra[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-22 
+      for IsLoopDiagram, IsList 1.7-20 
+  [2XMatrixOfIBPRelationsInWeylAlgebra[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-23 
       for IsLoopDiagram 1.5-40 
   [2XMatrixOfMomenta[102X, for IsLoopDiagram 1.5-18 
   [2XMatrixOfSpecialIBPRelations[102X, for IsLoopDiagram 1.5-38 
-      for IsLoopDiagram, IsList 1.7-20 
+      for IsLoopDiagram, IsList 1.7-21 
   [2XMatrixOfSpecialIBPRelationsInWeylAlgebra[102X, for IsLoopDiagram 1.5-42 
+  [2XNormalForm[102X, for IsHomalgRingElement, IsHomalgMatrix 1.7-28 
+      for IsHomalgRingElement, IsHomalgMatrix, IsList 1.7-29 
+  [2XNormalFormWrtInitialIntegral[102X, for IsHomalgRingElement, IsHomalgMatrix 1.7-30 
   [2XNumerators[102X, for IsLoopDiagram 1.5-13 
   [2XOriginalJacobianOfNumerators[102X, for IsLoopDiagram 1.5-16 
   [2XOriginalJacobianOfPropagators[102X, for IsLoopDiagram 1.5-15 
@@ -68,6 +71,7 @@
   [2XPairOfMatricesOfLoopDiagramInPropagators[102X, for IsLoopDiagram 1.5-34 
   [2XPairOfOriginalMatricesOfLoopDiagram[102X, for IsLoopDiagram 1.5-21 
   [2XPropagators[102X, for IsLoopDiagram 1.5-12 
+  [2XRationalDoubleShiftAlgebra[102X, for IsHomalgRing 1.7-15 
   [2XReductionMatrixOfExtraLorentzInvariants[102X, for IsLoopDiagram 1.5-24 
   [2XReductionMatrixOfIndependentLorentzInvariants[102X, for IsLoopDiagram 1.5-26 
   [2XReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsLoopDiagram 1.5-29 
@@ -79,7 +83,7 @@
   [2XRingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsLoopDiagram 1.5-27 
   [2XSetAbbreviation[102X, for IsHomalgRingElement, IsString 1.7-1 
   [2XSymanzikPolynomials[102X, for IsLoopDiagram 1.5-44 
-      for IsLoopDiagram, IsList 1.7-23 
+      for IsLoopDiagram, IsList 1.7-24 
   [2XUnderlyingMatrix[102X, for IsLorentzVector 1.5-2 
   [2XUnderlyingRing[102X, for IsLoopDiagram 1.5-8 
   

@@ -1089,53 +1089,69 @@
   
   [1X1.7-14 DoubleShiftAlgebra[101X
   
-  [33X[1;0Y[29X[2XDoubleShiftAlgebra[102X( [3Xarg[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XDoubleShiftAlgebra[102X( [3XR[103X ) [32X operation[133X
   
-  [1X1.7-15 IBPRelation[101X
+  [1X1.7-15 RationalDoubleShiftAlgebra[101X
   
-  [33X[1;0Y[29X[2XIBPRelation[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XRationalDoubleShiftAlgebra[102X( [3XR[103X ) [32X operation[133X
   
   [1X1.7-16 IBPRelation[101X
   
+  [33X[1;0Y[29X[2XIBPRelation[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
+  
+  [1X1.7-17 IBPRelation[101X
+  
   [33X[1;0Y[29X[2XIBPRelation[102X( [3Xvec[103X, [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
-  
-  [1X1.7-17 MatrixOfIBPRelations[101X
-  
-  [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3Xmat[103X, [3XLD[103X ) [32X operation[133X
   
   [1X1.7-18 MatrixOfIBPRelations[101X
   
-  [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3Xmat[103X, [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3Xmat[103X, [3XLD[103X ) [32X operation[133X
   
   [1X1.7-19 MatrixOfIBPRelations[101X
   
+  [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3Xmat[103X, [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
+  
+  [1X1.7-20 MatrixOfIBPRelations[101X
+  
   [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
-  [1X1.7-20 MatrixOfSpecialIBPRelations[101X
+  [1X1.7-21 MatrixOfSpecialIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
-  [1X1.7-21 IBPRelationInWeylAlgebra[101X
+  [1X1.7-22 IBPRelationInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XIBPRelationInWeylAlgebra[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-22 MatrixOfIBPRelationsInWeylAlgebra[101X
+  [1X1.7-23 MatrixOfIBPRelationsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelationsInWeylAlgebra[102X( [3Xmat[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-23 SymanzikPolynomials[101X
+  [1X1.7-24 SymanzikPolynomials[101X
   
   [33X[1;0Y[29X[2XSymanzikPolynomials[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-24 DegreesOfMonomialsOfProductOfSymanzikPolynomials[101X
+  [1X1.7-25 DegreesOfMonomialsOfProductOfSymanzikPolynomials[101X
   
   [33X[1;0Y[29X[2XDegreesOfMonomialsOfProductOfSymanzikPolynomials[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-25 IsScalelessLoopIntegral[101X
+  [1X1.7-26 IsScalelessLoopIntegral[101X
   
   [33X[1;0Y[29X[2XIsScalelessLoopIntegral[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-26 GeneratorsOfScalelessSectors[101X
+  [1X1.7-27 GeneratorsOfScalelessSectors[101X
   
   [33X[1;0Y[29X[2XGeneratorsOfScalelessSectors[102X( [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
+  
+  [1X1.7-28 NormalForm[101X
+  
+  [33X[1;0Y[29X[2XNormalForm[102X( [3Xoperator[103X, [3XG[103X ) [32X operation[133X
+  
+  [1X1.7-29 NormalForm[101X
+  
+  [33X[1;0Y[29X[2XNormalForm[102X( [3Xoperator[103X, [3XG[103X, [3Xinitial_integral[103X ) [32X operation[133X
+  
+  [1X1.7-30 NormalFormWrtInitialIntegral[101X
+  
+  [33X[1;0Y[29X[2XNormalFormWrtInitialIntegral[102X( [3Xoperator[103X, [3XG[103X ) [32X operation[133X
   

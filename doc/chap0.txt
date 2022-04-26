@@ -7,7 +7,7 @@
                        computational algebraic geometry [101X
   
   
-                                   2022.04-01
+                                   2022.04-04
   
   
                                  26 April 2022
@@ -147,18 +147,22 @@
       1.7-12 JacobianOfCoefficientsVectorInPropagators
       1.7-13 DivergenceOfCoefficientsVectorOfLoopDiagram
       1.7-14 DoubleShiftAlgebra
-      1.7-15 IBPRelation
+      1.7-15 RationalDoubleShiftAlgebra
       1.7-16 IBPRelation
-      1.7-17 MatrixOfIBPRelations
+      1.7-17 IBPRelation
       1.7-18 MatrixOfIBPRelations
       1.7-19 MatrixOfIBPRelations
-      1.7-20 MatrixOfSpecialIBPRelations
-      1.7-21 IBPRelationInWeylAlgebra
-      1.7-22 MatrixOfIBPRelationsInWeylAlgebra
-      1.7-23 SymanzikPolynomials
-      1.7-24 DegreesOfMonomialsOfProductOfSymanzikPolynomials
-      1.7-25 IsScalelessLoopIntegral
-      1.7-26 GeneratorsOfScalelessSectors
+      1.7-20 MatrixOfIBPRelations
+      1.7-21 MatrixOfSpecialIBPRelations
+      1.7-22 IBPRelationInWeylAlgebra
+      1.7-23 MatrixOfIBPRelationsInWeylAlgebra
+      1.7-24 SymanzikPolynomials
+      1.7-25 DegreesOfMonomialsOfProductOfSymanzikPolynomials
+      1.7-26 IsScalelessLoopIntegral
+      1.7-27 GeneratorsOfScalelessSectors
+      1.7-28 NormalForm
+      1.7-29 NormalForm
+      1.7-30 NormalFormWrtInitialIntegral
   
   
   [32X
