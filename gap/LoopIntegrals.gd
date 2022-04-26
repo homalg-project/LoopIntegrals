@@ -336,6 +336,10 @@ DeclareOperation( "DivergenceOfCoefficientsVectorOfLoopDiagram",
 DeclareOperation( "DoubleShiftAlgebra",
         [ IsHomalgRing ] );
 
+#! @Arguments R
+DeclareOperation( "RationalDoubleShiftAlgebra",
+        [ IsHomalgRing ] );
+
 #! @Arguments vec, LD
 DeclareOperation( "IBPRelation",
         [ IsHomalgMatrix, IsLoopDiagram ] );

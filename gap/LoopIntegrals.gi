@@ -1097,6 +1097,55 @@ InstallMethod( DoubleShiftAlgebra,
 end );
 
 ##
+InstallMethod( RationalDoubleShiftAlgebra,
+        [ IsHomalgRing ],
+        
+  function( R )
+    local Q, r, Ds, D_s, c, exponents, B, A, shifts, pairs, Y;
+    
+    if IsBound( R!.RationalDoubleShiftAlgebra ) then
+        return R!.RationalDoubleShiftAlgebra;
+    fi;
+    
+    Q := HomalgFieldOfRationalsInMaple();
+    
+    B := Q * List( Indeterminates( BaseRing( R ) ), String );
+    
+    Ds := RelativeIndeterminatesOfPolynomialRing( R );
+    
+    Ds := List( Ds, String );
+    
+    D_s := List( Ds, D -> Concatenation( D, "_" ) );
+    
+    c := Length( Ds );
+    
+    exponents := List( [ 1 .. c ], i -> Concatenation( LOOP_INTEGRALS.ExponentSymbol, String( i ) ) );
+    
+    A := B * JoinStringsWithSeparator( exponents );
+    
+    if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+        shifts := Concatenation( Ds, D_s );
+        pairs := false;
+    else
+        shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
+        pairs := true;
+    fi;
+    
+    Y := RationalDoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
+    
+    Y!.Ds := Ds;
+    Y!.D_s := D_s;
+    
+    AmbientRing( Y )!.Ds := Ds;
+    AmbientRing( Y )!.D_s := D_s;
+    
+    R!.RationalDoubleShiftAlgebra := Y;
+    
+    return Y;
+    
+end );
+
+##
 InstallMethod( AssociatedWeylAlgebra,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
