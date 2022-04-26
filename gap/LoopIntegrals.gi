@@ -1084,6 +1084,12 @@ InstallMethod( DoubleShiftAlgebra,
     
     Y := DoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
     
+    Y!.Ds := Ds;
+    Y!.D_s := D_s;
+    
+    AmbientRing( Y )!.Ds := Ds;
+    AmbientRing( Y )!.D_s := D_s;
+    
     R!.DoubleShiftAlgebra := Y;
     
     return Y;
