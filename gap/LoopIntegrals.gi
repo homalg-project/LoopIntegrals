@@ -1097,6 +1097,8 @@ InstallMethod( AssociatedWeylAlgebra,
   function( LD )
     local R, c, oper;
     
+    ## Q[m,s,D][a1,...,a_s]<D1,D1_,...,Ds,Ds_>
+    ## IBPRelation is a construction which is linear only over Q[m,s,D]
     R := RingOfLoopDiagram( LD );
     
     c := Length( RelativeIndeterminatesOfPolynomialRing( R ) );
@@ -1260,6 +1262,7 @@ InstallMethod( MatrixOfSpecialIBPRelations,
   function( LD )
     local syz;
     
+    ## Q[m,s,D][D1,...,Ds]
     syz := SyzygiesOfRows( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
     
     return MatrixOfIBPRelations( syz, LD );
