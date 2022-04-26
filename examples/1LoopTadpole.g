@@ -20,7 +20,7 @@ ibp := ibps[1,1];
 ViewList( DecomposeInMonomials( ibp ) );
 #! [ [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],
 #!   [ |[ D-2*a1 ]|, |[ 1 ]| ] ]
-Y := HomalgRing( ibp );
+Ypol := HomalgRing( ibp );
 #! Q[m,D][a1]<D1,D1_>/( D1*D1_-1 )
 ibpws := MatrixOfIBPRelationsInWeylAlgebra( LD );
 #! <A 1 x 1 matrix over an external ring>
@@ -68,7 +68,7 @@ Sbas := BasisOfSpecialIBPRelations( LD );
 #! <A non-zero 1 x 1 matrix over a residue class ring>
 Sbas = bas;
 #! true
-ExportVariables( Y );
+ExportVariables( Ypol );
 #! [ |[ m ]|, |[ D ]|, |[ a1 ]|, |[ D1 ]|, |[ D1_ ]| ]
 r := 2 * m^2 * ( a1 + 4 - 2 ) * D1_^(4-1);
 #! |[ 2*m^2*a1*D1_^3+4*m^2*D1_^3 ]|
