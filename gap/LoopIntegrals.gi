@@ -378,7 +378,7 @@ InstallMethod( JacobianOfPropagators,
     local jac, rel;
     
     jac := OriginalJacobianOfPropagators( LD );
-
+    
     jac := MatrixOfMomenta( LD ) * jac;
     
     rel := RelationsMatrixOfExternalMomenta( LD );
@@ -1039,7 +1039,7 @@ InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
     jacLD := JacobianOfLoopDiagramInPropagators( LD );
     jacLV := JacobianOfCoefficientsVectorInPropagators( vec, LD );
     
-    trace := Sum( [ 1 .. NrRows( jacLD ) ],  i -> ( jacLD[i] * Involution( jacLV[i] ) )[1,1] );
+    trace := Sum( [ 1 .. NrRows( jacLD ) ], i -> ( jacLD[i] * Involution( jacLV[i] ) )[1,1] );
     
     sum := Sum( [ 1 .. l ], p -> vec[1, (p - 1) * (l + k) + p] );
     
@@ -1501,7 +1501,7 @@ InstallMethod( GeneratorsOfScalelessSectors,
     
     n := [ 1 .. Length( shifts ) ];
     
-    Y := DoubleShiftAlgebra( RingOfLoopDiagram( LD )  );
+    Y := DoubleShiftAlgebra( RingOfLoopDiagram( LD ) );
     
     Y := AmbientRing( Y );
     
