@@ -39,9 +39,3 @@ gen2 := GeneratorsOfScalelessSectors( LD, [ 2, 2 ] );
 Display( gen2 );
 #! D1^2*D2
 #! @EndExample
-
-Q := HomalgFieldOfRationalsInMaple();
-P := Q * List( Indeterminates( BaseRing( BaseRing( Y ) ) ), String );
-P := P * List( RelativeIndeterminateCoordinatesOfDoubleShiftAlgebra( Y ), String );
-P := DoubleShiftAlgebra( P, List( IndeterminateShiftsOfDoubleShiftAlgebra( Y ), String ) : pairs := true, steps := -1 );
-mibps := P * ibps;
