@@ -32,7 +32,7 @@ ViewList( DecomposeInMonomials( ibp1 ) );
 #!   [ |[ -a4 ]|, |[ D1*D4_ ]| ],
 #!   [ |[ -s12*a3 ]|, |[ D3_ ]| ],
 #!   [ |[ D-2*a1-a2-a3-a4 ]|, |[ 1 ]| ] ]
-Y := HomalgRing( ibp1 );
+Ypol := HomalgRing( ibp1 );
 #! Q[D,s12,s14][a1,a2,a3,a4]<D1,D1_,D2,D2_,D3,D3_,D4,D4_>/( D4*D4_-1, D3*D3_-1,\
 #!   D2*D2_-1, D1*D1_-1 )
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );

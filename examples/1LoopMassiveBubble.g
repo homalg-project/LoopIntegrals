@@ -26,7 +26,7 @@ ViewList( DecomposeInMonomials( ibp1 ) );
 #!   [ |[ 2*m^2*a1 ]|, |[ D1_ ]| ],
 #!   [ |[ m^2*a2-s*a2 ]|, |[ D2_ ]| ],
 #!   [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ]
-Y := HomalgRing( ibp1 );
+Ypol := HomalgRing( ibp1 );
 #! Q[m,D,s][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )
 bas := BasisOfRows( ibps );
 #! <A non-zero 7 x 1 matrix over a residue class ring>
