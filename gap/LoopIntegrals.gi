@@ -1265,6 +1265,8 @@ InstallMethod( MatrixOfSpecialIBPRelations,
     ## Q[m,s,D][D1,...,Ds]
     syz := SyzygiesOfRows( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
     
+    #syz := ReducedBasisOfRowModule( syz );
+    
     return MatrixOfIBPRelations( syz, LD );
     
 end );
