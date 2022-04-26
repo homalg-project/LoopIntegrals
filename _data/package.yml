@@ -1,7 +1,7 @@
 name: LoopIntegrals
-version: "2021.12-01"
+version: "2022.04-01"
 license: "GPL-2.0-or-later"
-date: 2021-12-14
+date: 2022-04-26
 description: |
     Compute master integrals using commutative and noncommutative methods from computational algebraic geometry
 
@@ -47,11 +47,11 @@ packageinfo: https://homalg-project.github.io/LoopIntegrals/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2021.12-01/LoopIntegrals-2021.12-01.tar.gz
+      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2022.04-01/LoopIntegrals-2022.04-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2021.12-01/LoopIntegrals-2021.12-01.zip
+      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2022.04-01/LoopIntegrals-2022.04-01.zip
 
-pdf: https://github.com/homalg-project/LoopIntegrals/releases/download/v2021.12-01/LoopIntegrals-2021.12-01.pdf
+pdf: https://github.com/homalg-project/LoopIntegrals/releases/download/v2022.04-01/LoopIntegrals-2022.04-01.pdf
 
 abstract: |
 
@@ -62,24 +62,24 @@ keywords: |
     loop diagrams, generating vectors, syzygies, master integrals.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BBHP21</span>]   <b class='BibAuthor'>Barakat, M., Brüser, R., Huber, T. and Piclum, J.</b>,
+    [<span class='BibKey'>BBHP22</span>]   <b class='BibAuthor'>Barakat, M., Brüser, R., Huber, T. and Piclum, J.</b>,
      <i class='BibTitle'>LoopIntegrals, Compute master integrals using commutative and noncommutative methods from computational algebraic geometry,
-             Version 2021.12-01</i>
-     (<span class='BibYear'>2021</span>)<br />
+             Version 2022.04-01</i>
+     (<span class='BibYear'>2022</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/LoopIntegrals">https://homalg-project.github.io/pkg/LoopIntegrals</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ LoopIntegrals2021.12-01,
+    @misc{ LoopIntegrals2022.04-01,
       author =           {Barakat,  M.  and  Br{\"u}ser,  R.  and  Huber, T. and
                           Piclum, J.},
       title =            {{LoopIntegrals},   Compute   master   integrals  using
                           commutative    and    noncommutative    methods   from
-                          computational algebraic geometry, {V}ersion 2021.12-01},
-      month =            {Dec},
-      year =             {2021},
+                          computational algebraic geometry, {V}ersion 2022.04-01},
+      month =            {Apr},
+      year =             {2022},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/LoopIntegrals}
@@ -88,6 +88,6 @@ bibtex: |
                           {}{}{}\texttt{LoopIntegrals}}},
       keywords =         {loop  diagrams;  generating  vectors; syzygies; master
                           integrals},
-      printedkey =       {BBHP21}
+      printedkey =       {BBHP22}
     }
 

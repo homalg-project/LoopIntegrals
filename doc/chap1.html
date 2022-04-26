@@ -226,7 +226,7 @@ Q[m,D][D1]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( ibp ) );</span>
 [ [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],
   [ |[ D-2*a1 ]|, |[ 1 ]| ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := HomalgRing( ibp );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ypol := HomalgRing( ibp );</span>
 Q[m,D][a1]&lt;D1,D1_&gt;/( D1*D1_-1 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibpws := MatrixOfIBPRelationsInWeylAlgebra( LD );</span>
 &lt;A 1 x 1 matrix over an external ring&gt;
@@ -274,7 +274,7 @@ modulo [ D1*D1_-1 ]
 &lt;A non-zero 1 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sbas = bas;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ExportVariables( Y );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ExportVariables( Ypol );</span>
 [ |[ m ]|, |[ D ]|, |[ a1 ]|, |[ D1 ]|, |[ D1_ ]| ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">r := 2 * m^2 * ( a1 + 4 - 2 ) * D1_^(4-1);</span>
 |[ 2*m^2*a1*D1_^3+4*m^2*D1_^3 ]|
@@ -323,7 +323,7 @@ Q[D,s][D1,D2]
 [ [ |[ -a2 ]|, |[ D1*D2_ ]| ],
   [ |[ -s*a2 ]|, |[ D2_ ]| ],
   [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := HomalgRing( ibp1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ypol := HomalgRing( ibp1 );</span>
 Q[D,s][a1,a2]&lt;D1,D1_,D2,D2_&gt;/( D2*D2_-1, D1*D1_-1 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bas := BasisOfRows( ibps );</span>
 &lt;A non-zero 4 x 1 matrix over a residue class ring&gt;
@@ -352,7 +352,7 @@ k1^2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rel := [ ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetRelationsOfExternalMomenta( LD, rel );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetIndependentLorentzInvariants( LD, [ ] );</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetPropagators( LD, -[ l1^2 + m^2, ( l1 + k1 )^2 ] );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetPropagators( LD, -[ l1^2 - m^2, ( l1 + k1 )^2 ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetNumerators( LD, -[ ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ s ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := RingOfLoopDiagram( LD );</span>
@@ -360,13 +360,13 @@ Q[m,D,s][D1,D2]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibps := MatrixOfIBPRelations( LD );</span>
 &lt;A 2 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibp1 := ibps[1,1];</span>
-|[ -2*m^2*a1*D1_-m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+D-2*a1-a2 ]|
+|[ 2*m^2*a1*D1_+m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+D-2*a1-a2 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( ibp1 ) );</span>
 [ [ |[ -a2 ]|, |[ D1*D2_ ]| ],
-  [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],
-  [ |[ -m^2*a2-s*a2 ]|, |[ D2_ ]| ],
+  [ |[ 2*m^2*a1 ]|, |[ D1_ ]| ],
+  [ |[ m^2*a2-s*a2 ]|, |[ D2_ ]| ],
   [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := HomalgRing( ibp1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ypol := HomalgRing( ibp1 );</span>
 Q[m,D,s][a1,a2]&lt;D1,D1_,D2,D2_&gt;/( D2*D2_-1, D1*D1_-1 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bas := BasisOfRows( ibps );</span>
 &lt;A non-zero 7 x 1 matrix over a residue class ring&gt;
@@ -409,7 +409,7 @@ Q[m,D,s][D1,D2]
   [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],
   [ |[ -2*m^2*a2-s*a2 ]|, |[ D2_ ]| ],
   [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := HomalgRing( ibp1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ypol := HomalgRing( ibp1 );</span>
 Q[m,D,s][a1,a2]&lt;D1,D1_,D2,D2_&gt;/( D2*D2_-1, D1*D1_-1 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bas := BasisOfRows( ibps );</span>
 &lt;A non-zero 6 x 1 matrix over a residue class ring&gt;
@@ -458,7 +458,7 @@ Q[D,s12,s14][D1,D2,D3,D4]
   [ |[ -a4 ]|, |[ D1*D4_ ]| ],
   [ |[ -s12*a3 ]|, |[ D3_ ]| ],
   [ |[ D-2*a1-a2-a3-a4 ]|, |[ 1 ]| ] ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Y := HomalgRing( ibp1 );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ypol := HomalgRing( ibp1 );</span>
 Q[D,s12,s14][a1,a2,a3,a4]&lt;D1,D1_,D2,D2_,D3,D3_,D4,D4_&gt;/( D4*D4_-1, D3*D3_-1,\
   D2*D2_-1, D1*D1_-1 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );</span>
@@ -1000,14 +1000,14 @@ pp5-s45-D4+D5, -s23+s51-D4+D5,s34-D4+D5, -D4+D5,       -D4+D5
 <h5>1.4-1 IsLoopMomentum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLoopMomentum</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p><a id="X7C30AB5C844E7218" name="X7C30AB5C844E7218"></a></p>
 
 <h5>1.4-2 IsExternalMomentum</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsExternalMomentum</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;property&nbsp;)</td></tr></table></div>
-<p>Returns: <code class="code">true</code> or <code class="code">false</code></p>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p><a id="X7C701DBF7BAE649A" name="X7C701DBF7BAE649A"></a></p>
 
