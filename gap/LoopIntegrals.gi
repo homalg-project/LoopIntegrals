@@ -271,7 +271,7 @@ InstallMethod( RelationsMatrixOfExternalMomenta,
 end );
 
 ##
-InstallMethod( OriginalJacobianOfPropagators,
+InstallMethod( OriginalEulerMatrixOfPropagators,
         [ IsLoopDiagram and HasPropagators ],
         
   function( LD )
@@ -286,7 +286,7 @@ InstallMethod( OriginalJacobianOfPropagators,
 end );
 
 ##
-InstallMethod( OriginalJacobianOfNumerators,
+InstallMethod( OriginalEulerMatrixOfNumerators,
         [ IsLoopDiagram and HasNumerators ],
         
   function( LD )
@@ -371,13 +371,13 @@ InstallMethod( MatrixOfMomenta,
 end );
 
 ##
-InstallMethod( JacobianOfPropagators,
+InstallMethod( EulerMatrixOfPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators ],
         
   function( LD )
     local jac, rel;
     
-    jac := OriginalJacobianOfPropagators( LD );
+    jac := OriginalEulerMatrixOfPropagators( LD );
     
     jac := MatrixOfMomenta( LD ) * jac;
     
@@ -391,13 +391,13 @@ InstallMethod( JacobianOfPropagators,
 end );
 
 ##
-InstallMethod( JacobianOfNumerators,
+InstallMethod( EulerMatrixOfNumerators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasNumerators ],
         
   function( LD )
     local jac, rel;
     
-    jac := OriginalJacobianOfNumerators( LD );
+    jac := OriginalEulerMatrixOfNumerators( LD );
     
     jac := MatrixOfMomenta( LD ) * jac;
     
@@ -420,7 +420,7 @@ InstallMethod( PairOfOriginalMatricesOfLoopDiagram,
         
   function( LD )
     
-    return [ OriginalJacobianOfPropagators( LD ),
+    return [ OriginalEulerMatrixOfPropagators( LD ),
              HomalgDiagonalMatrix( Propagators( LD ) ) ];
     
 end );
@@ -431,7 +431,7 @@ InstallMethod( PairOfMatricesOfLoopDiagram,
         
   function( LD )
     
-    return [ JacobianOfPropagators( LD ),
+    return [ EulerMatrixOfPropagators( LD ),
              HomalgDiagonalMatrix( Propagators( LD ) ) ];
     
 end );
@@ -935,35 +935,35 @@ InstallMethod( ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants,
 end );
 
 ##
-InstallMethod( JacobianOfPropagatorsInIndependentLorentzInvariants,
+InstallMethod( EulerMatrixOfPropagatorsInIndependentLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
   function( LD )
     
     return ExpressInIndependentLorentzInvariants(
-                   JacobianOfPropagators( LD ), LD );
+                   EulerMatrixOfPropagators( LD ), LD );
     
 end );
 
 ##
-InstallMethod( JacobianOfPropagatorsInPropagators,
+InstallMethod( EulerMatrixOfPropagatorsInPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
     return ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
-                   JacobianOfPropagators( LD ), LD );
+                   EulerMatrixOfPropagators( LD ), LD );
     
 end );
 
 ##
-InstallMethod( JacobianOfNumeratorsInPropagators,
+InstallMethod( EulerMatrixOfNumeratorsInPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
     return ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
-                   JacobianOfNumerators( LD ), LD );
+                   EulerMatrixOfNumerators( LD ), LD );
     
 end );
 
@@ -973,7 +973,7 @@ InstallMethod( PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants,
         
   function( LD )
 
-    return [ JacobianOfPropagatorsInIndependentLorentzInvariants( LD ),
+    return [ EulerMatrixOfPropagatorsInIndependentLorentzInvariants( LD ),
              ExpressInIndependentLorentzInvariants(
                      HomalgDiagonalMatrix( Propagators( LD ) ), LD ) ];
 end );
@@ -984,21 +984,21 @@ InstallMethod( PairOfMatricesOfLoopDiagramInPropagators,
         
   function( LD )
 
-    return [ JacobianOfPropagatorsInPropagators( LD ),
+    return [ EulerMatrixOfPropagatorsInPropagators( LD ),
              ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
                      HomalgDiagonalMatrix( Propagators( LD ) ), LD ) ];
     
 end );
 
 ##
-InstallMethod( JacobianOfLoopDiagramInPropagators,
+InstallMethod( EulerMatrixOfLoopDiagramInPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
     return UnionOfColumns(
-                   JacobianOfPropagatorsInPropagators( LD ),
-                   JacobianOfNumeratorsInPropagators( LD ) );
+                   EulerMatrixOfPropagatorsInPropagators( LD ),
+                   EulerMatrixOfNumeratorsInPropagators( LD ) );
     
 end );
 
@@ -1036,7 +1036,7 @@ InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
     
     Assert( 0, NrRows( vec ) = 1 and NrColumns( vec ) = l * ( l + k ) );
     
-    jacLD := JacobianOfLoopDiagramInPropagators( LD );
+    jacLD := EulerMatrixOfLoopDiagramInPropagators( LD );
     jacLV := JacobianOfCoefficientsVectorInPropagators( vec, LD );
     
     trace := Sum( [ 1 .. NrRows( jacLD ) ], i -> ( jacLD[i] * Involution( jacLV[i] ) )[1,1] );
@@ -1197,7 +1197,7 @@ InstallMethod( IBPRelation,
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
     
-    jacLD := JacobianOfLoopDiagramInPropagators( LD );
+    jacLD := EulerMatrixOfLoopDiagramInPropagators( LD );
     
     ## * Usually we would act on the space of integrals as usual from the left.
     ## * This action is only linear w.r.t. the constants (= BaseRing( R ) ).
@@ -1364,7 +1364,7 @@ InstallMethod( IBPRelationInWeylAlgebra,
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
     
-    jacLD := JacobianOfLoopDiagramInPropagators( LD );
+    jacLD := EulerMatrixOfLoopDiagramInPropagators( LD );
     
     return div / W + ( oper * TransposedMatrix( W * ( vec * jacLD ) ) )[1,1];
     
