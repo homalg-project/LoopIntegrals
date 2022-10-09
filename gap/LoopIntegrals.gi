@@ -28,7 +28,7 @@ InstallMethod( LorentzVector,
     
     ObjectifyWithAttributes(
             vector, TheTypeLorentzVector,
-            Dimension, NrRows( M ),
+            Dimension, NrColumns( M ),
             UnderlyingMatrix, M );
     
     return vector;
@@ -230,7 +230,7 @@ InstallMethod( UnderlyingMatrix,
         
   function( x )
     
-    return HomalgMatrix( Components( x ), Dimension( x ), 1, HomalgRing( x[0] ) );
+    return HomalgMatrix( Components( x ), 1, Dimension( x ), HomalgRing( x[0] ) );
     
 end );
     
@@ -266,43 +266,43 @@ InstallMethod( RelationsMatrixOfExternalMomenta,
     
     rel := RelationsOfExternalMomenta( LD );
     
-    return HomalgMatrix( rel, Length( rel ), 1, UnderlyingRing( LD ) );
+    return HomalgMatrix( rel, 1, Length( rel ), UnderlyingRing( LD ) );
     
 end );
 
 ##
-InstallMethod( OriginalJacobianOfPropagators,
+InstallMethod( OriginalEulerMatrixOfPropagators,
         [ IsLoopDiagram and HasPropagators ],
         
   function( LD )
     local l, R;
     
-    l := UnionOfRows( List( LoopMomenta( LD ), UnderlyingMatrix ) );
+    l := UnionOfColumns( List( LoopMomenta( LD ), UnderlyingMatrix ) );
     
     R := UnderlyingRing( LD );
     
-    return UnionOfColumns( List( Propagators( LD ), p -> Diff( l, HomalgMatrix( p, 1, 1, R ) ) ) );
+    return UnionOfRows( List( Propagators( LD ), p -> Diff( l, HomalgMatrix( p, 1, 1, R ) ) ) );
     
 end );
 
 ##
-InstallMethod( OriginalJacobianOfNumerators,
+InstallMethod( OriginalEulerMatrixOfNumerators,
         [ IsLoopDiagram and HasNumerators ],
         
   function( LD )
     local l, R, numerators;
     
-    l := UnionOfRows( List( LoopMomenta( LD ), UnderlyingMatrix ) );
+    l := UnionOfColumns( List( LoopMomenta( LD ), UnderlyingMatrix ) );
     
     R := UnderlyingRing( LD );
     
     numerators := Numerators( LD );
     
     if IsEmpty( numerators ) then
-        return HomalgZeroMatrix( NrRows( l ), 0, R );
+        return HomalgZeroMatrix( 0, NrColumns( l ), R );
     fi;
     
-    return UnionOfColumns( List( numerators, p -> Diff( l, HomalgMatrix( p, 1, 1, R ) ) ) );
+    return UnionOfRows( List( numerators, p -> Diff( l, HomalgMatrix( p, 1, 1, R ) ) ) );
     
 end );
 
@@ -364,53 +364,53 @@ InstallMethod( MatrixOfMomenta,
     l := List( LoopMomenta( LD ), UnderlyingMatrix );
     k := List( ExternalMomenta( LD ), UnderlyingMatrix );
     
-    vectors := Involution( UnionOfColumns( Concatenation( l, k ) ) );
+    vectors := Involution( UnionOfRows( Concatenation( l, k ) ) );
     
     return DiagMat( ListWithIdenticalEntries( Length( l ), vectors ) );
     
 end );
 
 ##
-InstallMethod( JacobianOfPropagators,
+InstallMethod( EulerMatrixOfPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators ],
         
   function( LD )
     local jac, rel;
     
-    jac := OriginalJacobianOfPropagators( LD );
+    jac := OriginalEulerMatrixOfPropagators( LD );
     
-    jac := MatrixOfMomenta( LD ) * jac;
+    jac := jac * MatrixOfMomenta( LD );
     
     rel := RelationsMatrixOfExternalMomenta( LD );
     
-    jac := List( [ 1 .. NrColumns( jac ) ],
-                   j -> DecideZeroRows( CertainColumns( jac, [ j ] ), rel ) );
+    jac := List( [ 1 .. NrRows( jac ) ],
+                 i -> DecideZeroColumns( CertainRows( jac, [ i ] ), rel ) );
     
-    return UnionOfColumns( jac );
+    return UnionOfRows( jac );
     
 end );
 
 ##
-InstallMethod( JacobianOfNumerators,
+InstallMethod( EulerMatrixOfNumerators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasNumerators ],
         
   function( LD )
     local jac, rel;
     
-    jac := OriginalJacobianOfNumerators( LD );
+    jac := OriginalEulerMatrixOfNumerators( LD );
     
-    jac := MatrixOfMomenta( LD ) * jac;
+    jac := jac * MatrixOfMomenta( LD );
     
-    if NrColumns( jac ) = 0 then
+    if NrRows( jac ) = 0 then
         return jac;
     fi;
     
     rel := RelationsMatrixOfExternalMomenta( LD );
     
-    jac := List( [ 1 .. NrColumns( jac ) ],
-                   j -> DecideZeroRows( CertainColumns( jac, [ j ] ), rel ) );
+    jac := List( [ 1 .. NrRows( jac ) ],
+                 i -> DecideZeroColumns( CertainRows( jac, [ i ] ), rel ) );
     
-    return UnionOfColumns( jac );
+    return UnionOfRows( jac );
     
 end );
 
@@ -420,7 +420,7 @@ InstallMethod( PairOfOriginalMatricesOfLoopDiagram,
         
   function( LD )
     
-    return [ OriginalJacobianOfPropagators( LD ),
+    return [ OriginalEulerMatrixOfPropagators( LD ),
              HomalgDiagonalMatrix( Propagators( LD ) ) ];
     
 end );
@@ -431,7 +431,7 @@ InstallMethod( PairOfMatricesOfLoopDiagram,
         
   function( LD )
     
-    return [ JacobianOfPropagators( LD ),
+    return [ EulerMatrixOfPropagators( LD ),
              HomalgDiagonalMatrix( Propagators( LD ) ) ];
     
 end );
@@ -625,11 +625,11 @@ InstallMethod( ReductionMatrixOfExtraLorentzInvariants,
     
     invariants := ListN( I, invariants, {a,b} -> a / R - b );
     
-    invariants := HomalgMatrix( invariants, M, 1, R );
+    invariants := HomalgMatrix( invariants, 1, M, R );
     
-    red := UnionOfRows( invariants, R * RelationsMatrixOfExternalMomenta( LD ) );
+    red := UnionOfColumns( invariants, R * RelationsMatrixOfExternalMomenta( LD ) );
     
-    return BasisOfRows( red );
+    return BasisOfColumns( red );
     
 end );
 
@@ -638,24 +638,24 @@ InstallMethod( ExpressInExtraLorentzInvariants,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasExtraLorentzInvariants and HasPropagators ],
         
   function( mat, LD )
-    local red, R, col;
+    local red, R, r;
     
     red := ReductionMatrixOfExtraLorentzInvariants( LD );
     
     R := HomalgRing( red );
     
-    col := NrColumns( mat );
+    r := NrRows( mat );
     
     mat := R * mat;
     
-    if NrColumns( mat ) = 0 then
+    if r = 0 then
         return mat;
     fi;
     
-    mat := List( [ 1 .. col ],
-                 j -> DecideZeroRows( CertainColumns( mat, [ j ] ), red ) );
+    mat := List( [ 1 .. r ],
+                 i -> DecideZeroColumns( CertainRows( mat, [ i ] ), red ) );
     
-    return UnionOfColumns( mat );
+    return UnionOfRows( mat );
     
 end );
 
@@ -736,11 +736,11 @@ InstallMethod( ReductionMatrixOfIndependentLorentzInvariants,
     
     invariants := ListN( I, invariants, {a,b} -> a / R - b );
     
-    invariants := HomalgMatrix( invariants, M, 1, R );
+    invariants := HomalgMatrix( invariants, 1, M, R );
     
-    red := UnionOfRows( invariants, R * RelationsMatrixOfExternalMomenta( LD ) );
+    red := UnionOfColumns( invariants, R * RelationsMatrixOfExternalMomenta( LD ) );
     
-    return BasisOfRows( red );
+    return BasisOfColumns( red );
     
 end );
 
@@ -749,24 +749,24 @@ InstallMethod( ExpressInIndependentLorentzInvariants,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
   function( mat, LD )
-    local red, R, col;
+    local red, R, r;
     
     red := ReductionMatrixOfIndependentLorentzInvariants( LD );
     
     R := HomalgRing( red );
     
-    col := NrColumns( mat );
+    r := NrRows( mat );
     
     mat := R * mat;
     
-    if NrColumns( mat ) = 0 then
+    if r = 0 then
         return mat;
     fi;
     
-    mat := List( [ 1 .. col ],
-                 j -> DecideZeroRows( CertainColumns( mat, [ j ] ), red ) );
+    mat := List( [ 1 .. r ],
+                 i -> DecideZeroColumns( CertainRows( mat, [ i ] ), red ) );
     
-    return UnionOfColumns( mat );
+    return UnionOfRows( mat );
     
 end );
 
@@ -888,9 +888,9 @@ InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariant
     
     indets := ListN( Concatenation( K, D, Z ), indets, {a,b} -> a / R - b );
     
-    indets := HomalgMatrix( indets, Length( indets ), 1, R );
+    indets := HomalgMatrix( indets, 1, Length( indets ), R );
     
-    red := UnionOfRows( indets, R * RelationsMatrixOfExternalMomenta( LD ) );
+    red := UnionOfColumns( indets, R * RelationsMatrixOfExternalMomenta( LD ) );
     
     S := RingOfLoopDiagram( LD );
     
@@ -903,26 +903,26 @@ InstallMethod( ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( mat, LD )
-    local red, R, col, S, Smat;
+    local red, R, r, S, Smat;
     
     red := ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants( LD );
     
     R := HomalgRing( red );
     
-    col := NrColumns( mat );
+    r := NrRows( mat );
     
     S := RingOfLoopDiagram( LD );
     
-    if NrColumns( mat ) = 0 then
+    if r = 0 then
         return S * mat;
     fi;
     
     mat := R * mat;
     
-    mat := List( [ 1 .. col ],
-                 j -> DecideZeroRows( CertainColumns( mat, [ j ] ), red ) );
+    mat := List( [ 1 .. r ],
+                 i -> DecideZeroColumns( CertainRows( mat, [ i ] ), red ) );
     
-    mat := UnionOfColumns( mat );
+    mat := UnionOfRows( mat );
     
     Smat := S * mat;
     
@@ -935,35 +935,35 @@ InstallMethod( ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants,
 end );
 
 ##
-InstallMethod( JacobianOfPropagatorsInIndependentLorentzInvariants,
+InstallMethod( EulerMatrixOfPropagatorsInIndependentLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
   function( LD )
     
     return ExpressInIndependentLorentzInvariants(
-                   JacobianOfPropagators( LD ), LD );
+                   EulerMatrixOfPropagators( LD ), LD );
     
 end );
 
 ##
-InstallMethod( JacobianOfPropagatorsInPropagators,
+InstallMethod( EulerMatrixOfPropagatorsInPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
     return ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
-                   JacobianOfPropagators( LD ), LD );
+                   EulerMatrixOfPropagators( LD ), LD );
     
 end );
 
 ##
-InstallMethod( JacobianOfNumeratorsInPropagators,
+InstallMethod( EulerMatrixOfNumeratorsInPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
     return ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
-                   JacobianOfNumerators( LD ), LD );
+                   EulerMatrixOfNumerators( LD ), LD );
     
 end );
 
@@ -973,7 +973,7 @@ InstallMethod( PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants,
         
   function( LD )
 
-    return [ JacobianOfPropagatorsInIndependentLorentzInvariants( LD ),
+    return [ EulerMatrixOfPropagatorsInIndependentLorentzInvariants( LD ),
              ExpressInIndependentLorentzInvariants(
                      HomalgDiagonalMatrix( Propagators( LD ) ), LD ) ];
 end );
@@ -984,21 +984,21 @@ InstallMethod( PairOfMatricesOfLoopDiagramInPropagators,
         
   function( LD )
 
-    return [ JacobianOfPropagatorsInPropagators( LD ),
+    return [ EulerMatrixOfPropagatorsInPropagators( LD ),
              ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
                      HomalgDiagonalMatrix( Propagators( LD ) ), LD ) ];
     
 end );
 
 ##
-InstallMethod( JacobianOfLoopDiagramInPropagators,
+InstallMethod( EulerMatrixOfLoopDiagramInPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
-    return UnionOfColumns(
-                   JacobianOfPropagatorsInPropagators( LD ),
-                   JacobianOfNumeratorsInPropagators( LD ) );
+    return UnionOfRows(
+                   EulerMatrixOfPropagatorsInPropagators( LD ),
+                   EulerMatrixOfNumeratorsInPropagators( LD ) );
     
 end );
 
@@ -1019,7 +1019,7 @@ InstallMethod( JacobianOfCoefficientsVectorInPropagators,
     
     indets := S * indets;
     
-    return Diff( indets, Involution( vec ) );
+    return Diff( indets, vec );
     
 end );
 
@@ -1034,14 +1034,14 @@ InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
     
     k := Length( ExternalMomenta( LD ) );
     
-    Assert( 0, NrRows( vec ) = 1 and NrColumns( vec ) = l * ( l + k ) );
+    Assert( 0, NrColumns( vec ) = 1 and NrRows( vec ) = l * ( l + k ) );
     
-    jacLD := JacobianOfLoopDiagramInPropagators( LD );
+    jacLD := EulerMatrixOfLoopDiagramInPropagators( LD );
     jacLV := JacobianOfCoefficientsVectorInPropagators( vec, LD );
     
-    trace := Sum( [ 1 .. NrRows( jacLD ) ], i -> ( jacLD[i] * Involution( jacLV[i] ) )[1,1] );
+    trace := Sum( [ 1 .. NrRows( jacLD ) ], i -> ( jacLD[ i ] * CertainColumns( jacLV, [ i ] ) )[1,1] );
     
-    sum := Sum( [ 1 .. l ], p -> vec[1, (p - 1) * (l + k) + p] );
+    sum := Sum( [ 1 .. l ], p -> vec[(p - 1) * (l + k) + p, 1] );
     
     D := ( LD!.DimensionSymbol / HomalgRing( sum ) );
     
@@ -1197,7 +1197,7 @@ InstallMethod( IBPRelation,
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
     
-    jacLD := JacobianOfLoopDiagramInPropagators( LD );
+    jacLD := EulerMatrixOfLoopDiagramInPropagators( LD );
     
     ## * Usually we would act on the space of integrals as usual from the left.
     ## * This action is only linear w.r.t. the constants (= BaseRing( R ) ).
@@ -1206,7 +1206,7 @@ InstallMethod( IBPRelation,
     ## * However, the GB engines only support GB of left ideals in the noncommutative setup.
     ## * This forces us to act from the right in order for the above mentioned ideal
     ##   to be a left ideal.
-    return div / Y + ( oper * TransposedMatrix( Y * ( vec * jacLD ) ) )[1,1];
+    return div / Y + ( oper * ( Y * ( jacLD * vec ) ) )[1,1];
     
 end );
 
@@ -1255,7 +1255,7 @@ InstallMethod( MatrixOfIBPRelations,
   function( mat, LD )
     local ibps;
     
-    ibps := List( [ 1 .. NrRows( mat ) ], i -> IBPRelation( mat[i], LD ) );
+    ibps := List( [ 1 .. NrColumns( mat ) ], j -> IBPRelation( CertainColumns( mat, [ j ] ), LD ) );
     
     return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
     
@@ -1268,7 +1268,7 @@ InstallMethod( MatrixOfIBPRelations,
   function( mat, LD, exponents )
     local ibps;
     
-    ibps := List( [ 1 .. NrRows( mat ) ], i -> IBPRelation( mat[i], LD, exponents ) );
+    ibps := List( [ 1 .. NrColumns( mat ) ], j -> IBPRelation( CertainColumns( mat, [ j ] ), LD, exponents ) );
     
     return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
     
@@ -1318,9 +1318,9 @@ InstallMethod( MatrixOfSpecialIBPRelations,
     local syz;
     
     ## Q[m,s,D][D1,...,Ds]
-    syz := SyzygiesOfRows( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
+    syz := SyzygiesOfColumns( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
     
-    #syz := ReducedBasisOfRowModule( syz );
+    #syz := ReducedBasisOfColumnModule( syz );
     
     return MatrixOfIBPRelations( syz, LD );
     
@@ -1333,7 +1333,7 @@ InstallMethod( MatrixOfSpecialIBPRelations,
   function( LD, exponents )
     local syz;
     
-    syz := SyzygiesOfRows( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
+    syz := SyzygiesOfColumns( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
     
     return MatrixOfIBPRelations( syz, LD, exponents );
     
@@ -1364,7 +1364,7 @@ InstallMethod( IBPRelationInWeylAlgebra,
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
     
-    jacLD := JacobianOfLoopDiagramInPropagators( LD );
+    jacLD := EulerMatrixOfLoopDiagramInPropagators( LD );
     
     return div / W + ( oper * TransposedMatrix( W * ( vec * jacLD ) ) )[1,1];
     
@@ -1413,9 +1413,9 @@ InstallMethod( MatrixOfSpecialIBPRelationsInWeylAlgebra,
   function( LD )
     local syz, id, ibps;
     
-    syz := SyzygiesOfRows( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
+    syz := SyzygiesOfColumns( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
     
-    ibps := List( [ 1 .. NrRows( syz ) ], i -> IBPRelationInWeylAlgebra( syz[i], LD ) );
+    ibps := List( [ 1 .. NrColumns( syz ) ], j -> IBPRelationInWeylAlgebra( CertainColumns( syz, [ j ] ), LD ) );
     
     return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
     

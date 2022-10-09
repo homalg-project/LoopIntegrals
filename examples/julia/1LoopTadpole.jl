@@ -37,11 +37,11 @@ Display( E12[1] )
 
 Display( E12[2] )
 
-S = SyzygiesOfRows( E12 )
+S = SyzygiesOfColumns( E12 )
 
 Display( S )
 
-Sibp = IBPRelation( S[1], LD )
+Sibp = IBPRelation( CertainColumns( S, [ 1 ] ), LD )
 
 ViewList( DecomposeInMonomials( Sibp ) )
 

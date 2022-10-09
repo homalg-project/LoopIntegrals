@@ -41,35 +41,35 @@ E12 = PairOfMatricesOfLoopDiagramInPropagators( LD )
 
 Display( E12[1] )
 
-S = SyzygiesOfRows( E12 )
+S = SyzygiesOfColumns( E12 )
 
-Sred = ReducedBasisOfRowModule( S )
+Sred = ReducedBasisOfColumnModule( S )
 
 Display( Sred )
 
 Display( EntriesOfHomalgMatrixAsListList( CertainRows( Sred, Array( 1:3 ) ) ) )
 
-Sibp1 = IBPRelation( Sred[1], LD )
+Sibp1 = IBPRelation( CertainColumns( Sred, [ 1 ] ), LD )
 
 ViewList( DecomposeInMonomials( Sibp1 ) )
 
-sibp1 = IBPRelation( Sred[1], LD, [ 1, 1, 1, 1 ] )
+sibp1 = IBPRelation( CertainColumns( Sred, [ 1 ] ), LD, [ 1, 1, 1, 1 ] )
 
 ViewList( DecomposeInMonomials( sibp1 ) )
 
-Sibp2 = IBPRelation( Sred[2], LD )
+Sibp2 = IBPRelation( CertainColumns( Sred, [ 2 ] ), LD )
 
 ViewList( DecomposeInMonomials( Sibp2 ) )
 
-sibp2 = IBPRelation( Sred[2], LD, [ 1, 1, 1, 1 ] )
+sibp2 = IBPRelation( CertainColumns( Sred, [ 2 ] ), LD, [ 1, 1, 1, 1 ] )
 
 ViewList( DecomposeInMonomials( sibp2 ) )
 
-Sibp3 = IBPRelation( Sred[3], LD )
+Sibp3 = IBPRelation( CertainColumns( Sred, [ 3 ] ), LD )
 
 ViewList( DecomposeInMonomials( Sibp3 ) )
 
-sibp3 = IBPRelation( Sred[3], LD, [ 1, 1, 1, 1 ] )
+sibp3 = IBPRelation( CertainColumns( Sred, [ 3 ] ), LD, [ 1, 1, 1, 1 ] )
 
 ViewList( DecomposeInMonomials( sibp2 ) )
 

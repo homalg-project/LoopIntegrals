@@ -35,11 +35,11 @@ Display( E12[1] );
 #! 2*m^2+2*D1
 Display( E12[2] );
 #! D1
-S := SyzygiesOfRows( E12 );
+S := SyzygiesOfColumns( E12 );
 #! <A non-zero 1 x 1 matrix over an external ring>
 Display( S );
 #! D1
-Sibp := IBPRelation( S[1], LD );
+Sibp := IBPRelation( CertainColumns( S, [ 1 ] ), LD );
 #! |[ -2*m^2*a1+2*m^2+D*D1-2*a1*D1+2*D1 ]|
 ViewList( DecomposeInMonomials( Sibp ) );
 #! [ [ |[ D-2*a1+2 ]|, |[ D1 ]| ],

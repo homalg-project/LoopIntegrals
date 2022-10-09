@@ -118,11 +118,11 @@ DeclareAttribute( "ExtraLorentzInvariants",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "OriginalJacobianOfPropagators",
+DeclareAttribute( "OriginalEulerMatrixOfPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "OriginalJacobianOfNumerators",
+DeclareAttribute( "OriginalEulerMatrixOfNumerators",
         IsLoopDiagram );
 
 #! @Arguments LD
@@ -134,11 +134,11 @@ DeclareAttribute( "MatrixOfMomenta",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "JacobianOfPropagators",
+DeclareAttribute( "EulerMatrixOfPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "JacobianOfNumerators",
+DeclareAttribute( "EulerMatrixOfNumerators",
         IsLoopDiagram );
 
 #! @Arguments LD
@@ -178,15 +178,15 @@ DeclareAttribute( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvar
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "JacobianOfPropagatorsInIndependentLorentzInvariants",
+DeclareAttribute( "EulerMatrixOfPropagatorsInIndependentLorentzInvariants",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "JacobianOfPropagatorsInPropagators",
+DeclareAttribute( "EulerMatrixOfPropagatorsInPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "JacobianOfNumeratorsInPropagators",
+DeclareAttribute( "EulerMatrixOfNumeratorsInPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
@@ -198,7 +198,7 @@ DeclareAttribute( "PairOfMatricesOfLoopDiagramInPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "JacobianOfLoopDiagramInPropagators",
+DeclareAttribute( "EulerMatrixOfLoopDiagramInPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
