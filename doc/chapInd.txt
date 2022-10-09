@@ -20,6 +20,12 @@
   [2XDimensionOfCoefficientsVector[102X, for IsLoopDiagram 1.5-7 
   [2XDivergenceOfCoefficientsVectorOfLoopDiagram[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-13 
   [2XDoubleShiftAlgebra[102X, for IsHomalgRing 1.7-14 
+  [2XEulerMatrixOfLoopDiagramInPropagators[102X, for IsLoopDiagram 1.5-35 
+  [2XEulerMatrixOfNumerators[102X, for IsLoopDiagram 1.5-20 
+  [2XEulerMatrixOfNumeratorsInPropagators[102X, for IsLoopDiagram 1.5-32 
+  [2XEulerMatrixOfPropagators[102X, for IsLoopDiagram 1.5-19 
+  [2XEulerMatrixOfPropagatorsInIndependentLorentzInvariants[102X, for IsLoopDiagram 1.5-30 
+  [2XEulerMatrixOfPropagatorsInPropagators[102X, for IsLoopDiagram 1.5-31 
   [2XExpressInExtraLorentzInvariants[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-9 
   [2XExpressInIndependentLorentzInvariants[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-10 
   [2XExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-11 
@@ -36,12 +42,6 @@
   [2XIsLoopMomentum[102X, for IsLoopDiagram 1.4-1 
   [2XIsScalelessLoopIntegral[102X, for IsLoopDiagram, IsList 1.7-26 
   [2XJacobianOfCoefficientsVectorInPropagators[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-12 
-  [2XJacobianOfLoopDiagramInPropagators[102X, for IsLoopDiagram 1.5-35 
-  [2XJacobianOfNumerators[102X, for IsLoopDiagram 1.5-20 
-  [2XJacobianOfNumeratorsInPropagators[102X, for IsLoopDiagram 1.5-32 
-  [2XJacobianOfPropagators[102X, for IsLoopDiagram 1.5-19 
-  [2XJacobianOfPropagatorsInIndependentLorentzInvariants[102X, for IsLoopDiagram 1.5-30 
-  [2XJacobianOfPropagatorsInPropagators[102X, for IsLoopDiagram 1.5-31 
   [2XLOOP_INTEGRALS[102X 1.3-1 
   [2XLoopDiagram[102X, for IsList, IsList 1.6-3 
       for IsList, IsList, IsInt 1.6-3 
@@ -63,8 +63,8 @@
       for IsHomalgRingElement, IsHomalgMatrix, IsList 1.7-29 
   [2XNormalFormWrtInitialIntegral[102X, for IsHomalgRingElement, IsHomalgMatrix 1.7-30 
   [2XNumerators[102X, for IsLoopDiagram 1.5-13 
-  [2XOriginalJacobianOfNumerators[102X, for IsLoopDiagram 1.5-16 
-  [2XOriginalJacobianOfPropagators[102X, for IsLoopDiagram 1.5-15 
+  [2XOriginalEulerMatrixOfNumerators[102X, for IsLoopDiagram 1.5-16 
+  [2XOriginalEulerMatrixOfPropagators[102X, for IsLoopDiagram 1.5-15 
   [2XOriginalTaylorOfPropagators[102X, for IsLoopDiagram 1.5-17 
   [2XPairOfMatricesOfLoopDiagram[102X, for IsLoopDiagram 1.5-22 
   [2XPairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[102X, for IsLoopDiagram 1.5-33 

@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2022.04-04
+                                   2022.10-01
   
   
-                                 26 April 2022
+                                10 October 2022
   
   
                                 Mohamed Barakat
@@ -95,12 +95,12 @@
       1.5-12 Propagators
       1.5-13 Numerators
       1.5-14 ExtraLorentzInvariants
-      1.5-15 OriginalJacobianOfPropagators
-      1.5-16 OriginalJacobianOfNumerators
+      1.5-15 OriginalEulerMatrixOfPropagators
+      1.5-16 OriginalEulerMatrixOfNumerators
       1.5-17 OriginalTaylorOfPropagators
       1.5-18 MatrixOfMomenta
-      1.5-19 JacobianOfPropagators
-      1.5-20 JacobianOfNumerators
+      1.5-19 EulerMatrixOfPropagators
+      1.5-20 EulerMatrixOfNumerators
       1.5-21 PairOfOriginalMatricesOfLoopDiagram
       1.5-22 PairOfMatricesOfLoopDiagram
       1.5-23 RingOfExtraLorentzInvariants
@@ -110,12 +110,12 @@
       1.5-27 RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
       1.5-28 RingOfLoopDiagram
       1.5-29 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
-      1.5-30 JacobianOfPropagatorsInIndependentLorentzInvariants
-      1.5-31 JacobianOfPropagatorsInPropagators
-      1.5-32 JacobianOfNumeratorsInPropagators
+      1.5-30 EulerMatrixOfPropagatorsInIndependentLorentzInvariants
+      1.5-31 EulerMatrixOfPropagatorsInPropagators
+      1.5-32 EulerMatrixOfNumeratorsInPropagators
       1.5-33 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants
       1.5-34 PairOfMatricesOfLoopDiagramInPropagators
-      1.5-35 JacobianOfLoopDiagramInPropagators
+      1.5-35 EulerMatrixOfLoopDiagramInPropagators
       1.5-36 MatrixOfIBPRelations
       1.5-37 BasisOfIBPRelations
       1.5-38 MatrixOfSpecialIBPRelations
