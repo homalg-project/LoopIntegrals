@@ -17,26 +17,24 @@ SetPropagators( LD,
 SetNumerators( LD, -[ k2^2 ] );
 SetExtraLorentzInvariants( LD, [ cos ] );
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
-#! [ <A 8 x 6 matrix over an external ring>,
+#! [ <A 6 x 8 matrix over an external ring>,
 #!   <A 6 x 6 matrix over an external ring> ]
 Display( E12[1] );
-#! 0,     0,     D3+D6-N7, D4-1,  D5-1,  2*D6,
-#! 0,     0,     -D3+D6-N7,D1-1,  D2-1,  -D3+D6+N7,
-#! 0,     0,     -D1+D4,   -2,    -2*cos,D4-1,
-#! 0,     0,     -D2+D5,   -2*cos,-2,    D5-1,
-#! D4-1,  D5-1,  -D3-D6+N7,0,     0,     0,
-#! D1-1,  D2-1,  D3-D6+N7, 0,     0,     0,
-#! -2,    -2*cos,D1-D4,    0,     0,     0,
-#! -2*cos,-2,    D2-D5,    0,     0,     0
-S := SyzygiesOfRows( E12 );
-#! <A non-zero 79 x 8 matrix over an external ring>
-EntriesOfHomalgMatrix( S[1] );
+#! 0,       0,        0,     0,     D4-1,     D1-1,    -2,    -2*cos,
+#! 0,       0,        0,     0,     D5-1,     D2-1,    -2*cos,-2,
+#! D3+D6-N7,-D3+D6-N7,-D1+D4,-D2+D5,-D3-D6+N7,D3-D6+N7,D1-D4, D2-D5,
+#! D4-1,    D1-1,     -2,    -2*cos,0,        0,       0,     0,
+#! D5-1,    D2-1,     -2*cos,-2,    0,        0,       0,     0,
+#! 2*D6,    -D3+D6+N7,D4-1,  D5-1,  0,        0,       0,     0
+S := SyzygiesOfColumns( E12 );
+#! <A non-zero 8 x 79 matrix over an external ring>
+EntriesOfHomalgMatrix( CertainColumns( S, [ 1 ] ) );
 #! [ -2*D4*D6-2*D5*D6, 0, D5*D6, D4*D6,
 #!   2*cos*D6-2*D6, -2*cos*D6-2*D4*D6-2*D5*D6+2*D6, D5*D6, D4*D6 ]
-EntriesOfHomalgMatrix( S[2] );
+EntriesOfHomalgMatrix( CertainColumns( S, [ 2 ] ) );
 #! [ -2*D1*D6-2*D2*D6+4*D6, 2*cos*D6-2*D6, D2*D6-D6, D1*D6-D6,
 #!   0, 2*cos*D6-2*D1*D6-2*D2*D6+2*D6, D2*D6-D6, D1*D6-D6 ]
-EntriesOfHomalgMatrix( S[3] );
+EntriesOfHomalgMatrix( CertainColumns( S, [ 3 ] ) );
 #! [ 2*cos*D6+2*D6, 0, -D6, -D6,
 #!   0, 2*cos*D6+2*D6, -D6, -D6 ]
 #! @EndExample

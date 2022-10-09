@@ -17,17 +17,15 @@ SetPropagators( LD,
 SetNumerators( LD, -[ k2^2 ] );
 SetExtraLorentzInvariants( LD, [ cos ] );
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
-#! [ <A 8 x 6 matrix over an external ring>,
+#! [ <A 6 x 8 matrix over an external ring>,
 #!   <A 6 x 6 matrix over an external ring> ]
 Display( E12[1] );
-#! 0,       0,       D3+D6-N7, D4-1,    D5-1,    2*D6,
-#! 0,       0,       -D3+D6-N7,D1-1,    D2-1,    -D3+D6+N7,
-#! 0,       0,       -D1+D4,   -2,      (-2*cos),D4-1,
-#! 0,       0,       -D2+D5,   (-2*cos),-2,      D5-1,
-#! D4-1,    D5-1,    -D3-D6+N7,0,       0,       0,
-#! D1-1,    D2-1,    D3-D6+N7, 0,       0,       0,
-#! -2,      (-2*cos),D1-D4,    0,       0,       0,
-#! (-2*cos),-2,      D2-D5,    0,       0,       0
-s := SyzygiesOfRows( E12 );
-#! <A non-zero 46 x 8 matrix over an external ring>
+#! 0,       0,        0,       0,       D4-1,     D1-1,    -2,      (-2*cos),
+#! 0,       0,        0,       0,       D5-1,     D2-1,    (-2*cos),-2,
+#! D3+D6-N7,-D3+D6-N7,-D1+D4,  -D2+D5,  -D3-D6+N7,D3-D6+N7,D1-D4,   D2-D5,
+#! D4-1,    D1-1,     -2,      (-2*cos),0,        0,       0,       0,
+#! D5-1,    D2-1,     (-2*cos),-2,      0,        0,       0,       0,
+#! 2*D6,    -D3+D6+N7,D4-1,    D5-1,    0,        0,       0,       0
+s := SyzygiesOfColumns( E12 );
+#! <A non-zero 8 x 46 matrix over an external ring>
 #! @EndExample

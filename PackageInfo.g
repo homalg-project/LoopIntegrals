@@ -10,10 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "LoopIntegrals",
 Subtitle := "Compute master integrals using commutative and noncommutative methods from computational algebraic geometry",
-Version := Maximum( [
-                   "2022.04-05", ## Mohamed's version
-                   ## this line prevents merge conflicts
-                   ] ),
+Version := "2022.10-01",
 
 Date := Concatenation( "01/", ~.Version{[ 6, 7 ]}, "/", ~.Version{[ 1 .. 4 ]} ),
 
