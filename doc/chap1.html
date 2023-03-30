@@ -216,22 +216,22 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetNumerators( LD, [ ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := RingOfLoopDiagram( LD );</span>
-Q[m,D][D1]
+Q[m,d][D1]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibps := MatrixOfIBPRelations( LD );</span>
 &lt;A 1 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibp := ibps[1,1];</span>
-|[ -2*m^2*a1*D1_+D-2*a1 ]|
+|[ -2*m^2*a1*D1_+d-2*a1 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( ibp ) );</span>
 [ [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],
-  [ |[ D-2*a1 ]|, |[ 1 ]| ] ]
+  [ |[ d-2*a1 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ypol := HomalgRing( ibp );</span>
-Q[m,D][a1]&lt;D1,D1_&gt;/( D1*D1_-1 )
+Q[m,d][a1]&lt;D1,D1_&gt;/( D1*D1_-1 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibpws := MatrixOfIBPRelationsInWeylAlgebra( LD );</span>
 &lt;A 1 x 1 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibpw := MatElm( ibpws, 1, 1 );</span>
--2*m^2*A1+D-2*D1*A1-2
+-2*m^2*A1+d-2*D1*A1-2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">W := HomalgRing( ibpw );</span>
-Q[m,D][D1]&lt;A1&gt;
+Q[m,d][D1]&lt;A1&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );</span>
 [ &lt;A 1 x 1 matrix over an external ring&gt;,
   &lt;A 1 x 1 matrix over an external ring&gt; ]
@@ -244,9 +244,9 @@ D1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( S );</span>
 D1
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sibp := IBPRelation( CertainColumns( S, [ 1 ] ), LD );</span>
-|[ -2*m^2*a1+2*m^2+D*D1-2*a1*D1+2*D1 ]|
+|[ -2*m^2*a1+2*m^2+d*D1-2*a1*D1+2*D1 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( Sibp ) );</span>
-[ [ |[ D-2*a1+2 ]|, |[ D1 ]| ],
+[ [ |[ d-2*a1+2 ]|, |[ D1 ]| ],
   [ |[ -2*m^2*a1+2*m^2 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sibps := MatrixOfSpecialIBPRelations( LD );</span>
 &lt;A 1 x 1 matrix over a residue class ring&gt;
@@ -273,25 +273,25 @@ modulo [ D1*D1_-1 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sbas = bas;</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ExportVariables( Ypol );</span>
-[ |[ m ]|, |[ D ]|, |[ a1 ]|, |[ D1 ]|, |[ D1_ ]| ]
+[ |[ m ]|, |[ d ]|, |[ a1 ]|, |[ D1 ]|, |[ D1_ ]| ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">r := 2 * m^2 * ( a1 + 4 - 2 ) * D1_^(4-1);</span>
 |[ 2*m^2*a1*D1_^3+4*m^2*D1_^3 ]|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">d := DecideZero( r, bas );</span>
-|[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecideZero( d - r, bas );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">n := DecideZero( r, bas );</span>
+|[ d*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecideZero( n - r, bas );</span>
 |[ 0 ]|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := D1_^(4 - 2) * ( D - 2 * a1 );</span>
-|[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s = d;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := D1_^(4 - 2) * ( d - 2 * a1 );</span>
+|[ d*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s = n;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := ( D - 2 * a1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);</span>
-|[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t = d;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t := ( d - 2 * a1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);</span>
+|[ d*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">t = n;</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := ( D - 2 * 1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);</span>
-|[ D*D1_^2-6*D1_^2 ]|
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">w := ( d - 2 * 1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);</span>
+|[ d*D1_^2-6*D1_^2 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DecideZero( w, bas );</span>
-|[ D*D1_^2-6*D1_^2 ]|
+|[ d*D1_^2-6*D1_^2 ]|
 </pre></div>
 
 <p><a id="X78A703B387AA28E2" name="X78A703B387AA28E2"></a></p>
@@ -312,17 +312,17 @@ k1^2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetNumerators( LD, -[ ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ s ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := RingOfLoopDiagram( LD );</span>
-Q[D,s][D1,D2]
+Q[d,s][D1,D2]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibps := MatrixOfIBPRelations( LD );</span>
 &lt;A 2 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibp1 := ibps[1,1];</span>
-|[ -s*a2*D2_-a2*D1*D2_+D-2*a1-a2 ]|
+|[ -s*a2*D2_-a2*D1*D2_+d-2*a1-a2 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( ibp1 ) );</span>
 [ [ |[ -a2 ]|, |[ D1*D2_ ]| ],
   [ |[ -s*a2 ]|, |[ D2_ ]| ],
-  [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ]
+  [ |[ d-2*a1-a2 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ypol := HomalgRing( ibp1 );</span>
-Q[D,s][a1,a2]&lt;D1,D1_,D2,D2_&gt;/( D2*D2_-1, D1*D1_-1 )
+Q[d,s][a1,a2]&lt;D1,D1_,D2,D2_&gt;/( D2*D2_-1, D1*D1_-1 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bas := BasisOfRows( ibps );</span>
 &lt;A non-zero 4 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gen := GeneratorsOfScalelessSectors( LD );</span>
@@ -354,18 +354,18 @@ k1^2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetNumerators( LD, -[ ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ s ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := RingOfLoopDiagram( LD );</span>
-Q[m,D,s][D1,D2]
+Q[m,d,s][D1,D2]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibps := MatrixOfIBPRelations( LD );</span>
 &lt;A 2 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibp1 := ibps[1,1];</span>
-|[ 2*m^2*a1*D1_+m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+D-2*a1-a2 ]|
+|[ 2*m^2*a1*D1_+m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+d-2*a1-a2 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( ibp1 ) );</span>
 [ [ |[ -a2 ]|, |[ D1*D2_ ]| ],
   [ |[ 2*m^2*a1 ]|, |[ D1_ ]| ],
   [ |[ m^2*a2-s*a2 ]|, |[ D2_ ]| ],
-  [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ]
+  [ |[ d-2*a1-a2 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ypol := HomalgRing( ibp1 );</span>
-Q[m,D,s][a1,a2]&lt;D1,D1_,D2,D2_&gt;/( D2*D2_-1, D1*D1_-1 )
+Q[m,d,s][a1,a2]&lt;D1,D1_,D2,D2_&gt;/( D2*D2_-1, D1*D1_-1 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bas := BasisOfRows( ibps );</span>
 &lt;A non-zero 7 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gen := GeneratorsOfScalelessSectors( LD );</span>
@@ -397,18 +397,18 @@ k1^2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetNumerators( LD, -[ ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ s ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := RingOfLoopDiagram( LD );</span>
-Q[m,D,s][D1,D2]
+Q[m,d,s][D1,D2]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibps := MatrixOfIBPRelations( LD );</span>
 &lt;A 2 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibp1 := ibps[1,1];</span>
-|[ -2*m^2*a1*D1_-2*m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+D-2*a1-a2 ]|
+|[ -2*m^2*a1*D1_-2*m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+d-2*a1-a2 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( ibp1 ) );</span>
 [ [ |[ -a2 ]|, |[ D1*D2_ ]| ],
   [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],
   [ |[ -2*m^2*a2-s*a2 ]|, |[ D2_ ]| ],
-  [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ]
+  [ |[ d-2*a1-a2 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ypol := HomalgRing( ibp1 );</span>
-Q[m,D,s][a1,a2]&lt;D1,D1_,D2,D2_&gt;/( D2*D2_-1, D1*D1_-1 )
+Q[m,d,s][a1,a2]&lt;D1,D1_,D2,D2_&gt;/( D2*D2_-1, D1*D1_-1 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bas := BasisOfRows( ibps );</span>
 &lt;A non-zero 6 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gen := GeneratorsOfScalelessSectors( LD );</span>
@@ -445,19 +445,19 @@ D1^2*D2^2
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetNumerators( LD, -[ ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetExtraLorentzInvariants( LD, [ s12, s14 ] );</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">R := RingOfLoopDiagram( LD );</span>
-Q[D,s12,s14][D1,D2,D3,D4]
+Q[d,s12,s14][D1,D2,D3,D4]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibps := MatrixOfIBPRelations( LD );</span>
 &lt;A 4 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ibp1 := ibps[1,1];</span>
-|[ -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_+D-2*a1-a2-a3-a4 ]|
+|[ -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_+d-2*a1-a2-a3-a4 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( ibp1 ) );</span>
 [ [ |[ -a2 ]|, |[ D1*D2_ ]| ],
   [ |[ -a3 ]|, |[ D1*D3_ ]| ],
   [ |[ -a4 ]|, |[ D1*D4_ ]| ],
   [ |[ -s12*a3 ]|, |[ D3_ ]| ],
-  [ |[ D-2*a1-a2-a3-a4 ]|, |[ 1 ]| ] ]
+  [ |[ d-2*a1-a2-a3-a4 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Ypol := HomalgRing( ibp1 );</span>
-Q[D,s12,s14][a1,a2,a3,a4]&lt;D1,D1_,D2,D2_,D3,D3_,D4,D4_&gt;/( D4*D4_-1, D3*D3_-1,\
+Q[d,s12,s14][a1,a2,a3,a4]&lt;D1,D1_,D2,D2_,D3,D3_,D4,D4_&gt;/( D4*D4_-1, D3*D3_-1,\
   D2*D2_-1, D1*D1_-1 )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );</span>
 [ &lt;A 4 x 4 matrix over an external ring&gt;,
@@ -482,42 +482,42 @@ D2,   0,    2*D2*D4,                   -D1*D3-D2*D3,         D2*D3*D4,0
   [ 0, -D1, D1*D4+D2*D4 ],
   [ D2, 0, 2*D2*D4 ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sibp1 := IBPRelation( CertainColumns( S, [ 1 ] ), LD );</span>
-|[ -s14*a2+s14*a4+D*D2-a1*D2-a2*D2-a3*D2-a4*D2-D*D4+a1*D4+a2*D4+a3*D4+a4*D4 ]|
+|[ -s14*a2+s14*a4+d*D2-a1*D2-a2*D2-a3*D2-a4*D2-d*D4+a1*D4+a2*D4+a3*D4+a4*D4 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( Sibp1 ) );</span>
-[ [ |[ D-a1-a2-a3-a4 ]|, |[ D2 ]| ],
-  [ |[ -D+a1+a2+a3+a4 ]|, |[ D4 ]| ],
+[ [ |[ d-a1-a2-a3-a4 ]|, |[ D2 ]| ],
+  [ |[ -d+a1+a2+a3+a4 ]|, |[ D4 ]| ],
   [ |[ -s14*a2+s14*a4 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sibp1 := IBPRelation( CertainColumns( S, [ 1 ] ), LD, [ 1, 1, 1, 1 ] );</span>
-|[ D*D2-D*D4-4*D2+4*D4 ]|
+|[ d*D2-d*D4-4*D2+4*D4 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( sibp1 ) );</span>
-[ [ |[ D-4 ]|, |[ D2 ]| ],
-  [ |[ -D+4 ]|, |[ D4 ]| ] ]
+[ [ |[ d-4 ]|, |[ D2 ]| ],
+  [ |[ -d+4 ]|, |[ D4 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sibp2 := IBPRelation( CertainColumns( S, [ 2 ] ), LD );</span>
-|[ -s12*a1+s12*a3+D*D1-a1*D1-a2*D1-a3*D1-a4*D1-D*D3+a1*D3+a2*D3+a3*D3+a4*D3 ]|
+|[ -s12*a1+s12*a3+d*D1-a1*D1-a2*D1-a3*D1-a4*D1-d*D3+a1*D3+a2*D3+a3*D3+a4*D3 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( Sibp2 ) );</span>
-[ [ |[ D-a1-a2-a3-a4 ]|, |[ D1 ]| ],
-  [ |[ -D+a1+a2+a3+a4 ]|, |[ D3 ]| ],
+[ [ |[ d-a1-a2-a3-a4 ]|, |[ D1 ]| ],
+  [ |[ -d+a1+a2+a3+a4 ]|, |[ D3 ]| ],
   [ |[ -s12*a1+s12*a3 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sibp2 := IBPRelation( CertainColumns( S, [ 2 ] ), LD, [ 1, 1, 1, 1 ] );</span>
-|[ D*D1-D*D3-4*D1+4*D3 ]|
+|[ d*D1-d*D3-4*D1+4*D3 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( sibp2 ) );</span>
-[ [ |[ D-4 ]|, |[ D1 ]| ],
-  [ |[ -D+4 ]|, |[ D3 ]| ] ]
+[ [ |[ d-4 ]|, |[ D1 ]| ],
+  [ |[ -d+4 ]|, |[ D3 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sibp3 := IBPRelation( CertainColumns( S, [ 3 ] ), LD );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( Sibp3 ) );</span>
-[ [ |[ 2*D-2*a1-2*a2-2*a3-2*a4+2 ]|, |[ D3*D4 ]| ],
-  [ |[ -2*D+2*a1+2*a2+2*a3+2*a4-2 ]|, |[ D4^2 ]| ],
+[ [ |[ 2*d-2*a1-2*a2-2*a3-2*a4+2 ]|, |[ D3*D4 ]| ],
+  [ |[ -2*d+2*a1+2*a2+2*a3+2*a4-2 ]|, |[ D4^2 ]| ],
   [ |[ -s14*a4+s14 ]|, |[ D1 ]| ],
   [ |[ -s12*a4+s12 ]|, |[ D2 ]| ],
   [ |[ -s14*a4+s14 ]|, |[ D3 ]| ],
-  [ |[ D*s12-2*s12*a2-2*s14*a2-2*s12*a3-s12*a4+2*s14*a4+s12-2*s14 ]|, |[ D4 ]| ],
+  [ |[ d*s12-2*s12*a2-2*s14*a2-2*s12*a3-s12*a4+2*s14*a4+s12-2*s14 ]|, |[ D4 ]| ],
   [ |[ -s12*s14*a4+s12*s14 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sibp3 := IBPRelation( CertainColumns( S, [ 3 ] ), LD, [ 1, 1, 1, 1 ] );</span>
-|[ D*s12*D4+2*D*D3*D4-2*D*D4^2-4*s12*D4-2*s14*D4-6*D3*D4+6*D4^2 ]|
+|[ d*s12*D4+2*d*D3*D4-2*d*D4^2-4*s12*D4-2*s14*D4-6*D3*D4+6*D4^2 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( sibp3 ) );</span>
-[ [ |[ 2*D-6 ]|, |[ D3*D4 ]| ],
-  [ |[ -2*D+6 ]|, |[ D4^2 ]| ],
-  [ |[ D*s12-4*s12-2*s14 ]|, |[ D4 ]| ] ]
+[ [ |[ 2*d-6 ]|, |[ D3*D4 ]| ],
+  [ |[ -2*d+6 ]|, |[ D4^2 ]| ],
+  [ |[ d*s12-4*s12-2*s14 ]|, |[ D4 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">bas := BasisOfIBPRelations( LD );</span>
 &lt;A non-zero 28 x 1 matrix over a residue class ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sbas := BasisOfSpecialIBPRelations( LD );</span>
@@ -602,70 +602,70 @@ D1,0, 0, 0, 0,
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 4 ] ) ) );</span>
 [ 0, 0, 0, 0, D4*D5, 0 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sibp1 := IBPRelation( CertainColumns( S, [ 1 ] ), LD );</span>
-|[ -s*a1+s*a2-s*a3+s*a4+D*D1-a1*D1-a2*D1-a5*D1-D*D2+a1*D2+a2*D2+a5*D2\
-   +D*D3-a3*D3-a4*D3-a5*D3-D*D4+a3*D4+a4*D4+a5*D4 ]|
+|[ -s*a1+s*a2-s*a3+s*a4+d*D1-a1*D1-a2*D1-a5*D1-d*D2+a1*D2+a2*D2+a5*D2\
+   +d*D3-a3*D3-a4*D3-a5*D3-d*D4+a3*D4+a4*D4+a5*D4 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( Sibp1 ) );</span>
-[ [ |[ D-a1-a2-a5 ]|, |[ D1 ]| ],
-  [ |[ -D+a1+a2+a5 ]|, |[ D2 ]| ],
-  [ |[ D-a3-a4-a5 ]|, |[ D3 ]| ],
-  [ |[ -D+a3+a4+a5 ]|, |[ D4 ]| ],
+[ [ |[ d-a1-a2-a5 ]|, |[ D1 ]| ],
+  [ |[ -d+a1+a2+a5 ]|, |[ D2 ]| ],
+  [ |[ d-a3-a4-a5 ]|, |[ D3 ]| ],
+  [ |[ -d+a3+a4+a5 ]|, |[ D4 ]| ],
   [ |[ -s*a1+s*a2-s*a3+s*a4 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sibp1 := IBPRelation( CertainColumns( S, [ 1 ] ), LD, [ 1, 1, 1, 1, 1 ] );</span>
-|[ D*D1-D*D2+D*D3-D*D4-3*D1+3*D2-3*D3+3*D4 ]|
+|[ d*D1-d*D2+d*D3-d*D4-3*D1+3*D2-3*D3+3*D4 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( sibp1 ) );</span>
-[ [ |[ D-3 ]|, |[ D1 ]| ],
-  [ |[ -D+3 ]|, |[ D2 ]| ],
-  [ |[ D-3 ]|, |[ D3 ]| ],
-  [ |[ -D+3 ]|, |[ D4 ]| ] ]
+[ [ |[ d-3 ]|, |[ D1 ]| ],
+  [ |[ -d+3 ]|, |[ D2 ]| ],
+  [ |[ d-3 ]|, |[ D3 ]| ],
+  [ |[ -d+3 ]|, |[ D4 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sibp2 := IBPRelation( CertainColumns( S, [ 2 ] ), LD );</span>
-|[ D*s-2*s*a2-2*s*a4-2*s*a5+D*D1-2*a2*D1-2*a4*D1-2*a5*D1\
-   +3*D*D2-4*a1*D2-2*a2*D2-2*a3*D2-4*a5*D2+2*D*D4-2*a3*D4-2*a4*D4-2*a5*D4\
-   -2*D*D5+2*a3*D5+2*a4*D5+2*a5*D5+2*s+2*D1+2*D2 ]|
+|[ d*s-2*s*a2-2*s*a4-2*s*a5+d*D1-2*a2*D1-2*a4*D1-2*a5*D1\
+   +3*d*D2-4*a1*D2-2*a2*D2-2*a3*D2-4*a5*D2+2*d*D4-2*a3*D4-2*a4*D4-2*a5*D4\
+   -2*d*D5+2*a3*D5+2*a4*D5+2*a5*D5+2*s+2*D1+2*D2 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( Sibp2 ) );</span>
-[ [ |[ D-2*a2-2*a4-2*a5+2 ]|, |[ D1 ]| ],
-  [ |[ 3*D-4*a1-2*a2-2*a3-4*a5+2 ]|, |[ D2 ]| ],
-  [ |[ 2*D-2*a3-2*a4-2*a5 ]|, |[ D4 ]| ],
-  [ |[ -2*D+2*a3+2*a4+2*a5 ]|, |[ D5 ]| ],
-  [ |[ D*s-2*s*a2-2*s*a4-2*s*a5+2*s ]|, |[ 1 ]| ] ]
+[ [ |[ d-2*a2-2*a4-2*a5+2 ]|, |[ D1 ]| ],
+  [ |[ 3*d-4*a1-2*a2-2*a3-4*a5+2 ]|, |[ D2 ]| ],
+  [ |[ 2*d-2*a3-2*a4-2*a5 ]|, |[ D4 ]| ],
+  [ |[ -2*d+2*a3+2*a4+2*a5 ]|, |[ D5 ]| ],
+  [ |[ d*s-2*s*a2-2*s*a4-2*s*a5+2*s ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sibp2 := IBPRelation( CertainColumns( S, [ 2 ] ), LD, [ 1, 1, 1, 1, 1 ] );</span>
-|[ D*s+D*D1+3*D*D2+2*D*D4-2*D*D5-4*s-4*D1-10*D2-6*D4+6*D5 ]|
+|[ d*s+d*D1+3*d*D2+2*d*D4-2*d*D5-4*s-4*D1-10*D2-6*D4+6*D5 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( sibp2 ) );</span>
-[ [ |[ D-4 ]|, |[ D1 ]| ],
-  [ |[ 3*D-10 ]|, |[ D2 ]| ],
-  [ |[ 2*D-6 ]|, |[ D4 ]| ],
-  [ |[ -2*D+6 ]|, |[ D5 ]| ],
-  [ |[ D*s-4*s ]|, |[ 1 ]| ] ]
+[ [ |[ d-4 ]|, |[ D1 ]| ],
+  [ |[ 3*d-10 ]|, |[ D2 ]| ],
+  [ |[ 2*d-6 ]|, |[ D4 ]| ],
+  [ |[ -2*d+6 ]|, |[ D5 ]| ],
+  [ |[ d*s-4*s ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sibp3 := IBPRelation( CertainColumns( S, [ 3 ] ), LD );</span>
-|[ D*s-2*s*a2-2*s*a4-2*s*a5+2*D*D2-2*a1*D2-2*a2*D2-2*a5*D2\
-   +D*D3-2*a2*D3-2*a4*D3-2*a5*D3+3*D*D4-2*a1*D4-4*a3*D4-2*a4*D4-4*a5*D4\
-   -2*D*D5+2*a1*D5+2*a2*D5+2*a5*D5+2*s+2*D3+2*D4 ]|
+|[ d*s-2*s*a2-2*s*a4-2*s*a5+2*d*D2-2*a1*D2-2*a2*D2-2*a5*D2\
+   +d*D3-2*a2*D3-2*a4*D3-2*a5*D3+3*d*D4-2*a1*D4-4*a3*D4-2*a4*D4-4*a5*D4\
+   -2*d*D5+2*a1*D5+2*a2*D5+2*a5*D5+2*s+2*D3+2*D4 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( Sibp3 ) );</span>
-[ [ |[ 2*D-2*a1-2*a2-2*a5 ]|, |[ D2 ]| ],
-  [ |[ D-2*a2-2*a4-2*a5+2 ]|, |[ D3 ]| ],
-  [ |[ 3*D-2*a1-4*a3-2*a4-4*a5+2 ]|, |[ D4 ]| ],
-  [ |[ -2*D+2*a1+2*a2+2*a5 ]|, |[ D5 ]| ],
-  [ |[ D*s-2*s*a2-2*s*a4-2*s*a5+2*s ]|, |[ 1 ]| ] ]
+[ [ |[ 2*d-2*a1-2*a2-2*a5 ]|, |[ D2 ]| ],
+  [ |[ d-2*a2-2*a4-2*a5+2 ]|, |[ D3 ]| ],
+  [ |[ 3*d-2*a1-4*a3-2*a4-4*a5+2 ]|, |[ D4 ]| ],
+  [ |[ -2*d+2*a1+2*a2+2*a5 ]|, |[ D5 ]| ],
+  [ |[ d*s-2*s*a2-2*s*a4-2*s*a5+2*s ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sibp3 := IBPRelation( CertainColumns( S, [ 3 ] ), LD, [ 1, 1, 1, 1, 1 ] );</span>
-|[ D*s+2*D*D2+D*D3+3*D*D4-2*D*D5-4*s-6*D2-4*D3-10*D4+6*D5 ]|
+|[ d*s+2*d*D2+d*D3+3*d*D4-2*d*D5-4*s-6*D2-4*D3-10*D4+6*D5 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( sibp3 ) );</span>
-[ [ |[ 2*D-6 ]|, |[ D2 ]| ],
-  [ |[ D-4 ]|, |[ D3 ]| ],
-  [ |[ 3*D-10 ]|, |[ D4 ]| ],
-  [ |[ -2*D+6 ]|, |[ D5 ]| ],
-  [ |[ D*s-4*s ]|, |[ 1 ]| ] ]
+[ [ |[ 2*d-6 ]|, |[ D2 ]| ],
+  [ |[ d-4 ]|, |[ D3 ]| ],
+  [ |[ 3*d-10 ]|, |[ D4 ]| ],
+  [ |[ -2*d+6 ]|, |[ D5 ]| ],
+  [ |[ d*s-4*s ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sibp4 := IBPRelation( CertainColumns( S, [ 4 ] ), LD );</span>
-|[ a5*D1*D4-a5*D3*D4-s*a4*D5-a4*D3*D5+D*D4*D5-2*a3*D4*D5-a4*D4*D5-a5*D4*D5\
+|[ a5*D1*D4-a5*D3*D4-s*a4*D5-a4*D3*D5+d*D4*D5-2*a3*D4*D5-a4*D4*D5-a5*D4*D5\
    -D1*D4+D3*D4+s*D5+D3*D5+2*D4*D5 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( Sibp4 ) );</span>
 [ [ |[ a5-1 ]|, |[ D1*D4 ]| ],
   [ |[ -a5+1 ]|, |[ D3*D4 ]| ],
   [ |[ -a4+1 ]|, |[ D3*D5 ]| ],
-  [ |[ D-2*a3-a4-a5+2 ]|, |[ D4*D5 ]| ],
+  [ |[ d-2*a3-a4-a5+2 ]|, |[ D4*D5 ]| ],
   [ |[ -s*a4+s ]|, |[ D5 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sibp4 := IBPRelation( CertainColumns( S, [ 4 ] ), LD, [ 1, 1, 1, 1, 1 ] );</span>
-|[ D*D4*D5-2*D4*D5 ]|
+|[ d*D4*D5-2*D4*D5 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( sibp4 ) );</span>
-[ [ |[ D-2 ]|, |[ D4*D5 ]| ] ]
+[ [ |[ d-2 ]|, |[ D4*D5 ]| ] ]
 </pre></div>
 
 
@@ -851,50 +851,50 @@ D5-1,    D2-1,     (-2*cos),-2,      0,        0,       0,       0,
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( Sibp1 ) );</span>
 [ [ |[ -1/2*s12*a8-1/2*s14*a8 ]|, |[ D1*N8_ ]| ],
   [ |[ -1/2*s12*a9+1/2*s14*a9 ]|, |[ D4*N9_ ]| ],
-  [ |[ -D+a1+a2+a3+a7+a8 ]|, |[ D2 ]| ],
-  [ |[ D-a1-a2-a3-a7-a8 ]|, |[ D3 ]| ],
-  [ |[ -2*D+2*a4+2*a5+2*a6+2*a7+2*a9 ]|, |[ D4 ]| ],
-  [ |[ D-a4-a5-a6-a7-a9 ]|, |[ D5 ]| ],
-  [ |[ D-a4-a5-a6-a7-a9 ]|, |[ D6 ]| ],
-  [ |[ 2*D-2*a1-2*a2-2*a3-2*a7-2*a8 ]|, |[ N8 ]| ],
-  [ |[ -2*D+2*a4+2*a5+2*a6+2*a7+2*a9 ]|, |[ N9 ]| ],
+  [ |[ -d+a1+a2+a3+a7+a8 ]|, |[ D2 ]| ],
+  [ |[ d-a1-a2-a3-a7-a8 ]|, |[ D3 ]| ],
+  [ |[ -2*d+2*a4+2*a5+2*a6+2*a7+2*a9 ]|, |[ D4 ]| ],
+  [ |[ d-a4-a5-a6-a7-a9 ]|, |[ D5 ]| ],
+  [ |[ d-a4-a5-a6-a7-a9 ]|, |[ D6 ]| ],
+  [ |[ 2*d-2*a1-2*a2-2*a3-2*a7-2*a8 ]|, |[ N8 ]| ],
+  [ |[ -2*d+2*a4+2*a5+2*a6+2*a7+2*a9 ]|, |[ N9 ]| ],
   [ |[ s12*a1+s14*a2-s12*a3+s12*a4-s14*a5-s12*a6-s14*a8+s14*a9 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sibp1 := IBPRelation( CertainColumns( S, [ 1 ] ), LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );</span>
-|[ -1/2*s12*D1*N8_-1/2*s14*D1*N8_-1/2*s12*D4*N9_+1/2*s14*D4*N9_-D*D2+D*D3\
-   -2*D*D4+D*D5+D*D6+2*D*N8-2*D*N9+5*D2-5*D3+10*D4-5*D5-5*D6-10*N8+10*N9 ]|
+|[ -1/2*s12*D1*N8_-1/2*s14*D1*N8_-1/2*s12*D4*N9_+1/2*s14*D4*N9_-d*D2+d*D3\
+   -2*d*D4+d*D5+d*D6+2*d*N8-2*d*N9+5*D2-5*D3+10*D4-5*D5-5*D6-10*N8+10*N9 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( sibp1 ) );</span>
 [ [ |[ -1/2*s12-1/2*s14 ]|, |[ D1*N8_ ]| ],
   [ |[ -1/2*s12+1/2*s14 ]|, |[ D4*N9_ ]| ],
-  [ |[ -D+5 ]|, |[ D2 ]| ],
-  [ |[ D-5 ]|, |[ D3 ]| ],
-  [ |[ -2*D+10 ]|, |[ D4 ]| ],
-  [ |[ D-5 ]|, |[ D5 ]| ],
-  [ |[ D-5 ]|, |[ D6 ]| ],
-  [ |[ 2*D-10 ]|, |[ N8 ]| ],
-  [ |[ -2*D+10 ]|, |[ N9 ]| ] ]
+  [ |[ -d+5 ]|, |[ D2 ]| ],
+  [ |[ d-5 ]|, |[ D3 ]| ],
+  [ |[ -2*d+10 ]|, |[ D4 ]| ],
+  [ |[ d-5 ]|, |[ D5 ]| ],
+  [ |[ d-5 ]|, |[ D6 ]| ],
+  [ |[ 2*d-10 ]|, |[ N8 ]| ],
+  [ |[ -2*d+10 ]|, |[ N9 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sibp2 := IBPRelation( CertainColumns( S, [ 2 ] ), LD );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( Sibp2 ) );</span>
 [ [ |[ -1/2*s14*a8 ]|, |[ D1*N8_ ]| ],
   [ |[ 1/2*s14*a9 ]|, |[ D4*N9_ ]| ],
-  [ |[ D-a1-a2-a3-a7-a8 ]|, |[ D1 ]| ],
-  [ |[ -D+a1+a2+a3+a7+a8 ]|, |[ D2 ]| ],
-  [ |[ -D+a4+a5+a6+a7+a9 ]|, |[ D4 ]| ],
-  [ |[ D-a4-a5-a6-a7-a9 ]|, |[ D5 ]| ],
-  [ |[ 2*D-2*a1-2*a2-2*a3-2*a7-2*a8 ]|, |[ N8 ]| ],
-  [ |[ -2*D+2*a4+2*a5+2*a6+2*a7+2*a9 ]|, |[ N9 ]| ],
+  [ |[ d-a1-a2-a3-a7-a8 ]|, |[ D1 ]| ],
+  [ |[ -d+a1+a2+a3+a7+a8 ]|, |[ D2 ]| ],
+  [ |[ -d+a4+a5+a6+a7+a9 ]|, |[ D4 ]| ],
+  [ |[ d-a4-a5-a6-a7-a9 ]|, |[ D5 ]| ],
+  [ |[ 2*d-2*a1-2*a2-2*a3-2*a7-2*a8 ]|, |[ N8 ]| ],
+  [ |[ -2*d+2*a4+2*a5+2*a6+2*a7+2*a9 ]|, |[ N9 ]| ],
   [ |[ s14*a2-s14*a5-s14*a8+s14*a9 ]|, |[ 1 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sibp2 := IBPRelation( CertainColumns( S, [ 2 ] ), LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );</span>
-|[ -1/2*s14*D1*N8_+1/2*s14*D4*N9_+D*D1-D*D2-D*D4+D*D5\
-   +2*D*N8-2*D*N9-5*D1+5*D2+5*D4-5*D5-10*N8+10*N9 ]|
+|[ -1/2*s14*D1*N8_+1/2*s14*D4*N9_+d*D1-d*D2-d*D4+d*D5\
+   +2*d*N8-2*d*N9-5*D1+5*D2+5*D4-5*D5-10*N8+10*N9 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( sibp2 ) );</span>
 [ [ |[ -1/2*s14 ]|, |[ D1*N8_ ]| ],
   [ |[ 1/2*s14 ]|, |[ D4*N9_ ]| ],
-  [ |[ D-5 ]|, |[ D1 ]| ],
-  [ |[ -D+5 ]|, |[ D2 ]| ],
-  [ |[ -D+5 ]|, |[ D4 ]| ],
-  [ |[ D-5 ]|, |[ D5 ]| ],
-  [ |[ 2*D-10 ]|, |[ N8 ]| ],
-  [ |[ -2*D+10 ]|, |[ N9 ]| ] ]
+  [ |[ d-5 ]|, |[ D1 ]| ],
+  [ |[ -d+5 ]|, |[ D2 ]| ],
+  [ |[ -d+5 ]|, |[ D4 ]| ],
+  [ |[ d-5 ]|, |[ D5 ]| ],
+  [ |[ 2*d-10 ]|, |[ N8 ]| ],
+  [ |[ -2*d+10 ]|, |[ N9 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sibp3 := IBPRelation( CertainColumns( S, [ 3 ] ), LD );;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( Sibp3 ) );</span>
 [ [ |[ 1/2*s12*a9+1/2*s14*a9 ]|, |[ D4*D7*N9_ ]| ],
@@ -902,21 +902,21 @@ D5-1,    D2-1,     (-2*cos),-2,      0,        0,       0,       0,
   [ |[ a7-1 ]|, |[ D3*D4 ]| ],
   [ |[ a7-1 ]|, |[ D2*D5 ]| ],
   [ |[ -a7+1 ]|, |[ D1*D6 ]| ],
-  [ |[ D-a4-a5-a6-a7-a9+1 ]|, |[ D5*D7 ]| ],
-  [ |[ -D+a4+a5+a6+a7+a9-1 ]|, |[ D6*D7 ]| ],
+  [ |[ d-a4-a5-a6-a7-a9+1 ]|, |[ D5*D7 ]| ],
+  [ |[ -d+a4+a5+a6+a7+a9-1 ]|, |[ D6*D7 ]| ],
   [ |[ -2*a7+2 ]|, |[ D4*N8 ]| ],
   [ |[ -2*a7+2 ]|, |[ D1*N9 ]| ],
-  [ |[ -2*D+2*a4+2*a5+2*a6+2*a7+2*a9-2 ]|, |[ D7*N9 ]| ],
+  [ |[ -2*d+2*a4+2*a5+2*a6+2*a7+2*a9-2 ]|, |[ D7*N9 ]| ],
   [ |[ -4*a7+4 ]|, |[ N8*N9 ]| ],
   [ |[ -s12*a4-s14*a5+s12*a6+s14*a9 ]|, |[ D7 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sibp3 := IBPRelation( CertainColumns( S, [ 3 ] ), LD, [ 1, 1, 1, 1, 1, 1, 1, 1, 1 ] );</span>
-|[ 1/2*s12*D4*D7*N9_+1/2*s14*D4*D7*N9_+D*D5*D7-D*D6*D7\
-   -2*D*D7*N9-4*D5*D7+4*D6*D7+8*D7*N9 ]|
+|[ 1/2*s12*D4*D7*N9_+1/2*s14*D4*D7*N9_+d*D5*D7-d*D6*D7\
+   -2*d*D7*N9-4*D5*D7+4*D6*D7+8*D7*N9 ]|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ViewList( DecomposeInMonomials( sibp3 ) );</span>
 [ [ |[ 1/2*s12+1/2*s14 ]|, |[ D4*D7*N9_ ]| ],
-  [ |[ D-4 ]|, |[ D5*D7 ]| ],
-  [ |[ -D+4 ]|, |[ D6*D7 ]| ],
-  [ |[ -2*D+8 ]|, |[ D7*N9 ]| ] ]
+  [ |[ d-4 ]|, |[ D5*D7 ]| ],
+  [ |[ -d+4 ]|, |[ D6*D7 ]| ],
+  [ |[ -2*d+8 ]|, |[ D7*N9 ]| ] ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">gen := GeneratorsOfScalelessSectors( LD );</span>
 &lt;A 1 x 10 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EntriesOfHomalgMatrix( gen );</span>
