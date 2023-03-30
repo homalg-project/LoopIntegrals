@@ -23,4 +23,7 @@ shasum -a 256 -c codecov.SHA256SUM
 
 # execute
 chmod +x codecov
-./codecov -Z -v -s ../ || (sleep 60; ./codecov -Z -v -s ../ || (sleep 60; ./codecov -Z -v -s ../))
+while ! ./codecov -Z -v -s ../; do
+    echo "Codecov upload failed, retrying in 60s"
+    sleep 60
+done
