@@ -1,5 +1,5 @@
 name: LoopIntegrals
-version: "2023.03-02"
+version: "2023.03-03"
 license: "GPL-2.0-or-later"
 date: 2023-03-30
 description: |
@@ -47,11 +47,11 @@ packageinfo: https://homalg-project.github.io/LoopIntegrals/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2023.03-02/LoopIntegrals-2023.03-02.tar.gz
+      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2023.03-03/LoopIntegrals-2023.03-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2023.03-02/LoopIntegrals-2023.03-02.zip
+      url: https://github.com/homalg-project/LoopIntegrals/releases/download/v2023.03-03/LoopIntegrals-2023.03-03.zip
 
-pdf: https://github.com/homalg-project/LoopIntegrals/releases/download/v2023.03-02/LoopIntegrals-2023.03-02-manual.pdf
+pdf: https://github.com/homalg-project/LoopIntegrals/releases/download/v2023.03-03/LoopIntegrals-2023.03-03-manual.pdf
 
 abstract: |
 
@@ -64,7 +64,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BBHP30</span>]   <b class='BibAuthor'>Barakat, M., Brüser, R., Huber, T. and Piclum, J.</b>,
      <i class='BibTitle'>LoopIntegrals, Compute master integrals using commutative and noncommutative methods from computational algebraic geometry,
-             Version 2023.03-02</i>
+             Version 2023.03-03</i>
      (<span class='BibYear'>3-30</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/LoopIntegrals">https://homalg-project.github.io/pkg/LoopIntegrals</a></span>.
@@ -72,12 +72,12 @@ citeas: |
     
 
 bibtex: |
-    @misc{ LoopIntegrals2023.03-02,
+    @misc{ LoopIntegrals2023.03-03,
       author =           {Barakat,  M.  and  Br{\"u}ser,  R.  and  Huber, T. and
                           Piclum, J.},
       title =            {{LoopIntegrals},   Compute   master   integrals  using
                           commutative    and    noncommutative    methods   from
-                          computational algebraic geometry, {V}ersion 2023.03-02},
+                          computational algebraic geometry, {V}ersion 2023.03-03},
       month =            {3-},
       year =             {3-30},
       note =             {GAP package},
