@@ -16,18 +16,18 @@ SetPropagators( LD, -[ l1^2 + m^2, ( l1 + k1 )^2 + m^2 ] );
 SetNumerators( LD, -[ ] );
 SetExtraLorentzInvariants( LD, [ s ] );
 R := RingOfLoopDiagram( LD );
-#! Q[m,D,s][D1,D2]
+#! Q[m,d,s][D1,D2]
 ibps := MatrixOfIBPRelations( LD );
 #! <A 2 x 1 matrix over a residue class ring>
 ibp1 := ibps[1,1];
-#! |[ -2*m^2*a1*D1_-2*m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+D-2*a1-a2 ]|
+#! |[ -2*m^2*a1*D1_-2*m^2*a2*D2_-s*a2*D2_-a2*D1*D2_+d-2*a1-a2 ]|
 ViewList( DecomposeInMonomials( ibp1 ) );
 #! [ [ |[ -a2 ]|, |[ D1*D2_ ]| ],
 #!   [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],
 #!   [ |[ -2*m^2*a2-s*a2 ]|, |[ D2_ ]| ],
-#!   [ |[ D-2*a1-a2 ]|, |[ 1 ]| ] ]
+#!   [ |[ d-2*a1-a2 ]|, |[ 1 ]| ] ]
 Ypol := HomalgRing( ibp1 );
-#! Q[m,D,s][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )
+#! Q[m,d,s][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )
 bas := BasisOfRows( ibps );
 #! <A non-zero 6 x 1 matrix over a residue class ring>
 gen := GeneratorsOfScalelessSectors( LD );

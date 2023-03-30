@@ -12,22 +12,22 @@ SetPropagators( LD, [ k^2 - m^2 ] );
 SetNumerators( LD, [ ] );
 SetExtraLorentzInvariants( LD, [ ] );
 R := RingOfLoopDiagram( LD );
-#! Q[m,D][D1]
+#! Q[m,d][D1]
 ibps := MatrixOfIBPRelations( LD );
 #! <A 1 x 1 matrix over a residue class ring>
 ibp := ibps[1,1];
-#! |[ -2*m^2*a1*D1_+D-2*a1 ]|
+#! |[ -2*m^2*a1*D1_+d-2*a1 ]|
 ViewList( DecomposeInMonomials( ibp ) );
 #! [ [ |[ -2*m^2*a1 ]|, |[ D1_ ]| ],
-#!   [ |[ D-2*a1 ]|, |[ 1 ]| ] ]
+#!   [ |[ d-2*a1 ]|, |[ 1 ]| ] ]
 Ypol := HomalgRing( ibp );
-#! Q[m,D][a1]<D1,D1_>/( D1*D1_-1 )
+#! Q[m,d][a1]<D1,D1_>/( D1*D1_-1 )
 ibpws := MatrixOfIBPRelationsInWeylAlgebra( LD );
 #! <A 1 x 1 matrix over an external ring>
 ibpw := MatElm( ibpws, 1, 1 );
-#! -2*m^2*A1+D-2*D1*A1-2
+#! -2*m^2*A1+d-2*D1*A1-2
 W := HomalgRing( ibpw );
-#! Q[m,D][D1]<A1>
+#! Q[m,d][D1]<A1>
 E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <A 1 x 1 matrix over an external ring>,
 #!   <A 1 x 1 matrix over an external ring> ]
@@ -40,9 +40,9 @@ S := SyzygiesOfColumns( E12 );
 Display( S );
 #! D1
 Sibp := IBPRelation( CertainColumns( S, [ 1 ] ), LD );
-#! |[ -2*m^2*a1+2*m^2+D*D1-2*a1*D1+2*D1 ]|
+#! |[ -2*m^2*a1+2*m^2+d*D1-2*a1*D1+2*D1 ]|
 ViewList( DecomposeInMonomials( Sibp ) );
-#! [ [ |[ D-2*a1+2 ]|, |[ D1 ]| ],
+#! [ [ |[ d-2*a1+2 ]|, |[ D1 ]| ],
 #!   [ |[ -2*m^2*a1+2*m^2 ]|, |[ 1 ]| ] ]
 Sibps := MatrixOfSpecialIBPRelations( LD );
 #! <A 1 x 1 matrix over a residue class ring>
@@ -69,23 +69,23 @@ Sbas := BasisOfSpecialIBPRelations( LD );
 Sbas = bas;
 #! true
 ExportVariables( Ypol );
-#! [ |[ m ]|, |[ D ]|, |[ a1 ]|, |[ D1 ]|, |[ D1_ ]| ]
+#! [ |[ m ]|, |[ d ]|, |[ a1 ]|, |[ D1 ]|, |[ D1_ ]| ]
 r := 2 * m^2 * ( a1 + 4 - 2 ) * D1_^(4-1);
 #! |[ 2*m^2*a1*D1_^3+4*m^2*D1_^3 ]|
-d := DecideZero( r, bas );
-#! |[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
-DecideZero( d - r, bas );
+n := DecideZero( r, bas );
+#! |[ d*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
+DecideZero( n - r, bas );
 #! |[ 0 ]|
-s := D1_^(4 - 2) * ( D - 2 * a1 );
-#! |[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
-s = d;
+s := D1_^(4 - 2) * ( d - 2 * a1 );
+#! |[ d*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
+s = n;
 #! true
-t := ( D - 2 * a1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);
-#! |[ D*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
-t = d;
+t := ( d - 2 * a1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);
+#! |[ d*D1_^2-2*a1*D1_^2-4*D1_^2 ]|
+t = n;
 #! true
-w := ( D - 2 * 1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);
-#! |[ D*D1_^2-6*D1_^2 ]|
+w := ( d - 2 * 1 - 2 * ( 4 - 2 ) ) * D1_^(4-2);
+#! |[ d*D1_^2-6*D1_^2 ]|
 DecideZero( w, bas );
-#! |[ D*D1_^2-6*D1_^2 ]|
+#! |[ d*D1_^2-6*D1_^2 ]|
 #! @EndExample
