@@ -15,6 +15,9 @@ This package is an ongoing work to compute master integrals using commutative an
 @Subsection 1 Loop bubble
 @InsertChunk 1LoopBubble
 
+@Subsection 1 Loop massive on-shell
+@InsertChunk 1LoopMassiveOnShell
+
 @Subsection 1 Loop massive bubble
 @InsertChunk 1LoopMassiveBubble
 
