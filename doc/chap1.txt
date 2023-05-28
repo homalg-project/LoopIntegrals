@@ -173,7 +173,56 @@
   [4X[32X[104X
   
   
-  [1X1.2-4 [33X[0;0Y1 Loop massive bubble[133X[101X
+  [1X1.2-4 [33X[0;0Y1 Loop massive on-shell[133X[101X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLD := LoopDiagram( "k", "q" : masses := "m" );[127X[104X
+    [4X[28X<A loop diagram with loop momenta [ k ] & external momenta [ q ] &[128X[104X
+    [4X[28X masses [ m ]>[128X[104X
+    [4X[25Xgap>[125X [27Xrel := [ q^2 - m^2 ];[127X[104X
+    [4X[28X[ q^2+(-m^2) ][128X[104X
+    [4X[25Xgap>[125X [27XSetRelationsOfExternalMomenta( LD, rel );[127X[104X
+    [4X[25Xgap>[125X [27XSetIndependentLorentzInvariants( LD, [  ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetPropagators( LD, -[ k^2, k^2 + 2*q*k ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetNumerators( LD, -[ ] );[127X[104X
+    [4X[25Xgap>[125X [27XSetExtraLorentzInvariants( LD, [ ] );[127X[104X
+    [4X[25Xgap>[125X [27XR := RingOfLoopDiagram( LD );[127X[104X
+    [4X[28XQ[m,d][D1,D2][128X[104X
+    [4X[25Xgap>[125X [27Xibps := MatrixOfIBPRelations( LD );[127X[104X
+    [4X[28X<A 2 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( ibps );[127X[104X
+    [4X[28X-a2*D1*D2_+d-2*a1-a2,[128X[104X
+    [4X[28X2*m^2*a2*D2_-a1*D1_*D2+a2*D1*D2_+a1-a2[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xmodulo [ D2*D2_-1, D1*D1_-1 ][128X[104X
+    [4X[25Xgap>[125X [27Xibp1 := ibps[1,1];[127X[104X
+    [4X[28X|[ -a2*D1*D2_+d-2*a1-a2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp1 ) );[127X[104X
+    [4X[28X[ [ |[ -a2 ]|, |[ D1*D2_ ]| ],[128X[104X
+    [4X[28X  [ |[ d-2*a1-a2 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xibp2 := ibps[2,1];[127X[104X
+    [4X[28X|[ 2*m^2*a2*D2_-a1*D1_*D2+a2*D1*D2_+a1-a2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp2 ) );[127X[104X
+    [4X[28X[ [ |[ -a1 ]|, |[ D1_*D2 ]| ],[128X[104X
+    [4X[28X  [ |[ a2 ]|, |[ D1*D2_ ]| ],[128X[104X
+    [4X[28X  [ |[ 2*m^2*a2 ]|, |[ D2_ ]| ],[128X[104X
+    [4X[28X  [ |[ a1-a2 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27Xibp2_red := DecideZero( ibp2, ibps{[ 1 ]} );[127X[104X
+    [4X[28X|[ 2*m^2*a2*D2_-a1*D1_*D2+d-a1-2*a2 ]|[128X[104X
+    [4X[25Xgap>[125X [27XViewList( DecomposeInMonomials( ibp2_red ) );[127X[104X
+    [4X[28X[ [ |[ -a1 ]|, |[ D1_*D2 ]| ],[128X[104X
+    [4X[28X  [ |[ 2*m^2*a2 ]|, |[ D2_ ]| ],[128X[104X
+    [4X[28X  [ |[ d-a1-2*a2 ]|, |[ 1 ]| ] ][128X[104X
+    [4X[25Xgap>[125X [27XYpol := HomalgRing( ibp1 );[127X[104X
+    [4X[28XQ[m,d][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )[128X[104X
+    [4X[25Xgap>[125X [27Xgen := GeneratorsOfScalelessSectors( LD );[127X[104X
+    [4X[28X<A 1 x 1 matrix over an external ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( gen );[127X[104X
+    [4X[28XD2[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X1.2-5 [33X[0;0Y1 Loop massive bubble[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1", "k1" : masses := "m" );[127X[104X
@@ -214,7 +263,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-5 [33X[0;0Y1 Loop double massive bubble[133X[101X
+  [1X1.2-6 [33X[0;0Y1 Loop double massive bubble[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1", "k1" : masses := "m" );[127X[104X
@@ -255,7 +304,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-6 [33X[0;0Y1 Loop box[133X[101X
+  [1X1.2-7 [33X[0;0Y1 Loop box[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1", "k1..2,k4" );[127X[104X
@@ -378,7 +427,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-7 [33X[0;0YKite[133X[101X
+  [1X1.2-8 [33X[0;0YKite[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "p", 4 );[127X[104X
@@ -525,7 +574,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-8 [33X[0;0Y2 Loop nonplanar ladder[133X[101X
+  [1X1.2-9 [33X[0;0Y2 Loop nonplanar ladder[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "p1..2" );[127X[104X
@@ -567,7 +616,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-9 [33X[0;0Y2 Loop cusp anomalous dimensions[133X[101X
+  [1X1.2-10 [33X[0;0Y2 Loop cusp anomalous dimensions[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "k1, k2", "v1, v2" );[127X[104X
@@ -635,7 +684,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-10 [33X[0;0Y2 Loop box[133X[101X
+  [1X1.2-11 [33X[0;0Y2 Loop box[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "l1..2", "k1..2,k4" );[127X[104X
@@ -747,7 +796,7 @@
   [4X[32X[104X
   
   
-  [1X1.2-11 [33X[0;0YPentagon with off shell leg[133X[101X
+  [1X1.2-12 [33X[0;0YPentagon with off shell leg[133X[101X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLD := LoopDiagram( "k1", "p1, p2, p3, p4" );[127X[104X
@@ -868,13 +917,13 @@
   
   [33X[1;0Y[29X[2XExtraLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-15 OriginalEulerMatrixOfPropagators[101X
+  [1X1.5-15 OriginalIBPGeneratingMatrixOfPropagators[101X
   
-  [33X[1;0Y[29X[2XOriginalEulerMatrixOfPropagators[102X( [3XLD[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XOriginalIBPGeneratingMatrixOfPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-16 OriginalEulerMatrixOfNumerators[101X
+  [1X1.5-16 OriginalIBPGeneratingMatrixOfNumerators[101X
   
-  [33X[1;0Y[29X[2XOriginalEulerMatrixOfNumerators[102X( [3XLD[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XOriginalIBPGeneratingMatrixOfNumerators[102X( [3XLD[103X ) [32X attribute[133X
   
   [1X1.5-17 OriginalTaylorOfPropagators[101X
   
@@ -884,119 +933,115 @@
   
   [33X[1;0Y[29X[2XMatrixOfMomenta[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-19 EulerMatrixOfPropagators[101X
+  [1X1.5-19 IBPGeneratingMatrixOfPropagators[101X
   
-  [33X[1;0Y[29X[2XEulerMatrixOfPropagators[102X( [3XLD[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIBPGeneratingMatrixOfPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-20 EulerMatrixOfNumerators[101X
+  [1X1.5-20 IBPGeneratingMatrixOfNumerators[101X
   
-  [33X[1;0Y[29X[2XEulerMatrixOfNumerators[102X( [3XLD[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIBPGeneratingMatrixOfNumerators[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-21 PairOfOriginalMatricesOfLoopDiagram[101X
-  
-  [33X[1;0Y[29X[2XPairOfOriginalMatricesOfLoopDiagram[102X( [3XLD[103X ) [32X attribute[133X
-  
-  [1X1.5-22 PairOfMatricesOfLoopDiagram[101X
+  [1X1.5-21 PairOfMatricesOfLoopDiagram[101X
   
   [33X[1;0Y[29X[2XPairOfMatricesOfLoopDiagram[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-23 RingOfExtraLorentzInvariants[101X
+  [1X1.5-22 RingOfExtraLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XRingOfExtraLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-24 ReductionMatrixOfExtraLorentzInvariants[101X
+  [1X1.5-23 ReductionMatrixOfExtraLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XReductionMatrixOfExtraLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-25 RingOfIndependentLorentzInvariants[101X
+  [1X1.5-24 RingOfIndependentLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XRingOfIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-26 ReductionMatrixOfIndependentLorentzInvariants[101X
+  [1X1.5-25 ReductionMatrixOfIndependentLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XReductionMatrixOfIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-27 RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
+  [1X1.5-26 RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XRingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-28 RingOfLoopDiagram[101X
+  [1X1.5-27 RingOfLoopDiagram[101X
   
   [33X[1;0Y[29X[2XRingOfLoopDiagram[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-29 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
+  [1X1.5-28 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-30 EulerMatrixOfPropagatorsInIndependentLorentzInvariants[101X
+  [1X1.5-29 IBPGeneratingMatrixOfPropagatorsInIndependentLorentzInvariants[101X
   
-  [33X[1;0Y[29X[2XEulerMatrixOfPropagatorsInIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIBPGeneratingMatrixOfPropagatorsInIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-31 EulerMatrixOfPropagatorsInPropagators[101X
+  [1X1.5-30 IBPGeneratingMatrixOfPropagatorsInPropagators[101X
   
-  [33X[1;0Y[29X[2XEulerMatrixOfPropagatorsInPropagators[102X( [3XLD[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIBPGeneratingMatrixOfPropagatorsInPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-32 EulerMatrixOfNumeratorsInPropagators[101X
+  [1X1.5-31 IBPGeneratingMatrixOfNumeratorsInPropagators[101X
   
-  [33X[1;0Y[29X[2XEulerMatrixOfNumeratorsInPropagators[102X( [3XLD[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIBPGeneratingMatrixOfNumeratorsInPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-33 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[101X
+  [1X1.5-32 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XPairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-34 PairOfMatricesOfLoopDiagramInPropagators[101X
+  [1X1.5-33 PairOfMatricesOfLoopDiagramInPropagators[101X
   
   [33X[1;0Y[29X[2XPairOfMatricesOfLoopDiagramInPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-35 EulerMatrixOfLoopDiagramInPropagators[101X
+  [1X1.5-34 IBPGeneratingMatrixOfLoopDiagramInPropagators[101X
   
-  [33X[1;0Y[29X[2XEulerMatrixOfLoopDiagramInPropagators[102X( [3XLD[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XIBPGeneratingMatrixOfLoopDiagramInPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-36 MatrixOfIBPRelations[101X
+  [1X1.5-35 MatrixOfIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-37 BasisOfIBPRelations[101X
+  [1X1.5-36 BasisOfIBPRelations[101X
   
   [33X[1;0Y[29X[2XBasisOfIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-38 MatrixOfSpecialIBPRelations[101X
+  [1X1.5-37 MatrixOfSpecialIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-39 BasisOfSpecialIBPRelations[101X
+  [1X1.5-38 BasisOfSpecialIBPRelations[101X
   
   [33X[1;0Y[29X[2XBasisOfSpecialIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-40 MatrixOfIBPRelationsInWeylAlgebra[101X
+  [1X1.5-39 MatrixOfIBPRelationsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-41 BasisOfIBPRelationsInWeylAlgebra[101X
+  [1X1.5-40 BasisOfIBPRelationsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XBasisOfIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-42 MatrixOfSpecialIBPRelationsInWeylAlgebra[101X
+  [1X1.5-41 MatrixOfSpecialIBPRelationsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-43 BasisOfSpecialIBPRelationsInWeylAlgebra[101X
+  [1X1.5-42 BasisOfSpecialIBPRelationsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XBasisOfSpecialIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-44 SymanzikPolynomials[101X
+  [1X1.5-43 SymanzikPolynomials[101X
   
   [33X[1;0Y[29X[2XSymanzikPolynomials[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-45 AssociatedWeylAlgebra[101X
+  [1X1.5-44 AssociatedWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XAssociatedWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-46 GeneratorsOfScalelessSectors[101X
+  [1X1.5-45 GeneratorsOfScalelessSectors[101X
   
   [33X[1;0Y[29X[2XGeneratorsOfScalelessSectors[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-47 GeneratorsOfScalelessSectorsInWeylAlgebra[101X
+  [1X1.5-46 GeneratorsOfScalelessSectorsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XGeneratorsOfScalelessSectorsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
