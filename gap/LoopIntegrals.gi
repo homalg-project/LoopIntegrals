@@ -271,7 +271,7 @@ InstallMethod( RelationsMatrixOfExternalMomenta,
 end );
 
 ##
-InstallMethod( OriginalEulerMatrixOfPropagators,
+InstallMethod( OriginalIBPGeneratingMatrixOfPropagators,
         [ IsLoopDiagram and HasPropagators ],
         
   function( LD )
@@ -286,7 +286,7 @@ InstallMethod( OriginalEulerMatrixOfPropagators,
 end );
 
 ##
-InstallMethod( OriginalEulerMatrixOfNumerators,
+InstallMethod( OriginalIBPGeneratingMatrixOfNumerators,
         [ IsLoopDiagram and HasNumerators ],
         
   function( LD )
@@ -371,13 +371,13 @@ InstallMethod( MatrixOfMomenta,
 end );
 
 ##
-InstallMethod( EulerMatrixOfPropagators,
+InstallMethod( IBPGeneratingMatrixOfPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators ],
         
   function( LD )
     local jac, rel;
     
-    jac := OriginalEulerMatrixOfPropagators( LD );
+    jac := OriginalIBPGeneratingMatrixOfPropagators( LD );
     
     jac := jac * MatrixOfMomenta( LD );
     
@@ -391,13 +391,13 @@ InstallMethod( EulerMatrixOfPropagators,
 end );
 
 ##
-InstallMethod( EulerMatrixOfNumerators,
+InstallMethod( IBPGeneratingMatrixOfNumerators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasNumerators ],
         
   function( LD )
     local jac, rel;
     
-    jac := OriginalEulerMatrixOfNumerators( LD );
+    jac := OriginalIBPGeneratingMatrixOfNumerators( LD );
     
     jac := jac * MatrixOfMomenta( LD );
     
@@ -420,7 +420,7 @@ InstallMethod( PairOfMatricesOfLoopDiagram,
         
   function( LD )
     
-    return [ EulerMatrixOfPropagators( LD ),
+    return [ IBPGeneratingMatrixOfPropagators( LD ),
              HomalgDiagonalMatrix( Propagators( LD ) ) ];
     
 end );
@@ -924,35 +924,35 @@ InstallMethod( ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants,
 end );
 
 ##
-InstallMethod( EulerMatrixOfPropagatorsInIndependentLorentzInvariants,
+InstallMethod( IBPGeneratingMatrixOfPropagatorsInIndependentLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasIndependentLorentzInvariants ],
         
   function( LD )
     
     return ExpressInIndependentLorentzInvariants(
-                   EulerMatrixOfPropagators( LD ), LD );
+                   IBPGeneratingMatrixOfPropagators( LD ), LD );
     
 end );
 
 ##
-InstallMethod( EulerMatrixOfPropagatorsInPropagators,
+InstallMethod( IBPGeneratingMatrixOfPropagatorsInPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
     return ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
-                   EulerMatrixOfPropagators( LD ), LD );
+                   IBPGeneratingMatrixOfPropagators( LD ), LD );
     
 end );
 
 ##
-InstallMethod( EulerMatrixOfNumeratorsInPropagators,
+InstallMethod( IBPGeneratingMatrixOfNumeratorsInPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
     return ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
-                   EulerMatrixOfNumerators( LD ), LD );
+                   IBPGeneratingMatrixOfNumerators( LD ), LD );
     
 end );
 
@@ -962,7 +962,7 @@ InstallMethod( PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants,
         
   function( LD )
 
-    return [ EulerMatrixOfPropagatorsInIndependentLorentzInvariants( LD ),
+    return [ IBPGeneratingMatrixOfPropagatorsInIndependentLorentzInvariants( LD ),
              ExpressInIndependentLorentzInvariants(
                      HomalgDiagonalMatrix( Propagators( LD ) ), LD ) ];
 end );
@@ -973,21 +973,21 @@ InstallMethod( PairOfMatricesOfLoopDiagramInPropagators,
         
   function( LD )
 
-    return [ EulerMatrixOfPropagatorsInPropagators( LD ),
+    return [ IBPGeneratingMatrixOfPropagatorsInPropagators( LD ),
              ExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants(
                      HomalgDiagonalMatrix( Propagators( LD ) ), LD ) ];
     
 end );
 
 ##
-InstallMethod( EulerMatrixOfLoopDiagramInPropagators,
+InstallMethod( IBPGeneratingMatrixOfLoopDiagramInPropagators,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
     
     return UnionOfRows(
-                   EulerMatrixOfPropagatorsInPropagators( LD ),
-                   EulerMatrixOfNumeratorsInPropagators( LD ) );
+                   IBPGeneratingMatrixOfPropagatorsInPropagators( LD ),
+                   IBPGeneratingMatrixOfNumeratorsInPropagators( LD ) );
     
 end );
 
@@ -1025,7 +1025,7 @@ InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
     
     Assert( 0, NrColumns( vec ) = 1 and NrRows( vec ) = l * ( l + k ) );
     
-    jacLD := EulerMatrixOfLoopDiagramInPropagators( LD );
+    jacLD := IBPGeneratingMatrixOfLoopDiagramInPropagators( LD );
     jacLV := JacobianOfCoefficientsVectorInPropagators( vec, LD );
     
     trace := Sum( [ 1 .. NrRows( jacLD ) ], i -> ( jacLD[ i ] * CertainColumns( jacLV, [ i ] ) )[1,1] );
@@ -1186,7 +1186,7 @@ InstallMethod( IBPRelation,
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
     
-    jacLD := EulerMatrixOfLoopDiagramInPropagators( LD );
+    jacLD := IBPGeneratingMatrixOfLoopDiagramInPropagators( LD );
     
     ## * Usually we would act on the space of integrals as usual from the left.
     ## * This action is only linear w.r.t. the constants (= BaseRing( R ) ).
@@ -1353,7 +1353,7 @@ InstallMethod( IBPRelationInWeylAlgebra,
     
     div := DivergenceOfCoefficientsVectorOfLoopDiagram( vec, LD );
     
-    jacLD := EulerMatrixOfLoopDiagramInPropagators( LD );
+    jacLD := IBPGeneratingMatrixOfLoopDiagramInPropagators( LD );
     
     return div / W + ( oper * TransposedMatrix( W * ( vec * jacLD ) ) )[1,1];
     

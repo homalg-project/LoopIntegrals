@@ -118,11 +118,11 @@ DeclareAttribute( "ExtraLorentzInvariants",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "OriginalEulerMatrixOfPropagators",
+DeclareAttribute( "OriginalIBPGeneratingMatrixOfPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "OriginalEulerMatrixOfNumerators",
+DeclareAttribute( "OriginalIBPGeneratingMatrixOfNumerators",
         IsLoopDiagram );
 
 #! @Arguments LD
@@ -134,11 +134,11 @@ DeclareAttribute( "MatrixOfMomenta",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "EulerMatrixOfPropagators",
+DeclareAttribute( "IBPGeneratingMatrixOfPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "EulerMatrixOfNumerators",
+DeclareAttribute( "IBPGeneratingMatrixOfNumerators",
         IsLoopDiagram );
 
 #! @Arguments LD
@@ -174,15 +174,15 @@ DeclareAttribute( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvar
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "EulerMatrixOfPropagatorsInIndependentLorentzInvariants",
+DeclareAttribute( "IBPGeneratingMatrixOfPropagatorsInIndependentLorentzInvariants",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "EulerMatrixOfPropagatorsInPropagators",
+DeclareAttribute( "IBPGeneratingMatrixOfPropagatorsInPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "EulerMatrixOfNumeratorsInPropagators",
+DeclareAttribute( "IBPGeneratingMatrixOfNumeratorsInPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
@@ -194,7 +194,7 @@ DeclareAttribute( "PairOfMatricesOfLoopDiagramInPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "EulerMatrixOfLoopDiagramInPropagators",
+DeclareAttribute( "IBPGeneratingMatrixOfLoopDiagramInPropagators",
         IsLoopDiagram );
 
 #! @Arguments LD
