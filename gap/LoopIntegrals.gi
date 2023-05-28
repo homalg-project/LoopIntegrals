@@ -415,17 +415,6 @@ InstallMethod( EulerMatrixOfNumerators,
 end );
 
 ##
-InstallMethod( PairOfOriginalMatricesOfLoopDiagram,
-        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators ],
-        
-  function( LD )
-    
-    return [ OriginalEulerMatrixOfPropagators( LD ),
-             HomalgDiagonalMatrix( Propagators( LD ) ) ];
-    
-end );
-
-##
 InstallMethod( PairOfMatricesOfLoopDiagram,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators ],
         

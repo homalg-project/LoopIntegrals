@@ -142,10 +142,6 @@ DeclareAttribute( "EulerMatrixOfNumerators",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "PairOfOriginalMatricesOfLoopDiagram",
-        IsLoopDiagram );
-
-#! @Arguments LD
 DeclareAttribute( "PairOfMatricesOfLoopDiagram",
         IsLoopDiagram );
 
