@@ -520,8 +520,8 @@ D1+D2,    D1-D2,     D2-D3,     s14-D1+D4,
 s12+D1+D3,s12+D1-D2, D2-D3,     -s12-D1+D4,
 D1+D4,    -s14+D1-D2,s14+D2-D3, -D1+D4
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SyzygiesOfColumns( E12 );</span>
-&lt;A non-zero 4 x 12 matrix over an external ring&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sred := ReducedBasisOfColumnModule( S );</span>
+&lt;A non-zero 4 x 8 matrix over an external ring&gt;
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Sred := ReducedBasisOfColumnModule( BasisOfColumnModule( S ) );</span>
 &lt;A non-zero 4 x 6 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( Sred );</span>
 D2-D4,D1-D3,s12*D4+2*D3*D4-2*D4^2,     s14*D3-2*D3^2+2*D3*D4,-D3*D4^2,D3^2*D4,
@@ -644,7 +644,7 @@ D1,0, 0, 0, 0,
 0, 0, 0, D4,0,
 0, 0, 0, 0, D5
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SyzygiesOfColumns( E12 );</span>
-&lt;A non-zero 6 x 16 matrix over an external ring&gt;
+&lt;A non-zero 6 x 11 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 1 ] ) ) );</span>
 [ D1-D2, 0, D1, 0, D3-D4, -D3 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 2 ] ) ) );</span>
@@ -780,7 +780,7 @@ D2+N7,    D2+D3-D6, -s-D1+N7,D2-N7,  0,        0,        0,     0,
 -D3+D5+N7,-D3-D5+N7,_[5,3],  -D5+D6, D3-D5-N7, D3+D5-N7, _[5,7],D5-D6,
 D2-D3+D5, D2-D3-D6, _[6,3],  -D5+D6, -D2+D3-D5,-D2+D3+D6,_[6,7],D5-D6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SyzygiesOfColumns( E12 );</span>
-&lt;A non-zero 8 x 58 matrix over an external ring&gt;
+&lt;A non-zero 8 x 48 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 1 ] ) ) );</span>
 [ D1-D2, 0, D2, D1,
  -D3+D4, D1-D2+D3-D4-D5+D6, D2-D6, D4 ]
@@ -822,16 +822,16 @@ D4-1,    D1-1,     -2,    -2*cos,0,        0,       0,     0,
 D5-1,    D2-1,     -2*cos,-2,    0,        0,       0,     0,
 2*D6,    -D3+D6+N7,D4-1,  D5-1,  0,        0,       0,     0
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SyzygiesOfColumns( E12 );</span>
-&lt;A non-zero 8 x 79 matrix over an external ring&gt;
+&lt;A non-zero 8 x 65 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EntriesOfHomalgMatrix( CertainColumns( S, [ 1 ] ) );</span>
 [ -2*D4*D6-2*D5*D6, 0, D5*D6, D4*D6,
   2*cos*D6-2*D6, -2*cos*D6-2*D4*D6-2*D5*D6+2*D6, D5*D6, D4*D6 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EntriesOfHomalgMatrix( CertainColumns( S, [ 2 ] ) );</span>
-[ -2*D1*D6-2*D2*D6+4*D6, 2*cos*D6-2*D6, D2*D6-D6, D1*D6-D6,
-  0, 2*cos*D6-2*D1*D6-2*D2*D6+2*D6, D2*D6-D6, D1*D6-D6 ]
+[ 2*cos*D6+2*D6, 0, -D6, -D6, 0, 2*cos*D6+2*D6, -D6, -D6 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">EntriesOfHomalgMatrix( CertainColumns( S, [ 3 ] ) );</span>
-[ 2*cos*D6+2*D6, 0, -D6, -D6,
-  0, 2*cos*D6+2*D6, -D6, -D6 ]
+[ D2*D4+2*D3*D4+D1*D5+2*D3*D5+2*D4*D5-2*D4*N7-2*D5*N7-D4-D5, -2*D4*D5+D4+D5,
+  -D3*D5+D5*N7, -D3*D4+D4*N7, 2*cos*N7+D1+D2-2*N7,
+  D2*D4+D1*D5-2*cos*N7-2*D4*N7-2*D5*N7-D1-D2+2*N7, D5*N7, D4*N7 ]
 </pre></div>
 
 
@@ -860,7 +860,7 @@ D4-1,    D1-1,     -2,      (-2*cos),0,        0,       0,       0,
 D5-1,    D2-1,     (-2*cos),-2,      0,        0,       0,       0,
 2*D6,    -D3+D6+N7,D4-1,    D5-1,    0,        0,       0,       0
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">s := SyzygiesOfColumns( E12 );</span>
-&lt;A non-zero 8 x 46 matrix over an external ring&gt;
+&lt;A non-zero 8 x 35 matrix over an external ring&gt;
 </pre></div>
 
 <p><a id="X856F717F841BC75D" name="X856F717F841BC75D"></a></p>
@@ -892,7 +892,7 @@ D5-1,    D2-1,     (-2*cos),-2,      0,        0,       0,       0,
 [ &lt;A 7 x 10 matrix over an external ring&gt;,
   &lt;A 7 x 7 matrix over an external ring&gt; ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SyzygiesOfColumns( E12 );</span>
-&lt;A non-zero 10 x 96 matrix over an external ring&gt;
+&lt;A non-zero 10 x 95 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 1 ] ) ) );</span>
 [ -D2+D3+2*N8, 0, -2*N8, D1, -D2, 0, -2*D4+D5+D6-2*N9, -D4+D5, -D4, D4+2*N9 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 2 ] ) ) );</span>
@@ -1017,7 +1017,7 @@ s12+D1+D3,-s12-D1+D2,    -D2+D3,       -D3+D4,        s34-D4+D5,
 s45+D1+D4,s23-s45-D1+D2, -s23-D2+D3,   -D3+D4,        -D4+D5,
 pp5+D1+D5,-pp5+s51-D1+D2,s34-s51-D2+D3,-s34-D3+D4,    -D4+D5
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">S := SyzygiesOfColumns( E12 );</span>
-&lt;A non-zero 5 x 81 matrix over an external ring&gt;
+&lt;A non-zero 5 x 76 matrix over an external ring&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 1 ] ) ) );</span>
 [ D1*D4*D5-D3*D4*D5, D1*D4*D5, D1*D4*D5, 0, 0 ]
 </pre></div>
