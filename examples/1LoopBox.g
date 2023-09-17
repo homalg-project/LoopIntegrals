@@ -44,8 +44,8 @@ Display( E12[1] );
 #! s12+D1+D3,s12+D1-D2, D2-D3,     -s12-D1+D4,
 #! D1+D4,    -s14+D1-D2,s14+D2-D3, -D1+D4
 S := SyzygiesOfColumns( E12 );
-#! <A non-zero 4 x 12 matrix over an external ring>
-Sred := ReducedBasisOfColumnModule( S );
+#! <A non-zero 4 x 8 matrix over an external ring>
+Sred := ReducedBasisOfColumnModule( BasisOfColumnModule( S ) );
 #! <A non-zero 4 x 6 matrix over an external ring>
 Display( Sred );
 #! D2-D4,D1-D3,s12*D4+2*D3*D4-2*D4^2,     s14*D3-2*D3^2+2*D3*D4,-D3*D4^2,D3^2*D4,

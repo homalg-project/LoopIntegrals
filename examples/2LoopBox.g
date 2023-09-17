@@ -26,7 +26,7 @@ E12 := PairOfMatricesOfLoopDiagramInPropagators( LD );
 #! [ <A 7 x 10 matrix over an external ring>,
 #!   <A 7 x 7 matrix over an external ring> ]
 S := SyzygiesOfColumns( E12 );
-#! <A non-zero 10 x 96 matrix over an external ring>
+#! <A non-zero 10 x 95 matrix over an external ring>
 Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 1 ] ) ) );
 #! [ -D2+D3+2*N8, 0, -2*N8, D1, -D2, 0, -2*D4+D5+D6-2*N9, -D4+D5, -D4, D4+2*N9 ]
 Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 2 ] ) ) );
