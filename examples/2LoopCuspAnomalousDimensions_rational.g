@@ -27,5 +27,5 @@ Display( E12[1] );
 #! D5-1,    D2-1,     (-2*cos),-2,      0,        0,       0,       0,
 #! 2*D6,    -D3+D6+N7,D4-1,    D5-1,    0,        0,       0,       0
 s := SyzygiesOfColumns( E12 );
-#! <A non-zero 8 x 46 matrix over an external ring>
+#! <A non-zero 8 x 35 matrix over an external ring>
 #! @EndExample

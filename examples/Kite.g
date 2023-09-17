@@ -43,7 +43,7 @@ Display( E12[2] );
 #! 0, 0, 0, D4,0,
 #! 0, 0, 0, 0, D5
 S := SyzygiesOfColumns( E12 );
-#! <A non-zero 6 x 16 matrix over an external ring>
+#! <A non-zero 6 x 11 matrix over an external ring>
 Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 1 ] ) ) );
 #! [ D1-D2, 0, D1, 0, D3-D4, -D3 ]
 Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 2 ] ) ) );

@@ -29,7 +29,7 @@ Display( E12[1] );
 #! -D3+D5+N7,-D3-D5+N7,_[5,3],  -D5+D6, D3-D5-N7, D3+D5-N7, _[5,7],D5-D6,
 #! D2-D3+D5, D2-D3-D6, _[6,3],  -D5+D6, -D2+D3-D5,-D2+D3+D6,_[6,7],D5-D6
 S := SyzygiesOfColumns( E12 );
-#! <A non-zero 8 x 58 matrix over an external ring>
+#! <A non-zero 8 x 48 matrix over an external ring>
 Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 1 ] ) ) );
 #! [ D1-D2, 0, D2, D1,
 #!  -D3+D4, D1-D2+D3-D4-D5+D6, D2-D6, D4 ]

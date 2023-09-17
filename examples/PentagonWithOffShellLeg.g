@@ -37,7 +37,7 @@ Display( E12[1] );
 #! s45+D1+D4,s23-s45-D1+D2, -s23-D2+D3,   -D3+D4,        -D4+D5,
 #! pp5+D1+D5,-pp5+s51-D1+D2,s34-s51-D2+D3,-s34-D3+D4,    -D4+D5
 S := SyzygiesOfColumns( E12 );
-#! <A non-zero 5 x 81 matrix over an external ring>
+#! <A non-zero 5 x 76 matrix over an external ring>
 Display( EntriesOfHomalgMatrix( CertainColumns( S, [ 1 ] ) ) );
 #! [ D1*D4*D5-D3*D4*D5, D1*D4*D5, D1*D4*D5, 0, 0 ]
 #! @EndExample
