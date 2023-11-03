@@ -230,6 +230,22 @@ DeclareAttribute( "BasisOfSpecialIBPRelationsInWeylAlgebra",
         IsLoopDiagram );
 
 #! @Arguments LD
+DeclareAttribute( "FieldOfCoefficientsOfLoopDiagramInSingular",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "FieldOfCoefficientsOfLoopDiagramInMaple",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "FieldOfCoefficientsOfLoopDiagramInHecke",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "MatrixOfCoefficientsOfParametricIBPs",
+        IsLoopDiagram );
+
+#! @Arguments LD
 DeclareAttribute( "SymanzikPolynomials",
         IsLoopDiagram );
 
@@ -367,6 +383,30 @@ DeclareOperation( "IBPRelationInWeylAlgebra",
 #! @Arguments mat, LD
 DeclareOperation( "MatrixOfIBPRelationsInWeylAlgebra",
         [ IsHomalgMatrix, IsLoopDiagram ] );
+
+#! @Arguments LD
+DeclareAttribute( "MatrixOfCoefficientsOfIBPs",
+        IsHomalgMatrix );
+
+#! @Arguments LD
+DeclareOperation( "MatrixOfCoefficientsOfIBPs",
+        [ IsHomalgMatrix, IsInt ] );
+
+#! @Arguments LD, degree, ring
+DeclareOperation( "MatrixOfCoefficientsOfParametricIBPs",
+        [ IsLoopDiagram, IsInt, IsHomalgRing ] );
+
+#! @Arguments LD, degree
+DeclareOperation( "MatrixOfCoefficientsOfParametricIBPs",
+        [ IsLoopDiagram, IsInt ] );
+
+#! @Arguments LD, degree, ring
+DeclareOperation( "ColumnReversedMatrixOfCoefficientsOfParametricIBPs",
+        [ IsLoopDiagram, IsInt, IsHomalgRing ] );
+
+#! @Arguments LD, degree
+DeclareOperation( "ColumnReversedMatrixOfCoefficientsOfParametricIBPs",
+        [ IsLoopDiagram, IsInt ] );
 
 #! @Arguments LD, list_of_ones
 DeclareOperation( "SymanzikPolynomials",
