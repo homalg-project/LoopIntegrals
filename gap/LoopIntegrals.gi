@@ -1244,6 +1244,8 @@ InstallMethod( MatrixOfIBPRelations,
   function( mat, LD )
     local ibps;
     
+    ## Q[m,s,D][a1,...,a_s]<D1,D1_,...,Ds,Ds_>
+    ## IBPRelation is a construction which is linear only over Q[m,s,D]
     ibps := List( [ 1 .. NrColumns( mat ) ], j -> IBPRelation( CertainColumns( mat, [ j ] ), LD ) );
     
     return HomalgMatrix( ibps, Length( ibps ), 1, HomalgRing( ibps[1] ) );
