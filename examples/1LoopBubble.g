@@ -36,4 +36,15 @@ gen2 := GeneratorsOfScalelessSectors( LD, [ 2, 2 ] );
 #! <An unevaluated 1 x 2 matrix over an external ring>
 Display( gen2 );
 #! D1*D2^2,D1^2*D2
+prel2 := ColumnReversedMatrixOfCoefficientsOfParametricIBPs( LD, 2 );
+#! [ <A non-zero 5 x 6 matrix over an external ring>,
+#!   [ D1_^2, D1_*D2_, D2_^2, D1_, D2_, 1 ] ]
+EntriesOfHomalgMatrix( prel2[1][4] );
+#! [ 0, 0, 0,
+#!   (d*s*a1-2*s*a1^2-2*s*a1), 0,
+#!   (-d^2+3*d*a1+3*d*a2+d-2*a1^2-4*a1*a2-2*a1-2*a2^2-2*a2) ]
+EntriesOfHomalgMatrix( prel2[1][5] );
+#! [ 0, 0, 0,
+#!   0, (d*s*a2-2*s*a2^2-2*s*a2),
+#!   (-d^2+3*d*a1+3*d*a2+d-2*a1^2-4*a1*a2-2*a1-2*a2^2-2*a2) ]
 #! @EndExample

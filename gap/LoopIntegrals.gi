@@ -1310,7 +1310,6 @@ InstallMethod( MatrixOfSpecialIBPRelations,
     
     ## Q[m,s,D][D1,...,Ds]
     syz := SyzygiesOfColumns( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
-    
     #syz := ReducedBasisOfColumnModule( syz );
     
     return MatrixOfIBPRelations( syz, LD );
@@ -1419,6 +1418,385 @@ InstallMethod( BasisOfSpecialIBPRelationsInWeylAlgebra,
   function( LD )
     
     return BasisOfRows( MatrixOfSpecialIBPRelationsInWeylAlgebra( LD ) );
+    
+end );
+
+##
+InstallMethod( FieldOfCoefficientsOfLoopDiagramInSingular,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local A;
+    
+    A := BaseRing( DoubleShiftAlgebra( RingOfLoopDiagram( LD ) ) );
+    
+    return HomalgFieldOfRationalsInSingular( JoinStringsWithSeparator( List( Indeterminates( A ), String ) ), A );
+    
+end );
+
+##
+InstallMethod( FieldOfCoefficientsOfLoopDiagramInMaple,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    
+    return HomalgFieldOfRationalsInMaple( );
+    
+end );
+
+##
+InstallMethod( FieldOfCoefficientsOfLoopDiagramInHecke,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local A;
+    
+    A := BaseRing( DoubleShiftAlgebra( RingOfLoopDiagram( LD ) ) );
+    
+    return HomalgRingOfIntegersInOscar( JoinStringsWithSeparator( List( Indeterminates( A ), String ) ) );
+    
+end );
+
+##
+InstallMethod( MatrixOfCoefficientsOfIBPs,
+        [ IsHomalgMatrix ],
+        
+  function( IBPS )
+    local Y, weights_a, weights_D, weights, powers, coeffs, orig, monoms, deg, A;
+    
+    ## example: Q[d,s][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )
+    Y := HomalgRing( IBPS );
+    
+    ## the weights of d, si's, ai's are 0
+    weights_a := ListWithIdenticalEntries( Length( IndeterminateCoordinatesOfDoubleShiftAlgebra( Y ) ), 0 );
+    
+    ## the weights of Di's are 1
+    ## the weights of Di_'s are 0
+    if Y!.pairs then ## the default case
+        ## example: weights of [ D1, D1_, D2, D2_ ] are [ 1, 0, 1, 0 ]
+        weights_D := Concatenation( ListWithIdenticalEntries( Length( IndeterminateShiftsOfDoubleShiftAlgebra( Y ) ) / 2, [ 1, 0 ] ) );
+    else
+        ## example: weights of [ D1, D2, D1_, D2_ ] are [ 1, 1, 0, 0 ]
+        weights_D := Concatenation(
+                             [ ListWithIdenticalEntries( Length( IndeterminateShiftsOfDoubleShiftAlgebra( Y ) ) / 2, 1 ),
+                               ListWithIdenticalEntries( Length( IndeterminateShiftsOfDoubleShiftAlgebra( Y ) ) / 2, 0 ) ] );
+    fi;
+    
+    ## over the ambient algebra
+    IBPS := Eval( IBPS );
+    
+    ## example: Q[d,s][a1,a2]<D1,D1_,D2,D2_>
+    Y := HomalgRing( IBPS );
+    
+    ## the columns of the matrix coeffs are the coefficients w.r.t. Di, Di_
+    ## caution: we will tranpose this matrix below
+    coeffs := Coefficients( IBPS );
+    
+    ## example: [ D1_^2*D2, D1*D2_^2, D1_^2, D1_*D2, D1*D2_, D1_*D2_, D2_^2, D1, D1_, D2, D2_, 1 ]
+    orig := coeffs!.monomials;
+    monoms := orig;
+    
+    ## example: [ 0, 0, 0, 0, 1, 0, 1, 0 ]
+    weights := Concatenation( weights_a, weights_D );
+    
+    if not monoms = [ ] then
+        
+        ## example:
+        ## 1 - weights_D = [  0,   1,  0,   1 ] (only weights_D is relevant)
+        ## for             [ D1, D1_, D2, D2_ ]
+        deg := DegreeOfRingElementFunction( Y, 1 - weights ); ## Y needs a complete list of weights, even though only weights_D below
+        
+        ## example:
+        ## [ D1_^2*D2, D1*D2_^2, D1_^2, D1_*D2, D1*D2_, D1_*D2_, D2_^2, D1, D1_, D2, D2_, 1 ]
+        ## [        2,        2,     2,      1,      1,        2,    2,  0,   1,  0,   1, 0 ]
+        deg := List( monoms, deg );
+        
+        deg := [ Filtered( [ 1 .. Length( deg ) ], i -> deg[i] > 0 ),
+                 Filtered( [ 1 .. Length( deg ) ], i -> deg[i] = 0 ) ];
+        
+        monoms := [ monoms{deg[1]}, monoms{deg[2]} ];
+        
+        ## example:
+        ## weights_D = [  1,   0,  1,   0 ] (only weights_D is relevant)
+        ## for         [ D1, D1_, D2, D2_ ]
+        deg := DegreeOfRingElementFunction( Y, weights );
+        
+        ## example:
+        ## [ D1_^2*D2, D1*D2_^2, D1_^2, D1_*D2, D1*D2_, D1_*D2_, D2_^2, D1_, D2_ ]
+        ## [        1,        1,     0,      1,      1,       0,     0,    0,  0 ]
+        deg := List( monoms[1], deg );
+        
+        deg := [ Filtered( [ 1 .. Length( deg ) ], i -> deg[i] > 0 ),
+                 Filtered( [ 1 .. Length( deg ) ], i -> deg[i] = 0 ) ];
+        
+        monoms := [ monoms[1]{deg[1]},               ## mixed monomials:      at least one Di and one Dj_
+                    monoms[2],                       ## pure monomials in D:  only Di
+                    Reversed( monoms[1]{deg[2]} ) ]; ## pure monomials in D_: only Dj_
+        
+        SortBy( monoms[1], Degree );
+        SortBy( monoms[2], Degree );
+        SortBy( monoms[3], Degree );
+        
+        ## example:
+        ## [ [ D1*D2_^2, D1_^2*D2, D1*D2_, D1_*D2 ],
+        ##   [ D2, D1, 1 ],
+        ##   [ D2_, D1_, D2_^2, D1_*D2_, D1_^2 ] ]
+        monoms[1] := Reversed( monoms[1] );
+        monoms[2] := Reversed( monoms[2] );
+        
+    else
+        
+        monoms := [ [ ], [ ], [ ] ];
+        
+    fi;
+    
+    if not Length( Concatenation( monoms ) ) = Length( orig ) then
+        Error( "the equality Length( Concatenation( monoms ) ) = Length( orig ) is violated\n" );
+    fi;
+    
+    ## example: Q[d,s][a1,a2]
+    A := BaseRing( Y );
+    
+    ## sort according to the new ordering of monoms
+    coeffs := CertainRows( coeffs, ListPerm( PermListList( orig, Concatenation( monoms ) ), Length( orig ) ) );
+    
+    ## typecast as a matrix over A
+    coeffs := A * coeffs;
+    
+    ## tranpose the matrix coeffs
+    coeffs := Involution( coeffs );
+    
+    return [ coeffs, monoms ];
+    
+    ## old output:
+    ## 1: coeffs
+    ## 2: CertainRows( HomalgIdentityMatrix( Length( monoms ), A ), [ mixed_monomials + 1 .. Length( monoms ) ] )
+    ## 3: Concatenation( monoms )
+    ## 4: Length( monoms[1] );
+    ## 5: monoms{[ mixed_monomials + 1 .. Length( monoms ) ]}
+    ## 6: Length( monoms[2] );
+    
+end );
+
+##
+InstallMethod( MatrixOfCoefficientsOfIBPs,
+        [ IsHomalgMatrix, IsInt ],
+        
+  function( IBPS, degree )
+    local Y, weights_a, weights_D, weights, powers, subset;
+    
+    ## example: Q[d,s][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )
+    Y := HomalgRing( IBPS );
+    
+    ## the weights of d, si's, ai's are 0
+    weights_a := ListWithIdenticalEntries( Length( IndeterminateCoordinatesOfDoubleShiftAlgebra( Y ) ), 0 );
+    
+    ## the weights of Di's are 1
+    ## the weights of Di_'s are 0
+    if Y!.pairs then ## the default case
+        ## example: weights of [ D1, D1_, D2, D2_ ] are [ 1, 0, 1, 0 ]
+        weights_D := Concatenation( ListWithIdenticalEntries( Length( IndeterminateShiftsOfDoubleShiftAlgebra( Y ) ) / 2, [ 1, 0 ] ) );
+    else
+        ## example: weights of [ D1, D2, D1_, D2_ ] are [ 1, 1, 0, 0 ]
+        weights_D := Concatenation(
+                             [ ListWithIdenticalEntries( Length( IndeterminateShiftsOfDoubleShiftAlgebra( Y ) ) / 2, 1 ),
+                               ListWithIdenticalEntries( Length( IndeterminateShiftsOfDoubleShiftAlgebra( Y ) ) / 2, 0 ) ] );
+    fi;
+    
+    ## example: [ 0, 0, 0, 0, 0, 1, 0, 1 ]
+    ## these flipped weights are only used in MonomialMatrixWeighted below
+    weights := Concatenation( weights_a, 1 - weights_D );
+    
+    ## example:
+    ## 1,
+    ## D1_,
+    ## D2_,
+    ## D1_^2,
+    ## D1_*D2_,
+    ## D2_^2
+    ## 
+    ## modulo [ D2*D2_-1, D1*D1_-1 ]
+    powers := UnionOfRows( List( [ 0 .. degree ], d -> MonomialMatrixWeighted( d, Y, weights ) ) );
+    
+    IBPS := KroneckerMat( powers, IBPS );
+    
+    subset := ValueOption( "subset" );
+    
+    if IsList( subset ) then
+        IBPS := CertainRows( IBPS, subset );
+    fi;
+    
+    return MatrixOfCoefficientsOfIBPs( IBPS );
+    
+end );
+
+##
+InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
+        [ IsLoopDiagram and HasPropagators, IsInt, IsHomalgRing ],
+        
+  function( LD, degree, Qa )
+    local sibps, coeffs_monoms, coeffs, monoms, homalg_io_mode, m, trafo, pure_monoms, mixed_monoms, range;
+    
+    sibps := MatrixOfSpecialIBPRelations( LD );
+    
+    ## example: Q[d,s][a1,a2]<D1,D1_,D2,D2_>
+    #Y := HomalgRing( sibps );
+    
+    ## worked for Kite with prel1 := MatrixOfCoefficientsOfParametricIBPs( LD, 1 );
+    ## with more time than for prel2 := MatrixOfCoefficientsOfParametricIBPs( LD, 2 ); but gave the same result
+    #sibps := Y * BasisOfRows( Eval( sibps ) );
+    
+    coeffs_monoms := MatrixOfCoefficientsOfIBPs( sibps, degree );
+    
+    coeffs := coeffs_monoms[1];
+    
+    ## example:
+    ## [ [ D1*D2_^2, D1_^2*D2, D1*D2_, D1_*D2 ], ## mixed monomials:      at least one Di and one Dj_
+    ##   [ D2, D1, 1 ],                          ## pure monomials in D:  only Di
+    ##   [ D2_, D1_, D2_^2, D1_*D2_, D1_^2 ] ]   ## pure monomials in D_: only Dj_
+    monoms := coeffs_monoms[2];
+    
+    homalg_io_mode := ValueOption( "homalgIOMode" );
+    
+    if IsString( homalg_io_mode ) then
+        
+        ## evaluate coeffs here to avoid the display of evaluation after homalgIOMode( )
+        Eval( coeffs );
+        
+        homalgIOMode( homalg_io_mode );
+        
+    fi;
+    
+    m := Qa * coeffs;
+    
+    trafo := ValueOption( "trafo" );
+    
+    if not trafo = true then
+        m := RowEchelonForm( m );
+    else
+        m := UnionOfColumns( m, HomalgIdentityMatrix( NrRows( m ), Qa ) );
+        m := RowEchelonForm( m : ignore := NrRows( m ) );
+        trafo := CertainColumns( m, [ NrColumns( m ) - NrRows( m ) + 1 .. NrColumns( m ) ] );
+        m := CertainColumns( m, [ 1 .. NrColumns( m ) - NrRows( m ) ] );
+    fi;
+    
+    ## example: [ D2, D1, 1; D2_, D1_, D2_^2, D1_*D2_, D1_^2 ], where
+    ## monoms[2] = [ D2, D1, 1 ],                      ## pure monomials in D:  only Di
+    ## monoms[3] = [ D2_, D1_, D2_^2, D1_*D2_, D1_^2 ] ## pure monomials in D_: only Dj_
+    pure_monoms := Concatenation( monoms[2], monoms[3] );
+    
+    ## extract the lower right corner which gives relations among the pure_monoms,
+    ## and trim the trafo matrix accordingly:
+    ## ( * | * | * )
+    ## ( 0 | x | 0 )  -> ( x | 0 )
+    ## ( 0 | y | z )  -> ( y | z )
+    mixed_monoms := Length( monoms[1] );
+    
+    range := ZeroRows( CertainColumns( m, [ 1 .. mixed_monoms ] ) );
+    
+    m := CertainRows( CertainColumns( m, [ mixed_monoms + 1 .. NrColumns( m ) ] ), range );
+    
+    if IsHomalgMatrix( trafo ) then
+        trafo := CertainRows( trafo, range );
+    fi;
+    
+    ## exclude the rows which give relations (here x) exclusively among the D's,
+    ## and trim the trafo matrix accordingly:
+    ## ( x | 0 )
+    ## ( y | z )  -> ( y | z )
+    range := NonZeroRows( CertainColumns( m, [ Length( monoms[2] ) + 1 .. NrColumns( m ) ] ) );
+    
+    m := CertainRows( m, range );
+    
+    if IsHomalgMatrix( trafo ) then
+        trafo := CertainRows( trafo, range );
+    fi;
+    
+    ## get rid of the zero columns in m
+    ## and trim pure_monoms accordingly:
+    range := NonZeroColumns( m );
+    
+    m := CertainColumns( m, range );
+    
+    ## example: [ 1; D2_, D1_, D2_^2, D1_*D2_, D1_^2 ]
+    pure_monoms := pure_monoms{range};
+    
+    if IsString( homalg_io_mode ) then
+        homalgIOMode( );
+    fi;
+    
+    if IsHomalgMatrix( trafo ) then
+        return [ m, trafo, pure_monoms ];
+    else
+        return [ m, pure_monoms ];
+    fi;
+    
+end );
+
+##
+InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
+        [ IsLoopDiagram and HasPropagators, IsInt ],
+        
+  function( LD, degree )
+    local Qa;
+    
+    Qa := FieldOfCoefficientsOfLoopDiagramInSingular( LD );
+    
+    return MatrixOfCoefficientsOfParametricIBPs( LD, degree, Qa );
+    
+end );
+
+##
+InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
+        [ IsLoopDiagram and HasPropagators ],
+        
+  function( LD )
+    
+    return MatrixOfCoefficientsOfParametricIBPs( LD, 1 );
+    
+end );
+
+##
+InstallMethod( ColumnReversedMatrixOfCoefficientsOfParametricIBPs,
+        [ IsLoopDiagram and HasPropagators, IsInt, IsHomalgRing ],
+        
+  function( LD, degree, Qa )
+    local coeffs_monoms, m, pure_monoms, range;
+    
+    coeffs_monoms := MatrixOfCoefficientsOfParametricIBPs( LD, degree, Qa );
+    
+    m := First( coeffs_monoms );
+    pure_monoms := Last( coeffs_monoms );
+    
+    ## flip the columns of m:
+    ## the columns will be indexed according flipped pure_monoms: [ D1_^2, D1_*D2_, D2_^2, D1_, D2_, 1 ]
+    
+    range := Reversed( [ 1 .. NumberColumns( m ) ] );
+    
+    m := CertainColumns( m, range );
+    pure_monoms := pure_monoms{range};
+    
+    ## REF of m with the flipped columns:
+    m := RowEchelonForm( m );
+    
+    if Length( coeffs_monoms ) = 3 then
+        return [ m, coeffs_monoms[2], pure_monoms ];
+    else
+        return [ m, pure_monoms ];
+    fi;
+    
+end );
+
+##
+InstallMethod( ColumnReversedMatrixOfCoefficientsOfParametricIBPs,
+        [ IsLoopDiagram and HasPropagators, IsInt ],
+        
+  function( LD, degree )
+    local Qa;
+    
+    Qa := FieldOfCoefficientsOfLoopDiagramInSingular( LD );
+    
+    return ColumnReversedMatrixOfCoefficientsOfParametricIBPs( LD, degree, Qa );
     
 end );
 
