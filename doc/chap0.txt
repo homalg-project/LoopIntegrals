@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2023.09-01
+                                   2023.11-01
   
   
-                               17 September 2023
+                                3 November 2023
   
   
                                 Mohamed Barakat
@@ -124,10 +124,14 @@
       1.5-40 BasisOfIBPRelationsInWeylAlgebra
       1.5-41 MatrixOfSpecialIBPRelationsInWeylAlgebra
       1.5-42 BasisOfSpecialIBPRelationsInWeylAlgebra
-      1.5-43 SymanzikPolynomials
-      1.5-44 AssociatedWeylAlgebra
-      1.5-45 GeneratorsOfScalelessSectors
-      1.5-46 GeneratorsOfScalelessSectorsInWeylAlgebra
+      1.5-43 FieldOfCoefficientsOfLoopDiagramInSingular
+      1.5-44 FieldOfCoefficientsOfLoopDiagramInMaple
+      1.5-45 FieldOfCoefficientsOfLoopDiagramInHecke
+      1.5-46 MatrixOfCoefficientsOfParametricIBPs
+      1.5-47 SymanzikPolynomials
+      1.5-48 AssociatedWeylAlgebra
+      1.5-49 GeneratorsOfScalelessSectors
+      1.5-50 GeneratorsOfScalelessSectorsInWeylAlgebra
     1.6 [33X[0;0YConstructors[133X
       1.6-1 LorentzVector
       1.6-2 LorentzVector
@@ -156,13 +160,19 @@
       1.7-21 MatrixOfSpecialIBPRelations
       1.7-22 IBPRelationInWeylAlgebra
       1.7-23 MatrixOfIBPRelationsInWeylAlgebra
-      1.7-24 SymanzikPolynomials
-      1.7-25 DegreesOfMonomialsOfProductOfSymanzikPolynomials
-      1.7-26 IsScalelessLoopIntegral
-      1.7-27 GeneratorsOfScalelessSectors
-      1.7-28 NormalForm
-      1.7-29 NormalForm
-      1.7-30 NormalFormWrtInitialIntegral
+      1.7-24 MatrixOfCoefficientsOfIBPs
+      1.7-25 MatrixOfCoefficientsOfIBPs
+      1.7-26 MatrixOfCoefficientsOfParametricIBPs
+      1.7-27 MatrixOfCoefficientsOfParametricIBPs
+      1.7-28 ColumnReversedMatrixOfCoefficientsOfParametricIBPs
+      1.7-29 ColumnReversedMatrixOfCoefficientsOfParametricIBPs
+      1.7-30 SymanzikPolynomials
+      1.7-31 DegreesOfMonomialsOfProductOfSymanzikPolynomials
+      1.7-32 IsScalelessLoopIntegral
+      1.7-33 GeneratorsOfScalelessSectors
+      1.7-34 NormalForm
+      1.7-35 NormalForm
+      1.7-36 NormalFormWrtInitialIntegral
   
   
   [32X

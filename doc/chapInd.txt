@@ -9,13 +9,15 @@
   [2X-[102X, for IsLorentzVector, IsLorentzVector 1.7-3 
   [2X[][102X, for IsLorentzVector, IsInt 1.7-5 
   [2XAdditiveInverse[102X, for IsLorentzVector 1.7-4 
-  [2XAssociatedWeylAlgebra[102X, for IsLoopDiagram 1.5-44 
+  [2XAssociatedWeylAlgebra[102X, for IsLoopDiagram 1.5-48 
   [2XBasisOfIBPRelations[102X, for IsLoopDiagram 1.5-36 
   [2XBasisOfIBPRelationsInWeylAlgebra[102X, for IsLoopDiagram 1.5-40 
   [2XBasisOfSpecialIBPRelations[102X, for IsLoopDiagram 1.5-38 
   [2XBasisOfSpecialIBPRelationsInWeylAlgebra[102X, for IsLoopDiagram 1.5-42 
+  [2XColumnReversedMatrixOfCoefficientsOfParametricIBPs[102X, for IsLoopDiagram, IsInt 1.7-29 
+      for IsLoopDiagram, IsInt, IsHomalgRing 1.7-28 
   [2XComponents[102X, for IsLorentzVector 1.5-4 
-  [2XDegreesOfMonomialsOfProductOfSymanzikPolynomials[102X, for IsLoopDiagram, IsList 1.7-25 
+  [2XDegreesOfMonomialsOfProductOfSymanzikPolynomials[102X, for IsLoopDiagram, IsList 1.7-31 
   [2XDimension[102X, for IsLorentzVector 1.5-1 
   [2XDimensionOfCoefficientsVector[102X, for IsLoopDiagram 1.5-7 
   [2XDivergenceOfCoefficientsVectorOfLoopDiagram[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-13 
@@ -25,9 +27,12 @@
   [2XExpressInPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-11 
   [2XExternalMomenta[102X, for IsLoopDiagram 1.5-6 
   [2XExtraLorentzInvariants[102X, for IsLoopDiagram 1.5-14 
-  [2XGeneratorsOfScalelessSectors[102X, for IsLoopDiagram 1.5-45 
-      for IsLoopDiagram, IsList 1.7-27 
-  [2XGeneratorsOfScalelessSectorsInWeylAlgebra[102X, for IsLoopDiagram 1.5-46 
+  [2XFieldOfCoefficientsOfLoopDiagramInHecke[102X, for IsLoopDiagram 1.5-45 
+  [2XFieldOfCoefficientsOfLoopDiagramInMaple[102X, for IsLoopDiagram 1.5-44 
+  [2XFieldOfCoefficientsOfLoopDiagramInSingular[102X, for IsLoopDiagram 1.5-43 
+  [2XGeneratorsOfScalelessSectors[102X, for IsLoopDiagram 1.5-49 
+      for IsLoopDiagram, IsList 1.7-33 
+  [2XGeneratorsOfScalelessSectorsInWeylAlgebra[102X, for IsLoopDiagram 1.5-50 
   [2XIBPGeneratingMatrixOfLoopDiagramInPropagators[102X, for IsLoopDiagram 1.5-34 
   [2XIBPGeneratingMatrixOfNumerators[102X, for IsLoopDiagram 1.5-20 
   [2XIBPGeneratingMatrixOfNumeratorsInPropagators[102X, for IsLoopDiagram 1.5-31 
@@ -40,7 +45,7 @@
   [2XIndependentLorentzInvariants[102X, for IsLoopDiagram 1.5-11 
   [2XIsExternalMomentum[102X, for IsLoopDiagram 1.4-2 
   [2XIsLoopMomentum[102X, for IsLoopDiagram 1.4-1 
-  [2XIsScalelessLoopIntegral[102X, for IsLoopDiagram, IsList 1.7-26 
+  [2XIsScalelessLoopIntegral[102X, for IsLoopDiagram, IsList 1.7-32 
   [2XJacobianOfCoefficientsVectorInPropagators[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-12 
   [2XLOOP_INTEGRALS[102X 1.3-1 
   [2XLoopDiagram[102X, for IsList, IsList 1.6-3 
@@ -49,6 +54,11 @@
   [2XLoopMomenta[102X, for IsLoopDiagram 1.5-5 
   [2XLorentzVector[102X, for IsHomalgMatrix 1.6-2 
       for IsString, IsInt 1.6-1 
+  [2XMatrixOfCoefficientsOfIBPs[102X, for IsHomalgMatrix 1.7-24 
+      for IsHomalgMatrix, IsInt 1.7-25 
+  [2XMatrixOfCoefficientsOfParametricIBPs[102X, for IsLoopDiagram 1.5-46 
+      for IsLoopDiagram, IsInt 1.7-27 
+      for IsLoopDiagram, IsInt, IsHomalgRing 1.7-26 
   [2XMatrixOfIBPRelations[102X, for IsHomalgMatrix, IsLoopDiagram 1.7-18 
       for IsHomalgMatrix, IsLoopDiagram, IsList 1.7-19 
       for IsLoopDiagram 1.5-35 
@@ -59,9 +69,9 @@
   [2XMatrixOfSpecialIBPRelations[102X, for IsLoopDiagram 1.5-37 
       for IsLoopDiagram, IsList 1.7-21 
   [2XMatrixOfSpecialIBPRelationsInWeylAlgebra[102X, for IsLoopDiagram 1.5-41 
-  [2XNormalForm[102X, for IsHomalgRingElement, IsHomalgMatrix 1.7-28 
-      for IsHomalgRingElement, IsHomalgMatrix, IsList 1.7-29 
-  [2XNormalFormWrtInitialIntegral[102X, for IsHomalgRingElement, IsHomalgMatrix 1.7-30 
+  [2XNormalForm[102X, for IsHomalgRingElement, IsHomalgMatrix 1.7-34 
+      for IsHomalgRingElement, IsHomalgMatrix, IsList 1.7-35 
+  [2XNormalFormWrtInitialIntegral[102X, for IsHomalgRingElement, IsHomalgMatrix 1.7-36 
   [2XNumerators[102X, for IsLoopDiagram 1.5-13 
   [2XOriginalIBPGeneratingMatrixOfNumerators[102X, for IsLoopDiagram 1.5-16 
   [2XOriginalIBPGeneratingMatrixOfPropagators[102X, for IsLoopDiagram 1.5-15 
@@ -81,8 +91,8 @@
   [2XRingOfLoopDiagram[102X, for IsLoopDiagram 1.5-27 
   [2XRingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X, for IsLoopDiagram 1.5-26 
   [2XSetAbbreviation[102X, for IsHomalgRingElement, IsString 1.7-1 
-  [2XSymanzikPolynomials[102X, for IsLoopDiagram 1.5-43 
-      for IsLoopDiagram, IsList 1.7-24 
+  [2XSymanzikPolynomials[102X, for IsLoopDiagram 1.5-47 
+      for IsLoopDiagram, IsList 1.7-30 
   [2XUnderlyingMatrix[102X, for IsLorentzVector 1.5-2 
   [2XUnderlyingRing[102X, for IsLoopDiagram 1.5-8 
   
