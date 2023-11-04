@@ -1439,8 +1439,15 @@ InstallMethod( FieldOfCoefficientsOfLoopDiagramInMaple,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
+    local R, A, Y;
     
-    return HomalgFieldOfRationalsInMaple( );
+    R := RingOfLoopDiagram( LD );
+    
+    A := BaseRing( DoubleShiftAlgebra( R ) );
+    
+    Y := AmbientRing( RationalDoubleShiftAlgebra( R ) );
+    
+    return HomalgFieldOfRationalsInMaple( JoinStringsWithSeparator( List( Indeterminates( A ), String ) ), Y );
     
 end );
 
@@ -1761,12 +1768,23 @@ InstallMethod( ColumnReversedMatrixOfCoefficientsOfParametricIBPs,
         [ IsLoopDiagram and HasPropagators, IsInt, IsHomalgRing ],
         
   function( LD, degree, Qa )
-    local coeffs_monoms, m, pure_monoms, range;
+    local coeffs_monoms, m, pure_monoms, homalg_io_mode, range;
     
     coeffs_monoms := MatrixOfCoefficientsOfParametricIBPs( LD, degree, Qa );
     
     m := First( coeffs_monoms );
     pure_monoms := Last( coeffs_monoms );
+    
+    homalg_io_mode := ValueOption( "homalgIOMode" );
+    
+    if IsString( homalg_io_mode ) then
+        
+        ## evaluate coeffs here to avoid the display of evaluation after homalgIOMode( )
+        Eval( m );
+        
+        homalgIOMode( homalg_io_mode );
+        
+    fi;
     
     ## flip the columns of m:
     ## the columns will be indexed according flipped pure_monoms: [ D1_^2, D1_*D2_, D2_^2, D1_, D2_, 1 ]
@@ -1778,6 +1796,10 @@ InstallMethod( ColumnReversedMatrixOfCoefficientsOfParametricIBPs,
     
     ## REF of m with the flipped columns:
     m := RowEchelonForm( m );
+    
+    if IsString( homalg_io_mode ) then
+        homalgIOMode( );
+    fi;
     
     if Length( coeffs_monoms ) = 3 then
         return [ m, coeffs_monoms[2], pure_monoms ];
