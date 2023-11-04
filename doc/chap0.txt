@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2023.11-01
+                                   2023.11-02
   
   
-                                3 November 2023
+                                4 November 2023
   
   
                                 Mohamed Barakat
