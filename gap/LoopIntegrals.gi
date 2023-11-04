@@ -1439,8 +1439,15 @@ InstallMethod( FieldOfCoefficientsOfLoopDiagramInMaple,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( LD )
+    local R, A, Y;
     
-    return HomalgFieldOfRationalsInMaple( );
+    R := RingOfLoopDiagram( LD );
+    
+    A := BaseRing( DoubleShiftAlgebra( R ) );
+    
+    Y := AmbientRing( RationalDoubleShiftAlgebra( R ) );
+    
+    return HomalgFieldOfRationalsInMaple( JoinStringsWithSeparator( List( Indeterminates( A ), String ) ), Y );
     
 end );
 
