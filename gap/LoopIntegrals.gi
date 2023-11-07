@@ -1312,6 +1312,9 @@ InstallMethod( MatrixOfSpecialIBPRelations,
     syz := SyzygiesOfColumns( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
     #syz := ReducedBasisOfColumnModule( syz );
     
+    ## this line speeds up the linear algebra in the rational double shift algebra
+    syz := BasisOfColumnModule( syz );
+    
     return MatrixOfIBPRelations( syz, LD );
     
 end );
@@ -1324,6 +1327,9 @@ InstallMethod( MatrixOfSpecialIBPRelations,
     local syz;
     
     syz := SyzygiesOfColumns( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
+    
+    ## this line speeds up the linear algebra in the rational double shift algebra
+    syz := BasisOfColumnModule( syz );
     
     return MatrixOfIBPRelations( syz, LD, exponents );
     
@@ -1404,6 +1410,9 @@ InstallMethod( MatrixOfSpecialIBPRelationsInWeylAlgebra,
     local syz, id, ibps;
     
     syz := SyzygiesOfColumns( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
+    
+    ## this line speeds up the linear algebra in the rational double shift algebra
+    syz := BasisOfColumnModule( syz );
     
     ibps := List( [ 1 .. NrColumns( syz ) ], j -> IBPRelationInWeylAlgebra( CertainColumns( syz, [ j ] ), LD ) );
     
