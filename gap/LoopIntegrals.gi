@@ -1651,7 +1651,7 @@ InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
         [ IsLoopDiagram and HasPropagators, IsInt, IsHomalgRing ],
         
   function( LD, degree, Qa )
-    local sibps, coeffs_monoms, coeffs, monoms, homalg_io_mode, m, trafo, pure_monoms, mixed_monoms, range;
+    local sibps, coeffs_monoms, coeffs, monoms, homalg_io_mode, m, pure_monoms, mixed_monoms, trafo, range;
     
     sibps := MatrixOfSpecialIBPRelations( LD );
     
@@ -1685,6 +1685,15 @@ InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
     
     m := Qa * coeffs;
     
+    ## example: monoms[1] = [ D1*D2_^2, D1_^2*D2, D1*D2_, D1_*D2 ]
+    mixed_monoms := Length( monoms[1] );
+    
+    ## example:
+    ## monoms[2]  = [ D2, D1, 1 ],                      ## pure monomials in D:  only Di
+    ## monoms[3]  = [ D2_, D1_, D2_^2, D1_*D2_, D1_^2 ] ## pure monomials in D_: only Dj_
+    ## pure_monom = [ D2, D1, 1; D2_, D1_, D2_^2, D1_*D2_, D1_^2 ]
+    pure_monoms := Concatenation( monoms[2], monoms[3] );
+    
     trafo := ValueOption( "trafo" );
     
     if not trafo = true then
@@ -1696,18 +1705,11 @@ InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
         m := CertainColumns( m, [ 1 .. NrColumns( m ) - NrRows( m ) ] );
     fi;
     
-    ## example: [ D2, D1, 1; D2_, D1_, D2_^2, D1_*D2_, D1_^2 ], where
-    ## monoms[2] = [ D2, D1, 1 ],                      ## pure monomials in D:  only Di
-    ## monoms[3] = [ D2_, D1_, D2_^2, D1_*D2_, D1_^2 ] ## pure monomials in D_: only Dj_
-    pure_monoms := Concatenation( monoms[2], monoms[3] );
-    
     ## extract the lower right corner which gives relations among the pure_monoms,
     ## and trim the trafo matrix accordingly:
     ## ( * | * | * )
     ## ( 0 | x | 0 )  -> ( x | 0 )
     ## ( 0 | y | z )  -> ( y | z )
-    mixed_monoms := Length( monoms[1] );
-    
     range := ZeroRows( CertainColumns( m, [ 1 .. mixed_monoms ] ) );
     
     m := CertainRows( CertainColumns( m, [ mixed_monoms + 1 .. NrColumns( m ) ] ), range );
