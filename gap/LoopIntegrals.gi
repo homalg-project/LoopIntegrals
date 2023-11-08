@@ -1708,8 +1708,10 @@ InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
     ## extract the lower right corner which gives relations among the pure_monoms,
     ## and trim the trafo matrix accordingly:
     ## ( * | * | * )
-    ## ( 0 | x | 0 )  -> ( x | 0 )
-    ## ( 0 | y | z )  -> ( y | z )
+    ## ( 0 | u | v ) -> ( u | v )
+    ## ( 0 | x | 0 ) -> ( x | 0 )
+    ## ( 0 | y | z ) -> ( y | z )
+
     range := ZeroRows( CertainColumns( m, [ 1 .. mixed_monoms ] ) );
     
     m := CertainRows( CertainColumns( m, [ mixed_monoms + 1 .. NrColumns( m ) ] ), range );
@@ -1720,8 +1722,9 @@ InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
     
     ## exclude the rows which give relations (here x) exclusively among the D's,
     ## and trim the trafo matrix accordingly:
-    ## ( x | 0 )
-    ## ( y | z )  -> ( y | z )
+    ## ( 0 | u | v )
+    ## ( 0 | x | 0 ) -> ( u | v )
+    ## ( 0 | y | z ) -> ( y | z )
     range := NonZeroRows( CertainColumns( m, [ Length( monoms[2] ) + 1 .. NrColumns( m ) ] ) );
     
     m := CertainRows( m, range );
