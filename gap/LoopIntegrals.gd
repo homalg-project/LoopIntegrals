@@ -206,12 +206,12 @@ DeclareAttribute( "BasisOfIBPRelations",
         IsLoopDiagram );
 
 #! @Arguments LD
-DeclareAttribute( "MatrixOfSpecialIBPRelations",
-        IsLoopDiagram );
+DeclareOperation( "MatrixOfSpecialIBPRelations",
+        [ IsLoopDiagram ] );
 
 #! @Arguments LD
-DeclareAttribute( "BasisOfSpecialIBPRelations",
-        IsLoopDiagram );
+DeclareOperation( "BasisOfSpecialIBPRelations",
+        [ IsLoopDiagram ] );
 
 #! @Arguments LD
 DeclareAttribute( "MatrixOfIBPRelationsInWeylAlgebra",
