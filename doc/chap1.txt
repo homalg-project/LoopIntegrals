@@ -435,6 +435,9 @@
     [4X[28X<An unevaluated 1 x 4 matrix over an external ring>[128X[104X
     [4X[25Xgap>[125X [27XDisplay( gen2 );[127X[104X
     [4X[28XD1*D2*D3^2*D4^2,D1^2*D2*D3*D4^2,D1*D2^2*D3^2*D4,D1^2*D2^2*D3*D4[128X[104X
+    [4X[25Xgap>[125X [27Xprel2 := ColumnReversedMatrixOfCoefficientsOfParametricIBPs( LD, 2 );[127X[104X
+    [4X[28X[ <A non-zero 7 x 11 matrix over an external ring>,[128X[104X
+    [4X[28X  [ D1_*D3_, D1_*D4_, D2_*D4_, D3_*D4_, D1_, D2_, D3_, D4_, 1, D1, D2 ] ][128X[104X
   [4X[32X[104X
   
   
@@ -1018,11 +1021,11 @@
   
   [1X1.5-37 MatrixOfSpecialIBPRelations[101X
   
-  [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3XLD[103X ) [32X operation[133X
   
   [1X1.5-38 BasisOfSpecialIBPRelations[101X
   
-  [33X[1;0Y[29X[2XBasisOfSpecialIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XBasisOfSpecialIBPRelations[102X( [3XLD[103X ) [32X operation[133X
   
   [1X1.5-39 MatrixOfIBPRelationsInWeylAlgebra[101X
   
