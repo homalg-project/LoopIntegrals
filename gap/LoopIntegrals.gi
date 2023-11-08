@@ -1310,10 +1310,19 @@ InstallMethod( MatrixOfSpecialIBPRelations,
     
     ## Q[m,s,D][D1,...,Ds]
     syz := SyzygiesOfColumns( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
-    #syz := ReducedBasisOfColumnModule( syz );
     
-    ## this line speeds up the linear algebra in the rational double shift algebra
-    syz := BasisOfColumnModule( syz );
+    if ValueOption( "basis_of_relative_syzygies" ) = true then
+        
+        ## this line might sometimes speed up the linear algebra in the rational double shift algebra
+        syz := BasisOfColumnModule( syz );
+        
+    fi;
+    
+    if ValueOption( "reduced_basis_of_relative_syzygies" ) = true then
+        
+        syz := ReducedBasisOfColumnModule( syz );
+        
+    fi;
     
     return MatrixOfIBPRelations( syz, LD );
     
@@ -1328,8 +1337,18 @@ InstallMethod( MatrixOfSpecialIBPRelations,
     
     syz := SyzygiesOfColumns( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
     
-    ## this line speeds up the linear algebra in the rational double shift algebra
-    syz := BasisOfColumnModule( syz );
+    if ValueOption( "basis_of_relative_syzygies" ) = true then
+        
+        ## this line might sometimes speed up the linear algebra in the rational double shift algebra
+        syz := BasisOfColumnModule( syz );
+        
+    fi;
+    
+    if ValueOption( "reduced_basis_of_relative_syzygies" ) = true then
+        
+        syz := ReducedBasisOfColumnModule( syz );
+        
+    fi;
     
     return MatrixOfIBPRelations( syz, LD, exponents );
     
@@ -1411,8 +1430,18 @@ InstallMethod( MatrixOfSpecialIBPRelationsInWeylAlgebra,
     
     syz := SyzygiesOfColumns( PairOfMatricesOfLoopDiagramInPropagators( LD ) );
     
-    ## this line speeds up the linear algebra in the rational double shift algebra
-    syz := BasisOfColumnModule( syz );
+    if ValueOption( "basis_of_relative_syzygies" ) = true then
+        
+        ## this line might sometimes speed up the linear algebra in the rational double shift algebra
+        syz := BasisOfColumnModule( syz );
+        
+    fi;
+    
+    if ValueOption( "reduced_basis_of_relative_syzygies" ) = true then
+        
+        syz := ReducedBasisOfColumnModule( syz );
+        
+    fi;
     
     ibps := List( [ 1 .. NrColumns( syz ) ], j -> IBPRelationInWeylAlgebra( CertainColumns( syz, [ j ] ), LD ) );
     
@@ -1479,6 +1508,9 @@ InstallMethod( MatrixOfCoefficientsOfIBPs,
         
   function( IBPS )
     local Y, weights_a, weights_D, weights, powers, coeffs, orig, monoms, deg, A;
+    
+    ## example: 1LoopBubble.g
+    ## called by MatrixOfCoefficientsOfParametricIBPs( LD, 2 : basis_of_relative_syzygies := false );
     
     ## example: Q[d,s][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )
     Y := HomalgRing( IBPS );
@@ -1601,6 +1633,9 @@ InstallMethod( MatrixOfCoefficientsOfIBPs,
   function( IBPS, degree )
     local Y, weights_a, weights_D, weights, powers, subset;
     
+    ## example: 1LoopBubble.g
+    ## called by MatrixOfCoefficientsOfParametricIBPs( LD, 2 : basis_of_relative_syzygies := false );
+    
     ## example: Q[d,s][a1,a2]<D1,D1_,D2,D2_>/( D2*D2_-1, D1*D1_-1 )
     Y := HomalgRing( IBPS );
     
@@ -1651,7 +1686,10 @@ InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
         [ IsLoopDiagram and HasPropagators, IsInt, IsHomalgRing ],
         
   function( LD, degree, Qa )
-    local sibps, coeffs_monoms, coeffs, monoms, homalg_io_mode, m, trafo, pure_monoms, mixed_monoms, range;
+    local sibps, coeffs_monoms, coeffs, monoms, homalg_io_mode, m, pure_monoms, mixed_monoms, trafo, range;
+    
+    ## example: 1LoopBubble.g
+    ## MatrixOfCoefficientsOfParametricIBPs( LD, 2 : basis_of_relative_syzygies := false );
     
     sibps := MatrixOfSpecialIBPRelations( LD );
     
@@ -1685,6 +1723,15 @@ InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
     
     m := Qa * coeffs;
     
+    ## example: monoms[1] = [ D1*D2_^2, D1_^2*D2, D1*D2_, D1_*D2 ]
+    mixed_monoms := Length( monoms[1] );
+    
+    ## example:
+    ## monoms[2]  = [ D2, D1, 1 ],                      ## pure monomials in D:  only Di
+    ## monoms[3]  = [ D2_, D1_, D2_^2, D1_*D2_, D1_^2 ] ## pure monomials in D_: only Dj_
+    ## pure_monom = [ D2, D1, 1; D2_, D1_, D2_^2, D1_*D2_, D1_^2 ]
+    pure_monoms := Concatenation( monoms[2], monoms[3] );
+    
     trafo := ValueOption( "trafo" );
     
     if not trafo = true then
@@ -1696,18 +1743,13 @@ InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
         m := CertainColumns( m, [ 1 .. NrColumns( m ) - NrRows( m ) ] );
     fi;
     
-    ## example: [ D2, D1, 1; D2_, D1_, D2_^2, D1_*D2_, D1_^2 ], where
-    ## monoms[2] = [ D2, D1, 1 ],                      ## pure monomials in D:  only Di
-    ## monoms[3] = [ D2_, D1_, D2_^2, D1_*D2_, D1_^2 ] ## pure monomials in D_: only Dj_
-    pure_monoms := Concatenation( monoms[2], monoms[3] );
-    
     ## extract the lower right corner which gives relations among the pure_monoms,
     ## and trim the trafo matrix accordingly:
     ## ( * | * | * )
-    ## ( 0 | x | 0 )  -> ( x | 0 )
-    ## ( 0 | y | z )  -> ( y | z )
-    mixed_monoms := Length( monoms[1] );
-    
+    ## ( 0 | u | v ) -> ( u | v )
+    ## ( 0 | x | 0 ) -> ( x | 0 )
+    ## ( 0 | y | z ) -> ( y | z )
+
     range := ZeroRows( CertainColumns( m, [ 1 .. mixed_monoms ] ) );
     
     m := CertainRows( CertainColumns( m, [ mixed_monoms + 1 .. NrColumns( m ) ] ), range );
@@ -1718,8 +1760,9 @@ InstallMethod( MatrixOfCoefficientsOfParametricIBPs,
     
     ## exclude the rows which give relations (here x) exclusively among the D's,
     ## and trim the trafo matrix accordingly:
-    ## ( x | 0 )
-    ## ( y | z )  -> ( y | z )
+    ## ( 0 | u | v )
+    ## ( 0 | x | 0 ) -> ( u | v )
+    ## ( 0 | y | z ) -> ( y | z )
     range := NonZeroRows( CertainColumns( m, [ Length( monoms[2] ) + 1 .. NrColumns( m ) ] ) );
     
     m := CertainRows( m, range );

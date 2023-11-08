@@ -120,4 +120,7 @@ gen2 := GeneratorsOfScalelessSectors( LD, [ 2, 2, 2, 2 ] );
 #! <An unevaluated 1 x 4 matrix over an external ring>
 Display( gen2 );
 #! D1*D2*D3^2*D4^2,D1^2*D2*D3*D4^2,D1*D2^2*D3^2*D4,D1^2*D2^2*D3*D4
+prel2 := ColumnReversedMatrixOfCoefficientsOfParametricIBPs( LD, 2 );
+#! [ <A non-zero 7 x 11 matrix over an external ring>,
+#!   [ D1_*D3_, D1_*D4_, D2_*D4_, D3_*D4_, D1_, D2_, D3_, D4_, 1, D1, D2 ] ]
 #! @EndExample
