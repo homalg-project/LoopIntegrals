@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "LoopIntegrals",
 Subtitle := "Compute master integrals using commutative and noncommutative methods from computational algebraic geometry",
-Version := "2023.11-04",
+Version := "2024.04-01",
 
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 
@@ -112,7 +112,7 @@ PackageDoc := rec(
 ),
 
 Dependencies := rec(
-  GAP := ">= 4.12.1",
+  GAP := ">= 4.13.0",
   NeededOtherPackages := [
                    [ "GAPDoc", ">= 1.5" ],
                    [ "MatricesForHomalg", ">= 2023.11-01" ],
