@@ -1017,7 +1017,7 @@ InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
-    local l, k, jacLD, jacLV, trace, sum, D;
+    local l, k, jacLD, jacLV, trace, sum, d;
     
     l := Length( LoopMomenta( LD ) );
     
@@ -1032,9 +1032,9 @@ InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
     
     sum := Sum( [ 1 .. l ], p -> vec[(p - 1) * (l + k) + p, 1] );
     
-    D := ( LD!.DimensionSymbol / HomalgRing( sum ) );
+    d := ( LD!.DimensionSymbol / HomalgRing( sum ) );
     
-    return trace + D * sum;
+    return trace + d * sum;
     
 end );
 
