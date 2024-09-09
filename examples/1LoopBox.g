@@ -123,4 +123,17 @@ Display( gen2 );
 prel2 := ColumnReversedMatrixOfCoefficientsOfParametricIBPs( LD, 2 );
 #! [ <A non-zero 7 x 11 matrix over an external ring>,
 #!   [ D1_*D3_, D1_*D4_, D2_*D4_, D3_*D4_, D1_, D2_, D3_, D4_, 1, D1, D2 ] ]
+dibps := MatrixOfIBPRelationsWithDimensionShift( LD );
+#! <An unevaluated 5 x 1 matrix over a residue class ring>
+Display( dibps );
+#! -a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_+d-2*a1-a2-a3-a4,
+#! _[2,1],
+#! _[3,1],
+#! _[4,1],
+#! D^2-a1*D1_-a2*D2_-a3*D3_-a4*D4_
+#! 
+#! modulo [ D4*D4_-1, D3*D3_-1, D2*D2_-1, D1*D1_-1, D*D_-1 ]
+HomalgRing( dibps );
+#! Q[s12,s14][d,a1,a2,a3,a4]<D,D_,D1,D1_,D2,D2_,D3,D3_,D4,D4_>
+#! /( D4*D4_-1, D3*D3_-1, D2*D2_-1, D1*D1_-1, D*D_-1 )
 #! @EndExample
