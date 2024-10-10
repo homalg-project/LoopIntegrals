@@ -361,11 +361,27 @@ DeclareOperation( "DoubleShiftAlgebraWithDimensionShift",
         [ IsHomalgRing ] );
 
 #! @Arguments R
+DeclareOperation( "DoubleShiftAlgebraWithReverseOrder",
+        [ IsHomalgRing ] );
+
+#! @Arguments R
+DeclareOperation( "DoubleShiftAlgebraWithDimensionShiftAndReverseOrder",
+        [ IsHomalgRing ] );
+
+#! @Arguments R
 DeclareOperation( "RationalDoubleShiftAlgebra",
         [ IsHomalgRing ] );
 
 #! @Arguments R
 DeclareOperation( "RationalDoubleShiftAlgebraWithDimensionShift",
+        [ IsHomalgRing ] );
+
+#! @Arguments R
+DeclareOperation( "RationalDoubleShiftAlgebraWithReverseOrder",
+        [ IsHomalgRing ] );
+
+#! @Arguments R
+DeclareOperation( "RationalDoubleShiftAlgebraWithDimensionShiftAndReverseOrder",
         [ IsHomalgRing ] );
 
 #! @Arguments vec, LD
