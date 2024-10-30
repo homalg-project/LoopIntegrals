@@ -1090,7 +1090,7 @@ InstallMethod( RationalDoubleShiftAlgebra,
         [ IsHomalgRing ],
         
   function( R )
-    local Q, r, Ds, D_s, c, exponents, B, A, shifts, pairs, Y;
+    local Q, Ds, D_s, c, exponents, B, A, shifts, pairs, Y;
     
     if IsBound( R!.RationalDoubleShiftAlgebra ) then
         return R!.RationalDoubleShiftAlgebra;
