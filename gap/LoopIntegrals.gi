@@ -1017,7 +1017,7 @@ InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
         [ IsHomalgMatrix, IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
   function( vec, LD )
-    local l, k, jacLD, jacLV, trace, sum, D;
+    local l, k, jacLD, jacLV, trace, sum, d;
     
     l := Length( LoopMomenta( LD ) );
     
@@ -1032,9 +1032,9 @@ InstallMethod( DivergenceOfCoefficientsVectorOfLoopDiagram,
     
     sum := Sum( [ 1 .. l ], p -> vec[(p - 1) * (l + k) + p, 1] );
     
-    D := ( LD!.DimensionSymbol / HomalgRing( sum ) );
+    d := ( LD!.DimensionSymbol / HomalgRing( sum ) );
     
-    return trace + D * sum;
+    return trace + d * sum;
     
 end );
 
@@ -1141,8 +1141,8 @@ InstallMethod( AssociatedWeylAlgebra,
   function( LD )
     local R, c, oper;
     
-    ## Q[m,s,D][a1,...,a_s]<D1,D1_,...,Ds,Ds_>
-    ## IBPRelation is a construction which is linear only over Q[m,s,D]
+    ## Q[m,s,d][a1,...,a_s]<D1,D1_,...,Ds,Ds_>
+    ## IBPRelation is a construction which is linear only over Q[m,s,d]
     R := RingOfLoopDiagram( LD );
     
     c := Length( RelativeIndeterminatesOfPolynomialRing( R ) );
@@ -1160,10 +1160,10 @@ InstallMethod( IBPRelation,
   function( vec, LD )
     local R, Y, exponents, c, D_s, oper, div, jacLD;
     
-    ## Q[D,s12,s14][D1,D2,D3,D4,D5,D6,D7,N8,N9]
+    ## Q[d,s12,s14][D1,D2,D3,D4,D5,D6,D7,N8,N9]
     R := HomalgRing( vec );
     
-    ## Q[D,s12,s14][a1,a2,a3,a4,a5,a6,a7,a8,a9]<D1,D1_,D2,D2_,D3,D3_,D4,D4_,D5,D5_,D6,D6_,D7,D7_,N8,N8_,N9,N9_>/( D1*D1_-1, D2*D2_-1, D3*D3_-1, D4*D4_-1, D5*D5_-1, D6*D6_-1, D7*D7_-1, N8*N8_-1, N9*N9_-1 )
+    ## Q[d,s12,s14][a1,a2,a3,a4,a5,a6,a7,a8,a9]<D1,D1_,D2,D2_,D3,D3_,D4,D4_,D5,D5_,D6,D6_,D7,D7_,N8,N8_,N9,N9_>/( D1*D1_-1, D2*D2_-1, D3*D3_-1, D4*D4_-1, D5*D5_-1, D6*D6_-1, D7*D7_-1, N8*N8_-1, N9*N9_-1 )
     Y := DoubleShiftAlgebra( R );
     
     ## [ "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9" ]
