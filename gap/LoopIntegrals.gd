@@ -170,6 +170,10 @@ DeclareAttribute( "RingOfLoopDiagram",
         IsLoopDiagram );
 
 #! @Arguments LD
+DeclareAttribute( "RingOfLoopDiagramWithDimensionShift",
+        IsLoopDiagram );
+
+#! @Arguments LD
 DeclareAttribute( "ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants",
         IsLoopDiagram );
 
@@ -199,6 +203,10 @@ DeclareAttribute( "IBPGeneratingMatrixOfLoopDiagramInPropagators",
 
 #! @Arguments LD
 DeclareAttribute( "MatrixOfIBPRelations",
+        IsLoopDiagram );
+
+#! @Arguments LD
+DeclareAttribute( "MatrixOfIBPRelationsWithDimensionShift",
         IsLoopDiagram );
 
 #! @Arguments LD
@@ -349,7 +357,15 @@ DeclareOperation( "DoubleShiftAlgebra",
         [ IsHomalgRing ] );
 
 #! @Arguments R
+DeclareOperation( "DoubleShiftAlgebraWithDimensionShift",
+        [ IsHomalgRing ] );
+
+#! @Arguments R
 DeclareOperation( "RationalDoubleShiftAlgebra",
+        [ IsHomalgRing ] );
+
+#! @Arguments R
+DeclareOperation( "RationalDoubleShiftAlgebraWithDimensionShift",
         [ IsHomalgRing ] );
 
 #! @Arguments vec, LD

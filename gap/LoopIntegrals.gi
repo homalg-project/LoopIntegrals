@@ -11,6 +11,7 @@ InstallValue( LOOP_INTEGRALS,
             DualSymbol := "z",
             Dimension := 1,
             DimensionSymbol := "d",
+            DimensionShiftSymbol := "D",
             PropagatorSymbol := "D",
             NumeratorSymbol := "N",
             ExponentSymbol := "a",
@@ -852,6 +853,52 @@ InstallMethod( RingOfLoopDiagram,
 end );
 
 ##
+InstallMethod( RingOfLoopDiagramWithDimensionShift,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local K, D, Z, R, indets, invariants, propagators, numerators, masses, S;
+    
+    K := ExtraLorentzInvariants( LD );
+    D := Propagators( LD );
+    Z := Numerators( LD );
+    
+    R := RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants( LD );
+    
+    indets := Indeterminates( R );
+    indets := List( indets, String );
+    
+    invariants := indets{[ 1 .. Length( K ) ]};
+    propagators := indets{[ Length( K ) + 1 .. Length( K ) + Length( D ) ]};
+    numerators := indets{[ Length( K ) + Length( D ) + 1 .. Length( indets ) ]};
+    
+    indets := Concatenation( propagators, numerators );
+    
+    masses := List( LD!.masses, String );
+    
+    invariants := Concatenation( masses, invariants );
+    
+    if LD!.rational then
+        
+        invariants := JoinStringsWithSeparator( invariants );
+        
+        S := LOOP_INTEGRALS.ConstructorOfDefaultField( invariants, R );
+        
+        S := S * indets;
+        
+    else
+        
+        S := LOOP_INTEGRALS.ConstructorOfDefaultField( R ) * invariants;
+        
+        S := S * indets;
+        
+    fi;
+    
+    return S;
+    
+end );
+
+##
 InstallMethod( ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants,
         [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
         
@@ -1086,11 +1133,62 @@ InstallMethod( DoubleShiftAlgebra,
 end );
 
 ##
+InstallMethod( DoubleShiftAlgebraWithDimensionShift,
+        [ IsHomalgRing ],
+        
+  function( R )
+    local Ds, c, D_s, exponents, B, A, shifts, pairs, Y;
+    
+    if IsBound( R!.DoubleShiftAlgebraWithDimensionShift ) then
+        return R!.DoubleShiftAlgebraWithDimensionShift;
+    fi;
+    
+    Ds := RelativeIndeterminatesOfPolynomialRing( R );
+    
+    c := Length( Ds );
+    
+    Ds := List( Ds, String );
+    
+    Ds := Concatenation( [ LOOP_INTEGRALS!.DimensionShiftSymbol ], Ds );
+    
+    D_s := List( Ds, D -> Concatenation( D, "_" ) );
+    
+    exponents := List( [ 1 .. c ], i -> Concatenation( LOOP_INTEGRALS.ExponentSymbol, String( i ) ) );
+    
+    exponents := Concatenation( [ LOOP_INTEGRALS!.DimensionSymbol ], exponents );
+    
+    B := BaseRing( R );
+    
+    A := B * JoinStringsWithSeparator( exponents );
+    
+    if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+        shifts := Concatenation( Ds, D_s );
+        pairs := false;
+    else
+        shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
+        pairs := true;
+    fi;
+    
+    Y := DoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
+    
+    Y!.Ds := Ds;
+    Y!.D_s := D_s;
+    
+    AmbientRing( Y )!.Ds := Ds;
+    AmbientRing( Y )!.D_s := D_s;
+    
+    R!.DoubleShiftAlgebraWithDimensionShift := Y;
+    
+    return Y;
+    
+end );
+
+##
 InstallMethod( RationalDoubleShiftAlgebra,
         [ IsHomalgRing ],
         
   function( R )
-    local Q, r, Ds, D_s, c, exponents, B, A, shifts, pairs, Y;
+    local Q, Ds, D_s, c, exponents, B, A, shifts, pairs, Y;
     
     if IsBound( R!.RationalDoubleShiftAlgebra ) then
         return R!.RationalDoubleShiftAlgebra;
@@ -1129,6 +1227,59 @@ InstallMethod( RationalDoubleShiftAlgebra,
     AmbientRing( Y )!.D_s := D_s;
     
     R!.RationalDoubleShiftAlgebra := Y;
+    
+    return Y;
+    
+end );
+
+##
+InstallMethod( RationalDoubleShiftAlgebraWithDimensionShift,
+        [ IsHomalgRing ],
+        
+  function( R )
+    local Q, Ds, c, D_s, exponents, B, A, shifts, pairs, Y;
+    
+    if IsBound( R!.RationalDoubleShiftAlgebraWithDimensionShift ) then
+        return R!.RationalDoubleShiftAlgebraWithDimensionShift;
+    fi;
+    
+    Q := HomalgFieldOfRationalsInMaple();
+    
+    B := Q * List( Indeterminates( BaseRing( R ) ), String );
+    
+    Ds := RelativeIndeterminatesOfPolynomialRing( R );
+    
+    c := Length( Ds );
+    
+    Ds := List( Ds, String );
+    
+    Ds := Concatenation( [ LOOP_INTEGRALS!.DimensionShiftSymbol ], Ds );
+    
+    D_s := List( Ds, D -> Concatenation( D, "_" ) );
+    
+    exponents := List( [ 1 .. c ], i -> Concatenation( LOOP_INTEGRALS.ExponentSymbol, String( i ) ) );
+    
+    exponents := Concatenation( [ LOOP_INTEGRALS!.DimensionSymbol ], exponents );
+    
+    A := B * JoinStringsWithSeparator( exponents );
+    
+    if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+        shifts := Concatenation( Ds, D_s );
+        pairs := false;
+    else
+        shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
+        pairs := true;
+    fi;
+    
+    Y := RationalDoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
+    
+    Y!.Ds := Ds;
+    Y!.D_s := D_s;
+    
+    AmbientRing( Y )!.Ds := Ds;
+    AmbientRing( Y )!.D_s := D_s;
+    
+    R!.RationalDoubleShiftAlgebraWithDimensionShift := Y;
     
     return Y;
     
@@ -1275,6 +1426,50 @@ InstallMethod( MatrixOfIBPRelations,
     id := HomalgIdentityMatrix( DimensionOfCoefficientsVector( LD ), RingOfLoopDiagram( LD ) );
     
     return MatrixOfIBPRelations( id, LD );
+    
+end );
+
+##
+InstallMethod( MatrixOfIBPRelationsWithDimensionShift,
+        [ IsLoopDiagram and HasRelationsOfExternalMomenta and HasPropagators and HasNumerators and HasExtraLorentzInvariants ],
+        
+  function( LD )
+    local R, Y, exponents, c, D_s, oper, k, T, U, S, map, ibps, YDpol, relation;
+    
+    R := RingOfLoopDiagram( LD );
+    
+    Y := DoubleShiftAlgebra( R );
+    
+    ## [ "a1", "a2", "a3", "a4", "a5", "a6", "a7", "a8", "a9" ]
+    exponents := RelativeIndeterminatesOfPolynomialRing( BaseRing( Y ) );
+    exponents := List( exponents, String );
+    
+    ## n + z
+    c := Length( exponents );
+    
+    ## [ "D1_", "D2_", "D3_", "D4_", "D5_", "D6_", "D7_", "N8_", "N9_" ]
+    D_s := IndeterminateShiftsOfDoubleShiftAlgebra( Y ){List( [ 1 .. c ], i -> 2 * i )};
+    D_s := List( D_s, String );
+    
+    oper := List( [ 1 .. c ], i -> Concatenation( exponents[i], "*", D_s[i] ) );
+    
+    oper := List( [ 1 .. c ], i -> oper[i] / Y );
+    
+    k := CoefficientsRing( R );
+    
+    U := SymanzikPolynomials( LD )[1];
+    
+    S := k * List( RelativeIndeterminatesOfPolynomialRing( HomalgRing( U ) ), String );
+    
+    map := RingMap( List( oper, D -> D / Y ), S, Y );
+
+    YDpol := DoubleShiftAlgebraWithDimensionShift( RingOfLoopDiagramWithDimensionShift( LD ) );
+    
+    relation := ( LOOP_INTEGRALS!.DimensionShiftSymbol / YDpol ) ^ 2 - Pullback( map, U ) / YDpol;
+    
+    ibps := MatrixOfIBPRelations( LD );
+    
+    return UnionOfRows( YDpol * ibps, HomalgMatrix( [ relation ], 1, 1, YDpol ) );
     
 end );
 
