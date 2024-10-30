@@ -438,6 +438,19 @@
     [4X[25Xgap>[125X [27Xprel2 := ColumnReversedMatrixOfCoefficientsOfParametricIBPs( LD, 2 );[127X[104X
     [4X[28X[ <A non-zero 7 x 11 matrix over an external ring>,[128X[104X
     [4X[28X  [ D1_*D3_, D1_*D4_, D2_*D4_, D3_*D4_, D1_, D2_, D3_, D4_, 1, D1, D2 ] ][128X[104X
+    [4X[25Xgap>[125X [27Xdibps := MatrixOfIBPRelationsWithDimensionShift( LD );[127X[104X
+    [4X[28X<An unevaluated 5 x 1 matrix over a residue class ring>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( dibps );[127X[104X
+    [4X[28X-a2*D1*D2_-s12*a3*D3_-a3*D1*D3_-a4*D1*D4_+d-2*a1-a2-a3-a4,[128X[104X
+    [4X[28X_[2,1],[128X[104X
+    [4X[28X_[3,1],[128X[104X
+    [4X[28X_[4,1],[128X[104X
+    [4X[28XD^2-a1*D1_-a2*D2_-a3*D3_-a4*D4_[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xmodulo [ D4*D4_-1, D3*D3_-1, D2*D2_-1, D1*D1_-1, D*D_-1 ][128X[104X
+    [4X[25Xgap>[125X [27XHomalgRing( dibps );[127X[104X
+    [4X[28XQ[s12,s14][d,a1,a2,a3,a4]<D,D_,D1,D1_,D2,D2_,D3,D3_,D4,D4_>[128X[104X
+    [4X[28X/( D4*D4_-1, D3*D3_-1, D2*D2_-1, D1*D1_-1, D*D_-1 )[128X[104X
   [4X[32X[104X
   
   
@@ -983,95 +996,103 @@
   
   [33X[1;0Y[29X[2XRingOfLoopDiagram[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-28 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
+  [1X1.5-28 RingOfLoopDiagramWithDimensionShift[101X
+  
+  [33X[1;0Y[29X[2XRingOfLoopDiagramWithDimensionShift[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-29 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-29 IBPGeneratingMatrixOfPropagatorsInIndependentLorentzInvariants[101X
+  [1X1.5-30 IBPGeneratingMatrixOfPropagatorsInIndependentLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XIBPGeneratingMatrixOfPropagatorsInIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-30 IBPGeneratingMatrixOfPropagatorsInPropagators[101X
+  [1X1.5-31 IBPGeneratingMatrixOfPropagatorsInPropagators[101X
   
   [33X[1;0Y[29X[2XIBPGeneratingMatrixOfPropagatorsInPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-31 IBPGeneratingMatrixOfNumeratorsInPropagators[101X
+  [1X1.5-32 IBPGeneratingMatrixOfNumeratorsInPropagators[101X
   
   [33X[1;0Y[29X[2XIBPGeneratingMatrixOfNumeratorsInPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-32 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[101X
+  [1X1.5-33 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[101X
   
   [33X[1;0Y[29X[2XPairOfMatricesOfLoopDiagramInIndependentLorentzInvariants[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-33 PairOfMatricesOfLoopDiagramInPropagators[101X
+  [1X1.5-34 PairOfMatricesOfLoopDiagramInPropagators[101X
   
   [33X[1;0Y[29X[2XPairOfMatricesOfLoopDiagramInPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-34 IBPGeneratingMatrixOfLoopDiagramInPropagators[101X
+  [1X1.5-35 IBPGeneratingMatrixOfLoopDiagramInPropagators[101X
   
   [33X[1;0Y[29X[2XIBPGeneratingMatrixOfLoopDiagramInPropagators[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-35 MatrixOfIBPRelations[101X
+  [1X1.5-36 MatrixOfIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-36 BasisOfIBPRelations[101X
+  [1X1.5-37 MatrixOfIBPRelationsWithDimensionShift[101X
+  
+  [33X[1;0Y[29X[2XMatrixOfIBPRelationsWithDimensionShift[102X( [3XLD[103X ) [32X attribute[133X
+  
+  [1X1.5-38 BasisOfIBPRelations[101X
   
   [33X[1;0Y[29X[2XBasisOfIBPRelations[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-37 MatrixOfSpecialIBPRelations[101X
+  [1X1.5-39 MatrixOfSpecialIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3XLD[103X ) [32X operation[133X
   
-  [1X1.5-38 BasisOfSpecialIBPRelations[101X
+  [1X1.5-40 BasisOfSpecialIBPRelations[101X
   
   [33X[1;0Y[29X[2XBasisOfSpecialIBPRelations[102X( [3XLD[103X ) [32X operation[133X
   
-  [1X1.5-39 MatrixOfIBPRelationsInWeylAlgebra[101X
+  [1X1.5-41 MatrixOfIBPRelationsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-40 BasisOfIBPRelationsInWeylAlgebra[101X
+  [1X1.5-42 BasisOfIBPRelationsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XBasisOfIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-41 MatrixOfSpecialIBPRelationsInWeylAlgebra[101X
+  [1X1.5-43 MatrixOfSpecialIBPRelationsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-42 BasisOfSpecialIBPRelationsInWeylAlgebra[101X
+  [1X1.5-44 BasisOfSpecialIBPRelationsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XBasisOfSpecialIBPRelationsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-43 FieldOfCoefficientsOfLoopDiagramInSingular[101X
+  [1X1.5-45 FieldOfCoefficientsOfLoopDiagramInSingular[101X
   
   [33X[1;0Y[29X[2XFieldOfCoefficientsOfLoopDiagramInSingular[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-44 FieldOfCoefficientsOfLoopDiagramInMaple[101X
+  [1X1.5-46 FieldOfCoefficientsOfLoopDiagramInMaple[101X
   
   [33X[1;0Y[29X[2XFieldOfCoefficientsOfLoopDiagramInMaple[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-45 FieldOfCoefficientsOfLoopDiagramInHecke[101X
+  [1X1.5-47 FieldOfCoefficientsOfLoopDiagramInHecke[101X
   
   [33X[1;0Y[29X[2XFieldOfCoefficientsOfLoopDiagramInHecke[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-46 MatrixOfCoefficientsOfParametricIBPs[101X
+  [1X1.5-48 MatrixOfCoefficientsOfParametricIBPs[101X
   
   [33X[1;0Y[29X[2XMatrixOfCoefficientsOfParametricIBPs[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-47 SymanzikPolynomials[101X
+  [1X1.5-49 SymanzikPolynomials[101X
   
   [33X[1;0Y[29X[2XSymanzikPolynomials[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-48 AssociatedWeylAlgebra[101X
+  [1X1.5-50 AssociatedWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XAssociatedWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-49 GeneratorsOfScalelessSectors[101X
+  [1X1.5-51 GeneratorsOfScalelessSectors[101X
   
   [33X[1;0Y[29X[2XGeneratorsOfScalelessSectors[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.5-50 GeneratorsOfScalelessSectorsInWeylAlgebra[101X
+  [1X1.5-52 GeneratorsOfScalelessSectorsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XGeneratorsOfScalelessSectorsInWeylAlgebra[102X( [3XLD[103X ) [32X attribute[133X
   
@@ -1150,91 +1171,99 @@
   
   [33X[1;0Y[29X[2XDoubleShiftAlgebra[102X( [3XR[103X ) [32X operation[133X
   
-  [1X1.7-15 RationalDoubleShiftAlgebra[101X
+  [1X1.7-15 DoubleShiftAlgebraWithDimensionShift[101X
+  
+  [33X[1;0Y[29X[2XDoubleShiftAlgebraWithDimensionShift[102X( [3XR[103X ) [32X operation[133X
+  
+  [1X1.7-16 RationalDoubleShiftAlgebra[101X
   
   [33X[1;0Y[29X[2XRationalDoubleShiftAlgebra[102X( [3XR[103X ) [32X operation[133X
   
-  [1X1.7-16 IBPRelation[101X
+  [1X1.7-17 RationalDoubleShiftAlgebraWithDimensionShift[101X
+  
+  [33X[1;0Y[29X[2XRationalDoubleShiftAlgebraWithDimensionShift[102X( [3XR[103X ) [32X operation[133X
+  
+  [1X1.7-18 IBPRelation[101X
   
   [33X[1;0Y[29X[2XIBPRelation[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-17 IBPRelation[101X
+  [1X1.7-19 IBPRelation[101X
   
   [33X[1;0Y[29X[2XIBPRelation[102X( [3Xvec[103X, [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
-  [1X1.7-18 MatrixOfIBPRelations[101X
+  [1X1.7-20 MatrixOfIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3Xmat[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-19 MatrixOfIBPRelations[101X
+  [1X1.7-21 MatrixOfIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3Xmat[103X, [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
-  [1X1.7-20 MatrixOfIBPRelations[101X
+  [1X1.7-22 MatrixOfIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelations[102X( [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
-  [1X1.7-21 MatrixOfSpecialIBPRelations[101X
+  [1X1.7-23 MatrixOfSpecialIBPRelations[101X
   
   [33X[1;0Y[29X[2XMatrixOfSpecialIBPRelations[102X( [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
-  [1X1.7-22 IBPRelationInWeylAlgebra[101X
+  [1X1.7-24 IBPRelationInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XIBPRelationInWeylAlgebra[102X( [3Xvec[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-23 MatrixOfIBPRelationsInWeylAlgebra[101X
+  [1X1.7-25 MatrixOfIBPRelationsInWeylAlgebra[101X
   
   [33X[1;0Y[29X[2XMatrixOfIBPRelationsInWeylAlgebra[102X( [3Xmat[103X, [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-24 MatrixOfCoefficientsOfIBPs[101X
+  [1X1.7-26 MatrixOfCoefficientsOfIBPs[101X
   
   [33X[1;0Y[29X[2XMatrixOfCoefficientsOfIBPs[102X( [3XLD[103X ) [32X attribute[133X
   
-  [1X1.7-25 MatrixOfCoefficientsOfIBPs[101X
+  [1X1.7-27 MatrixOfCoefficientsOfIBPs[101X
   
   [33X[1;0Y[29X[2XMatrixOfCoefficientsOfIBPs[102X( [3XLD[103X ) [32X operation[133X
   
-  [1X1.7-26 MatrixOfCoefficientsOfParametricIBPs[101X
+  [1X1.7-28 MatrixOfCoefficientsOfParametricIBPs[101X
   
   [33X[1;0Y[29X[2XMatrixOfCoefficientsOfParametricIBPs[102X( [3XLD[103X, [3Xdegree[103X, [3Xring[103X ) [32X operation[133X
   
-  [1X1.7-27 MatrixOfCoefficientsOfParametricIBPs[101X
+  [1X1.7-29 MatrixOfCoefficientsOfParametricIBPs[101X
   
   [33X[1;0Y[29X[2XMatrixOfCoefficientsOfParametricIBPs[102X( [3XLD[103X, [3Xdegree[103X ) [32X operation[133X
   
-  [1X1.7-28 ColumnReversedMatrixOfCoefficientsOfParametricIBPs[101X
+  [1X1.7-30 ColumnReversedMatrixOfCoefficientsOfParametricIBPs[101X
   
   [33X[1;0Y[29X[2XColumnReversedMatrixOfCoefficientsOfParametricIBPs[102X( [3XLD[103X, [3Xdegree[103X, [3Xring[103X ) [32X operation[133X
   
-  [1X1.7-29 ColumnReversedMatrixOfCoefficientsOfParametricIBPs[101X
+  [1X1.7-31 ColumnReversedMatrixOfCoefficientsOfParametricIBPs[101X
   
   [33X[1;0Y[29X[2XColumnReversedMatrixOfCoefficientsOfParametricIBPs[102X( [3XLD[103X, [3Xdegree[103X ) [32X operation[133X
   
-  [1X1.7-30 SymanzikPolynomials[101X
+  [1X1.7-32 SymanzikPolynomials[101X
   
   [33X[1;0Y[29X[2XSymanzikPolynomials[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-31 DegreesOfMonomialsOfProductOfSymanzikPolynomials[101X
+  [1X1.7-33 DegreesOfMonomialsOfProductOfSymanzikPolynomials[101X
   
   [33X[1;0Y[29X[2XDegreesOfMonomialsOfProductOfSymanzikPolynomials[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-32 IsScalelessLoopIntegral[101X
+  [1X1.7-34 IsScalelessLoopIntegral[101X
   
   [33X[1;0Y[29X[2XIsScalelessLoopIntegral[102X( [3XLD[103X, [3Xlist_of_ones[103X ) [32X operation[133X
   
-  [1X1.7-33 GeneratorsOfScalelessSectors[101X
+  [1X1.7-35 GeneratorsOfScalelessSectors[101X
   
   [33X[1;0Y[29X[2XGeneratorsOfScalelessSectors[102X( [3XLD[103X, [3Xexponents[103X ) [32X operation[133X
   
-  [1X1.7-34 NormalForm[101X
+  [1X1.7-36 NormalForm[101X
   
   [33X[1;0Y[29X[2XNormalForm[102X( [3Xoperator[103X, [3XG[103X ) [32X operation[133X
   
-  [1X1.7-35 NormalForm[101X
+  [1X1.7-37 NormalForm[101X
   
   [33X[1;0Y[29X[2XNormalForm[102X( [3Xoperator[103X, [3XG[103X, [3Xinitial_integral[103X ) [32X operation[133X
   
-  [1X1.7-36 NormalFormWrtInitialIntegral[101X
+  [1X1.7-38 NormalFormWrtInitialIntegral[101X
   
   [33X[1;0Y[29X[2XNormalFormWrtInitialIntegral[102X( [3Xoperator[103X, [3XG[103X ) [32X operation[133X
   

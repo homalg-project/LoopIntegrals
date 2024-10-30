@@ -7,10 +7,10 @@
                        computational algebraic geometry [101X
   
   
-                                   2024.10-01
+                                   2024.10-02
   
   
-                                30 October 2024
+                                31 October 2024
   
   
                                 Mohamed Barakat
@@ -109,29 +109,31 @@
       1.5-25 ReductionMatrixOfIndependentLorentzInvariants
       1.5-26 RingOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
       1.5-27 RingOfLoopDiagram
-      1.5-28 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
-      1.5-29 IBPGeneratingMatrixOfPropagatorsInIndependentLorentzInvariants
-      1.5-30 IBPGeneratingMatrixOfPropagatorsInPropagators
-      1.5-31 IBPGeneratingMatrixOfNumeratorsInPropagators
-      1.5-32 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants
-      1.5-33 PairOfMatricesOfLoopDiagramInPropagators
-      1.5-34 IBPGeneratingMatrixOfLoopDiagramInPropagators
-      1.5-35 MatrixOfIBPRelations
-      1.5-36 BasisOfIBPRelations
-      1.5-37 MatrixOfSpecialIBPRelations
-      1.5-38 BasisOfSpecialIBPRelations
-      1.5-39 MatrixOfIBPRelationsInWeylAlgebra
-      1.5-40 BasisOfIBPRelationsInWeylAlgebra
-      1.5-41 MatrixOfSpecialIBPRelationsInWeylAlgebra
-      1.5-42 BasisOfSpecialIBPRelationsInWeylAlgebra
-      1.5-43 FieldOfCoefficientsOfLoopDiagramInSingular
-      1.5-44 FieldOfCoefficientsOfLoopDiagramInMaple
-      1.5-45 FieldOfCoefficientsOfLoopDiagramInHecke
-      1.5-46 MatrixOfCoefficientsOfParametricIBPs
-      1.5-47 SymanzikPolynomials
-      1.5-48 AssociatedWeylAlgebra
-      1.5-49 GeneratorsOfScalelessSectors
-      1.5-50 GeneratorsOfScalelessSectorsInWeylAlgebra
+      1.5-28 RingOfLoopDiagramWithDimensionShift
+      1.5-29 ReductionMatrixOfPropagatorsAndNumeratorsAndExtraLorentzInvariants
+      1.5-30 IBPGeneratingMatrixOfPropagatorsInIndependentLorentzInvariants
+      1.5-31 IBPGeneratingMatrixOfPropagatorsInPropagators
+      1.5-32 IBPGeneratingMatrixOfNumeratorsInPropagators
+      1.5-33 PairOfMatricesOfLoopDiagramInIndependentLorentzInvariants
+      1.5-34 PairOfMatricesOfLoopDiagramInPropagators
+      1.5-35 IBPGeneratingMatrixOfLoopDiagramInPropagators
+      1.5-36 MatrixOfIBPRelations
+      1.5-37 MatrixOfIBPRelationsWithDimensionShift
+      1.5-38 BasisOfIBPRelations
+      1.5-39 MatrixOfSpecialIBPRelations
+      1.5-40 BasisOfSpecialIBPRelations
+      1.5-41 MatrixOfIBPRelationsInWeylAlgebra
+      1.5-42 BasisOfIBPRelationsInWeylAlgebra
+      1.5-43 MatrixOfSpecialIBPRelationsInWeylAlgebra
+      1.5-44 BasisOfSpecialIBPRelationsInWeylAlgebra
+      1.5-45 FieldOfCoefficientsOfLoopDiagramInSingular
+      1.5-46 FieldOfCoefficientsOfLoopDiagramInMaple
+      1.5-47 FieldOfCoefficientsOfLoopDiagramInHecke
+      1.5-48 MatrixOfCoefficientsOfParametricIBPs
+      1.5-49 SymanzikPolynomials
+      1.5-50 AssociatedWeylAlgebra
+      1.5-51 GeneratorsOfScalelessSectors
+      1.5-52 GeneratorsOfScalelessSectorsInWeylAlgebra
     1.6 [33X[0;0YConstructors[133X
       1.6-1 LorentzVector
       1.6-2 LorentzVector
@@ -151,28 +153,30 @@
       1.7-12 JacobianOfCoefficientsVectorInPropagators
       1.7-13 DivergenceOfCoefficientsVectorOfLoopDiagram
       1.7-14 DoubleShiftAlgebra
-      1.7-15 RationalDoubleShiftAlgebra
-      1.7-16 IBPRelation
-      1.7-17 IBPRelation
-      1.7-18 MatrixOfIBPRelations
-      1.7-19 MatrixOfIBPRelations
+      1.7-15 DoubleShiftAlgebraWithDimensionShift
+      1.7-16 RationalDoubleShiftAlgebra
+      1.7-17 RationalDoubleShiftAlgebraWithDimensionShift
+      1.7-18 IBPRelation
+      1.7-19 IBPRelation
       1.7-20 MatrixOfIBPRelations
-      1.7-21 MatrixOfSpecialIBPRelations
-      1.7-22 IBPRelationInWeylAlgebra
-      1.7-23 MatrixOfIBPRelationsInWeylAlgebra
-      1.7-24 MatrixOfCoefficientsOfIBPs
-      1.7-25 MatrixOfCoefficientsOfIBPs
-      1.7-26 MatrixOfCoefficientsOfParametricIBPs
-      1.7-27 MatrixOfCoefficientsOfParametricIBPs
-      1.7-28 ColumnReversedMatrixOfCoefficientsOfParametricIBPs
-      1.7-29 ColumnReversedMatrixOfCoefficientsOfParametricIBPs
-      1.7-30 SymanzikPolynomials
-      1.7-31 DegreesOfMonomialsOfProductOfSymanzikPolynomials
-      1.7-32 IsScalelessLoopIntegral
-      1.7-33 GeneratorsOfScalelessSectors
-      1.7-34 NormalForm
-      1.7-35 NormalForm
-      1.7-36 NormalFormWrtInitialIntegral
+      1.7-21 MatrixOfIBPRelations
+      1.7-22 MatrixOfIBPRelations
+      1.7-23 MatrixOfSpecialIBPRelations
+      1.7-24 IBPRelationInWeylAlgebra
+      1.7-25 MatrixOfIBPRelationsInWeylAlgebra
+      1.7-26 MatrixOfCoefficientsOfIBPs
+      1.7-27 MatrixOfCoefficientsOfIBPs
+      1.7-28 MatrixOfCoefficientsOfParametricIBPs
+      1.7-29 MatrixOfCoefficientsOfParametricIBPs
+      1.7-30 ColumnReversedMatrixOfCoefficientsOfParametricIBPs
+      1.7-31 ColumnReversedMatrixOfCoefficientsOfParametricIBPs
+      1.7-32 SymanzikPolynomials
+      1.7-33 DegreesOfMonomialsOfProductOfSymanzikPolynomials
+      1.7-34 IsScalelessLoopIntegral
+      1.7-35 GeneratorsOfScalelessSectors
+      1.7-36 NormalForm
+      1.7-37 NormalForm
+      1.7-38 NormalFormWrtInitialIntegral
   
   
   [32X
