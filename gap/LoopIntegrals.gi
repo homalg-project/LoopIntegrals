@@ -1090,10 +1090,18 @@ InstallMethod( DoubleShiftAlgebra,
         [ IsHomalgRing ],
         
   function( R )
-    local Ds, D_s, c, exponents, B, A, shifts, pairs, Y;
+    local reverse, Ds, D_s, c, exponents, B, A, shifts, pairs, Y;
     
-    if IsBound( R!.DoubleShiftAlgebra ) then
-        return R!.DoubleShiftAlgebra;
+    reverse := ValueOption( "reverse" );
+    
+    if not reverse = true then
+        if IsBound( R!.DoubleShiftAlgebra ) then
+            return R!.DoubleShiftAlgebra;
+        fi;
+    else
+        if IsBound( R!.DoubleShiftAlgebraWithReverseOrder ) then
+            return R!.DoubleShiftAlgebraWithReverseOrder;
+        fi;
     fi;
     
     Ds := RelativeIndeterminatesOfPolynomialRing( R );
@@ -1110,15 +1118,31 @@ InstallMethod( DoubleShiftAlgebra,
     
     A := B * JoinStringsWithSeparator( exponents );
     
-    if IsIdenticalObj( ValueOption( "pairs" ), false ) then
-        shifts := Concatenation( Ds, D_s );
-        pairs := false;
+    if not reverse = true then
+        
+        if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+            shifts := Concatenation( Ds, D_s );
+            pairs := false;
+        else
+            shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
+            pairs := true;
+        fi;
+        
+        Y := DoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
+        
     else
-        shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
-        pairs := true;
+        
+        if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+            shifts := Concatenation( D_s, Ds );
+            pairs := false;
+        else
+            shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d_, d ] ) );
+            pairs := true;
+        fi;
+        
+        Y := DoubleShiftAlgebra( A, shifts : steps := 1, pairs := pairs );
+        
     fi;
-    
-    Y := DoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
     
     Y!.Ds := Ds;
     Y!.D_s := D_s;
@@ -1126,7 +1150,11 @@ InstallMethod( DoubleShiftAlgebra,
     AmbientRing( Y )!.Ds := Ds;
     AmbientRing( Y )!.D_s := D_s;
     
-    R!.DoubleShiftAlgebra := Y;
+    if not reverse = true then
+        R!.DoubleShiftAlgebra := Y;
+    else
+        R!.DoubleShiftAlgebraWithReverseOrder := Y;
+    fi;
     
     return Y;
     
@@ -1137,10 +1165,18 @@ InstallMethod( DoubleShiftAlgebraWithDimensionShift,
         [ IsHomalgRing ],
         
   function( R )
-    local Ds, c, D_s, exponents, B, A, shifts, pairs, Y;
+    local reverse, Ds, c, D_s, exponents, B, A, shifts, pairs, Y;
     
-    if IsBound( R!.DoubleShiftAlgebraWithDimensionShift ) then
-        return R!.DoubleShiftAlgebraWithDimensionShift;
+    reverse := ValueOption( "reverse" );
+    
+    if not reverse = true then
+        if IsBound( R!.DoubleShiftAlgebraWithDimensionShift ) then
+            return R!.DoubleShiftAlgebraWithDimensionShift;
+        fi;
+    else
+        if IsBound( R!.DoubleShiftAlgebraWithDimensionShiftAndReverseOrder ) then
+            return R!.DoubleShiftAlgebraWithDimensionShiftAndReverseOrder;
+        fi;
     fi;
     
     Ds := RelativeIndeterminatesOfPolynomialRing( R );
@@ -1161,15 +1197,31 @@ InstallMethod( DoubleShiftAlgebraWithDimensionShift,
     
     A := B * JoinStringsWithSeparator( exponents );
     
-    if IsIdenticalObj( ValueOption( "pairs" ), false ) then
-        shifts := Concatenation( Ds, D_s );
-        pairs := false;
+    if not reverse = true then
+        
+        if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+            shifts := Concatenation( Ds, D_s );
+            pairs := false;
+        else
+            shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
+            pairs := true;
+        fi;
+        
+        Y := DoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
+        
     else
-        shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
-        pairs := true;
+        
+        if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+            shifts := Concatenation( D_s, Ds );
+            pairs := false;
+        else
+            shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d_, d ] ) );
+            pairs := true;
+        fi;
+        
+        Y := DoubleShiftAlgebra( A, shifts : steps := 1, pairs := pairs );
+        
     fi;
-    
-    Y := DoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
     
     Y!.Ds := Ds;
     Y!.D_s := D_s;
@@ -1177,9 +1229,33 @@ InstallMethod( DoubleShiftAlgebraWithDimensionShift,
     AmbientRing( Y )!.Ds := Ds;
     AmbientRing( Y )!.D_s := D_s;
     
-    R!.DoubleShiftAlgebraWithDimensionShift := Y;
+    if not reverse = true then
+        R!.DoubleShiftAlgebraWithDimensionShift := Y;
+    else
+        R!.DoubleShiftAlgebraWithDimensionShiftAndReverseOrder := Y;
+    fi;
     
     return Y;
+    
+end );
+
+##
+InstallMethod( DoubleShiftAlgebraWithReverseOrder,
+        [ IsHomalgRing ],
+        
+  function( R )
+    
+    return DoubleShiftAlgebra( R : reverse := true );
+    
+end );
+
+##
+InstallMethod( DoubleShiftAlgebraWithDimensionShiftAndReverseOrder,
+        [ IsHomalgRing ],
+        
+  function( R )
+    
+    return DoubleShiftAlgebraWithDimensionShift( R : reverse := true );
     
 end );
 
@@ -1188,10 +1264,18 @@ InstallMethod( RationalDoubleShiftAlgebra,
         [ IsHomalgRing ],
         
   function( R )
-    local Q, Ds, D_s, c, exponents, B, A, shifts, pairs, Y;
+    local Q, r, Ds, D_s, c, exponents, B, A, reverse, shifts, pairs, Y;
     
-    if IsBound( R!.RationalDoubleShiftAlgebra ) then
-        return R!.RationalDoubleShiftAlgebra;
+    reverse := ValueOption( "reverse" );
+    
+    if not reverse = true then
+        if IsBound( R!.RationalDoubleShiftAlgebra ) then
+            return R!.RationalDoubleShiftAlgebra;
+        fi;
+    else
+        if IsBound( R!.RationalDoubleShiftAlgebraWithReverseOrder ) then
+            return R!.RationalDoubleShiftAlgebraWithReverseOrder;
+        fi;
     fi;
     
     Q := HomalgFieldOfRationalsInMaple();
@@ -1210,15 +1294,31 @@ InstallMethod( RationalDoubleShiftAlgebra,
     
     A := B * JoinStringsWithSeparator( exponents );
     
-    if IsIdenticalObj( ValueOption( "pairs" ), false ) then
-        shifts := Concatenation( Ds, D_s );
-        pairs := false;
+    if not reverse = true then
+        
+        if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+            shifts := Concatenation( Ds, D_s );
+            pairs := false;
+        else
+            shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
+            pairs := true;
+        fi;
+        
+        Y := RationalDoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
+        
     else
-        shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
-        pairs := true;
+        
+        if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+            shifts := Concatenation( D_s, Ds );
+            pairs := false;
+        else
+            shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d_, d ] ) );
+            pairs := true;
+        fi;
+        
+        Y := RationalDoubleShiftAlgebra( A, shifts : steps := 1, pairs := pairs );
+        
     fi;
-    
-    Y := RationalDoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
     
     Y!.Ds := Ds;
     Y!.D_s := D_s;
@@ -1226,7 +1326,11 @@ InstallMethod( RationalDoubleShiftAlgebra,
     AmbientRing( Y )!.Ds := Ds;
     AmbientRing( Y )!.D_s := D_s;
     
-    R!.RationalDoubleShiftAlgebra := Y;
+    if not reverse = true then
+        R!.RationalDoubleShiftAlgebra := Y;
+    else
+        R!.RationalDoubleShiftAlgebraWithReverseOrder := Y;
+    fi;
     
     return Y;
     
@@ -1237,10 +1341,18 @@ InstallMethod( RationalDoubleShiftAlgebraWithDimensionShift,
         [ IsHomalgRing ],
         
   function( R )
-    local Q, Ds, c, D_s, exponents, B, A, shifts, pairs, Y;
+    local reverse, Q, Ds, c, D_s, exponents, B, A, shifts, pairs, Y;
     
-    if IsBound( R!.RationalDoubleShiftAlgebraWithDimensionShift ) then
-        return R!.RationalDoubleShiftAlgebraWithDimensionShift;
+    reverse := ValueOption( "reverse" );
+    
+    if not reverse = true then
+        if IsBound( R!.RationalDoubleShiftAlgebraWithDimensionShift ) then
+            return R!.RationalDoubleShiftAlgebraWithDimensionShift;
+        fi;
+    else
+        if IsBound( R!.RationalDoubleShiftAlgebraWithDimensionShiftAndReverseOrder ) then
+            return R!.RationalDoubleShiftAlgebraWithDimensionShiftAndReverseOrder;
+        fi;
     fi;
     
     Q := HomalgFieldOfRationalsInMaple();
@@ -1263,15 +1375,31 @@ InstallMethod( RationalDoubleShiftAlgebraWithDimensionShift,
     
     A := B * JoinStringsWithSeparator( exponents );
     
-    if IsIdenticalObj( ValueOption( "pairs" ), false ) then
-        shifts := Concatenation( Ds, D_s );
-        pairs := false;
+    if not reverse = true then
+        
+        if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+            shifts := Concatenation( Ds, D_s );
+            pairs := false;
+        else
+            shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
+            pairs := true;
+        fi;
+        
+        Y := RationalDoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
+        
     else
-        shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d, d_ ] ) );
-        pairs := true;
+        
+        if IsIdenticalObj( ValueOption( "pairs" ), false ) then
+            shifts := Concatenation( D_s, Ds );
+            pairs := false;
+        else
+            shifts := Concatenation( ListN( Ds, D_s, {d, d_} -> [ d_, d ] ) );
+            pairs := true;
+        fi;
+        
+        Y := RationalDoubleShiftAlgebra( A, shifts : steps := 1, pairs := pairs );
+        
     fi;
-    
-    Y := RationalDoubleShiftAlgebra( A, shifts : steps := -1, pairs := pairs );
     
     Y!.Ds := Ds;
     Y!.D_s := D_s;
@@ -1279,9 +1407,33 @@ InstallMethod( RationalDoubleShiftAlgebraWithDimensionShift,
     AmbientRing( Y )!.Ds := Ds;
     AmbientRing( Y )!.D_s := D_s;
     
-    R!.RationalDoubleShiftAlgebraWithDimensionShift := Y;
+    if not reverse = true then
+        R!.RationalDoubleShiftAlgebraWithDimensionShift := Y;
+    else
+        R!.RationalDoubleShiftAlgebraWithDimensionShiftAndReverseOrder := Y;
+    fi;
     
     return Y;
+    
+end );
+
+##
+InstallMethod( RationalDoubleShiftAlgebraWithReverseOrder,
+        [ IsHomalgRing ],
+        
+  function( R )
+    
+    return RationalDoubleShiftAlgebra( R : reverse := true );
+    
+end );
+
+##
+InstallMethod( RationalDoubleShiftAlgebraWithDimensionShiftAndReverseOrder,
+        [ IsHomalgRing ],
+        
+  function( R )
+    
+    return RationalDoubleShiftAlgebraWithDimensionShift( R : reverse := true );
     
 end );
 
