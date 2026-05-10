@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "LoopIntegrals",
 Subtitle := "Compute master integrals using commutative and noncommutative methods from computational algebraic geometry",
-Version := "2025.12-01",
+Version := "2026.05-02",
 
-Date := "2025-12-23",
+Date := "2026-05-10",
 
 License := "GPL-2.0-or-later",
 
